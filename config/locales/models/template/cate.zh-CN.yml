@@ -1,0 +1,13 @@
+---
+zh-CN:
+  activerecord:
+    models:
+      template/cate: 分类
+    attributes:
+      template/cate:
+          title: 名称
+          description: 描述
+    errors:
+      cate: 
+  helpers:
+    cate: 

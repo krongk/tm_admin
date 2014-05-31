@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Template template:</strong>
+  <%= @template_theme.template %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @template_theme.title %>
+</p>
+
+<p>
+  <strong>Css url:</strong>
+  <%= @template_theme.css_url %>
+</p>
+
+<p>
+  <strong>Preview images:</strong>
+  <%= @template_theme.preview_images %>
+</p>
+
+<p>
+  <strong>Preview url:</strong>
+  <%= @template_theme.preview_url %>
+</p>
+
+<%= link_to 'Edit', edit_template_theme_path(@template_theme) %> |
+<%= link_to 'Back', template_themes_path %>

@@ -1,0 +1,37 @@
+<h1>Listing common_keys</h1>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Typo</th>
+      <th>Title</th>
+      <th>Placeholder</th>
+      <th>Hint</th>
+      <th>Default value</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @common_keys.each do |common_key| %>
+      <tr>
+        <td><%= common_key.name %></td>
+        <td><%= common_key.typo %></td>
+        <td><%= common_key.title %></td>
+        <td><%= common_key.placeholder %></td>
+        <td><%= common_key.hint %></td>
+        <td><%= common_key.default_value %></td>
+        <td><%= link_to 'Show', common_key %></td>
+        <td><%= link_to 'Edit', edit_common_key_path(common_key) %></td>
+        <td><%= link_to 'Destroy', common_key, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @common_keys %>
+<br>
+
+<%= link_to 'New Common key', new_common_key_path %>

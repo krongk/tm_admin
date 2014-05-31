@@ -1,0 +1,16 @@
+<%= simple_form_for(@template_theme) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%#= f.association :template %>
+    <%= f.input :template_id, as: :hidden, input_html: {value: @template.id } %>
+    <%= f.input :title %>
+    <%= f.input :css_url %>
+    <%= f.input :preview_images %>
+    <%= f.input :preview_url %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn btn-primary' %>
+  </div>
+<% end %>

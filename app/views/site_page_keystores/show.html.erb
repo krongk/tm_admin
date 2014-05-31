@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Site page:</strong>
+  <%= @site_page_keystore.site_page %>
+</p>
+
+<p>
+  <strong>Key:</strong>
+  <%= @site_page_keystore.key %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @site_page_keystore.value %>
+</p>
+
+<%= link_to 'Edit', edit_site_page_keystore_path(@site_page_keystore) %> |
+<%= link_to 'Back', site_page_keystores_path %>

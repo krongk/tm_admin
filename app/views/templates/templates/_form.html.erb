@@ -1,0 +1,19 @@
+<%= simple_form_for(@template) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :cate %>
+    <%= f.input :property, as: :radio_buttons, collection: [['单页应用', 'one-page'], ['多页应用', 'multi-page']] %>
+    <%= f.input :base_url, placeholder: '输入模板所在目录名称' %>
+    <%= f.input :title %>
+    <%= f.input :keywords, hint: '模版标签，逗号或者空格隔开' %>
+    <%= f.input :description %>
+    <%= f.input :demo_url %>
+    <%= f.input :demo_img, placeholder: 'assets/previews/demo.png', hint: '输入相对于跟路径的图片地址，用作在创建网站时候的实例图片' %>
+    <%= f.input :summary, as: :text %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn btn-primary' %>
+  </div>
+<% end %>

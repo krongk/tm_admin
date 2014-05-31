@@ -1,0 +1,62 @@
+<div id="about" class="list">
+  <h2><i class="fa fa-dot-circle-o fa-lg"></i> HTML-Form</h2>
+  <p>所需文件： 一个用于view展示的html, 一个用于接受数据的form</p>
+
+
+
+  <table class="table table-bordered table-striped">
+    <tr><th>Content</th><th>Form</th></tr>
+    <tr>
+      <td><pre>
+&lt;!--[[header start]] --&gt;
+&lt;table width="100%" border="1" cellspacing="0" cellpadding="1"&gt;
+  &lt;tr&gt;
+    &lt;% @site.site_pages.each do |site_page| %&gt;
+      &lt;th scope="col"&gt;&lt;a href="&lt;%= get_url(site_page)%&gt;"&gt;&lt;%= site_page.title %&gt;&lt;/a&gt;&lt;/th&gt;
+    &lt;% end %&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;!--[[header end]] --&gt;
+
+&lt;!--[[content start]] --&gt;
+&lt;%= render inline: Templates::Keystore.value_for(@site.template, 'header') || '' %&gt;
+&lt;h1&gt;&lt;%= SitePageKeystore.value_for(@site_page, 'title') %&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;%= SitePageKeystore.value_for(@site_page, 'description')  %&gt;&lt;/p&gt;
+&lt;table width="100%" border="1" cellspacing="0" cellpadding="1"&gt;
+  &lt;tr&gt;
+    &lt;% @site_page.site_images.each do |site_image| %&gt;
+      &lt;th scope="col"&gt;&lt;%= qiniu_image_tag site_image.image.url(:content), :quality =&gt; 80, class: 'img-responsive' %&gt;&lt;/th&gt;
+    &lt;% end %&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;!--[[content end]] --&gt;
+      </pre></td>
+      <td><pre>
+&lt;!--[[form start]] --&gt;
+&lt;fieldset&gt;
+&lt;!-- Text input--&gt;
+&lt;div class="control-group"&gt;
+  &lt;label class="control-label" for="name"&gt;姓名&lt;/label&gt;
+  &lt;div class="controls"&gt;
+    &lt;input id="name" name="site_page[name]" type="text" placeholder="请输入姓名" class="input-xlarge" required=""&gt;
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Text input--&gt;
+&lt;div class="control-group"&gt;
+  &lt;label class="control-label" for="phone"&gt;电话号码&lt;/label&gt;
+  &lt;div class="controls"&gt;
+    &lt;input id="phone" name="site_page[phone]" type="text" placeholder="" class="input-small" required=""&gt;
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/fieldset&gt;
+&lt;!--[[form end]] --&gt;
+      </pre></td>
+    </tr>
+  </table>
+</div>
+
+

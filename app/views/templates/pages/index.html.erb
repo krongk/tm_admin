@@ -1,0 +1,35 @@
+<h1><%= t('template.pages.index.title')%></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Template template</th>
+      <th>Sort</th>
+      <th>Title</th>
+      <th>Temp url</th>
+      <th>Temp form url</th>
+      <th>Demo img</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @template_pages.each do |template_page| %>
+      <tr>
+        <td><%= template_page.template %></td>
+        <td><%= template_page.sort_id %></td>
+        <td><%= template_page.title %></td>
+        <td><%= template_page.demo_img %></td>
+        <td><%= link_to 'Show', template_page %></td>
+        <td><%= link_to 'Edit', edit_templates_page_path(template_page) %></td>
+        <td><%= link_to 'Destroy', template_page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Page', new_templates_page_path %>

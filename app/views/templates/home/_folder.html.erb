@@ -1,0 +1,49 @@
+<div id="about" class="list">
+  <h2><i class="fa fa-dot-circle-o fa-lg"></i> 文件组织结构</h2>
+  <p>。</p>
+
+<pre>
+/public/templates/
+  template_name/
+    assets/
+      js/
+      img/
+      css/
+    previews/
+      demo.jpg
+    index.html
+    temp_index.html #改造后的index.html
+    如果是多页：
+    temp_page1.html
+    temp_page2.html
+</pre>
+
+<table class="table table-bordered table-striped">
+  <tr>
+    <td>html_tag</td>
+    <td>
+        &lt;html lang="ch" manifest="&lt;%= @base_url %&gt;one.appcache"&gt;  => manifest="&lt;%= @base_url %&gt;one.appcache"
+    </td>
+  </tr>
+  <tr>
+    <td>body_tag</td>
+    <td>
+        class="body"
+    </td>
+  </tr>
+  <tr>
+    <td>head</td>
+    <td>
+        href="&lt;%= @base_url %&gt;css/copyright.css"
+    </td>
+  </tr>
+  <tr>
+    <td>foot</td>
+    <td>
+        &lt;script src="&lt;%= @base_url %&gt;js/init.mix.js" type="text/javascript" charset="utf-8"&gt;&lt;/script&gt;
+    </td>
+  </tr>
+</table>
+</div>
+
+

@@ -1,0 +1,35 @@
+<h1>Listing template_themes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Template template</th>
+      <th>Title</th>
+      <th>Css url</th>
+      <th>Preview images</th>
+      <th>Preview url</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @template_themes.each do |template_theme| %>
+      <tr>
+        <td><%= template_theme.template %></td>
+        <td><%= template_theme.title %></td>
+        <td><%= template_theme.css_url %></td>
+        <td><%= template_theme.preview_images %></td>
+        <td><%= template_theme.preview_url %></td>
+        <td><%= link_to 'Show', template_theme %></td>
+        <td><%= link_to 'Edit', edit_template_theme_path(template_theme) %></td>
+        <td><%= link_to 'Destroy', template_theme, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Theme', new_template_theme_path %>

@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Template template:</strong>
+  <%= @template_page.template %>
+</p>
+
+
+
+<p>
+  <strong>Title:</strong>
+  <%= @template_page.title %>
+</p>
+  
+
+<p>
+  <strong>Demo img:</strong>
+  <%= @template_page.demo_img %>
+</p>
+
+<%= link_to 'Edit', edit_templates_page_path(@template_page) %> |
+<%= link_to 'Back', templates_pages_path %>

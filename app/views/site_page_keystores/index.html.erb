@@ -1,0 +1,31 @@
+<h1>Listing site_page_keystores</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Site page</th>
+      <th>Key</th>
+      <th>Value</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @site_page_keystores.each do |site_page_keystore| %>
+      <tr>
+        <td><%= site_page_keystore.site_page %></td>
+        <td><%= site_page_keystore.key %></td>
+        <td><%= site_page_keystore.value %></td>
+        <td><%= link_to 'Show', site_page_keystore %></td>
+        <td><%= link_to 'Edit', edit_site_page_keystore_path(site_page_keystore) %></td>
+        <td><%= link_to 'Destroy', site_page_keystore, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Site page keystore', new_site_page_keystore_path %>

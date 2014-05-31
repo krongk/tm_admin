@@ -1,0 +1,4 @@
+。 将文件夹拷贝到并命名如下：
+  /public/templates/template_cate_name/template_name/
+
+  

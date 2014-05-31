@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Source type:</strong>
+  <%= @templates_keystore.source_type %>
+</p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @templates_keystore.source_id %>
+</p>
+
+<p>
+  <strong>Key:</strong>
+  <%= @templates_keystore.key %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @templates_keystore.value %>
+</p>
+
+<%= link_to 'Edit', edit_templates_keystore_path(@templates_keystore) %> |
+<%= link_to 'Back', templates_keystores_path %>

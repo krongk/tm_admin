@@ -1,0 +1,33 @@
+<h1>Listing templates_keystores</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Source ID</th>
+      <th>Source type</th>
+      <th>Source</th>
+      <th>Key</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @templates_keystores.each do |templates_keystore| %>
+      <tr>
+        <td><%= templates_keystore.id %></td>
+        <td><%= templates_keystore.source_type %></td>
+        <td><%= templates_keystore.source_id %></td>
+        <td><%= templates_keystore.key %></td>
+        <td><%= link_to '显示', templates_keystore %></td>
+        <td><%= link_to '编辑', edit_templates_keystore_path(templates_keystore) %></td>
+        <td><%= link_to '删除', templates_keystore, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Keystore', new_templates_keystore_path, class: 'btn btn-primary btn-lg' %>

@@ -1,0 +1,101 @@
+<h2><%= @template.title %></h2>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>编号</th>
+      <th>分类</th>
+      <th>类型</th>
+      <th>根目录</th>
+      <th>模板名称</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><%= @template.id %></td>
+      <td><%= @template.cate.title %></td>
+      <td><%= @template.property %></td>
+      <td><%= @template.base_url %></td>
+      <td><%= @template.title %></td>
+      <td><%= link_to '查看', @template %></td>
+      <td><%= link_to '编辑', edit_templates_template_path(@template) %></td>
+      <td><%= link_to '删除', @template, method: :delete, data: { confirm: '删除模板将删除与此相关的主题和模板页面，确定要删除?' } %></td>
+    </tr>
+    <tr>
+      <td colspan="3">模板键值对:</td>
+      <td colspan="5" align="left">
+        <% @template_keystores.each do |keystore| %>
+          <%= link_to keystore.key, edit_templates_keystore_path(keystore) %> &nbsp;|&nbsp;
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<small>
+  <%= link_to '返回模板列表', templates_templates_path, class: 'btn btn-default' %>
+  <%= link_to '添加键值', new_templates_keystore_path(source_type: @template.class.to_s, source_id: @template.id), class: 'btn btn-default' %>
+</small>
+
+<h2>模板主题</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>css路径</th>
+      <th>预览地址</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @template.themes.each do |theme| %>
+      <tr>
+        <td><%= theme.title %></td>
+        <td><%= theme.css_url %></td>
+        <td><%= theme.preview_url %></td>
+        <td><%= link_to '编辑', edit_templates_theme_path(theme) %></td>
+        <td><%= link_to '删除', theme, method: :delete, data: { confirm: '确定要删除?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<small><%= link_to '添加主题', new_templates_theme_path(template_id: @template.id), class: 'btn btn-primary' %></small>
+
+<h2>模板页面</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>顺序</th>
+      <th>名称</th>
+      <th>需要图片数量</th>
+      <th>实例图片</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @template.pages.order("id ASC").each do |page| %>
+      <tr>
+        <td><%= page.position %></td>
+        <td><%= page.title %></td>
+        <td><%= page.image_count %></td>
+        <td><%= page.demo_img %></td>
+        <td> <%= link_to '添加键值', new_templates_keystore_path(source_type: page.class.to_s, source_id: page.id) %></td>
+        <td><%= link_to '编辑', edit_templates_page_path(page) %></td>
+        <td><%= link_to '删除', page, method: :delete, data: { confirm: '确定要删除?' } %></td>
+      </tr>
+      <tr>
+        <td colspan="2">模板键值对:</td>
+        <td colspan="5" align="left">
+          <% Templates::Keystore.where(source_type: 'Templates::page', source_id: page.id).each do |keystore| %>
+            <%= link_to keystore.key, edit_templates_keystore_path(keystore) %> &nbsp;|&nbsp;
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<small><%= link_to '添加页面', new_templates_page_path(template_id: @template.id), class: 'btn btn-primary' %></small>
+

@@ -1,0 +1,2 @@
+module Template::CatesHelper
+end

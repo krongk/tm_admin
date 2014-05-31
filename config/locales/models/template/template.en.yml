@@ -1,0 +1,19 @@
+---
+en:
+  active_record:
+    models:
+      template:
+        template: Template
+    attributes:
+      template:
+        template:
+          template_cate: Template cate
+          property: Property
+          base_url: Base url
+          title: Title
+          description: Description
+          demo_img: Demo img
+    errors:
+      template: 
+  helpers:
+    template: 

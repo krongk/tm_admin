@@ -1,0 +1,17 @@
+<%= simple_form_for(@template_page) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :template_id, as: :hidden, input_html: {value: @template.id } %>
+    <%= f.input :position, hint: '影响模板网页的编辑顺序，数字越大越靠后, 1为首页', input_html: {value: @template_page.position || 1 } %>
+    <%= f.input :title, placeholder: '首页，相册，留言，博客' %>
+    <%= f.input :image_count, placeholder: '输入该模板需要的图片数量', input_html: {value: @template_page.image_count || 0} %>
+    <%= f.input :demo_img, placeholder: 'assets/previews/demo.png' %>
+    <%= f.input :html, as: :text, input_html: {value: Templates::Keystore.value_for(@template_page, 'html')} %>
+    <%= f.input :form, as: :text, input_html: {value: Templates::Keystore.value_for(@template_page, 'form')} %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn btn-primary' %>
+  </div>
+<% end %>

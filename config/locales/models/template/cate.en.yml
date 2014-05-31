@@ -1,0 +1,15 @@
+---
+en:
+  active_record:
+    models:
+      template:
+        cate: Cate
+    attributes:
+      template:
+        cate:
+          title: Title
+          description: Description
+    errors:
+      cate: 
+  helpers:
+    cate: 

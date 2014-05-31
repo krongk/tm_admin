@@ -1,0 +1,36 @@
+<h1><%= t 'template.index.title' %></h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>分类</th>
+      <th>类型</th>
+      <th>根目录</th>
+      <th>模板名称</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @templates.each do |template| %>
+      <tr>
+        <td><%= template.cate.title %></td>
+        <td><%= template.property %></td>
+        <td><%= template.base_url %></td>
+        <td><%= template.title %></td>
+
+        <td><%= link_to '购买', new_site_path(temp_id: template.id),  data: {confirm: '确定要使用该模板？'} %></td>
+        <td><%= link_to '查看', template %></td>
+        <td><%= link_to '编辑', edit_templates_template_path(template) %></td>
+        <td><%= link_to '删除', template, method: :delete, data: { confirm: '删除模板将删除与此相关的主题和模板页面，确定要删除?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '添加模板', new_templates_template_path, class: 'btn btn-primary' %>

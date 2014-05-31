@@ -1,0 +1,17 @@
+<%= simple_form_for(@site) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :template_id, as: :hidden, input_html: {value: params[:temp_id]} %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%#= f.input :domain %>
+    <%#= f.input :is_published %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+
+<img src="<%= @template.base_url %><%= @template.demo_img %>" />

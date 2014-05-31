@@ -1,0 +1,28 @@
+---
+en:
+  active_record:
+    models:
+      site_comment: Site comment
+    attributes:
+      site_comment:
+        user: User
+        site: Site
+        template_page: Template page
+        name: Name
+        mobile_phone: Mobile phone
+        tel_phone: Tel phone
+        email: Email
+        qq: Qq
+        weixin: Weixin
+        address: Address
+        gender: Gender
+        birth: Birth
+        hobby: Hobby
+        content: Content
+        content2: Content2
+        content3: Content3
+        status: Status
+    errors:
+      site_comment: 
+  helpers:
+    site_comment: 

@@ -1,0 +1,10 @@
+<h1>Editing site_page</h1>
+
+<%#= render 'form' %>
+
+ <%= render template: [@site_page.template_page.template.base_url, '/', @site_page.template_page.temp_form_url].join(), locals: {site_page_id: @site_page.id} %>
+
+<%#= render partial: 'simple_one/temp_index_form.html', locals: {site_page_id: @site_page.id} %>
+<%#= [@site_page.template_page.template.base_url, '/', @site_page.template_page.temp_form_url].join() %>
+<hr/>
+<iframe width="600px" height="400px" src="<%= site_page_path(@site_page) %>"></iframe>

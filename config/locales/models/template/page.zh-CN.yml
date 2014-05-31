@@ -1,0 +1,17 @@
+---
+zh-CN:
+  activerecord:
+    models:
+      template/page: 模板页
+    attributes:
+      template/page:
+          template: 模板
+          sort_id: 排序ID
+          title: 标题
+          temp_url: 路径
+          temp_form_url: 表单路径
+          demo_img: 实例图片
+    errors:
+      page: 
+  helpers:
+    page: 

@@ -1,0 +1,17 @@
+---
+en:
+  active_record:
+    models:
+      site_page: Site page
+    attributes:
+      site_page:
+        user: User
+        site: Site
+        template_page: Template page
+        short_title: Short title
+        title: Title
+        form_content: Form content
+    errors:
+      site_page: 
+  helpers:
+    site_page: 

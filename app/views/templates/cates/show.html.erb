@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @template_cate.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @template_cate.description %>
+</p>
+
+<%= link_to 'Edit', edit_templates_cate_path(@template_cate) %> |
+<%= link_to 'Back', templates_cates_path %>

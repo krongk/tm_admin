@@ -1,0 +1,13 @@
+<%= simple_form_for(@site_page_keystore) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :site_page %>
+    <%= f.input :key %>
+    <%= f.input :value %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

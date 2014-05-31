@@ -1,0 +1,19 @@
+---
+en:
+  active_record:
+    models:
+      template:
+        page: Page
+    attributes:
+      template:
+        page:
+          template_template: Template template
+          sort_id: Sort
+          title: Title
+          temp_url: Temp url
+          temp_form_url: Temp form url
+          demo_img: Demo img
+    errors:
+      page: 
+  helpers:
+    page: 

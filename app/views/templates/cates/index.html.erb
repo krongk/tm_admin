@@ -1,0 +1,31 @@
+<h1>模板分类</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @template_cates.each do |template_cate| %>
+      <tr>
+        <td><%= template_cate.id %></td>
+        <td><%= template_cate.title %></td>
+        <td><%= template_cate.description %></td>
+        <td><%= link_to 'Show', template_cate %></td>
+        <td><%= link_to 'Edit', edit_templates_cate_path(template_cate) %></td>
+        <td><%= link_to 'Destroy', template_cate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cate', new_templates_cate_path, class: 'btn btn-primary' %>

@@ -1,0 +1,17 @@
+---
+en:
+  active_record:
+    models:
+      common_key: Common key
+    attributes:
+      common_key:
+        name: Name
+        type: Type
+        title: Title
+        placeholder: Placeholder
+        hint: Hint
+        default_value: Default value
+    errors:
+      common_key: 
+  helpers:
+    common_key: 
