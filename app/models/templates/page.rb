@@ -7,7 +7,7 @@ class Templates::Page < ActiveRecord::Base
   after_save :assign_template_keystore
 
   attr_accessor :html, :form 
-  validates :title, :html, :position, presence: true
+  validates :title, :position, presence: true
   
   acts_as_taggable
 
@@ -28,8 +28,7 @@ class Templates::Page < ActiveRecord::Base
     self.form = form_html.join
   end
 
-  #SitePageKeystore.value_for(@site_page, 'content', 
-  # type: 'select', options: ['a', 'b', 'c'], title: 'title', default: true) 
+  #SitePageKeystore.value_for(@site_page, 'content', type: 'select', options: ['a', 'b', 'c'], title: 'title', default: true) 
   def get_input(name, opt)
     opt[:typo] = opt[:type] if opt[:typo].blank? #alias
     opt[:typo] = 'string' if opt[:typo].blank? #default 
@@ -76,8 +75,8 @@ class Templates::Page < ActiveRecord::Base
   end
 
   def assign_template_keystore
-    Templates::Keystore.put(self, 'html', self.html)
-    Templates::Keystore.put(self, 'form', self.form)
+    Templates::Keystore.put(self, 'html', self.html) unless self.html.blank?
+    Templates::Keystore.put(self, 'form', self.form) unless self.form.blank?
   end
 
   def drop_keystore

@@ -30,9 +30,6 @@ class Templates::TemplatesController < Templates::ApplicationController
     @template = Templates::Template.new(templates_template_params)
     respond_to do |format|
       if @template.save
-        #add a default index page
-        Templates::Page.create!(template_id: @template.id, title: '首页', position: 1)
-
         format.html { redirect_to templates_template_path(@template), notice: t('flash.template.create.notice') }
         format.json { render action: 'show', status: :created, location: @template }
       else
