@@ -66,6 +66,13 @@ class Templates::Page < ActiveRecord::Base
         arr << %{<option value="#{option}">#{option}</option>}
       end
       arr << %{</select>}
+    when 'dialog' # 相对于'string'多了一个： url: 'load dialog url'
+      # <a class="btn btn-active" data-target="#myModal" data-toggle="modal" href="/pricing?site_page_id=11">点击这里</a>
+      arr << %{<input class="#{opt[:typo]} #{if opt[:required] then 'required' end}" id="site_page_#{name}" name="site_page[#{name}]" typo="#{opt[:typo]}"}
+      arr << %{ placeholder="#{key.placeholder}"} if key.placeholder.present?
+      arr << %{ value="<%= SitePageKeystore.value_for(@site_page, '#{name}') || CommonKey.get(:#{name}).try(:default_value) %>">}
+      arr << %{<a data-target="#myModal" data-toggle="modal" href="#{opt[:url]}">选择#{opt[:title]}</a>}
+      arr << %{\n        <p class="help-block"><%= CommonKey.find_by(:name).try(:hint) %></p>} if key.hint.present?
     else
       raise "bad input typo: #{opt[:typo]}"
     end
