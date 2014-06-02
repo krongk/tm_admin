@@ -91,7 +91,7 @@
         <% next if index < 2 %>
         <!-- 大图文 3-->
         <div class='m-page m-bigTxt f-hide' data-page-type='bigTxt' data-statics='info_list'>
-          <div class="page-con j-txtWrap lazy-img" data-src='<%=  site_image.image.url %>'>
+          <div class="page-con j-txtWrap lazy-img" data-src='<%= site_image.image.url %>'>
                     </div>
                 </div>
         <!-- 大图文 end-->
@@ -106,7 +106,7 @@
 
   <!-- lightapp入口 -->
   <div class='market-notice f-hide' data-action='Action://lightapp_open'>
-    <imgsrc='<%= @base_url %>img/market-notice.png'/>
+    <img src='<%= @base_url %>img/market-notice.png'/>
   </div>
   <div class='market-page f-hide' data-action='Action://lightapp_close'>
     <div class='market-img'>
@@ -114,10 +114,10 @@
         <span class="menu_item"><%= link_to site_page.title, get_site_page_url(site_page) %></span>
       <% end %>
       <a href='tel:<%= value_for(@site_page, 'boy_phone', typo: 'string', required: true) %>'>
-        <imgsrc='<%= @base_url %>img/tel-boy.png'/>
+        <img src='<%= @base_url %>img/tel-boy.png'/>
       </a>
       <a href='tel:<%= value_for(@site_page, 'girl_phone', typo: 'string', required: true) %>'>
-        <imgsrc='<%= @base_url %>img/tel-girl.png'/>
+        <img src='<%= @base_url %>img/tel-girl.png'/>
       </a>
     </div>
   </div>
@@ -125,7 +125,7 @@
   
   <!--pageLoading-->
   <section class="u-pageLoading">
-    <imgsrc="<%= @base_url %>img/load.gif" alt="loading" />
+    <img src="<%= @base_url %>img/load.gif" alt="loading" />
   </section>
   <!--pageLoading end-->
   
