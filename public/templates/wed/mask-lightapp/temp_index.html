@@ -9,6 +9,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <meta http-equiv="Expires" content="-1" />
+
   <meta http-equiv="pragram" content="no-cache" />
   <link rel="stylesheet" type="text/css"href="<%= @base_url %>css/copyright.css" />
   <link rel="stylesheet" type="text/css"href="<%= @base_url %>css/main.css" />
@@ -79,7 +80,7 @@
     <div class='translate-back f-hide'>
       <!-- 封页 1--><!-- #Html5 蒙板和canvas给图片绘图的时候，需要保证图片在同一个domain下，否则会报错：
   # Uncaught Error: SECURITY_ERR: DOM Exception 18 -->
-      <!-- 蒙板背景图 --><input id="r-cover" type="hidden" value="<%= asset_path <%= value_for(@site_page, 'banner', typo: 'string', title: '封面照片', default: true)  %> %>" />
+      <!-- 蒙板背景图 --><input id="r-cover" type="hidden" value="<%= asset_path value_for(@site_page, 'banner', typo: 'string', title: '封面照片', default: true)  %>" />
 
       <div class='m-page m-fengye f-hide' data-page-type='info_pic3' data-statics='info_pic3'>
         <div class="page-con lazy-img" data-src='<%= get_first_site_image_url(@site) %>'></div>
@@ -131,7 +132,7 @@
   <!-- 资源传递 -->
   <!-- 模版ID --><input id="activity_id" type="hidden" value='2765' />  
   <!-- 微信分享信息 --><input id="r-wx-title" type="hidden" value="<%= @site.title %>" />
-  <!-- 微信分享信息 --><input id="r-wx-img"   type="hidden" value="<%= @site_page.site_images.first.image.url %>" />
+  <!-- 微信分享信息 --><input id="r-wx-img"   type="hidden" value="<%= get_first_site_image_url(@site) %>" />
   <!-- 微信分享信息 --><input id="r-wx-con"   type="hidden" value="<%= @site.description %>" />
   
   

@@ -13,12 +13,12 @@ class Templates::Page < ActiveRecord::Base
 
   private
   def generate_form
-    #  <%= SitePageKeystore.value_for(@site_page, 'name', title: '标题', typo: 'string', default: true, required: true) %>
+    #  <%= value_for(@site_page, 'name', title: '标题', typo: 'string', default: true, required: true) %>
     #  a =  "{typo: 'string', default: true, required: true}"
     #  > eval a
     # => {:typo=>"string", :default=>true, :required=>true} 
     form_html = []
-    #reg1 = /SitePageKeystore.value_for\(@site_page,\s*'([^'']+)'(?:,\s*(.*))?\)/
+    #reg1 = /value_for\(@site_page,\s*'([^'']+)'(?:,\s*(.*))?\)/
     reg2 = /value_for\(@site_page,\s*'([^'']+)'(?:,\s*(.*))?\)/
     self.html.scan(reg2).each do |match|
       #parse a string into hash
@@ -29,9 +29,9 @@ class Templates::Page < ActiveRecord::Base
     self.form = form_html.join
   end
 
-  #<%= SitePageKeystore.value_for(@site_page, 'title', typo: 'string', default: true, required: true) %>
-  #<%= SitePageKeystore.value_for(@site_page, 'weding_date', typo: 'date', title: '婚礼日期', required: true)  %>
-  #SitePageKeystore.value_for(@site_page, 'content', type: 'select', options: ['a', 'b', 'c'], title: 'title', default: true) 
+  #<%= value_for(@site_page, 'title', typo: 'string', default: true, required: true) %>
+  #<%= value_for(@site_page, 'weding_date', typo: 'date', title: '婚礼日期', required: true)  %>
+  #value_for(@site_page, 'content', type: 'select', options: ['a', 'b', 'c'], title: 'title', default: true) 
   def get_input(name, opt)
     opt[:typo] = opt[:type] if opt[:typo].blank? #alias
     opt[:typo] = 'string' if opt[:typo].blank? #default 
@@ -54,14 +54,14 @@ class Templates::Page < ActiveRecord::Base
     when 'string'
       arr << %{<input class="#{opt[:typo]} #{if opt[:required] then 'required' end}" id="site_page_#{name}" name="site_page[#{name}]" typo="#{opt[:typo]}"}
       arr << %{ placeholder="#{key.placeholder}"} if key.placeholder.present?
-      arr << %{ value="<%= SitePageKeystore.value_for(@site_page, '#{name}') || CommonKey.get(:#{name}).try(:default_value) %>">}
+      arr << %{ value="<%= value_for(@site_page, '#{name}') || CommonKey.get(:#{name}).try(:default_value) %>">}
       arr << %{\n        <p class="help-block"><%= CommonKey.find_by(:name).try(:hint) %></p>} if key.hint.present?
     when 'int', 'integer', 'numeric'
       arr << %{<input class="numeric integer #{if opt[:required] then 'required' end}" id="site_page_#{name}" name="site_page[#{name}]" step="1" type="number"}
-      arr << %{ value="<%= SitePageKeystore.value_for(@site_page, '#{name}') || CommonKey.get(:#{name}).try(:default_value) %>">}
+      arr << %{ value="<%= value_for(@site_page, '#{name}') || CommonKey.get(:#{name}).try(:default_value) %>">}
     when 'text', 'textarea'
       arr << %{<textarea class="text" id="site_page_#{name}" name="site_page[#{name}]">}
-      arr << %{<%= SitePageKeystore.value_for(@site_page, '#{name}') || CommonKey.get(:#{name}).try(:default_value) %>}
+      arr << %{<%= value_for(@site_page, '#{name}') || CommonKey.get(:#{name}).try(:default_value) %>}
       arr << %{</textarea>}
     when 'select', 'radio'
       arr << %{<select id="site_page_#{name}" name="site_pag_#{name}" class="input-xlarge">}
@@ -73,7 +73,7 @@ class Templates::Page < ActiveRecord::Base
       # <a class="btn btn-active" data-target="#myModal" data-toggle="modal" href="/pricing?site_page_id=11">点击这里</a>
       arr << %{<input class="#{opt[:typo]} #{if opt[:required] then 'required' end}" id="site_page_#{name}" name="site_page[#{name}]" typo="#{opt[:typo]}"}
       arr << %{ placeholder="#{key.placeholder}"} if key.placeholder.present?
-      arr << %{ value="<%= SitePageKeystore.value_for(@site_page, '#{name}') || CommonKey.get(:#{name}).try(:default_value) %>">}
+      arr << %{ value="<%= value_for(@site_page, '#{name}') || CommonKey.get(:#{name}).try(:default_value) %>">}
       arr << %{<a data-target="#myModal" data-toggle="modal" href="#{opt[:url]}">选择#{opt[:title]}</a>}
       arr << %{\n        <p class="help-block"><%= CommonKey.find_by(:name).try(:hint) %></p>} if key.hint.present?
     else
