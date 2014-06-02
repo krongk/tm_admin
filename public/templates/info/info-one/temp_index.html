@@ -1,60 +1,92 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
-  <title><%= @site.title %></title>
-  <meta name="description" content="<%= @site.description %>" />
-  <meta charset="utf-8" />
-  <meta name="apple-touch-fullscreen" content="YES" />
-  <meta name="format-detection" content="telephone=no" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  <meta http-equiv="Expires" content="-1" />
-  <meta http-equiv="pragram" content="no-cache" />
-  <script type="text/javascript">
-    var phoneWidth =  parseInt(window.screen.width);
-    var phoneScale = phoneWidth/640;
-    var ua = navigator.userAgent;
-    if (/Android (\d+\.\d+)/.test(ua)){
-      var version = parseFloat(RegExp.$1);
-      // andriod 2.3
-      if(version>2.3){
-        document.write('<meta name="viewport" content="width=640, minimum-scale = '+phoneScale+', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');
-      // andriod 2.3以上
-      }else{
-        document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
-      }
-      // 其他系统
-    } else {
-      document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
-    }
-  </script>
-  <!--移动端版本兼容 end -->
-</head>
-
+<html>
+    <head>
+        <title><%= @site.title %></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+        <link href="/assets/font-awesome.css?body=1" media="all" rel="stylesheet" />
+        <!-- 最新 Bootstrap 核心 CSS 文件 -->
+        <link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
+        <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+        <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+        <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+        <script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+        <!-- 百度地图： http://developer.baidu.com/map/jsdemo.htm#i6_1-->
+        <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=783cVnDkoCqImZH3kEBWIXCa"></script>
+        
+        <style type="text/css">
+            body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;}
+            .navbar-default {
+                background-color: #F1678D;
+                border-color: #e7e7e7;
+            }
+            .navbar-default .navbar-nav>li>a{
+                color: #fff;
+            }
+            .navbar-brand {
+                color: #fff;
+                }
+            .jumbotron h1, .jumbotron .h1 {
+               color: #F1678D;
+            }
+            .jumbotron {
+                padding: 35px 10px;
+                margin-bottom: 0px;
+                background-color: #fcede4;
+            }
+        </style>
+    </head>
 <body>
+    <!-- header start -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">选择菜单</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">
+          <%= value_for(@site_page, 'boy', typo: 'string', title: '新郎姓名') %> 
+          <i class="fa fa-heart"> </i> 
+          <%= value_for(@site_page, 'girl', typo: 'string', title: '新娘姓名') %>
+        </a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <% get_menu(@site).each do |site_page| %>
+          <li class="menu_item"><%= link_to site_page.title, get_site_page_url(site_page) %></li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+    <!-- header end -->
+       
+    <div class="jumbotron">
+      <div class="container">
+        <h1>
+          <%= value_for(@site_page, 'boy', typo: 'string', title: '新郎姓名') %> 
+          <i class="fa fa-heart"> </i> 
+          <%= value_for(@site_page, 'girl', typo: 'string', title: '新娘姓名') %>
+        </h1>
+        <h1><%= value_for(@site_page, 'date', typo: 'string', title: '婚礼日期' ) %></h1>
+        <p>恭请光临！</p>
+        <hr/>
+        <p>地址：<%= value_for(@site_page, 'address', title: '婚礼举办地址信息', typo: 'text') %></p>
+        <a href="tel:<%= value_for(@site_page, 'boy_phone', typo: 'string', title: '新郎联系电话')%>" class="btn btn-success btn-lg">联系新郎</a>
+        <a href="tel:<%= value_for(@site_page, 'girl_phone', typo: 'string', title: '新娘联系电话')%>" class="btn btn-success btn-lg">联系新娘</a>
+      </div>
+    </div>
 
-<% get_menu(@site).each do |site_page| %>
-  <span class="menu_item"><%= link_to site_page.title, get_site_page_url(site_page) %></span>
-<% end %>
-
-<p>
-沉浸在幸福中的我们
-
-谨定于
-
-<%= value_for(@site_page, 'date') %>
-</p>
-新郎 <%= value_for(@site_page, 'boy') %>
-<br/>
-新娘 <%= value_for(@site_page, 'girl') %>
-<br/>
-举行典礼 敬备喜宴
-<br/>
-恭请光临
-<br/>
-时间：<%= value_for(@site_page, 'date') %>
-
-地点：<%= value_for(@site_page, 'address') %>
+    <div id="allmap"></div>
 
 </body>
 </html>
+<script type="text/javascript">
+// 百度地图API功能
+var map = new BMap.Map("allmap");
+map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);
+var walking = new BMap.WalkingRoute(map, {renderOptions:{map: map, autoViewport: true}});
+walking.search("<%= value_for(@site_page, 'address') %>", "<%= value_for(@site_page, 'address') %>");
+</script>
