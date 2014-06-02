@@ -513,9 +513,6 @@ textarea:focus,input:focus { border: 1px solid #71b643; }
  *******************************************************************************************************/
 .menu-item{
 	padding: 10px;
-	background-color: #ddd;
-	font-size: 16px;
-	text-align: center;
 
 }
 
