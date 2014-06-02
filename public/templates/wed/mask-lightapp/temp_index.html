@@ -110,15 +110,13 @@
   </div>
   <div class='market-page f-hide' data-action='Action://lightapp_close'>
     <div class='market-img'>
-      <% get_menu(@site).each do |site_page| %>
-        <%= link_to site_page.title, get_site_page_url(site_page), class: 'menu-item' %>&nbsp;&nbsp;
+      <%= link_to get_site_page_url_by_title('婚宴信息') do %> 
+        <img src='<%= @base_url %>img/info.png'/>
       <% end %>
-      <a href='tel:<%= value_for(@site_page, 'boy_phone', typo: 'string', required: true) %>'>
-        <img src='<%= @base_url %>img/tel-boy.png'/>
-      </a>
-      <a href='tel:<%= value_for(@site_page, 'girl_phone', typo: 'string', required: true) %>'>
-        <img src='<%= @base_url %>img/tel-girl.png'/>
-      </a>
+      <%= link_to get_site_page_url_by_title('发送祝福') do %> 
+        <img src='<%= @base_url %>img/comment.png'/>
+      <% end %>
+      
     </div>
   </div>
   <!-- lightapp入口 end-->
