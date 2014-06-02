@@ -1,0 +1,111 @@
+
+<section class="container">
+
+	<!-- Header -->
+	<header class="row-fluid">
+		<div class="title span7">
+			<img src="/templates/simple_one/assets/img/profile.jpg"  title="That`s me!" alt="My Profile"/>
+			<h1><%= SitePageKeystore.value_for(@site_page, 'name') || "宋江" %></h1>
+			<h2><%= SitePageKeystore.value_for(@site_page, 'sex') || "男" %> &nbsp;&nbsp;<%= SitePageKeystore.value_for(@site_page, 'age') || "30" %>岁</h2>
+		</div>
+		<div class="social offset1 span4">
+			<ul>
+				<li><i class="icon-envelope-alt"></i><%= SitePageKeystore.value_for(@site_page, 'email') || "master@inruby.com" %></li>
+				<li><i class="icon-phone"></i> <%= SitePageKeystore.value_for(@site_page, 'phone') || "master@inruby.com" %></li>
+				<li><%= SitePageKeystore.value_for(@site_page, 'QQ') || "master@inruby.com" %></li>
+				<li><%= SitePageKeystore.value_for(@site_page, 'address') || "成都市东二环龙湖三千集" %></li>
+			</ul>
+		</div>	
+	</header>
+
+	<!-- Welcome Text -->
+	<article class="row-fluid">
+		<header class="span3">
+			<h3>自我介绍</h3>
+		</header>
+		<div class="span9 ">
+			<p class="welcome"><%= SitePageKeystore.value_for(@site_page, 'description') || "Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away."  %><br>
+			<p class="auth"> <i><%= SitePageKeystore.value_for(@site_page, 'name') || '宋江' %></i>  </p>
+		</div>
+	</article>
+
+	<!-- Skills -->
+	<article class="row-fluid">
+		<header class="span3">
+			<h3>技术特长</h3>
+		</header>
+		<div class="span9">
+			<div class="row-fluid skills">
+			  <% if skill = SitePageKeystore.value_for(@site_page, 'skill') %>
+			  	<%= raw skill %>
+			  <% else %>
+					<ul class="span6">
+						<li><h4>Programming</h4></li>
+						<li><strong>css</strong> - 3 years experience</li>
+						<li><strong>html</strong> - Lorem ipsum dolor sit amet</li>
+						<li><strong>php</strong> - Lorem ipsum dolor sit amet</li>
+						<li><strong>javascript</strong> - Lorem ipsum dolor sit amet</li>
+					</ul>
+					<ul class="span6">
+						<li><h4>Languages</h4></li>
+						<li><strong>English</strong> - Fluent </li>
+						<li><strong>Russian</strong> - Fluent in writing</li>
+						<li><strong>Spanish</strong> - Lorem ipsum dolor sit amet</li>
+						<li><strong>Esperanto</strong> - Lorem ipsum dolor sit amet</li>
+					</ul>
+				<% end %>
+			</div>
+		</div>
+	</article>
+
+	<!-- Education -->
+	<article class="row-fluid">
+		<header class="span3">
+			<h3>教育经验</h3>
+		</header>
+		<div class="span9">
+		  <h4><%= SitePageKeystore.value_for(@site_page, 'school') %></h4>
+			<h5><%= SitePageKeystore.value_for(@site_page, 'degree') %> <%= SitePageKeystore.value_for(@site_page, 'xueli') %></h5>
+
+		  <% if item = SitePageKeystore.value_for(@site_page, 'education') %>
+		  	<%= raw item %>
+		  <% else %>
+					<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua.</p>
+			<% end %>
+		</div>
+	</article>
+
+	<!-- Work -->
+	<% if item = SitePageKeystore.value_for(@site_page, 'work') %>
+  	<article class="row-fluid">
+			<header class="span3">
+				<h3>工作经验</h3>
+			</header>
+			<div class="span9">
+				<%= raw item %>
+			</div>
+		</article>
+  <% end %>
+	
+
+	<!-- Interests -->
+	<% if item = SitePageKeystore.value_for(@site_page, 'hobby') %>
+		<article class="row-fluid">
+			<header class="span3">
+				<h3>兴趣爱好</h3>
+			</header>
+			<div class="span9">
+				<%= raw item %>
+			</div>
+		</article>
+  <% end %>
+	<!-- Footer -->
+	<footer>
+		&copy; <%= Time.now.year %> <%= SitePageKeystore.value_for(@site_page, 'name') %>
+		<a href="mailto:<%= SitePageKeystore.value_for(@site_page, 'email') %>">发送邮件</a> | 
+		<a href="javascript: alert('<%= SitePageKeystore.value_for(@site_page, 'phone') %>');">拨打电话</a> | 
+		<a href="#" onclick="javascript:window.print();">打印</a> | <a href="#top">TOP <i class="icon-arrow-up"></i></a>
+	
+	</footer>
+</section>
+

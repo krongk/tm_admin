@@ -1,0 +1,166 @@
+<form class="form-horizontal" action="/sites/temp_form_update" method="post">
+
+<input name="site_page_id" type="hidden" value="<%= site_page_id %>" />
+
+<fieldset>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="name">姓名</label>
+  <div class="controls">
+    <input id="name" name="name" type="text" placeholder="" class="input-small" required="">
+    
+  </div>
+</div>
+
+<!-- Multiple Radios -->
+<div class="control-group">
+  <label class="control-label" for="sex">性别</label>
+  <div class="controls">
+    <label class="radio" for="sex-0">
+      <input type="radio" name="sex" id="sex-0" value="男" checked="checked" required="required">
+      男
+    </label>
+    <label class="radio" for="sex-1">
+      <input type="radio" name="sex" id="sex-1" value="女" required="required">
+      女
+    </label>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="age">年龄</label>
+  <div class="controls">
+    <input id="age" name="age" type="text" placeholder="" class="input-small" required="">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="qq">QQ</label>
+  <div class="controls">
+    <input id="qq" name="qq" type="text" placeholder="" class="input-small">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="email">Email</label>
+  <div class="controls">
+    <input id="email" name="email" type="text" placeholder="" class="input-small">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="phone">电话</label>
+  <div class="controls">
+    <input id="phone" name="phone" type="text" placeholder="" class="input-large" required="">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="address">地址</label>
+  <div class="controls">
+    <input id="address" name="address" type="text" placeholder="" class="input-large">
+    
+  </div>
+</div>
+
+<!-- Textarea -->
+<div class="control-group">
+  <label class="control-label" for="description">自我介绍</label>
+  <div class="controls">                     
+    <textarea id="description" name="description">经验描述、求职意向</textarea>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="school">毕业学校</label>
+  <div class="controls">
+    <input id="school" name="school" type="text" placeholder="" class="input-large">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="degree">专业</label>
+  <div class="controls">
+    <input id="degree" name="degree" type="text" placeholder="" class="input-large">
+    
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="control-group">
+  <label class="control-label" for="xueli">学历</label>
+  <div class="controls">
+    <select id="xueli" name="xueli" class="input-small">
+      <option>高中</option>
+      <option>大专</option>
+      <option>本科</option>
+      <option>硕士</option>
+      <option>博士</option>
+      <option>留学</option>
+    </select>
+  </div>
+</div>
+
+<!-- Textarea -->
+<div class="control-group">
+  <label class="control-label" for="education">学习情况</label>
+  <div class="controls">                     
+    <textarea id="education" name="education">教学课程、参加的培训、实践项目等</textarea>
+  </div>
+</div>
+
+<!-- Textarea -->
+<div class="control-group">
+  <label class="control-label" for="work">工作经验</label>
+  <div class="controls">                     
+    <textarea id="work" name="work"></textarea>
+  </div>
+</div>
+
+<!-- Textarea -->
+<div class="control-group">
+  <label class="control-label" for="skill">技术特长</label>
+  <div class="controls">                     
+    <textarea id="skill" name="skill"></textarea>
+  </div>
+</div>
+
+<!-- Textarea -->
+<div class="control-group">
+  <label class="control-label" for="hobby">兴趣爱好</label>
+  <div class="controls">                     
+    <textarea id="hobby" name="hobby"></textarea>
+  </div>
+</div>
+
+<!-- File Button --> 
+<div class="control-group">
+  <label class="control-label" for="filebtn1">上传头像</label>
+  <div class="controls">
+    <input id="filebtn1" name="filebtn1" class="input-file" type="file">
+  </div>
+</div>
+
+<!-- Button -->
+<div class="control-group">
+  <label class="control-label" for="submit"></label>
+  <div class="controls">
+    <button id="submit" name="submit" class="btn btn-primary">保 存</button>
+  </div>
+</div>
+
+</fieldset>
+</form>

@@ -2,7 +2,7 @@ class Templates::Page < ActiveRecord::Base
   belongs_to :template
   has_many :site_pages
 
-  before_create :generate_form
+  before_save :generate_form
   before_destroy :drop_keystore
   after_save :assign_template_keystore
 
@@ -18,8 +18,9 @@ class Templates::Page < ActiveRecord::Base
     #  > eval a
     # => {:typo=>"string", :default=>true, :required=>true} 
     form_html = []
-    reg = /SitePageKeystore.value_for\(@site_page,\s*'([^'']+)'(?:,\s*(.*))?\)/
-    self.html.scan(reg).each do |match|
+    #reg1 = /SitePageKeystore.value_for\(@site_page,\s*'([^'']+)'(?:,\s*(.*))?\)/
+    reg2 = /value_for\(@site_page,\s*'([^'']+)'(?:,\s*(.*))?\)/
+    self.html.scan(reg2).each do |match|
       #parse a string into hash
       opt = {}
       opt = eval('{' + match[1] + '}') if match[1]
@@ -28,6 +29,8 @@ class Templates::Page < ActiveRecord::Base
     self.form = form_html.join
   end
 
+  #<%= SitePageKeystore.value_for(@site_page, 'title', typo: 'string', default: true, required: true) %>
+  #<%= SitePageKeystore.value_for(@site_page, 'weding_date', typo: 'date', title: '婚礼日期', required: true)  %>
   #SitePageKeystore.value_for(@site_page, 'content', type: 'select', options: ['a', 'b', 'c'], title: 'title', default: true) 
   def get_input(name, opt)
     opt[:typo] = opt[:type] if opt[:typo].blank? #alias

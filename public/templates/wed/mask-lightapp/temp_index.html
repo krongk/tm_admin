@@ -1,7 +1,8 @@
 <!doctype html>
-<html lang="ch" manifest="<%= @base_url %>one.appcache">
+<html lang="zh-CN">
 <head>
-  <title>我们结婚啦！</title>
+  <title><%= @site.title %></title>
+  <meta name="description" content="<%= @site.description %>" />
   <meta charset="utf-8" />
   <meta name="apple-touch-fullscreen" content="YES" />
   <meta name="format-detection" content="telephone=no" />
@@ -55,7 +56,7 @@
   <!--模版加载提示 end-->
   
   <!-- 声音控件 -->
-  <section class='u-audio f-hide' data-src='http://mp3.wooeu.com/mp3.php/18738870/mp3wooeu.mp3'>
+  <section class='u-audio f-hide' data-src='<%= value_for(@site_page, 'music', typo: 'string', title: '背景音乐', default: true)  %>'>
     <p id='coffee_flow' class="btn_audio">
       <strong class='txt_audio z-hide'>关闭</strong>
       <span class='css_sprite01 audio_open'></span>
@@ -76,11 +77,12 @@
     
     <!-- 旋转反面 -->
     <div class='translate-back f-hide'>
-      <!-- 封页 1-->
-      <!-- 蒙板背景图 --><input id="r-cover" type="hidden" value='<%= @site_page.site_images.first.image.url %>' />
+      <!-- 封页 1--><!-- #Html5 蒙板和canvas给图片绘图的时候，需要保证图片在同一个domain下，否则会报错：
+  # Uncaught Error: SECURITY_ERR: DOM Exception 18 -->
+      <!-- 蒙板背景图 --><input id="r-cover" type="hidden" value="<%= asset_path <%= value_for(@site_page, 'banner', typo: 'string', title: '封面照片', default: true)  %> %>" />
 
       <div class='m-page m-fengye f-hide' data-page-type='info_pic3' data-statics='info_pic3'>
-        <div class="page-con lazy-img" data-src='<%= @site_page.site_images[1].image.url %>'></div>
+        <div class="page-con lazy-img" data-src='<%= get_first_site_image_url(@site) %>'></div>
       </div>
       <!-- 封页 end-->
       
@@ -107,11 +109,14 @@
   </div>
   <div class='market-page f-hide' data-action='Action://lightapp_close'>
     <div class='market-img'>
-      <a href='http://wed.65960.com'>
-        <imgsrc='<%= @base_url %>img/market-app.png'/>
+      <% get_menu(@site).each do |site_page| %>
+        <span class="menu_item"><%= link_to site_page.title, get_site_page_url(site_page) %></span>
+      <% end %>
+      <a href='tel:<%= value_for(@site_page, 'boy_phone', typo: 'string', required: true) %>'>
+        <imgsrc='<%= @base_url %>img/tel-boy.png'/>
       </a>
-      <a href='tel:18080810818'>
-        <imgsrc='<%= @base_url %>img/market-tel.png'/>
+      <a href='tel:<%= value_for(@site_page, 'girl_phone', typo: 'string', required: true) %>'>
+        <imgsrc='<%= @base_url %>img/tel-girl.png'/>
       </a>
     </div>
   </div>
@@ -126,7 +131,7 @@
   <!-- 资源传递 -->
   <!-- 模版ID --><input id="activity_id" type="hidden" value='2765' />  
   <!-- 微信分享信息 --><input id="r-wx-title" type="hidden" value="<%= @site.title %>" />
-  <!-- 微信分享信息 --><input id="r-wx-img"   type="hidden" value="<%= @site.site_images.first.image.url %>" />
+  <!-- 微信分享信息 --><input id="r-wx-img"   type="hidden" value="<%= @site_page.site_images.first.image.url %>" />
   <!-- 微信分享信息 --><input id="r-wx-con"   type="hidden" value="<%= @site.description %>" />
   
   
@@ -143,5 +148,4 @@
 
 </body>
 </html>
-
 
