@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <!-- Title -->
+  <title>我们结婚啦！</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="江君&兰妞于2014年5月1日举行婚礼，欢迎您的到来">
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+
+  <!-- [[head start]] -->
+  <!-- Stylesheets -->
+  <link href="<%= base_url %>style/bootstrap.min.css" rel="stylesheet">
+  <link href="<%= base_url %>style/flexslider.css" rel="stylesheet">
+  <link href="<%= base_url %>//libs.baidu.com/fontawesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+  <link href="<%= base_url %>style/style.css" rel="stylesheet">
+  <link id="theme" rel="stylesheet" href="<%= base_url %>style/thume-red.css">
+  <link rel="stylesheet" href="<%= base_url %>style/style-switcher.css">
+
+	<!-- Respond JS for IE8 -->
+	<script src="<%= base_url %>js/respond.min.js"></script>
+	<!-- HTML5 Support for IE -->
+	<script src="<%= base_url %>js/html5shiv.js"></script>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="<%= base_url %>img/favicon/favicon.png">
+  <!-- [[head end]] -->
+</head>
+
+<body>
+  <!-- [[header start]] -->
+  <!-- Bootstrap navbar -->
+  <div class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+
+    <div class="container">
+     <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="sr-only">导航</span>
+        <span class="icon icon-bar"></span>
+        <span class="icon icon-bar"></span>
+        <span class="icon icon-bar"></span>
+      </button>
+      
+    </div>
+      <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+        <ul class="nav navbar-nav">
+         <!-- Navigation links. Note down the class name. It is important -->
+          <li><a href="<%= base_url %>#home" class="anchorLink">真诚邀请</a></li>
+          <li><a href="<%= base_url %>#about" class="anchorLink">爱情故事</a></li>
+          <li><a href="<%= base_url %>#photos" class="anchorLink">照片</a></li>
+          <li><a href="<%= base_url %>#wedding" class="anchorLink">婚礼安排</a></li>
+          <li><a href="<%= base_url %>#rsvp" class="anchorLink">留言回执</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <a name="home" id="home"></a>
+  <!-- [[header end]] -->
+  <%= render inline: Templates::Keystore.value_for(@site.template, 'header') || '' %>
+
+  <!-- Hea      ------------------------------------content start -----------------------------------------------der -->
+  <header>
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12">
+               <div class="hero">
+                  <!-- Getting married -->
+                  <h1>我们结婚啦！</h1>
+                  <div class="well">
+                     <!-- date -->
+                     <h3><%= value_for(@site_page, 'date') %></h3>
+                     <!-- Use the below link to create line with heartin -->
+                     <div class="bor"></div>
+                     <!-- Name -->
+                     <h2><%= value_for(@site_page, 'boy') %> <img src="<%= base_url %>img/heartin.png" alt="" /> <%= value_for(@site_page, 'girl') %></h2>
+                     <div class="bor"></div>
+                     <!-- Small para -->
+                     <p><%= value_for(@site_page, 'text1') %> </p>
+                    
+                  </div>
+                  <!-- Button. Note down the class "button" -->
+                  <div class="button">
+                      <a href="#wedding" class="anchorLink">婚礼安排</a> &nbsp; <a href="<%= base_url %>#rsvp" class="anchorLink">留言回执</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+  </header>
+   
+   
+   <a name="about" id="about"></a>
+   <div class="border"></div>
+   
+   <div class="aboutus">
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12">
+               <!-- Title -->
+               <div class="head">
+                  <div class="bor"></div>
+                     <h2>爱情故事</h2>
+                  <div class="bor"></div>
+               </div>
+            </div>
+            <div class="col-md-12">
+               <div class="well center">
+                  <div class="head">
+                  <!-- Our love story -->
+                     <h3>喜结良缘</h3>
+                     <div class="bor"></div>
+                     <p><%= value_for(@site_page, 'story') %></p>
+                     <!--fn-声音显示 -->
+                     <!--  <section class="fn-audio">
+                        <div class="btn">
+                          <p class="btn_audio"><span class='css_sprite01 audio_open'></span><span class='css_sprite01 audio_close'></span></p>
+                          <audio id="car_audio" controls preload="preload" autoplay="autoplay">
+                            <source src="<%= base_url %>http://www.yufuwu.cn/extend/luxelake/userfiles/info_pic/285/2014/03/10067/5321814e7d7cb.mp3" type="audio/mpeg">
+                            您的浏览器不支持HTML5音频格式
+                          </audio>
+                        </div>
+                      </section> -->
+                      <!--fn-声音显示 end-->
+                  </div>
+               </div>
+            </div>
+         <!--    <div class="col-md-6">
+               <div class="about">
+                  <h3>江君 <span class="ameta">- 新郎</span></h3>
+                  <p> <img src="<%= base_url %>img/photos/boy.jpg" alt="" class="img-responsive"/>各位亲朋好友：在这温馨浪漫，喜悦甜蜜的日子里我俩决定于2014-01-02 上午 10:30举行结婚典礼，届时敬备酒宴，欢迎您到来分享这份喜悦，您的光临将使我们的婚宴增添万分光彩!</p>
+               </div>
+            </div>
+            <div class="col-md-6">
+               <div class="about">
+                  <h3>兰妞 <span class="ameta">- 新娘</span></h3>
+                  <p> <img src="<%= base_url %>img/photos/girl.jpg" alt="" class="img-responsive"/>各位亲戚朋友，感谢你们对我们的关注；感谢一直一来对我的关心和照顾，在这喜庆的日子里，希望你能参加我们的婚礼，我在这里发出最真诚的邀请！</p>
+               </div>
+            </div> -->
+         </div> 
+      </div>      
+   </div>
+   
+   <div class="border"></div>
+   <a name="photos" id="photos"></a>
+   <hr />
+   <div class="itop"><a href="<%= base_url %>#home" class="anchorLink"><i class="fa fa-chevron-up"></i></a></div>
+   <div class="border"></div>
+
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12">
+            <div class="head">
+               <div class="bor"></div>
+               <h2>流光记忆</h2>
+               <div class="bor"></div>
+            </div>
+         </div>
+         <div class="col-md-12">
+         
+            <!-- Slider (Flex Slider -->
+            <!-- Flex slider -->
+            <div class="flexslider">
+              <ul class="slides">
+                <!-- Each slide should be enclosed inside li tag. -->
+                <% @site_page.site_images.each do |site_image| %> 
+                <!-- Slide #1 -->
+                <li>
+                  <!-- Image -->
+                  <%= qiniu_image_tag site_image.image.url(:content), :quality => 100, class: 'img-responsive' %>
+                 
+                 <!--  <div class="flex-caption">
+                     <h3>红红火火</h3>
+                     <p>见证爱情. </p>
+                  </div> -->
+                </li>
+                <% end %>
+
+              </ul>
+            </div>
+            
+            <!-- Slider ends -->
+         
+         </div>
+      </div>
+   </div>
+   
+   <div class="border"></div>
+   <a name="wedding" id="wedding"></a>
+   <hr />
+   <div class="itop"><a href="<%= base_url %>#home" class="anchorLink"><i class="fa fa-chevron-up"></i></a></div>
+   <div class="border"></div>
+   
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12">
+            <div class="head">
+               <div class="bor"></div>
+                  <h2>婚礼安排</h2>
+               <div class="bor"></div>
+            </div>
+         </div>
+         <% if value_for(@site_page, 'boy_phone') ||  value_for(@site_page, 'girl_phone') %>
+           <div class="col-md-4">
+              <div class="wedding">
+                <% if value_for(@site_page, 'boy_phone') %>
+                   <!-- Ceremony details -->
+                   <h4><i class="fa fa-heart"></i> 男方联系方式</h4>
+                   <br />
+                   电话： <a href="tel:<%= value_for(@site_page, 'boy_phone') %>"><%= value_for(@site_page, 'boy_phone') %></a><br />
+                 <hr />
+                <% end %>
+                <% if value_for(@site_page, 'girl_phone') %>
+                   <!-- Ceremony details -->
+                   <h4><i class="fa fa-heart"></i> 男方联系方式</h4>
+                   <br />
+                   电话： <a href="tel:<%= value_for(@site_page, 'girl_phone') %>"><%= value_for(@site_page, 'boy_phone') %></a><br />
+                 <hr />
+                <% end %>
+              </div>
+           </div>
+         <% end %>
+         <% if value_for(@site_page, 'wed_description') %>
+           <div class="col-md-4">
+              <div class="wedding">
+                 <!-- Wedding details -->
+                 <h4><i class="fa fa-glass"></i> 婚礼行程</h4>
+                 <%= value_for(@site_page, 'wed_description') %>
+              </div>
+           </div>
+         <% end %>
+         <% if value_for(@site_page, 'address') %>
+           <div class="col-md-4">
+              <div class="wedding">
+                 <!-- Travel and Accomodation -->
+                 <h4><i class="fa fa-home"></i> 婚礼地点</h4>
+                 <p><%= value_for(@site_page, 'address') %> </p>
+                 <p><%= value_for(@site_page, 'address_description') %></p>
+              </div>
+           </div>
+        <% end %>
+      </div>
+   </div>
+	
+   <!------------------------------content ----------------------------------------- -->
+   <div class="border"></div>
+   <a name="rsvp" id="rsvp"></a>
+   <hr />
+   <div class="itop"><a href="<%= base_url %>#home" class="anchorLink"><i class="fa fa-chevron-up"></i></a></div>
+   <div class="border"></div>
+   
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12">
+            <div class="head">
+               <div class="bor"></div>
+                  <h2>留言回执（RSVP）</h2>
+               <div class="bor"></div>
+            </div>
+         </div>
+         <div class="col-md-12">
+            <div class="well">
+               <!-- Contact details -->
+               <h3>我们诚挚的邀请</h3>
+               <p>我们再次诚挚的邀请您能参加我们的婚礼，您的到来是我们的荣幸，希望您留下回执信息，方便我们更好的安排</p>
+
+               <form id="contact-form" accept-charset="UTF-8" action="/books" class="form-inline" id="new_book" method="post" novalidate="novalidate" novalidate>
+                  <input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="PrFNHZUHRUcRVYiGGSZOERRwPs7i5t5T2D+bhOSPuhg=" />
+                  <input class="hidden" id="book_page_id" name="book[page_id]" type="hidden" value="26" />
+                  <div class="form-group">
+        					<div class="col-md-12">
+        						<input class="form-control input-sm" type="text" name="book[name]" placeholder="姓名">
+        					</div>
+        				  </div>
+        				  <div class="form-group">
+        					<div class="col-md-12">
+        						<input class="form-control input-sm" type="text" name="book[phone]" placeholder="电话">
+        					</div>
+        				  </div>
+        				  <div class="form-group">
+        					<div class="col-md-12">
+        						<input class="form-control input-sm" type="text" name="book[message]"  placeholder="是否参加? 参加人数？ ">
+        					</div>
+        				  </div>
+        				  <div class="form-group">
+        					<div class="col-md-3">
+        						<button type="submit" class="btn btn-success btn-sm">提 交</button>
+        					</div>
+        				  </div>
+               </form>
+
+            </div>
+         </div>
+      </div>
+   </div>
+   
+   <div class="border"></div>
+   <hr />   
+   <div class="itop"><a href="<%= base_url %>#home" class="anchorLink"><i class="fa fa-chevron-up"></i></a></div>
+   
+  <!-- [[footer start]] --> 
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+              <p>技术支持： &copy;<a href="<%= base_url %>http://www.yufuwu.cn">探码</a></p>
+              <div class="border"></div>
+        </div>
+      </div>
+    <div class="clearfix"></div>
+    </div>
+  </footer>		
+  <!-- [[footer end]] --> 
+
+  <!-- [[foot start]] --> 
+    <!-- JS -->
+    <script src="<%= base_url %>js/jquery.js"></script>
+    <script src="<%= base_url %>js/bootstrap.min.js"></script>
+    <script src="<%= base_url %>js/jquery.flexslider-min.js"></script>
+    <script src="<%= base_url %>js/jquery.anchor.js"></script>
+    <script src="<%= base_url %>js/custom.js"></script>
+    <script src="<%= base_url %>js/weixin.share.js"></script>
+  <!-- [[foot end]] --> 
+    <script src="<%= base_url %>js/style-switcher.js"></script>
+        
+    <!--Style Switcher-->
+    <div id="style-switcher">
+    <div id="toggle-switcher"><i class="fa fa-tint"></i></div>
+    <h1>修改主题</h1>
+    <ul>
+      <li id="red"></li>
+      <li id="orange"></li>
+      <li id="yellow-orange"></li>
+      <li id="yellow"></li>
+      <li id="grass"></li>
+      <li id="green"></li>
+      <li id="light-green"></li>
+      <li id="cyan"></li>
+      <li id="blue"></li>
+      <li id="cyan2"></li>
+      <li id="purple"></li>
+      <li id="pink"></li>
+    </ul>
+    </div><!--End Style Switcher-->
+</body>
+</html>

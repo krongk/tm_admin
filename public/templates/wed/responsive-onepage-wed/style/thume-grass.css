@@ -1,0 +1,80 @@
+/*there are two colors: black and light
+  pls replace black color: #a2ce7e;
+  then replace light color: #ccffcc;
+*/
+
+/*black color: #a2ce7e*/
+h1,h2,h3,h4,h5,h6{
+  color: #a2ce7e;
+}
+
+.btn-success, .btn-success:hover, .btn-success:focus{
+  background-color: #a2ce7e;
+}
+
+.button a, .button a:visited{
+  background:#a2ce7e;
+  color:#fff;
+  border-radius:5px;
+  border-bottom:2px solid #a2ce7e;
+}
+
+.button a:hover{
+  background:#a2ce7e;
+}
+
+.navbar{
+  background: #a2ce7e !important; 
+}
+
+header{
+  background:#a2ce7e url("../img/head-grass.jpg") center center;
+  color:#fff;
+}
+
+a, a:visited{
+  color:#a2ce7e;
+}
+
+
+/*light color: #ccffcc*/
+a:hover{
+  color:#ccffcc;
+}
+
+.color{
+  color:#ccffcc;
+}
+
+.navbar button{
+  background:#ccffcc !important; 
+}
+
+.navbar button:hover{
+  background:#ccffcc !important;
+}
+
+.navbar .nav > li > a:hover{
+  background:#ccffcc !important;
+  color:#fff !important;
+}
+
+.navbar .nav .active > a,
+.navbar .nav .active > a:hover,
+.navbar .nav .active > a:focus {
+  color: #ffffff;
+  box-shadow:none;
+  background: #ccffcc !important;
+}
+
+.dropdown-toggle{
+  background: #ccffcc !important;
+}
+
+.dropdown-menu{
+  background:#ccffcc !important;
+}
+
+header .well{
+  border:1px solid #ccffcc;
+}

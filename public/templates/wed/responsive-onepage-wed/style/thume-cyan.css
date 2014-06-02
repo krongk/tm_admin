@@ -1,0 +1,80 @@
+/*there are two colors: black and light
+  pls replace black color: #74c7d5;
+  then replace light color: #ccffff;
+*/
+
+/*black color: #74c7d5*/
+h1,h2,h3,h4,h5,h6{
+  color: #74c7d5;
+}
+
+.btn-success, .btn-success:hover, .btn-success:focus{
+  background-color: #74c7d5;
+}
+
+.button a, .button a:visited{
+  background:#74c7d5;
+  color:#fff;
+  border-radius:5px;
+  border-bottom:2px solid #74c7d5;
+}
+
+.button a:hover{
+  background:#74c7d5;
+}
+
+.navbar{
+  background: #74c7d5 !important; 
+}
+
+header{
+  background:#74c7d5 url("../img/head-cyan.jpg") center center;
+  color:#fff;
+}
+
+a, a:visited{
+  color:#74c7d5;
+}
+
+
+/*light color: #ccffff*/
+a:hover{
+  color:#ccffff;
+}
+
+.color{
+  color:#ccffff;
+}
+
+.navbar button{
+  background:#ccffff !important; 
+}
+
+.navbar button:hover{
+  background:#ccffff !important;
+}
+
+.navbar .nav > li > a:hover{
+  background:#ccffff !important;
+  color:#fff !important;
+}
+
+.navbar .nav .active > a,
+.navbar .nav .active > a:hover,
+.navbar .nav .active > a:focus {
+  color: #ffffff;
+  box-shadow:none;
+  background: #ccffff !important;
+}
+
+.dropdown-toggle{
+  background: #ccffff !important;
+}
+
+.dropdown-menu{
+  background:#ccffff !important;
+}
+
+header .well{
+  border:1px solid #ccffff;
+}

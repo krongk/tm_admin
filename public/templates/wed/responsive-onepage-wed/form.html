@@ -1,0 +1,105 @@
+<!-- Prepended text-->
+<div class="control-group">
+  <label class="control-label" for="site_page[date]">婚礼日期</label>
+  <div class="controls">
+    <div class="input-prepend">
+      <input id="site_page[date]" name="site_page[date]" value="<%= value_for(@site_page, 'date') %>" class="input-xlarge" placeholder="公历2015年5月1日" type="text" required="">
+    </div>
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group ">
+  <label class="control-label" for="site_page[boy]">男方姓名</label>
+  <div class="controls">
+    <input id="site_page[boy]" name="site_page[boy]"  value="<%= value_for(@site_page, 'boy') %>" type="text" placeholder="" class="input-xlarge" required="">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="site_page[boy_phone]">男方联系电话</label>
+  <div class="controls">
+    <input id="site_page[boy_phone]" name="site_page[boy_phone]"  value="<%= value_for(@site_page, 'boy_phone') %>" type="text" placeholder="18080810818" class="input-xlarge">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="site_page[girl]">女方姓名</label>
+  <div class="controls">
+    <input id="site_page[girl]" name="site_page[girl]"  value="<%= value_for(@site_page, 'girl') %>" type="text" placeholder="" class="input-xlarge" required="">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="site_page[girl_phone]">女方联系电话</label>
+  <div class="controls">
+    <input id="site_page[girl_phone]" name="site_page[girl_phone]"  value="<%= value_for(@site_page, 'girl_phone') %>" type="text" placeholder="18080810818" class="input-xlarge">
+    
+  </div>
+</div>
+
+<!-- Textarea -->
+<div class="control-group">
+  <label class="control-label" for="site_page[text1]">邀约辞</label>
+  <div class="controls">                     
+    <textarea id="site_page[text1]" name="site_page[text1]"> <%= value_for(@site_page, 'text1') || "今夕何夕，空气里都充满了醉人的甜蜜！为你祝福，为你欢笑，因为在今天，我的内心也跟你一样的欢腾、快乐！" %></textarea>
+  </div>
+</div>
+
+<!-- Textarea -->
+<div class="control-group">
+  <label class="control-label" for="site_page[story]">爱情故事</label>
+  <div class="controls">                     
+    <textarea id="site_page[story]" name="site_page[story]">
+    <%= value_for(@site_page, 'story') || "1998年的夏天，两个年轻的学生背着一大堆的理想步入高中学堂，在学校那座老旧的红墙教室里，他们第一次相遇..." %></textarea>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="site_page[address]">婚礼地址</label>
+  <div class="controls">
+    <input id="site_page[address]" name="site_page[address]" value="<%= value_for(@site_page, 'address') || '成都市成华区建设南支路4号东郊记忆' %>" type="text" placeholder="必须填写完整的省市区街道，否则程序无法正确加载导航系统" class="input-xlarge" required="">
+    
+  </div>
+</div>
+
+<!-- Textarea -->
+<div class="control-group">
+  <label class="control-label" for="site_page[address_description]">婚礼地点补充</label>
+  <div class="controls">                     
+    <textarea id="site_page[address_description]" name="site_page[address_description]">
+    <%= value_for(@site_page, 'address_description') || "交通、酒店名称、酒店联系电话等等需要详细说明的内容..." %>
+    </textarea>
+  </div>
+</div>
+
+<!-- Textarea -->
+<div class="control-group">
+  <label class="control-label" for="site_page[wed_description]">婚礼行程</label>
+  <div class="controls">                     
+    <textarea id="site_page[wed_description]" name="site_page[wed_description]">
+    <% if value_for(@site_page, 'wed_description') %>
+      <%= value_for(@site_page, 'wed_description') %>
+    <% else %>
+    &lt;h5&gt;9:36 婚车起程&lt;/h5&gt;
+        10:00 新郎的结亲队伍上到新娘家&lt;br/&gt;
+        10:48 排好车队新人出发返回新房&lt;br/&gt;
+    &lt;h5&gt;11:48 午饭开始&lt;/h5&gt;
+        12:28 新人同家人朋友拍照留念&lt;br/&gt;
+        13:18 新人同亲朋好友一起,到小区外拍外景,并合影留念&lt;br/&gt;
+    &lt;h5&gt;16:30 宾客签到&lt;/h5&gt;
+        18:08 婚礼仪式正式开始&lt;br/&gt;
+    <% end %>
+    </textarea>
+  </div>
+</div>
+
+

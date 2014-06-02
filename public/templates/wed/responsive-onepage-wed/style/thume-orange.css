@@ -1,0 +1,80 @@
+/*there are two colors: black and light
+  pls replace black color: #f78F39;
+  then replace light color: #ffcc99;
+*/
+
+/*black color: #f78F39*/
+h1,h2,h3,h4,h5,h6{
+  color: #f78F39;
+}
+
+.btn-success, .btn-success:hover, .btn-success:focus{
+  background-color: #f78F39;
+}
+
+.button a, .button a:visited{
+  background:#f78F39;
+  color:#fff;
+  border-radius:5px;
+  border-bottom:2px solid #f78F39;
+}
+
+.button a:hover{
+  background:#f78F39;
+}
+
+.navbar{
+  background: #f78F39 !important; 
+}
+
+header{
+  background:#f78F39 url("../img/head-orange.jpg") center center;
+  color:#fff;
+}
+
+a, a:visited{
+  color:#f78F39;
+}
+
+
+/*light color: #ffcc99*/
+a:hover{
+  color:#ffcc99;
+}
+
+.color{
+  color:#ffcc99;
+}
+
+.navbar button{
+  background:#ffcc99 !important; 
+}
+
+.navbar button:hover{
+  background:#ffcc99 !important;
+}
+
+.navbar .nav > li > a:hover{
+  background:#ffcc99 !important;
+  color:#fff !important;
+}
+
+.navbar .nav .active > a,
+.navbar .nav .active > a:hover,
+.navbar .nav .active > a:focus {
+  color: #ffffff;
+  box-shadow:none;
+  background: #ffcc99 !important;
+}
+
+.dropdown-toggle{
+  background: #ffcc99 !important;
+}
+
+.dropdown-menu{
+  background:#ffcc99 !important;
+}
+
+header .well{
+  border:1px solid #ffcc99;
+}

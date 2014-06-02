@@ -47,7 +47,6 @@ db/*.sqlite3
 /public/stylesheets/compiled
 /public/templetes/meflat/*
 /public/templetes/meflat_bak/*
-/public/templates/
 /public/system/*
 /spec/tmp/*
 /cache
