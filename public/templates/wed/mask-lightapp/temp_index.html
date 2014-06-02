@@ -111,7 +111,7 @@
   <div class='market-page f-hide' data-action='Action://lightapp_close'>
     <div class='market-img'>
       <% get_menu(@site).each do |site_page| %>
-        <span class="menu_item"><%= link_to site_page.title, get_site_page_url(site_page) %></span>
+        <%= link_to site_page.title, get_site_page_url(site_page), class: 'menu-item' %>&nbsp;&nbsp;
       <% end %>
       <a href='tel:<%= value_for(@site_page, 'boy_phone', typo: 'string', required: true) %>'>
         <img src='<%= @base_url %>img/tel-boy.png'/>
