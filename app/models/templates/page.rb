@@ -17,16 +17,17 @@ class Templates::Page < ActiveRecord::Base
     #  a =  "{typo: 'string', default: true, required: true}"
     #  > eval a
     # => {:typo=>"string", :default=>true, :required=>true} 
-    form_html = []
+    form_html = {}
     #reg1 = /value_for\(@site_page,\s*'([^'']+)'(?:,\s*(.*))?\)/
     reg2 = /value_for\(@site_page,\s*'([^'']+)'(?:,\s*(.*))?\)/
     self.html.scan(reg2).each do |match|
+      next if form_html.include?(match[0])
       #parse a string into hash
       opt = {}
       opt = eval('{' + match[1] + '}') if match[1]
-      form_html << get_input(match[0], opt)
+      form_html[match[0]] = get_input(match[0], opt)
     end
-    self.form = form_html.join
+    self.form = form_html.values.join
   end
 
   #<%= value_for(@site_page, 'title', typo: 'string', default: true, required: true) %>
@@ -48,14 +49,15 @@ class Templates::Page < ActiveRecord::Base
     arr << opt[:typo]
     arr << %{ control-label">}
     arr << %{<abbr title="必填项">*</abbr>} if opt[:required] == true
-    arr << %{#{key.title}</label>}
+    arr << %{<%= CommonKey.get('#{name}').try(:title) %>}
+    arr << %{<a data-target="#myModal" data-toggle="modal" href="#{opt[:url]}">(选择<%= CommonKey.get('#{name}').try(:title) %>)</a>} if opt[:typo].downcase == 'dialog'
+    arr << %{</label>}
     arr << %{\n    <div class="controls">\n        }
     case opt[:typo].downcase
-    when 'string'
+    when 'string', 'dialog'
       arr << %{<input class="#{opt[:typo]} #{if opt[:required] then 'required' end}" id="site_page_#{name}" name="site_page[#{name}]" typo="#{opt[:typo]}"}
-      arr << %{ placeholder="#{key.placeholder}"} if key.placeholder.present?
+      arr << %{ placeholder="<%= CommonKey.get('#{name}').try(:placeholder) %>"}
       arr << %{ value="<%= value_for(@site_page, '#{name}') || CommonKey.get(:#{name}).try(:default_value) %>">}
-      arr << %{\n        <p class="help-block"><%= CommonKey.find_by(:name).try(:hint) %></p>} if key.hint.present?
     when 'int', 'integer', 'numeric'
       arr << %{<input class="numeric integer #{if opt[:required] then 'required' end}" id="site_page_#{name}" name="site_page[#{name}]" step="1" type="number"}
       arr << %{ value="<%= value_for(@site_page, '#{name}') || CommonKey.get(:#{name}).try(:default_value) %>">}
@@ -69,16 +71,10 @@ class Templates::Page < ActiveRecord::Base
         arr << %{<option value="#{option}">#{option}</option>}
       end
       arr << %{</select>}
-    when 'dialog' # 相对于'string'多了一个： url: 'load dialog url'
-      # <a class="btn btn-active" data-target="#myModal" data-toggle="modal" href="/pricing?site_page_id=11">点击这里</a>
-      arr << %{<input class="#{opt[:typo]} #{if opt[:required] then 'required' end}" id="site_page_#{name}" name="site_page[#{name}]" typo="#{opt[:typo]}"}
-      arr << %{ placeholder="#{key.placeholder}"} if key.placeholder.present?
-      arr << %{ value="<%= value_for(@site_page, '#{name}') || CommonKey.get(:#{name}).try(:default_value) %>">}
-      arr << %{<a data-target="#myModal" data-toggle="modal" href="#{opt[:url]}">选择#{opt[:title]}</a>}
-      arr << %{\n        <p class="help-block"><%= CommonKey.find_by(:name).try(:hint) %></p>} if key.hint.present?
     else
       raise "bad input typo: #{opt[:typo]}"
     end
+     arr << %{\n<% if CommonKey.get('#{name}').try(:hint)%>\n<p class="help-block">*提示：<%= CommonKey.get('#{name}').try(:hint) %></p> <% end %>}
     arr << %{\n    </div>}
     arr << %{\n</div>\n\n}
     arr.join

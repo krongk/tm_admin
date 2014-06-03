@@ -57,7 +57,7 @@
   <!--模版加载提示 end-->
   
   <!-- 声音控件 -->
-  <section class='u-audio f-hide' data-src='<%= value_for(@site_page, 'music', typo: 'string', title: '背景音乐', default: true)  %>'>
+  <section class='u-audio f-hide' data-src='<%= value_for(@site_page, 'music', typo: 'dialog', url: '/home/dialog_music', title: '背景音乐', default: true)  %>'>
     <p id='coffee_flow' class="btn_audio">
       <strong class='txt_audio z-hide'>关闭</strong>
       <span class='css_sprite01 audio_open'></span>
@@ -80,7 +80,7 @@
     <div class='translate-back f-hide'>
       <!-- 封页 1--><!-- #Html5 蒙板和canvas给图片绘图的时候，需要保证图片在同一个domain下，否则会报错：
   # Uncaught Error: SECURITY_ERR: DOM Exception 18 -->
-      <!-- 蒙板背景图 --><input id="r-cover" type="hidden" value="<%= asset_path value_for(@site_page, 'banner', typo: 'string', title: '封面照片', default: true)  %>" />
+      <!-- 蒙板背景图 --><input id="r-cover" type="hidden" value="<%= asset_path value_for(@site_page, 'banner', typo: 'dialog', url: '/home/dialog_banner', title: '封面照片', default: true)  %>" />
 
       <div class='m-page m-fengye f-hide' data-page-type='info_pic3' data-statics='info_pic3'>
         <div class="page-con lazy-img" data-src='<%= get_first_site_image_url(@site) %>'></div>
@@ -110,10 +110,10 @@
   </div>
   <div class='market-page f-hide' data-action='Action://lightapp_close'>
     <div class='market-img'>
-      <%= link_to get_site_page_url_by_title('婚宴信息') do %> 
+      <%= link_to get_site_page_url_by_title(@site, '婚宴信息') do %> 
         <img src='<%= @base_url %>img/info.png'/>
       <% end %>
-      <%= link_to get_site_page_url_by_title('留言祝福') do %> 
+      <%= link_to get_site_page_url_by_title(@site, '留言祝福') do %> 
         <img src='<%= @base_url %>img/comment.png'/>
       <% end %>
       

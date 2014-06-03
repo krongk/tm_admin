@@ -853,7 +853,7 @@ var car2 = {
 		lazyNode.each(function(){
 			var self = $(this);
 			if(self.is('img')){
-				self.attr('src','../img/loading_large.gif');
+				self.attr('src', host_base_url + '/img/loading_large.gif');
 			}else{
 				// 把原来的图片预先保存下来
 				var position = self.css('background-position'),
@@ -871,7 +871,7 @@ var car2 = {
 				}
 
 				self.css({
-					'background-image'	: 'url(../img/loading_large.gif)',
+					'background-image'	: 'url(' + host_base_url + '/img/loading_large.gif)',
 					'background-size'	: '120px 120px',
 					'background-position': 'center'
 				})
