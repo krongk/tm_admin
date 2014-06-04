@@ -716,7 +716,7 @@ function ajax_analysite(){
 	}
 	var activeId = $('#activeId').val();
 	$.ajax({
-		url: '/site/analyse/'+activeId,
+		url: '#'+activeId,
 		cache: false,
 		dataType: 'html',
 		async: false,
