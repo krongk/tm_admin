@@ -1,3 +1,4 @@
+#encoding: utf-8
 class Templates::Page < ActiveRecord::Base
   belongs_to :template
   has_many :site_pages

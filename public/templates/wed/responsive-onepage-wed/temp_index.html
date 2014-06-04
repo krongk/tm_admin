@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Title -->
+  <title><%= @site.title %></title>
+  <meta name="description" content="<%= @site.description %>" />
+  <meta name="keywords" content="维斗喜帖，漂亮的结婚请柬，微信喜帖">
+  <meta name="author" content="维斗喜帖">
+
+  <!-- [[head start]] -->
+  <!-- Stylesheets -->
+  <link href="<%= @base_url %>style/bootstrap.min.css" rel="stylesheet">
+  <link href="<%= @base_url %>style/flexslider.css" rel="stylesheet">
+  <link href="//libs.baidu.com/fontawesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+  <link href="<%= @base_url %>style/style.css" rel="stylesheet">
+  <link id="theme" rel="stylesheet" href="<%= @base_url %>style/thume-red.css">
+
+	<!-- Respond JS for IE8 -->
+	<script src="<%= @base_url %>js/respond.min.js"></script>
+	<!-- HTML5 Support for IE -->
+	<script src="<%= @base_url %>js/html5shiv.js"></script>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="<%= @base_url %>img/favicon/favicon.png">
+  <!-- [[head end]] -->
+</head>
+
+<body>
+  <!-- [[header start]] -->
+  <!-- Bootstrap navbar -->
+  <div class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+
+    <div class="container">
+     <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="sr-only">菜单</span>
+        <span class="icon icon-bar"></span>
+        <span class="icon icon-bar"></span>
+        <span class="icon icon-bar"></span>
+      </button>
+      
+    </div>
+      <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+        <ul class="nav navbar-nav">
+         <!-- Navigation links. Note down the class name. It is important -->
+          <li><a href="#home" class="anchorLink">真诚邀请</a></li>
+          <li><a href="#about" class="anchorLink">爱情故事</a></li>
+          <li><a href="#photos" class="anchorLink">照片</a></li>
+          <li><a href="#wedding" class="anchorLink">婚礼安排</a></li>
+          <li><a href="<%= get_site_page_url_by_title(@site, '留言祝福') %>">留言祝福</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <a name="home" id="home"></a>
+  <!-- [[header end]] -->
+
+  <!-- Hea      der -->
+  <header>
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12">
+               <div class="hero">
+                  <!-- Getting married -->
+                  <h1>我们结婚啦！</h1>
+                  <div class="well">
+                     <!-- date -->
+                     <h3><%= value_for(@site_page, 'date', title: '婚礼日期', typo: 'string', required: true) %></h3>
+                     <div class="bor"></div>
+                        <h2> <%= value_for(@site_page, 'boy', title: '新郎姓名') %> 
+                        <img src="<%= @base_url %>img/heartin.png" alt="" /> 
+                        <%= value_for(@site_page, 'girl', title: '新娘姓名') %></h2>
+                     <div class="bor"></div>
+                     <!-- Small para -->
+                     <p><%= value_for(@site_page, 'welcome', title: '婚礼邀请词', typo: 'text', default: true) %> </p>
+                    
+                  </div>
+                  <!-- Button. Note down the class "button" -->
+                  <div class="button">
+                    <a href="#wedding" class="anchorLink">婚礼安排</a> &nbsp; <a href="<%= get_site_page_url_by_title(@site, '留言祝福') %>">留言祝福</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+  </header>
+   
+  
+  <!-- 爱情故事 开始-->
+  <% unless value_for(@site_page, 'story', title: '爱情故事', typo: 'text', default: true).blank? %> 
+  <a name="about" id="about"></a>
+  <div class="border"></div>
+   
+   <div class="aboutus">
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12">
+               <!-- Title -->
+               <div class="head">
+                  <div class="bor"></div>
+                     <h2>爱情故事</h2>
+                  <div class="bor"></div>
+               </div>
+            </div>
+            <div class="col-md-12">
+               <div class="well center">
+                  <div class="head">
+                  <!-- Our love story -->
+                     <h3>喜结良缘</h3>
+                     <div class="bor"></div>
+                     <p><%= value_for(@site_page, 'story', title: '爱情故事', typo: 'text', default: true) %></p>
+                     <!--fn-声音显示 -->
+                      <!--fn-声音显示 end-->
+                  </div>
+               </div>
+            </div>
+           <!-- 新郎新娘贺词-->
+         </div> 
+      </div>      
+   </div>
+   <% end %>
+   <!-- 爱情故事 结束-->
+
+   <div class="border"></div>
+   <a name="photos" id="photos"></a>
+   <hr />
+   <div class="itop"><a href="#home" class="anchorLink"><i class="fa fa-chevron-up"></i></a></div>
+   <div class="border"></div>
+
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12">
+            <div class="head">
+               <div class="bor"></div>
+               <h2>流光记忆</h2>
+               <div class="bor"></div>
+            </div>
+         </div>
+         <div class="col-md-12">
+         
+            <!-- Slider (Flex Slider -->
+            <!-- Flex slider -->
+            <div class="flexslider">
+              <ul class="slides">
+                <!-- Each slide should be enclosed inside li tag. -->
+                <% @site_page.site_images.each do |site_image| %> 
+                <!-- Slide #1 -->
+                <li>
+                  <!-- Image -->
+                  <%= qiniu_image_tag site_image.image.url, :quality => 100, class: 'img-responsive' %> 
+                 <!--  <div class="flex-caption">
+                     <h3>红红火火</h3>
+                     <p>见证爱情. </p>
+                  </div> -->
+                </li>
+                <% end %>
+
+              </ul>
+            </div>
+            <!-- Slider ends -->
+         </div>
+      </div>
+   </div>
+   
+   <div class="border"></div>
+   <a name="wedding" id="wedding"></a>
+   <hr />
+   <div class="itop"><a href="#home" class="anchorLink"><i class="fa fa-chevron-up"></i></a></div>
+   <div class="border"></div>
+   
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12">
+            <div class="head">
+               <div class="bor"></div>
+                  <h2>婚礼安排</h2>
+               <div class="bor"></div>
+            </div>
+         </div>
+
+         <div class="col-md-4">
+            <div class="wedding">
+              <% if value_for(@site_page, 'boy_phone', title: '男方联系电话', typo: 'string', required: true) %>
+                 <!-- Ceremony details -->
+                 <h4><i class="fa fa-heart"></i> 男方联系方式</h4>
+                 <br />
+                 电话： <a href="tel:<%= value_for(@site_page, 'boy_phone') %>"><%= value_for(@site_page, 'boy_phone') %></a><br />
+               <hr />
+              <% end %>
+              <% if value_for(@site_page, 'girl_phone', title: '女方联系电话', typo: 'string', required: true) %>
+                 <!-- Ceremony details -->
+                 <h4><i class="fa fa-heart"></i> 女方联系方式</h4>
+                 <br />
+                 电话： <a href="tel:<%= value_for(@site_page, 'girl_phone') %>"><%= value_for(@site_page, 'girl_phone') %></a><br />
+               <hr />
+              <% end %>
+            </div>
+         </div>
+      
+
+         <% if value_for(@site_page, 'wed_description', title: '婚礼行程安排', typo: 'text', default: true) %>
+           <div class="col-md-4">
+              <div class="wedding">
+                 <!-- Wedding details -->
+                 <h4><i class="fa fa-glass"></i> 婚礼行程</h4>
+                 <%= value_for(@site_page, 'wed_description') %>
+              </div>
+           </div>
+         <% end %>
+
+         <% if value_for(@site_page, 'address', title: '婚礼举办地址', hint: '请输入详细的省市区街道和酒店地址', required: true) %>
+           <div class="col-md-4">
+              <div class="wedding">
+                 <!-- Travel and Accomodation -->
+                 <h4><i class="fa fa-home"></i> 婚礼地点</h4>
+                 <p><%= value_for(@site_page, 'address') %> </p>
+                 <p><%= value_for(@site_page, 'address_description', title: '婚礼举办地交通说明', typo: 'text', default: '公交地铁、驾车路线、酒店联系电话等') %></p>
+              </div>
+           </div>
+        <% end %>
+      </div>
+   </div>
+	
+   <div class="border"></div>
+   <hr />   
+   <div class="itop"><a href="#home" class="anchorLink"><i class="fa fa-chevron-up"></i></a></div>
+   
+  <!-- [[footer start]] --> 
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+              <p class="text-center"><a href="http://wed.65960.com"><img src="/assets/logo.png" width="100px" /></a></p>
+              <div class="border"></div>
+        </div>
+      </div>
+    <div class="clearfix"></div>
+    </div>
+  </footer>		
+  <!-- [[footer end]] --> 
+
+  <!-- [[foot start]] --> 
+    <!-- JS -->
+    <script src="<%= @base_url %>js/jquery.js"></script>
+    <script src="<%= @base_url %>js/bootstrap.min.js"></script>
+    <script src="<%= @base_url %>js/jquery.flexslider-min.js"></script>
+    <script src="<%= @base_url %>js/jquery.anchor.js"></script>
+    <script src="<%= @base_url %>js/custom.js"></script>
+    <script src="<%= @base_url %>js/weixin.share.js"></script>
+  <!-- [[foot end]] --> 
+</body>
+</html>
