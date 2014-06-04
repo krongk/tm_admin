@@ -1,28 +1,27 @@
 ﻿<!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-  <title>请在此留言</title>
-  <meta content="婚礼祝福，留言回执 - 维斗喜帖" name="Keywords">
-  <meta content="维斗喜帖-婚礼祝福" name="Description">
-  
-  <meta charset="utf-8">
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-  <meta content="eric.wu" name="author">
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
-  <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
-  <meta content="no-cache" http-equiv="pragma">
-  <meta content="0" http-equiv="expires">
-  <meta content="telephone=no, address=no" name="format-detection">
-  <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
-  <!-- 最新 Bootstrap 核心 CSS 文件 -->
-  <link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="<%= get_base_url('comment', 'theme-one') %>css/message.css" media="all">
-  <script type="text/javascript" src="<%= get_base_url('comment', 'theme-one') %>js/jquery_min.js"></script>
-  <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-  <script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
-  <style type="text/css">
-      body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;}
+  <head>
+    <title>请在此留言</title>
+    <meta content="婚礼祝福，留言回执 - 维斗喜帖" name="Keywords">
+    <meta content="维斗喜帖-婚礼祝福" name="Description">
+
+    <meta charset="utf-8">
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+    <meta content="telephone=no, address=no" name="format-detection">
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes" name="viewport">
+    <!-- 最新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<%= get_base_url('comment', 'theme-one') %>css/message.css" media="all">
+    <script type="text/javascript" src="<%= get_base_url('comment', 'theme-one') %>js/jquery_min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <style type="text/css">
+      body, html{
+        width: 100%;
+        height: 100%;
+        margin:0;
+      }
       .navbar-default {
           background-color: #F1678D;
           border-color: #e7e7e7;
@@ -30,89 +29,83 @@
       .navbar-default .navbar-nav>li>a{
           color: #fff;
       }
-      
       .navbar-default .navbar-brand {
         color: #fff;
-        }
-        .navbar-brand {
-          color: #fff;
-          }
-
-      .jumbotron h1, .jumbotron .h1 {
-         color: #F1678D;
       }
-      .jumbotron {
-          padding: 35px 10px;
-          margin-bottom: 0px;
-          background-color: #fcede4;
+      .navbar-brand {
+        color: #fff;
       }
-  </style>
- </head>
+      .page-header {
+        margin: 35px 0 20px;
+        border-bottom: 0px;
+      }
+    </style>
+  </head>
 <body id="message" onselectstart="return true;" ondragstart="return false;">
- 
+
   <script type="text/javascript"> 
     $(document).ready(function () { 
-      $("#contact-form1").click(function () { 
-        var btn = $(this);
-        var wxname = $("#name1").val();
-        if (wxname  == '') {
-          alert("请输入昵称");
-          return;
-        }
-        var info = $("#content1").val();
-          if (info == '') {
-          alert("请输入内容");
-          return;
-        }
-        $.post('/site_comments', $("#contact-form1").serialize(),
-          function( data ) {
-            alert( "留言成功" + data);
-            setTimeout('window.location.href=location.href',1000);
+        $("#contact-form1").click(function () { 
+          var btn = $(this);
+          var wxname = $("#name1").val();
+          if (wxname  == '') {
+            alert("请输入昵称");
             return;
           }
-        )
-      }); 
-      //
-      $("#contact-form2").click(function () { 
-        var btn = $(this);
-        var wxname = $("#name2").val();
-        if (wxname  == '') {
-          alert("请输入昵称");
-          return;
-        }
-        var info = $("#content2").val();
-          if (info == '') {
-          alert("请输入内容");
-          return;
-        }
-        $.post('/site_comments', $("#contact-form1").serialize(),
-          function( data ) {
-            alert( "留言成功" + data);
-            setTimeout('window.location.href=location.href',1000);
+          var info = $("#content1").val();
+            if (info == '') {
+            alert("请输入内容");
             return;
           }
-        )
-      }); 
-      //
+          $.post('/site_comments', $("#contact-form1").serialize(),
+            function( data ) {
+              alert( "留言成功" + data);
+              setTimeout('window.location.href=location.href',1000);
+              return;
+            }
+          )
+    }); 
+    //
+    $("#contact-form2").click(function () { 
+      var btn = $(this);
+      var wxname = $("#name2").val();
+      if (wxname  == '') {
+        alert("请输入昵称");
+        return;
+      }
+      var info = $("#content2").val();
+        if (info == '') {
+        alert("请输入内容");
+        return;
+      }
+      $.post('/site_comments', $("#contact-form1").serialize(),
+        function( data ) {
+          alert( "留言成功" + data);
+          setTimeout('window.location.href=location.href',1000);
+          return;
+        }
+      )
+    }); 
+    //
 
-      //
-      $(".hfinfo").click(function () { 
-        var objid = $(this).attr("date");
-        $(".hhly"+objid).slideToggle();
-      }); 
-      //
-      $(".hhbt").click(function () { 
-        var objid = $(this).attr("date");
-        $(".hhly"+objid).slideToggle();
-      });
-      //
-      $("#windowclosebutton").click(function () { 
-        $("#windowcenter").slideUp(500);
-      });
-      //
-      $("#alertclose").click(function () { 
-        $("#windowcenter").slideUp(500);
-      });
+    //
+    $(".hfinfo").click(function () { 
+      var objid = $(this).attr("date");
+      $(".hhly"+objid).slideToggle();
+    }); 
+    //
+    $(".hhbt").click(function () { 
+      var objid = $(this).attr("date");
+      $(".hhly"+objid).slideToggle();
+    });
+    //
+    $("#windowclosebutton").click(function () { 
+      $("#windowcenter").slideUp(500);
+    });
+    //
+    $("#alertclose").click(function () { 
+      $("#windowcenter").slideUp(500);
+    });
     }); 
     //
     function alert(title){ 
@@ -132,8 +125,8 @@
     });
   </script> 
 
-
-   <!-- header start -->
+  <div class="container">
+    <!-- header start -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -143,7 +136,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="<%= get_site_url(@site) %>">
            <%= value_for(@site_page, 'boy', typo: 'string', title: '新郎姓名') %> 
           <i class="fa fa-heart"> </i> 
           <%= value_for(@site_page, 'girl', typo: 'string', title: '新娘姓名') %>
@@ -159,13 +152,14 @@
       </div>
     </nav>
     <!-- header end -->
-    
-  <div class="page-header">
+
+    <div class="page-header">
       <div class="qiandaobanner">
         <a href="javascript:history.go(-1);">
           &nbsp;
         </a>
       </div>
+    </div>
 
     <div class="cardexplain">
       <div class="window" id="windowcenter">
@@ -174,7 +168,7 @@
           <div id="txt"></div>
         </div>
       </div>
- 
+
       <div class="history">
         <div class="history-date">
           <ul>
@@ -201,20 +195,20 @@
           
             <% @site.site_comments.each do |site_comment| %>
               <li class="green bounceInDown">
-              <h3>
-                <!--<img src="/extend/wedding-hl/http://www.apiwx.com/index/images/logo100x100.jpg">-->
-                <%= site_comment.name %><div class="clr"></div>
-              </h3>
-              <dl>
-                <dt class="hfinfo" date="9055" ><%= site_comment.content %> <b style="font-weight:100; font-size:10px; color:#1DB702; padding:0 0px 0 8px;"><%= site_comment.updated_at.strftime("%Y-%m-%d %H:%M") %></b></dt>
-              </dl>
-              
-                        
-              <!-- <dl><a href="http://wx.wwkoala.com/index.php?g=Wap&m=Liuyan&a=del&id=130&token=ifwhng1393741472&wecha_id=oA0OtuOnrer6gDRKZVCqeRqMSTXw"class="del">删除</a> </dl> -->
+                <h3>
+                  <!--<img src="/extend/wedding-hl/http://www.apiwx.com/index/images/logo100x100.jpg">-->
+                  <%= site_comment.name %><div class="clr"></div>
+                </h3>
+                <dl>
+                  <dt class="hfinfo" date="9055" ><%= site_comment.content %> <b style="font-weight:100; font-size:10px; color:#1DB702; padding:0 0px 0 8px;"><%= distance_of_time_in_words_to_now(site_comment.created_at) %>前</b></dt>
+                </dl>
+                
+                          
+                <!-- <dl><a href="http://wx.wwkoala.com/index.php?g=Wap&m=Liuyan&a=del&id=130&token=ifwhng1393741472&wecha_id=oA0OtuOnrer6gDRKZVCqeRqMSTXw"class="del">删除</a> </dl> -->
               </li>
             <% end %>
 
-              <li class="green bounceInDown nob ly2" style="display:none">
+            <li class="green bounceInDown nob ly2" style="display:none">
               <form id="contact-form2" accept-charset="UTF-8" action="/site_comments" class="form-inline" id="new_site_comment" method="post" onsubmit="return false">
                 <input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="PrFNHZUHRUcRVYiGGSZOERRwPs7i5t5T2D+bhOSPuhg=" />
                 <input class="hidden" id="site_comment_site_id" name="site_comment[site_id]" type="hidden" value="<%= params[:site_id] || @site.id %>" />
@@ -232,65 +226,12 @@
               </form>
             </li>
             <a><h2 class="first first2" style="position: relative;">请点击留言</h2></a>
-            </ul>
-          </div>
+          </ul>
         </div>
       </div>
     </div>
-  
-  <script type="text/javascript">
-          document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
-        window.shareData = {  
-            "imgUrl": "../stc.weimob.com/img/message/mpic.jpg", 
-            "timeLineLink": "http://www.weimob.com/Webmessage/Comment?wechatid=Q2QEQC31ZLR3JIHU1-XY&wxid=1ca6e2c6a760d9b7b89b615e681a99de",
-            "sendFriendLink": "http://www.weimob.com/Webmessage/Comment?wechatid=Q2QEQC31ZLR3JIHU1-XY&wxid=1ca6e2c6a760d9b7b89b615e681a99de",
-            "weiboLink": "http://www.weimob.com/Webmessage/Comment?wechatid=Q2QEQC31ZLR3JIHU1-XY&wxid=1ca6e2c6a760d9b7b89b615e681a99de",
-            "tTitle": "请在此留言",
-            "tContent": "请在此留言",
-            "fTitle": "请在此留言",
-            "fContent": "请在此留言",
-            "wContent": "请在此留言" 
-        };
-        // 发送给好友
-        WeixinJSBridge.on('menu:share:appmessage', function (argv) {
-            WeixinJSBridge.invoke('sendAppMessage', { 
-                "img_url": window.shareData.imgUrl,
-                "img_width": "640",
-                "img_height": "640",
-                "link": window.shareData.sendFriendLink,
-                "desc": window.shareData.fContent,
-                "title": window.shareData.fTitle
-            }, function (res) {
-                _report('send_msg', res.err_msg);
-            })
-        });
+  </div>
+  <footer style="text-align:center; color:#ffd800;margin-right:20px"><%= render 'layouts/copy_right' %></footer>
 
-        // 分享到朋友圈
-        WeixinJSBridge.on('menu:share:timeline', function (argv) {
-            WeixinJSBridge.invoke('shareTimeline', {
-                "img_url": window.shareData.imgUrl,
-                "img_width": "640",
-                "img_height": "640",
-                "link": window.shareData.timeLineLink,
-                "desc": window.shareData.tContent,
-                "title": window.shareData.tTitle
-            }, function (res) {
-                _report('timeline', res.err_msg);
-            });
-        });
-
-        // 分享到微博
-        WeixinJSBridge.on('menu:share:weibo', function (argv) {
-            WeixinJSBridge.invoke('shareWeibo', {
-                "content": window.shareData.wContent,
-                "url": window.shareData.weiboLink,
-            }, function (res) {
-                _report('weibo', res.err_msg);
-            });
-        });
-        }, false)
-    </script>
-
-<footer style="text-align:center; color:#ffd800;margin-right:20px"><%= render 'layouts/copy_right' %></footer>
-
-</body></html>
+</body>
+</html>
