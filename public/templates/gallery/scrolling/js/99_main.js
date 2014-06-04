@@ -36,6 +36,18 @@ var Msize = $(".m-page").size(), 	//页面的数目
 	audio_stop		= null,			//声音是否在停止
 	mousedown		= null,			//PC鼠标控制鼠标按下获取值
 	
+	/*
+	** 统计控制
+	*/
+	plugin_type		= {				//记录页面切换的数量
+		'info_pic2':{num:0,id:0},
+		'info_nomore':{num:0,id:0},
+		'info_more':{num:0,id:0},
+		'multi_contact':{num:0,id:0},
+		'video':{num:0,id:0},
+		'input':{num:0,id:0},
+		'dpic':{num:0,id:0}
+	};   
 
 
 /* 
@@ -70,7 +82,7 @@ var Msize = $(".m-page").size(), 	//页面的数目
 			self.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC');
 		}else{
 			self.css({
-				'background-image'	: 'url(<%= @base_url%>img/load.gif)',
+				'background-image'	: 'url(/template/10/img/loading_large.gif)',
 				'background-size'	: '120px 120px'
 
 			})
@@ -488,38 +500,38 @@ var Msize = $(".m-page").size(), 	//页面的数目
 /*
 **  插件的加载
 */
-	$(function(){
-		/*
-		**展示品旋转
-		*/
-		$(".imgbox").yl3d({
-			stopEle	: $(".m-page"),
-			startFn : page_touchstart,
-			moveFn	: page_touchmove,
-			endFn	: page_touchend,
-			V_start : V_start
-		});
+	// $(function(){
+	// 	/*
+	// 	**展示品旋转
+	// 	*/
+	// 	$(".imgbox").yl3d({
+	// 		stopEle	: $(".m-page"),
+	// 		startFn : page_touchstart,
+	// 		moveFn	: page_touchmove,
+	// 		endFn	: page_touchend,
+	// 		V_start : V_start
+	// 	});
 		
-		//轮播图初始化
-		$('.imgSlider').each(function(){
-			var urls = $(this).find('input').val();
-			new slidepic(this,{urls:urls});
-		});
+	// 	//轮播图初始化
+	// 	$('.imgSlider').each(function(){
+	// 		var urls = $(this).find('input').val();
+	// 		new slidepic(this,{urls:urls});
+	// 	});
 		
-		/*
-		**日期插件添加
-		*/
-		var opts_data ={
-			monthsFull: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
-			monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-			weekdaysFull: ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日'],
-			weekdaysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-			format: 'yyyy-mmmm-d',
-			min: new Date()
-		};
-		$(".picker_data").pickadate(opts_data);
-		$(".picker_time").pickatime();
-	});
+	// 	/*
+	// 	**日期插件添加
+	// 	*/
+	// 	var opts_data ={
+	// 		monthsFull: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+	// 		monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+	// 		weekdaysFull: ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日'],
+	// 		weekdaysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+	// 		format: 'yyyy-mmmm-d',
+	// 		min: new Date()
+	// 	};
+	// 	$(".picker_data").pickadate(opts_data);
+	// 	$(".picker_time").pickatime();
+	// });
 
 /*
 ** 页面内容加载loading显示
@@ -651,15 +663,105 @@ function set_static_data(dom){
 /**
  * 发送页面统计的数据
  */
-
+function ajax_analyseplugin(){
+	var activeId = $('#activeId').val();
+	var ajax_ = function(type,id,num){
+		$.ajax({
+			url: '/analyseplugin/plugin/'+activeId,
+			cache: false,
+			dataType: 'html',
+			async: true,
+			type:'GET',
+			data: "&plugtype="+type+"&id="+id+"&num="+num+"&activity_id="+activeId,
+		});
+	}
+	if(plugin_type.dpic.id!=0 && plugin_type.dpic.num>0){
+		ajax_('3dpic',plugin_type.dpic.id,plugin_type.dpic.num);
+		plugin_type.dpic.num = 0;
+	}
+	if(plugin_type.info_more.id!=0 && plugin_type.info_more.num>0){
+		ajax_('info_more',plugin_type.info_more.id,plugin_type.info_more.num);
+		plugin_type.info_more.num = 0;
+	}
+	if(plugin_type.info_nomore.id!=0 && plugin_type.info_nomore.num>0){
+		ajax_('info_nomore',plugin_type.info_nomore.id,plugin_type.info_nomore.num);
+		plugin_type.info_nomore.num = 0;
+	}	
+	if(plugin_type.info_pic2.id!=0 && plugin_type.info_pic2.num>0){
+		ajax_('info_pic2',plugin_type.info_pic2.id,plugin_type.info_pic2.num);
+		plugin_type.info_pic2.num = 0;
+	}
+	if(plugin_type.input.id!=0 && plugin_type.input.num>0){
+		ajax_('input',plugin_type.input.id,plugin_type.input.num);
+		plugin_type.input.num = 0;
+	}	
+	if(plugin_type.multi_contact.id!=0 && plugin_type.multi_contact.num>0){
+		ajax_('multi_contact',plugin_type.multi_contact.id,plugin_type.multi_contact.num);
+		plugin_type.multi_contact.num = 0;
+	}	
+	if(plugin_type.video.id!=0 && plugin_type.video.num>0){
+		ajax_('video',plugin_type.video.id,plugin_type.video.num);
+		plugin_type.video.num = 0;
+	}
+}
 
 /**
  * 发送站点统计请求
  */
+function ajax_analysite(){
+	var channel_id = location.search.substr(location.search.indexOf("channel=") + 8);
+	channel_id= channel_id.match(/^\d+/) ; 
+	if (!channel_id || isNaN(channel_id) || channel_id<0) {
+		channel_id = 1;
+	}
+	var activeId = $('#activeId').val();
+	$.ajax({
+		url: '/site/analyse/'+activeId,
+		cache: false,
+		dataType: 'html',
+		async: false,
+		type:'GET',
+		data: '&channel='+channel_id+'&type=car',
+	});	
+}
 
 /**
  * 绑定页面分享、电话统计
  */
+$(function(){
+	$('.share').bind('click',function(){
+		one_ajax_analyplugin('share');
+		$(".m-page").off('mousedown touchstart');
+		$(".m-page").off('mousemove touchmove');
+		$(".m-page").off('mouseup touchend mouseout');
+		
+		var u = navigator.userAgent; // 客户端环境信息
+		if(u.indexOf('MicroMessenger')>-1){
+			$('.weixin-share').css('display','block');
+			//禁止滚动
+			$(document.body).css('overflow','hidden');
+			$(document.body).on('touchmove',function(e){e.preventDefault();});
+		}else{
+			$(this).next().addClass('open');
+			$(this).next().css('z-index',1);
+			$(this).next().children().addClass('open');
+		}
+	});
+	
+	$('.tel').bind('click',function(){ one_ajax_analyplugin('multi_contact');});
+	var one_ajax_analyplugin = function(type){
+		var activeId = $('#activeId').val();
+		var id = $(this).parents('section').attr('data-id');
+		$.ajax({
+			url: '/analyseplugin/plugin/'+activeId,
+			cache: false,
+			dataType: 'html',
+			async: true,
+			type:'GET',
+			data: '&activity_id='+activeId+'&id='+id+'&plugtype='+type,
+		});
+	}	
+});
 
 /**
  * 关闭微信分享
@@ -693,21 +795,390 @@ function cancle_share(obj){
 /*
 **预约表单
 */
+$(function(){
+	$("p.submit-input").click(function(e){
+		e.preventDefault();
+		var form = $(this).parents('form');
+		var sumbit_val = form_verity(form);
+		if(sumbit_val){
+			ajax_form_submit(form);
+		}else{
+			$(".popup_sucess").removeClass("on");
+			$(".popup_error").addClass("on");
+			setTimeout(function(){
+				$(".popup").removeClass("on");
+			},3000)
+		}
+	})
+});
 
+/**
+ * 表单验证是否通过
+ * object form jquery表单对象
+ */
+function form_verity(form){	
+	if(form.find("input[name='sex']").length>0 && form.find("input[name='sex']").val()==''){
+		$('.popup_error').html('想想，该怎么称呼您呢？');
+		return false;	
+	}
+	
+	var name = form.find("input[name='name']").val();
+	if(form.find("input[name='name']").length>0 && $.trim(name)==''){
+		$('.popup_error').html('不能落下姓名哦！');
+		return false;
+	}
+	if(!name.match(/^[\u4e00-\u9fa5|a-z|A-Z|\s]{1,20}$/)){
+		$('.popup_error').html('这名字太怪了！');
+		return false;		
+	}
+	var tel = form.find("input[name='tel']").val();
+	if(form.find("input[name='tel']").length>0 && $.trim(tel)==''){
+		$('.popup_error').html('有个联系方式，就更好了！');
+		return false;
+	}
+	if(!tel.match(/^1[0-9][0-9]\d{8}$/)){
+		$('.popup_error').html('这号码,可打不通...');
+		return false;
+	}
+	var date = form.find("input[name='date']").val();
+	var time = form.find("input[name='time']").val();
+	if(form.find("input[name='date']").length>0 && ($.trim(date)=='' || $.trim(time)=='')){
+		$('.popup_error').html('您能给个具体时间，就完美了！');
+		return false;		
+	}
+	return true;
+}
 
+/**
+ * ajax异步提交表单数据
+ * object form 表单jquery对象
+ */
+function ajax_form_submit(form){
+	var name = form.find("input[name='name']").val();
+	var tel = form.find("input[name='tel']").val();
+	var date = form.find("input[name='date']").val();
+	var time = form.find("input[name='time']").val();
+	var sex = form.find("input[name='sex']").val();
+	var activeId = $('#activeId').val();
+	
+	loading('loading');
+	
+	$.ajax({
+		url: '/car/submit/'+activeId,
+		cache: false,
+		dataType: 'html',
+		async: false,
+		type:'POST',
+		data: '&name='+name+'&tel='+tel+'&date='+date+'&time='+time+'&sex='+sex,
+		success: function(msg){
+			loading('end');
+		
+			if(msg==1){
+				$('.popup_sucess').html('您已经成功预约过了!');
+			}else if(msg==2){
+				$('.popup_sucess').html('提交成功！谢谢您的预约！');
+				var url = window.location.href;
+				var site_id = url.substring(url.indexOf('car/index')+10,url.indexOf('?'));
+				if(site_id == '768'){
+					setTimeout(function(){
+						window.location.href='http://www.jaguar.com.cn';
+					},500);
+				}
+			}else{
+				$('.popup_sucess').html('抱歉！系统繁忙中...');
+			}
+			$(".popup_sucess").addClass("on");
+			$(".popup_error").removeClass("on");
+			setTimeout(function(){
+				$(".popup").removeClass("on");
+			},4000)
+		}
+	});
+}
 
+/**
+ * ajax异步提交表单数据
+ * object form 表单jquery对象
+ */
+function ajax_custom_submit(form){
+	var success_msg = $.trim($('.widthdesc-form').find('input[name="success_msg"]').val());
+	var activity_id = parseInt(document.getElementById('activity_id').innerHTML,10);
+	if (success_msg == '') {
+		success_msg = '感谢您的支持！我们会尽快与您取得联系！';
+	}
+	
+	$.ajax({
+		url: '/realty/custom_submit/'+activity_id,
+		cache: false,
+		dataType: 'json',
+		async: false,
+		type:'POST',
+		data: form.serialize(),
+		error: function(msg){
+			alert(msg.data);
+		},
+		success: function(msg){
+			if(msg.success){
+				dialogShow('', success_msg);
+			} 
+			$('#nav-dots').css('display','block');
+		}
+	});
+}
+
+/**
+ * loading图标设置
+ * string type loading:出现加载图片；end 结束加载图片
+ */
+function loading(type){
+	if('loading'==type){
+		$('.loading').css({display:'block'});
+	}else if('end'==type){
+		$('.loading').css({display:'none'});
+	}
+}
+
+/**
+ * 绑定性别选择
+ */
+$(function(){
+	$('.sex').bind('click',function(){
+		var sex = $(this).attr('data-sex');
+		$(this.parentNode).find('input').val(sex);
+		$(this.parentNode).find('strong').removeClass('on');
+		$(this).find('strong').addClass('on');
+	});
+});
+
+/**
+ * 绑定性别选择
+ */
+$(function(){
+	$('.student').bind('click',function(){
+		var student = $(this).attr('data-student');
+		$(this.parentNode).find('input').val(student);
+		$(this.parentNode).find('strong').removeClass('on');
+		$(this).find('strong').addClass('on');
+	});
+});
+
+/*
+**自定义预约表单
+*/
+$(function(){
+	$("p.submit-custom").click(function(e){
+		e.preventDefault();
+		var form = $(this).parents('form');
+		var valid = check_input(form, 'base');
+		if (valid) {
+			valid = check_input(form);
+			if (!valid && !$('.edit-more-info').hasClass('edited')) {
+				$('.edit-more-info').click();
+			}
+		}
+		if(valid){
+			
+			ajax_custom_submit(form);
+		}
+	})
+})
+
+/**
+ * 表单完善更多信息
+ */
+$(function(){
+	$('.edit-more-info').click(function(){
+		var form = $(this).parents('form');
+		if (check_input(form, 'base')) {
+			$('.wct_form').addClass('change');
+		}else return;
+	});
+	$('.submit-3').click(function(){
+		var form = $(this).parents('form');
+		if (check_input(form, 'base')) {
+			$('.wct_form').removeClass('change');
+		}else return;
+	})
+});
+var if_ajax_custom_submit = false;  //是否提交过表单
+/**
+ * ajax异步提交表单数据
+ * object form 表单jquery对象
+ */
+function ajax_custom_submit(form){
+	var activeId = $('#activeId').val();
+	
+	var successTips = '您已报名成功，我们会尽快与您取得联系！';
+	if($('#success-tips').length>0){
+		successTips = $('#success-tips').val();
+	}
+	if(if_ajax_custom_submit){
+		$('.popup_sucess').html(successTips);
+		$(".popup_sucess").addClass("on");
+		$(".popup_error").removeClass("on");
+		setTimeout(function(){
+			$(".popup").removeClass("on");
+		},6000);
+		return true;
+	}
+	loading('loading');
+	if_ajax_custom_submit = true;
+	$.ajax({
+		url: '/car/custom_submit/'+activeId,
+		cache: false,
+		dataType: 'json',
+		async: false,
+		type:'POST',
+		data: form.serialize(),
+		success: function(msg){
+			loading('end');
+			if(msg.data==1){
+				$('.popup_sucess').html(successTips);
+				if ($('.wct_form').hasClass('change')) {
+					$('.wct_form').removeClass('change');
+				}
+			}else if(msg.data==2){
+				$('.popup_sucess').html(successTips);
+				if ($('.wct_form').hasClass('change')) {
+					$('.wct_form').removeClass('change');
+				}
+				var url = window.location.href;
+				var site_id = url.substring(url.indexOf('car/index')+10,url.indexOf('?'));
+				if(site_id == '768'){
+					setTimeout(function(){
+						window.location.href='http://www.jaguar.com.cn';
+					},500);
+				}
+			}else{
+				$('.popup_sucess').html('抱歉！系统繁忙中...');
+			}
+			$(".popup_sucess").addClass("on");
+			$(".popup_error").removeClass("on");
+			setTimeout(function(){
+				$(".popup").removeClass("on");
+			},6000)
+		}
+	});
+}
 
 /*
 ** 完整信息表单验证
 */
+function check_input (form, type){
+	var valid = true;
+	if (type == 'base') {
+		var inputs = form.find('.base-info-input:input');
+	} else {
+		var inputs = form.find(':input');
+	}
+	inputs.each(function(i, e){
+		if(this.name != '' && this.name != 'undefined'){		
+			var empty_tip = '';
+			var reg_tip = '';
+			var reg = '';
+			var max = null;
+			var mim = null;
+			switch (this.name) {
+				case 'name':
+					reg = /^[\u4e00-\u9fa5|a-z|A-Z|\s]{1,20}$/;
+					empty_tip = '不能落下姓名哦！';
+					reg_tip = '这名字太怪了！';
+					break;
+				case 'mobile':
+					reg = /^1[0-9][0-9]\d{8}$/;
+					empty_tip = '有个联系方式，就更好了！';
+					reg_tip = '这号码,可打不通... ';
+					break;
+				case 'sex':
+					empty_tip = '想想，该怎么称呼您呢？';
+					break;
+				case 'email':
+					reg = /(^[a-z\d]+(\.[a-z\d]+)*@([\da-z](-[\da-z])?)+(\.{1,2}[a-z]+)+$)/i;
+					reg_tip = '邮箱格式有问题哦！';
+					break;
+				case 'company':
+					reg = /^[\u4e00-\u9fa5|a-z|A-Z|\s]{1,20}$/;
+					reg_tip = '这个公司太奇怪了！';
+					break;
+				case 'position':
+					reg = /^[\u4e00-\u9fa5|a-z|A-Z|\s]{1,20}$/;
+					reg_tip = '这个职位太奇怪了！';
+					break;
+				case 'date':
+					break;
+				case 'time':
+					break;
+				case 'age':
+					reg = /^([3-9])|([1-9][0-9])|([1][0-3][0-9])$/;
+					reg_tip = '这年龄可不对哦！' ;
+					break;
+			}
+			if (empty_tip != undefined && empty_tip != '' && $.trim($(e).val()) == '') {
+				showMessage(empty_tip, true);
+				//第一页点击提交验证
+				if($(this).hasClass('.submit-1')){
+					$('.wct_form').addClass('change');
+				}
+				//第二页点击提交验证
+				else if($(this).hasClass('.submit-2')){
+					$('.wct_form').removeClass('change');	
+				}
+				valid = false;
+				return false;	
+			}
+			if (reg != undefined && reg != '' && $.trim($(e).val()) != '') {
+				if(!$(e).val().match(reg)){
+					showMessage(reg_tip, true);
+					valid = false;
+					return false;		
+				}
+			}
+		}
+	});
+	if (valid == false) {
+		return false;
+	}else{
+		return true;
+	}
+}
 
 /*
 ** 显示验证信息
+*/
+function showMessage(msg, error) {
+	if (error) {
+		$('.popup_error').html(msg);
+		$(".popup_error").addClass("on");
+		$(".popup_sucess").removeClass("on");
+		setTimeout(function(){
+			$(".popup").removeClass("on");
+		},2000);
+	} else {
+		$(".popup_sucess").addClass("on");
+		$(".popup_error").removeClass("on");
+		setTimeout(function(){
+			$(".popup").removeClass("on");
+		},2000);
+	}
+}
 
 /**
  * 点击链接跳转到云购的动画开启
  */
+var btn = $('.m-blank');
+btn.on('click',function(){
+	var src = $(this).find('a').attr('href');
 
+	if(src.indexOf('/wx/pay/index')>-1){
+		$('.m-blank-animate').find('strong').text('正在取货');
+	}else $('.m-blank-animate').find('strong').text('正在前往');
+
+	var _iPhoen	= RegExp("iPhone").test(navigator.userAgent)||RegExp("iPod").test(navigator.userAgent)||RegExp("iPad").test(navigator.userAgent)? true : false;
+
+	if(_iPhoen){
+		$('.m-blank-animate').addClass('move');
+		$('.m-blank-animate').show();
+	}
 	// if(!_iPhoen){
 	// 	setTimeout(function(){
 	// 		$('.m-blank-animate').hide();
