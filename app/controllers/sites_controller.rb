@@ -9,7 +9,7 @@ class SitesController < ApplicationController
   # GET /sites
   # GET /sites.json
   def index
-    @sites = Site.all
+    @sites = Site.order("updated_at DESC").page( params[:page])
   end
 
   # GET /sites/1

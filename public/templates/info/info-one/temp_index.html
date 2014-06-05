@@ -47,9 +47,7 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="#">
-          <%= value_for(@site_page, 'boy', typo: 'string', title: '新郎姓名') %> 
-          <i class="fa fa-heart"> </i> 
-          <%= value_for(@site_page, 'girl', typo: 'string', title: '新娘姓名') %>
+          &nbsp;
         </a>
       </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -65,17 +63,25 @@
        
     <div class="jumbotron">
       <div class="container">
-        <h1>
-          <%= value_for(@site_page, 'boy', typo: 'string', title: '新郎姓名') %> 
-          <i class="fa fa-heart"> </i> 
-          <%= value_for(@site_page, 'girl', typo: 'string', title: '新娘姓名') %>
-        </h1>
-        <h1><%= value_for(@site_page, 'date', typo: 'string', title: '婚礼日期' ) %></h1>
-        <p>恭请光临！</p>
-        <hr/>
-        <p>地址：<%= value_for(@site_page, 'address', title: '婚礼举办地址信息', typo: 'text') %></p>
-        <a href="tel:<%= value_for(@site_page, 'boy_phone', typo: 'string', title: '新郎联系电话')%>" class="btn btn-success btn-lg">联系新郎</a>
-        <a href="tel:<%= value_for(@site_page, 'girl_phone', typo: 'string', title: '新娘联系电话')%>" class="btn btn-success btn-lg">联系新娘</a>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <h1>
+              <%= value_for(@site_page, 'boy', typo: 'string', title: '新郎姓名') %> 
+              <i class="fa fa-heart"> </i> 
+              <%= value_for(@site_page, 'girl', typo: 'string', title: '新娘姓名') %>
+            </h1>
+            <hr/>
+            <h2><%= value_for(@site_page, 'date', typo: 'string', title: '婚礼日期' ) %></h2>
+            <p>恭请光临！</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <p>地址：<%= value_for(@site_page, 'address', title: '婚礼举办地址信息', typo: 'text') %></p>
+            <a href="tel:<%= value_for(@site_page, 'boy_phone', typo: 'string', title: '新郎联系电话')%>" class="btn btn-success btn-lg">联系新郎</a>
+            <a href="tel:<%= value_for(@site_page, 'girl_phone', typo: 'string', title: '新娘联系电话')%>" class="btn btn-success btn-lg">联系新娘</a>
+          </div>
+        </div>
       </div>
     </div>
 
