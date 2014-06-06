@@ -1,3 +1,5 @@
+#encoding: utf-8
+
 # Add account credentials and API keys here.
 # See http://railsapps.github.io/rails-environment-variables.html
 # This file should be listed in .gitignore to keep your settings secret!
@@ -5,12 +7,32 @@
 # For example, setting:
 # GMAIL_USERNAME: Your_Gmail_Username
 # makes 'Your_Gmail_Username' available as ENV["GMAIL_USERNAME"]
-
 # Add application configuration variables here, as shown below.
 #
-GMAIL_USERNAME: Your_Username
-GMAIL_PASSWORD: Your_Password
-ADMIN_NAME: First User
-ADMIN_EMAIL: user@example.com
-ADMIN_PASSWORD: changeme
-ROLES: [admin, user, VIP]
+
+#use on get_url and generate qrcode
+#HOST_NAME: http://www.yufuwu.cn
+#HOST_NAME: http://localhost:30001
+WED_HOST: http://localhost:3000
+SITE_DOMAIN: tanmer.com
+SITE_NAME: TM
+SSL: false
+
+#email
+GMAIL_USERNAME: 
+GMAIL_PASSWORD: www..com
+
+#admin
+ADMIN_NAME: master
+ADMIN_EMAIL: admin@.com
+ADMIN_PASSWORD: .com
+ROLES: [admin, user, seed]
+
+#Qiniu store
+QINIU_ACCESS_KEY: 
+QINIU_SECRET_KEY: -M4m-NLSaP0-OTGD2_eCCsqId_
+
+#Alipay
+ALIPAY_PID: 
+ALIPAY_KEY: 
+ALIPAY_SELLER_EMAIL: @.com
