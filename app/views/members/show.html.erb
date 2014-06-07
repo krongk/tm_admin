@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @member.user %>
+</p>
+
+<p>
+  <strong>Auth type:</strong>
+  <%= @member.auth_type %>
+</p>
+
+<p>
+  <strong>Auth:</strong>
+  <%= @member.auth_id %>
+</p>
+
+<p>
+  <strong>Auth token:</strong>
+  <%= @member.auth_token %>
+</p>
+
+<p>
+  <strong>Token created at:</strong>
+  <%= @member.token_created_at %>
+</p>
+
+<p>
+  <strong>Token confirmed:</strong>
+  <%= @member.token_confirmed %>
+</p>
+
+<p>
+  <strong>Current sign in at:</strong>
+  <%= @member.current_sign_in_at %>
+</p>
+
+<p>
+  <strong>Last sign in at:</strong>
+  <%= @member.last_sign_in_at %>
+</p>
+
+<%= link_to 'Edit', edit_member_path(@member) %> |
+<%= link_to 'Back', members_path %>

@@ -1,5 +1,7 @@
 RainCms::Application.routes.draw do
 
+  resources :members
+
   resources :common_keys
 
   namespace :templates do

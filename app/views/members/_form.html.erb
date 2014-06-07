@@ -1,0 +1,18 @@
+<%= simple_form_for(@member) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :user %>
+    <%= f.input :auth_type %>
+    <%= f.input :auth_id %>
+    <%= f.input :auth_token %>
+    <%= f.input :token_created_at %>
+    <%= f.input :token_confirmed %>
+    <%= f.input :current_sign_in_at %>
+    <%= f.input :last_sign_in_at %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

@@ -1,0 +1,19 @@
+---
+en:
+  active_record:
+    models:
+      member: Member
+    attributes:
+      member:
+        user: User
+        auth_type: Auth type
+        auth_id: Auth
+        auth_token: Auth token
+        token_created_at: Token created at
+        token_confirmed: Token confirmed
+        current_sign_in_at: Current sign in at
+        last_sign_in_at: Last sign in at
+    errors:
+      member: 
+  helpers:
+    member: 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20140607031652) do
 
   create_table "admin_channels", force: true do |t|
     t.integer  "user_id"
@@ -104,6 +104,19 @@ ActiveRecord::Schema.define(version: 0) do
     t.string   "placeholder"
     t.string   "hint"
     t.string   "default_value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "members", force: true do |t|
+    t.integer  "user_id"
+    t.string   "auth_type"
+    t.string   "auth_id"
+    t.string   "auth_token"
+    t.time     "token_created_at"
+    t.boolean  "token_confirmed"
+    t.time     "current_sign_in_at"
+    t.string   "last_sign_in_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
