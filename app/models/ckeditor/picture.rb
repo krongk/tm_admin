@@ -9,6 +9,6 @@ class Ckeditor::Picture < Ckeditor::Asset
   validates_attachment_content_type :data, :content_type => /\Aimage\/.*\Z/
 
   def url_content
-    url(:content)
+    url(:original)
   end
 end
