@@ -65,7 +65,7 @@
 		<!--index 相册的封面 end-->
 		
 		<% @site_page.site_images.each_with_index do |site_image, index| %>
-      <% next if index < 2 %>
+      <% next if index == 0 %>
 			<!--全屏大图-->
 			<section data-page="<%=index%>" class="m-page m-page2 hide" data-id='<%=index%>' data-type='info_nomore'>
 				<div class="m-img m-img01 " data-bk= '<%= site_image.image.url %>' 
@@ -86,12 +86,7 @@
 						<%= @site.title %>
 					<% end %>
 				</h3>
-				<div class="m-txt m-txt02 txt" style="height: 120px">
-					<div class="wtxt">
-						<p><%= value_for(@site_page, 'content', title: '详细说明', typo: 'text') %></p>
-					</div>
-					<span class="expand css_sprite01"></span>
-				</div>
+				
 				<div class="btn">
 				  <% if @site.updated_by == 1 %>
 					  <p class="time"><a href="/"><span class='css_sprite01'></span>点击这里在线制作</a></p>
@@ -100,10 +95,14 @@
 						<a href="tel:<%= value_for(@site_page, 'mobile_phone', title: '联系电话', typo: 'string') %>" ><span class='css_sprite01'></span>
 						<%= value_for(@site_page, 'mobile_phone', typo: 'string', title: '联系电话') %></a>
 					</p>
-				</div>
-				<div class="btn">
-					<p><a class="btn btn-lg btn-block" href="http://map.baidu.com/?newmap=1&ie=utf-8&s=s%26wd%3D<%= value_for(@site_page, 'address', title: '地址', typo: 'text') %>"><span class="css_sprite01"></span>
+					<p class="time"><a href="http://map.baidu.com/?newmap=1&ie=utf-8&s=s%26wd%3D<%= value_for(@site_page, 'address', title: '地址', typo: 'text') %>"><span class="css_sprite01"></span>
 				    <%= value_for(@site_page, 'address', title: '地址', typo: 'text') %></a></p>
+				</div>
+				<div class="m-txt m-txt02 txt" style="height: 120px">
+					<div class="wtxt">
+						<p><%= value_for(@site_page, 'content', title: '详细说明', typo: 'text') %></p>
+					</div>
+					<span class="expand css_sprite01"></span>
 				</div>
 			</div>
 			
