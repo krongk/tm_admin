@@ -82,7 +82,7 @@ var Msize = $(".m-page").size(), 	//页面的数目
 			self.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC');
 		}else{
 			self.css({
-				'background-image'	: 'url(/template/10/img/loading_large.gif)',
+				'background-image'	: 'url(/assets/loader.gif)',
 				'background-size'	: '120px 120px'
 
 			})
