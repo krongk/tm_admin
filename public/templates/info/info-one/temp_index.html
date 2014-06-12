@@ -11,7 +11,7 @@
         <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
         <script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
         <!-- 百度地图： http://developer.baidu.com/map/jsdemo.htm#i6_1-->
-        <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=783cVnDkoCqImZH3kEBWIXCa"></script>
+        <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=xD0rO5z4aNh1dkf0mTOb1cFV"></script>
         
         <style type="text/css">
             body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;}
@@ -46,8 +46,8 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">
-          &nbsp;
+        <a class="navbar-brand" href="<%= get_site_url(@site)%>">
+          &nbsp;<i class="fa fa-reply-all"></i>
         </a>
       </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -66,20 +66,28 @@
         <div class="row">
           <div class="col-md-12 text-center">
             <h1>
-              <%= value_for(@site_page, 'boy', typo: 'string', title: '新郎姓名') %> 
-              <i class="fa fa-heart"> </i> 
-              <%= value_for(@site_page, 'girl', typo: 'string', title: '新娘姓名') %>
+              <% if value_for(@site_page, 'girl') %>
+                <%= value_for(@site_page, 'boy', typo: 'string', title: '新郎姓名') %> 
+                 <span style="font-size: 80%;"><i class="fa fa-heart-o"> </i> </span>
+                <%= value_for(@site_page, 'girl', typo: 'string', title: '新娘姓名') %>
+              <% else %>
+                <%= value_for(@site_page, 'boy', typo: 'string', title: '新郎姓名') %> 
+                <br/><i class="fa fa-heart-o"> </i>
+              <% end %>
             </h1>
-            <hr/>
             <h2><%= value_for(@site_page, 'date', typo: 'string', title: '婚礼日期' ) %></h2>
             <p>恭请光临！</p>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12 text-center">
-            <p>地址：<%= value_for(@site_page, 'address', title: '婚礼举办地址信息', typo: 'text') %></p>
-            <a href="tel:<%= value_for(@site_page, 'boy_phone', typo: 'string', title: '新郎联系电话')%>" class="btn btn-success btn-lg">联系新郎</a>
-            <a href="tel:<%= value_for(@site_page, 'girl_phone', typo: 'string', title: '新娘联系电话')%>" class="btn btn-success btn-lg">联系新娘</a>
+            <p>地址：<%= value_for(@site_page, 'address', title: '宴请举办地址信息', typo: 'text') %></p>
+            <% if value_for(@site_page, 'boy_phone') %>
+              <a href="tel:<%= value_for(@site_page, 'boy_phone', typo: 'string', title: '新郎联系电话')%>" class="btn btn-success"><i class="fa fa-phone"></i> <%= value_for(@site_page, 'boy_phone') %></a>
+            <% end %>
+             <% if value_for(@site_page, 'girl_phone') %>
+              <a href="tel:<%= value_for(@site_page, 'girl_phone', typo: 'string', title: '新娘联系电话')%>" class="btn btn-success"><i class="fa fa-phone"></i> <%= value_for(@site_page, 'girl_phone') %></a>
+            <% end %>
           </div>
         </div>
       </div>
@@ -91,8 +99,8 @@
 </html>
 <script type="text/javascript">
 // 百度地图API功能
-var map = new BMap.Map("allmap");
-map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);
-var walking = new BMap.WalkingRoute(map, {renderOptions:{map: map, autoViewport: true}});
-walking.search("<%= value_for(@site_page, 'address') %>", "<%= value_for(@site_page, 'address') %>");
+  var map = new BMap.Map("allmap");
+  map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);
+  var walking = new BMap.WalkingRoute(map, {renderOptions:{map: map, autoViewport: true}});
+  walking.search("<%= value_for(@site_page, 'address') %>", "<%= value_for(@site_page, 'address') %>");
 </script>
