@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!--我们结婚啦-->
 <html lang="zh-CN">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -26,6 +26,7 @@
   <!-- Favicon -->
   <link rel="shortcut icon" href="<%= @base_url %>img/favicon/favicon.png">
   <!-- [[head end]] -->
+  <%= render 'layouts/s_head' %>
 </head>
 
 <body>
@@ -58,7 +59,8 @@
   <a name="home" id="home"></a>
   <!-- [[header end]] -->
 
-  <!-- Hea      der -->
+  <%= render 'layouts/s_header' %>
+  <!-- Header -->
   <header>
       <div class="container">
          <div class="row">
@@ -88,7 +90,6 @@
       </div>
   </header>
    
-  
   <!-- 爱情故事 开始-->
   <% unless value_for(@site_page, 'story', title: '爱情故事', typo: 'text', default: true).blank? %> 
   <a name="about" id="about"></a>
@@ -242,7 +243,7 @@
     </div>
   </footer>		
   <!-- [[footer end]] --> 
-
+  <%= render 'layouts/s_footer' %>
   <!-- [[foot start]] --> 
     <!-- JS -->
     <script src="<%= @base_url %>js/jquery.js"></script>

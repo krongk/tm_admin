@@ -81,6 +81,6 @@ class Templates::ThemesController < Templates::ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def templates_theme_params
-      params.require(:templates_theme).permit(:template_id, :title, :css_url, :preview_images, :preview_url)
+      params.require(:templates_theme).permit(:template_id, :title, :css_color, :css_url, :preview_images, :preview_url)
     end
 end

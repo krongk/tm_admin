@@ -5,8 +5,9 @@
     <%#= f.association :template %>
     <%= f.input :template_id, as: :hidden, input_html: {value: @template.id } %>
     <%= f.input :title %>
-    <%= f.input :css_url %>
-    <%= f.input :preview_images %>
+    <%= f.input :css_color, placeholder: '#ffcc00' %>
+    <%= f.input :css_url, placeholder: 'style/theme-red.css' %>
+    <%= f.input :preview_images, placeholder: 'previews/theme-red.png' %>
     <%= f.input :preview_url %>
   </div>
 
