@@ -7,7 +7,7 @@
   <!-- Title -->
   <title><%= @site.title %></title>
   <meta name="description" content="<%= @site.description %>" />
-  <meta name="keywords" content="维斗喜帖，漂亮的结婚请柬，微信喜帖">
+  <meta name="keywords" content="<%= @site.title %>|维斗喜帖，漂亮的电子请柬，微信喜帖">
   <meta name="author" content="维斗喜帖">
 
   <!-- [[head start]] -->
@@ -18,10 +18,10 @@
   <link href="<%= @base_url %>style/style.css" rel="stylesheet">
   <link id="theme" rel="stylesheet" href="<%= @base_url %>style/thume-red.css">
 
-	<!-- Respond JS for IE8 -->
-	<script src="<%= @base_url %>js/respond.min.js"></script>
-	<!-- HTML5 Support for IE -->
-	<script src="<%= @base_url %>js/html5shiv.js"></script>
+  <!-- Respond JS for IE8 -->
+  <script src="<%= @base_url %>js/respond.min.js"></script>
+  <!-- HTML5 Support for IE -->
+  <script src="<%= @base_url %>js/html5shiv.js"></script>
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="<%= @base_url %>img/favicon/favicon.png">
@@ -48,9 +48,9 @@
         <ul class="nav navbar-nav">
          <!-- Navigation links. Note down the class name. It is important -->
           <li><a href="#home" class="anchorLink">真诚邀请</a></li>
-          <li><a href="#about" class="anchorLink">爱情故事</a></li>
-          <li><a href="#photos" class="anchorLink">照片</a></li>
-          <li><a href="#wedding" class="anchorLink">婚礼安排</a></li>
+          <li><a href="#about" class="anchorLink">邀请函</a></li>
+          <li><a href="#photos" class="anchorLink">电子相册</a></li>
+          <li><a href="#wedding" class="anchorLink">宴席安排</a></li>
           <li><a href="<%= get_site_page_url_by_title(@site, '留言祝福') %>">留言祝福</a></li>
         </ul>
       </nav>
@@ -67,22 +67,22 @@
             <div class="col-md-12">
                <div class="hero">
                   <!-- Getting married -->
-                  <h1>我们结婚啦！</h1>
+                  <h1><%= @site.title %></h1>
                   <div class="well">
                      <!-- date -->
-                     <h3><%= value_for(@site_page, 'date', title: '婚礼日期', typo: 'string', required: true) %></h3>
+                     <h3><%= value_for(@site_page, 'date', title: '宴请日期', typo: 'string', required: true) %></h3>
                      <div class="bor"></div>
-                        <h2> <%= value_for(@site_page, 'boy', title: '新郎姓名') %> 
+                        <h2> <%= value_for(@site_page, 'boy', title: '男方姓名') %> 
                         <img src="<%= @base_url %>img/heartin.png" alt="" /> 
-                        <%= value_for(@site_page, 'girl', title: '新娘姓名') %></h2>
+                        <%= value_for(@site_page, 'girl', title: '女方姓名') %></h2>
                      <div class="bor"></div>
                      <!-- Small para -->
-                     <p><%= value_for(@site_page, 'welcome', title: '婚礼邀请词', typo: 'text', default: true) %> </p>
+                     <p><%= value_for(@site_page, 'welcome', title: '简短邀请词', typo: 'text', default: true) %> </p>
                     
                   </div>
                   <!-- Button. Note down the class "button" -->
                   <div class="button">
-                    <a href="#wedding" class="anchorLink">婚礼安排</a> &nbsp; <a href="<%= get_site_page_url_by_title(@site, '留言祝福') %>">留言祝福</a>
+                    <a href="#wedding" class="anchorLink">宴席安排</a> &nbsp; <a href="<%= get_site_page_url_by_title(@site, '留言祝福') %>">留言祝福</a>
                   </div>
                </div>
             </div>
@@ -91,7 +91,7 @@
   </header>
    
   <!-- 爱情故事 开始-->
-  <% unless value_for(@site_page, 'story', title: '爱情故事', typo: 'text', default: true).blank? %> 
+  <% unless value_for(@site_page, 'story', title: '邀请函', typo: 'text', default: true).blank? %> 
   <a name="about" id="about"></a>
   <div class="border"></div>
    
@@ -99,20 +99,12 @@
       <div class="container">
          <div class="row">
             <div class="col-md-12">
-               <!-- Title -->
-               <div class="head">
-                  <div class="bor"></div>
-                     <h2>爱情故事</h2>
-                  <div class="bor"></div>
-               </div>
-            </div>
-            <div class="col-md-12">
                <div class="well center">
                   <div class="head">
                   <!-- Our love story -->
-                     <h3>喜结良缘</h3>
+                     <h3>邀请函</h3>
                      <div class="bor"></div>
-                     <p><%= value_for(@site_page, 'story', title: '爱情故事', typo: 'text', default: true) %></p>
+                     <p><%= value_for(@site_page, 'story', title: '邀请函', typo: 'text', default: true) %></p>
                      <!--fn-声音显示 -->
                       <!--fn-声音显示 end-->
                   </div>
@@ -125,18 +117,19 @@
    <% end %>
    <!-- 爱情故事 结束-->
 
-   <div class="border"></div>
-   <a name="photos" id="photos"></a>
-   <hr />
-   <div class="itop"><a href="#home" class="anchorLink"><i class="fa fa-chevron-up"></i></a></div>
-   <div class="border"></div>
+  <% if @site_page.site_images.any? %>
+    <div class="border"></div>
+    <a name="photos" id="photos"></a>
+    <hr />
+    <div class="itop"><a href="#home" class="anchorLink"><i class="fa fa-chevron-up"></i></a></div>
+    <div class="border"></div>
 
-   <div class="container">
+    <div class="container">
       <div class="row">
          <div class="col-md-12">
             <div class="head">
                <div class="bor"></div>
-               <h2>流光记忆</h2>
+               <h2>电子相册</h2>
                <div class="bor"></div>
             </div>
          </div>
@@ -164,8 +157,9 @@
             <!-- Slider ends -->
          </div>
       </div>
-   </div>
-   
+    </div>
+  <% end %>
+  
    <div class="border"></div>
    <a name="wedding" id="wedding"></a>
    <hr />
@@ -177,7 +171,7 @@
          <div class="col-md-12">
             <div class="head">
                <div class="bor"></div>
-                  <h2>婚礼安排</h2>
+                  <h2>宴席安排</h2>
                <div class="bor"></div>
             </div>
          </div>
@@ -201,30 +195,29 @@
             </div>
          </div>
       
-
-         <% if value_for(@site_page, 'wed_description', title: '婚礼行程安排', typo: 'text', default: true) %>
+         <% if value_for(@site_page, 'wed_description', title: '宴席行程安排', typo: 'text', default: true) %>
            <div class="col-md-4">
               <div class="wedding">
                  <!-- Wedding details -->
-                 <h4><i class="fa fa-glass"></i> 婚礼行程</h4>
+                 <h4><i class="fa fa-glass"></i> 宴席行程安排</h4>
                  <%= value_for(@site_page, 'wed_description') %>
               </div>
            </div>
          <% end %>
 
-         <% if value_for(@site_page, 'address', title: '婚礼举办地址', hint: '请输入详细的省市区街道和酒店地址', required: true) %>
+         <% if value_for(@site_page, 'address', title: '宴席举办地址', hint: '请输入详细的省市区街道和酒店地址', required: true) %>
            <div class="col-md-4">
               <div class="wedding">
                  <!-- Travel and Accomodation -->
-                 <h4><i class="fa fa-home"></i> 婚礼地点</h4>
-                 <p><%= value_for(@site_page, 'address') %> </p>
-                 <p><%= value_for(@site_page, 'address_description', title: '婚礼举办地交通说明', typo: 'text', default: '公交地铁、驾车路线、酒店联系电话等') %></p>
+                 <h4><i class="fa fa-home"></i> 宴席地点</h4>
+                 <p><%= raw value_for(@site_page, 'address') %> </p>
+                 <p><%= raw value_for(@site_page, 'address_description', title: '宴席举办地交通说明', typo: 'text', default: '公交地铁、驾车路线、酒店联系电话等') %></p>
               </div>
            </div>
         <% end %>
       </div>
    </div>
-	
+  
    <div class="border"></div>
    <hr />   
    <div class="itop"><a href="#home" class="anchorLink"><i class="fa fa-chevron-up"></i></a></div>
@@ -235,13 +228,20 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 text-center">
-              <p class="text-center"><a href="http://wed.65960.com"><img src="/assets/logo.png" width="100px" /></a></p>
-              <div class="border"></div>
+          <p class="text-center">
+            <% if value_for(@site_page, 'boy_phone') %>
+              <a class="btn btn-info" href="tel:<%= value_for(@site_page, 'boy_phone')%>"><i class="fa fa-phone"></i> <%=value_for(@site_page, 'boy_phone')%></a> &nbsp;
+            <% end %>
+            <% if value_for(@site_page, 'girl_phone') %>
+              <a class="btn btn-info" href="tel:<%=value_for(@site_page, 'girl_phone')%>"><i class="fa fa-phone"></i> <%=value_for(@site_page, 'girl_phone')%></a>
+            <% end %>
+          </p>
+          <div class="border"></div>
         </div>
       </div>
     <div class="clearfix"></div>
     </div>
-  </footer>		
+  </footer>   
   <!-- [[footer end]] --> 
   <%= render 'layouts/s_footer' %>
   <!-- [[foot start]] --> 

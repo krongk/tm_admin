@@ -1,8 +1,8 @@
-﻿<!DOCTYPE html>
+﻿<!DOCTYPE html><!--留言-->
 <html lang="zh-CN">
   <head>
     <title>留言祝福</title>
-    <meta content="婚礼祝福，留言回执 - 维斗喜帖" name="Keywords">
+    <meta content="婚礼祝福,留言回执,维斗喜帖" name="Keywords">
     <meta content="维斗喜帖-婚礼祝福" name="Description">
 
     <meta charset="utf-8">
@@ -79,7 +79,7 @@
         alert("请输入内容");
         return;
       }
-      $.post('/site_comments', $("#contact-form1").serialize(),
+      $.post('/site_comments', $("#contact-form2").serialize(),
         function( data ) {
           alert( "留言成功" + data);
           setTimeout('window.location.href=location.href',1000);
@@ -137,10 +137,8 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="<%= get_site_url(@site) %>">
-           <%= value_for(@site_page, 'boy', typo: 'string', title: '新郎姓名') %> 
-          <i class="fa fa-heart"> </i> 
-          <%= value_for(@site_page, 'girl', typo: 'string', title: '新娘姓名') %>
+        <a class="navbar-brand" href="<%= get_site_url(@site)%>">
+          &nbsp;返回
         </a>
       </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -176,8 +174,7 @@
             <a><h2 class="first first1" style="position: relative;">请点击留言</h2></a>
 
             <li class="green bounceInDown nob ly1" style="display:none">
-              <form id="contact-form1" accept-charset="UTF-8" action="/site_comments" class="form-inline" id="new_site_comment" method="post" onsubmit="return false">
-                <input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="PrFNHZUHRUcRVYiGGSZOERRwPs7i5t5T2D+bhOSPuhg=" />
+              <%= form_tag("/site_comments", class: 'form-inline', id: 'contact-form1', onsubmit: 'return false') do %>
                 <input class="hidden" id="site_comment_site_id" name="site_comment[site_id]" type="hidden" value="<%= @site.id %>" />
                 <dl>
                   <dt>
@@ -190,7 +187,7 @@
                     <button type="submit" class="submit">提交留言 </button>
                   </dt>
                 </dl>
-              </form>
+              <% end %>
             </li> 
 
           
@@ -210,9 +207,8 @@
             <% end %>
 
             <li class="green bounceInDown nob ly2" style="display:none">
-              <form id="contact-form2" accept-charset="UTF-8" action="/site_comments" class="form-inline" id="new_site_comment" method="post" onsubmit="return false">
-                <input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="PrFNHZUHRUcRVYiGGSZOERRwPs7i5t5T2D+bhOSPuhg=" />
-                <input class="hidden" id="site_comment_site_id" name="site_comment[site_id]" type="hidden" value="<%= params[:site_id] || @site.id %>" />
+              <%= form_tag("/site_comments", class: 'form-inline', id: 'contact-form2', onsubmit: 'return false') do %>
+                <input class="hidden" id="site_comment_site_id" name="site_comment[site_id]" type="hidden" value="<%= @site.id %>" />
                 <dl>
                   <dt>
                     <input name="site_comment[name]"  class="px" id="name2" placeholder="请输入您的昵称" type="text">
@@ -224,7 +220,7 @@
                     <button type="submit" class="submit">提交留言 </button>
                   </dt>
                 </dl>
-              </form>
+              <% end %>
             </li>
             <a><h2 class="first first2" style="position: relative;">请点击留言</h2></a>
           </ul>
