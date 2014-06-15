@@ -1,5 +1,5 @@
-<!doctype html>
-<html lang="ch" >
+<!doctype html><!--微相册-->
+<html lang="zh-CN" >
 <head>
 	<meta charset="utf-8">
 	<meta name="format-detection" content="telephone=no" />
@@ -33,9 +33,11 @@
 		}
 	</script>
 	<!--移动端版本兼容 end -->
+	<%= render 'layouts/s_head' %>
 </head>
 
 <body>
+<%= render 'layouts/s_header' %>
 <section class="p-index">
 	 <!--fn-声音提示 -->
 		<div class="audio_txt">
@@ -134,6 +136,6 @@
 <script type="text/javascript" src="<%= @base_url %>js/99_main.js"></script>
 <script type="text/javascript" src="<%= @base_url %>js/wxm-core.js"></script>
 <script type="text/javascript" src="<%= @base_url %>js/wxshare.js"></script>
-
+<%= render 'layouts/s_footer' %>
 </body>
 </html>

@@ -1,0 +1,20 @@
+---
+zh-CN:
+  activerecord:
+    models:
+      payment/token: 激活码
+    attributes:
+      payment/token:
+          code: Code
+          count: 创建个数
+          user: 所属会员
+          user_id: 所属会员
+          created_by: 创建者
+          status: 状态
+          note: 备注
+          actived_by: 激活用户
+          actived_site_id: 激活应用
+    errors:
+      token: 
+  helpers:
+    token: 

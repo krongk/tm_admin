@@ -1,0 +1,18 @@
+---
+en:
+  active_record:
+    models:
+      payment:
+        coupon: Coupon
+    attributes:
+      payment:
+        coupon:
+          code: Code
+          start_at: Start at
+          end_at: End at
+          price: Price
+          note: Note
+    errors:
+      coupon: 
+  helpers:
+    coupon: 

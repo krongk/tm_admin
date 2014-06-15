@@ -65,7 +65,7 @@ body { margin:0 auto; width:640px; background:#fff; font-family:"微软雅黑"; 
 .audio_close { background-position: 0 0; }
 
 /* 统一功能模块样式 fn- */
-.fn-audio { position:fixed; top:45px; right:35px; z-index:2000; width:60px; height:61px; line-height:120px; text-align:center; }
+.fn-audio { position:fixed; top:45px; right:35px; z-index:2000; width:60px; height:61px; text-align:center; }
 .fn-audio .btn p { width:60px; height:61px; }
 .fn-audio .btn p span { display:none; width: 60px; height: 61px; }
 .fn-audio .btn p span:first-child { display:inline-block; }

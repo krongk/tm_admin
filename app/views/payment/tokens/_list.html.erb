@@ -1,0 +1,32 @@
+<table class="table table-bordered table-stripped">
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>拥有者</th>
+      <th>状态</th>
+      <th>备注</th>
+      <th>创建者</th>
+      <th>激活用户</th>
+      <th>激活应用</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @payment_tokens.each do |payment_token| %>
+      <tr>
+        <td><%= payment_token.code %></td>
+        <td><%= payment_token.user_id %></td>
+        
+        <td><%= payment_token.status %></td>
+        <td><%= payment_token.note %></td>
+        <td><%= payment_token.created_by %></td>
+        <td><%= payment_token.actived_by %></td>
+        <td><%= payment_token.actived_site_id %></td>
+        <td><%= link_to '修改', edit_payment_token_path(payment_token) %></td>
+        <td><%= link_to '删除', payment_token, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

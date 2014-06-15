@@ -1,0 +1,33 @@
+<table class="table table-bordered table-stripped">
+  <thead>
+    <tr>
+      <th>应用</th>
+      <th>支付状态</th>
+      <th>支付类型</th>
+      <th>支付金额</th>
+      <th>支付时间</th>
+      <th>更新者</th>
+      <th>处理状态</th>
+      <th>备注</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @site_payments.each do |site_payment| %>
+      <tr>
+        <td><%= link_to site_payment.site.title, site_path(site_payment.site) %></td>
+        <td><%= site_payment.status %></td>
+        
+        <td><%= site_payment.pay_type %></td>
+        <td><%= site_payment.price %></td>
+        <td><%= site_payment.pay_at %></td>
+        <td><%= site_payment.updated_by %></td>
+        <td><%= site_payment.is_processed %></td>
+        <td><%= site_payment.note %></td>
+        <td><%= link_to '修改', edit_site_payment_path(site_payment) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

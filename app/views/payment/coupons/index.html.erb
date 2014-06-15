@@ -1,0 +1,33 @@
+<h1>优惠码</h1>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>优惠开始时间</th>
+      <th>优惠结束时间</th>
+      <th>价格</th>
+      <th>备注</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @payment_coupons.each do |payment_coupon| %>
+      <tr>
+        <td><%= payment_coupon.code %></td>
+        <td><%= payment_coupon.start_at %></td>
+        <td><%= payment_coupon.end_at %></td>
+        <td><%= payment_coupon.price %></td>
+        <td><%= payment_coupon.note %></td>
+        <td><%= link_to '修改', edit_payment_coupon_path(payment_coupon) %></td>
+        <td><%= link_to '删除', payment_coupon, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '添加', new_payment_coupon_path %>

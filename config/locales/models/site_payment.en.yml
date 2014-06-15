@@ -1,0 +1,19 @@
+---
+en:
+  active_record:
+    models:
+      site_payment: Site payment
+    attributes:
+      site_payment:
+        site: Site
+        status: Status
+        pay_type: Pay type
+        price: Price
+        pay_at: Pay at
+        updated_by: Updated by
+        note: Note
+        is_processed: Is processed
+    errors:
+      site_payment: 
+  helpers:
+    site_payment: 

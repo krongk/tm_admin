@@ -32,9 +32,11 @@
     }
   </script>
   <!--移动端版本兼容 end -->
+  <%= render 'layouts/s_head' %>
 </head>
 
 <body class='s-bg-ddd'>
+  <%= render 'layouts/s_header' %>
   <!--模版加载提示-->
   <section class="u-alert">
     <img style='display:none;'src="<%= @base_url %>img/loading_large.gif" />
@@ -142,7 +144,7 @@
   <script src="<%= @base_url %>js/Lottery.js" type="text/javascript" charset="utf-8"></script>
   <script src="<%= @base_url %>js/main.js" type="text/javascript" charset="utf-8" defer＝'defer'></script>
   <!--脚本加载 end--> 
-
+  <%= render 'layouts/s_footer' %>
 </body>
 </html>
 

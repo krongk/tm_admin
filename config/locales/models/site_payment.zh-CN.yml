@@ -1,0 +1,19 @@
+---
+zh-CN:
+  activerecord:
+    models:
+      site_payment: 应用支付状态表
+    attributes:
+      site_payment:
+        site: 应用
+        status: 状态
+        pay_type: 支付类型
+        price: 价格
+        pay_at: 支付时间
+        updated_by: 更新者
+        note: 备注
+        is_processed: 处理状态
+    errors:
+      site_payment: 
+  helpers:
+    site_payment: 

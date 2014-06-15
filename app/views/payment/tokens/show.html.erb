@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @payment_token.code %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @payment_token.user_id %>
+</p>
+
+<p>
+  <strong>Created by:</strong>
+  <%= @payment_token.created_by %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @payment_token.status %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @payment_token.note %>
+</p>
+
+<%= link_to 'Edit', edit_payment_token_path(@payment_token) %> |
+<%= link_to 'Back', payment_tokens_path %>

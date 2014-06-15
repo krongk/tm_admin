@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @payment_coupon.code %>
+</p>
+
+<p>
+  <strong>Start at:</strong>
+  <%= @payment_coupon.start_at %>
+</p>
+
+<p>
+  <strong>End at:</strong>
+  <%= @payment_coupon.end_at %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @payment_coupon.price %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @payment_coupon.note %>
+</p>
+
+<%= link_to 'Edit', edit_payment_coupon_path(@payment_coupon) %> |
+<%= link_to 'Back', payment_coupons_path %>

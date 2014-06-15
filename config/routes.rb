@@ -1,5 +1,15 @@
 RainCms::Application.routes.draw do
 
+  resources :site_payments
+
+  namespace :payment do
+    resources :coupons
+  end
+
+  namespace :payment do
+    resources :tokens
+  end
+
   resources :members
 
   resources :common_keys

@@ -1,0 +1,16 @@
+---
+zh-CN:
+  activerecord:
+    models:
+      payment/coupon: 优惠码
+    attributes:
+      payment/coupon:
+          code: Code
+          start_at: 开始时间
+          end_at: 结束时间
+          price: 优惠价格
+          note: 备注
+    errors:
+      coupon: 
+  helpers:
+    coupon: 

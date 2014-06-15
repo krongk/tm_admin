@@ -15,6 +15,9 @@ module ApplicationHelper
 
   SPECIAL_SYMBO_REG = /(,|;|:|\.|\||\\|，|；|。|、| )/
 
+  #支付状态： 免费、未支付、支付失败、支付成功、过期、
+  PAYMENT_STATUS = ['FREE', 'PENDING', 'FAILURE', 'SUCCESS', 'EXPIRED']
+
   def display_base_errors resource
     return '' if (resource.errors.empty?) or (resource.errors[:base].empty?)
     messages = resource.errors[:base].map { |msg| content_tag(:p, msg) }.join

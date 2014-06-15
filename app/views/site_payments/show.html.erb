@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Site:</strong>
+  <%= @site_payment.site %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @site_payment.status %>
+</p>
+
+<p>
+  <strong>Pay type:</strong>
+  <%= @site_payment.pay_type %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @site_payment.price %>
+</p>
+
+<p>
+  <strong>Pay at:</strong>
+  <%= @site_payment.pay_at %>
+</p>
+
+<p>
+  <strong>Updated by:</strong>
+  <%= @site_payment.updated_by %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @site_payment.note %>
+</p>
+
+<p>
+  <strong>Is processed:</strong>
+  <%= @site_payment.is_processed %>
+</p>
+
+<%= link_to 'Edit', edit_site_payment_path(@site_payment) %> |
+<%= link_to 'Back', site_payments_path %>

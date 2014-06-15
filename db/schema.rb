@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140607031652) do
+ActiveRecord::Schema.define(version: 20140615073859) do
 
   create_table "admin_channels", force: true do |t|
     t.integer  "user_id"
@@ -109,9 +109,8 @@ ActiveRecord::Schema.define(version: 20140607031652) do
   end
 
   create_table "members", force: true do |t|
-    t.integer  "user_id"
-    t.string   "auth_type"
-    t.string   "auth_id"
+    t.string   "auth_type",          null: false
+    t.string   "auth_id",            null: false
     t.string   "auth_token"
     t.time     "token_created_at"
     t.boolean  "token_confirmed"
@@ -120,6 +119,32 @@ ActiveRecord::Schema.define(version: 20140607031652) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "members", ["auth_type", "auth_id"], name: "uniq__auth_type", unique: true, using: :btree
+
+  create_table "payment_coupons", force: true do |t|
+    t.string   "code"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.decimal  "price",      precision: 8, scale: 2
+    t.string   "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "payment_tokens", force: true do |t|
+    t.string   "code"
+    t.integer  "user_id"
+    t.integer  "created_by"
+    t.string   "status",          default: "active", null: false
+    t.string   "note"
+    t.integer  "actived_by"
+    t.integer  "actived_site_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "payment_tokens", ["user_id"], name: "index_payment_tokens_on_user_id_id", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "name"
@@ -196,9 +221,26 @@ ActiveRecord::Schema.define(version: 20140607031652) do
   add_index "site_pages", ["site_id"], name: "index_site_pages_on_site_id", using: :btree
   add_index "site_pages", ["template_page_id"], name: "index_site_pages_on_template_page_id", using: :btree
 
+  create_table "site_payments", force: true do |t|
+    t.integer  "site_id"
+    t.string   "status"
+    t.string   "pay_type"
+    t.decimal  "price",        precision: 8, scale: 2
+    t.datetime "pay_at"
+    t.integer  "updated_by"
+    t.string   "note"
+    t.string   "is_processed",                         default: "n"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "site_payments", ["site_id"], name: "index_site_payments_on_site_id", using: :btree
+
   create_table "sites", force: true do |t|
     t.integer  "user_id"
+    t.integer  "member_id"
     t.integer  "template_id"
+    t.integer  "theme_id"
     t.string   "short_title"
     t.string   "title"
     t.string   "description"
@@ -212,6 +254,7 @@ ActiveRecord::Schema.define(version: 20140607031652) do
     t.datetime "updated_at"
   end
 
+  add_index "sites", ["member_id"], name: "idx__member", using: :btree
   add_index "sites", ["short_title"], name: "index_sites_on_short_title", unique: true, using: :btree
   add_index "sites", ["template_id"], name: "index_sites_on_template_id", using: :btree
   add_index "sites", ["user_id"], name: "index_sites_on_user_id", using: :btree
@@ -267,6 +310,7 @@ ActiveRecord::Schema.define(version: 20140607031652) do
   create_table "template_themes", force: true do |t|
     t.integer "template_id"
     t.string  "title"
+    t.string  "css_color",      limit: 8
     t.string  "css_url"
     t.string  "preview_images"
     t.string  "preview_url"
