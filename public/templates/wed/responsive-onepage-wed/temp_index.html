@@ -106,6 +106,15 @@
                      <div class="bor"></div>
                      <p><%= value_for(@site_page, 'story', title: '邀请函', typo: 'text', default: true) %></p>
                      <!--fn-声音显示 -->
+                      <section class="fn-audio" >
+                        <div class="btn">
+                          <p class="btn_audio"><span class='css_sprite01 audio_open'></span><span class='css_sprite01 audio_close'></span></p>
+                          <audio id="car_audio"  controls preload="preload" autoplay="autoplay">
+                            <source src="<%= value_for(@site_page, 'music', typo: 'dialog', url: '/home/dialog_music', title: '背景音乐', default: true)  %>" type="audio/mpeg">
+                            您的浏览器不支持HTML5音频格式
+                          </audio>
+                        </div>
+                      </section>
                       <!--fn-声音显示 end-->
                   </div>
                </div>

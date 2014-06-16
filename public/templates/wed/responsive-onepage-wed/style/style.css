@@ -415,6 +415,12 @@ margin-top:4px;
 margin-right:2px;
 }
 
+ /**
+* 声音元件
+* -u-audio
+*/
+.fn-audio audio{width: 44px;}
+
 /* Form */
 
 form button{
