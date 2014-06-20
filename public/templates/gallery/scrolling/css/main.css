@@ -32,7 +32,7 @@ body { margin:0 auto; width:640px; background:#fff; font-family:"微软雅黑"; 
 /**
  *  css sprite背景样式
  */
-.css_sprite01 { background:url(http://tm.65960.com/templates/gallery/scrolling/img/sprite01.png) no-repeat; background-repeat: no-repeat; }
+.css_sprite01 { background:url(../img/sprite01.png) no-repeat; background-repeat: no-repeat; }
 
 /*统一功能元件样式 f-*/
 .f-fl { float:left; }
@@ -395,4 +395,4 @@ body {height: 100%; overflow: hidden;}
     margin: 3px;
 }
 
-.jb_map{width:640px;height:280px;background:url('http://tm.65960.com/templates/gallery/scrolling/img/map.png');position:relative;top:-280px;z-index:9999}
+.jb_map{width:640px;height:280px;background:url('../img/map.png');position:relative;top:-280px;z-index:9999}
