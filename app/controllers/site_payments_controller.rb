@@ -1,4 +1,5 @@
 class SitePaymentsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_site_payment, only: [:show, :edit, :update, :destroy]
 
   # GET /site_payments
@@ -7,9 +8,9 @@ class SitePaymentsController < ApplicationController
     conditions = []
     queries = []
     
-    if params[:status]
-      queries << "status = ?" 
-      conditions << params[:status]
+    if params[:state]
+      queries << "state = ?" 
+      conditions << params[:state]
     end
     if params[:site_id]
       queries << "site_id = ?" 
@@ -42,10 +43,10 @@ class SitePaymentsController < ApplicationController
     respond_to do |format|
       if @site_payment.save
         format.html { redirect_to @site_payment, notice: 'Site payment was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @site_payment }
+        format.json { render action: 'show', state: :created, location: @site_payment }
       else
         format.html { render action: 'new' }
-        format.json { render json: @site_payment.errors, status: :unprocessable_entity }
+        format.json { render json: @site_payment.errors, state: :unprocessable_entity }
       end
     end
   end
@@ -59,7 +60,7 @@ class SitePaymentsController < ApplicationController
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @site_payment.errors, status: :unprocessable_entity }
+        format.json { render json: @site_payment.errors, state: :unprocessable_entity }
       end
     end
   end
@@ -82,6 +83,6 @@ class SitePaymentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def site_payment_params
-      params.require(:site_payment).permit(:site_id, :status, :pay_type, :price, :pay_at, :updated_by, :note, :is_processed)
+      params.require(:site_payment).permit(:site_id, :state, :pay_type, :price, :pay_at, :updated_by, :note, :is_processed)
     end
 end

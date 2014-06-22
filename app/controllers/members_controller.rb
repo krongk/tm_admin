@@ -1,10 +1,11 @@
 class MembersController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_member, only: [:show, :edit, :update, :destroy]
 
   # GET /members
   # GET /members.json
   def index
-    @members = Member.all
+    @members = Member.order("updated_at DESC").page(params[:page])
   end
 
   # GET /members/1

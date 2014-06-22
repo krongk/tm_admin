@@ -1,12 +1,13 @@
 <h1>Listing members</h1>
 
-<table>
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
-      <th>User</th>
+      <th>ID</th>
       <th>Auth type</th>
       <th>Auth</th>
       <th>Auth token</th>
+      <th>Site Count</th>
       <th>Token created at</th>
       <th>Token confirmed</th>
       <th>Current sign in at</th>
@@ -20,10 +21,11 @@
   <tbody>
     <% @members.each do |member| %>
       <tr>
-        <td><%= member.user %></td>
+        <td><%= member.id %></td>
         <td><%= member.auth_type %></td>
         <td><%= member.auth_id %></td>
         <td><%= member.auth_token %></td>
+        <td><%= member.sites.size %></td>
         <td><%= member.token_created_at %></td>
         <td><%= member.token_confirmed %></td>
         <td><%= member.current_sign_in_at %></td>

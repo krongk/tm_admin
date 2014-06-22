@@ -9,7 +9,6 @@
       <th>激活用户</th>
       <th>激活应用</th>
       <th></th>
-      <th></th>
     </tr>
   </thead>
 
@@ -24,7 +23,6 @@
         <td><%= payment_token.created_by %></td>
         <td><%= payment_token.actived_by %></td>
         <td><%= payment_token.actived_site_id %></td>
-        <td><%= link_to '修改', edit_payment_token_path(payment_token) %></td>
         <td><%= link_to '删除', payment_token, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

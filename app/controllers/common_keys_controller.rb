@@ -1,4 +1,5 @@
 class CommonKeysController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_common_key, only: [:show, :edit, :update, :destroy]
 
   # GET /common_keys

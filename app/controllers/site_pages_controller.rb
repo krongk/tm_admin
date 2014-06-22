@@ -1,4 +1,5 @@
 class SitePagesController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_site_page, only: [:show, :edit, :update, :destroy]
 
   # GET /site_pages

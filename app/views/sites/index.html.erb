@@ -1,33 +1,6 @@
 <h1>应用列表</h1>
 
-<table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>User</th>
-      <th>Template</th>
-      <th>Sort title</th>
-      <th>Title</th>
-      <th>Is published</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @sites.each do |site| %>
-      <tr>
-        <td><%= site.id %></td>
-        <td><%= site.user.email %></td>
-        <td><%= site.template.title %></td>
-        <td><%= site.title %></td>
-        <td><%= site.is_published %></td>
-        <td><%= link_to '查看', get_site_preview(site) %></td>
-        <td><%= link_to '删除', site, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render partial: 'list', locals: {sites: @sites} %>
 
 <br>
 <%= will_paginate @sites %>

@@ -1,0 +1,11 @@
+---
+en:
+  active_record:
+    models:
+      site_image: Site image
+    attributes:
+      site_image: {}
+    errors:
+      site_image: 
+  helpers:
+    site_image: 

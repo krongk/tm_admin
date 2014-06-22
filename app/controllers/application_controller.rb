@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
   #catch exception
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_path, :alert => '没有权限访问，请联系管理员！'
+    #return
   end
   rescue_from ActionController::RoutingError do |exception|
     not_found#  redirect_to root_path
@@ -48,4 +49,11 @@ class ApplicationController < ActionController::Base
     raise ActionController::RoutingError.new('Not Found')
   end
 
+  #只要是登录的用户，就有最高权限
+  def authenticate_user!
+    super
+    unless ENV["ADMIN_USER_LIST"].include?(current_user.email)
+      redirect_to root_path, alert: '没有权限访问'
+    end
+  end
 end

@@ -15,8 +15,12 @@ module ApplicationHelper
 
   SPECIAL_SYMBO_REG = /(,|;|:|\.|\||\\|，|；|。|、| )/
 
-  #支付状态： 免费、未支付、支付失败、支付成功、过期、
-  PAYMENT_STATUS = ['FREE', 'PENDING', 'FAILURE', 'SUCCESS', 'EXPIRED']
+  #
+  def get_site_url(site)
+    return if site.nil?
+    raise "请指定 WED_HOST" if ENV['WED_HOST'].nil?
+    [ENV['WED_HOST'], "s-#{site.short_title}"].join('/')
+  end
 
   def display_base_errors resource
     return '' if (resource.errors.empty?) or (resource.errors[:base].empty?)

@@ -1,9 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @member.user %>
-</p>
+<%= render partial: 'sites/list', locals: {sites: @member.sites} %>
 
 <p>
   <strong>Auth type:</strong>
@@ -41,4 +38,4 @@
 </p>
 
 <%= link_to 'Edit', edit_member_path(@member) %> |
-<%= link_to 'Back', members_path %>
+<%= link_to 'Back', "javascript: history.go(-1);" %>

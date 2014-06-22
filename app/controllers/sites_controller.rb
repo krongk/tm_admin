@@ -1,5 +1,6 @@
 class SitesController < ApplicationController
-  before_filter :authenticate_user!, except: [:index, :show]
+  include SitePaymentsHelper
+  before_filter :authenticate_user!
   before_action :set_site, only: [:show, :edit, :update, :destroy]
 
 

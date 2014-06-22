@@ -1,0 +1,33 @@
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>编号</th>
+      <th>模板</th>
+      <th>用户</th>
+      <th>预览</th>
+      <th>创建时间</th>
+      <th>支付状态</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% sites.each do |site| %>
+      <tr>
+        <td><%= site.id %></td>
+        <td><%= site.template.title %></td>
+        <td>
+          <% if site.user_id.present? %>
+            <%= link_to site.user.email, user_path(site.user_id) %>
+          <% else %>
+            <%= link_to site.member.auth_id, member_path(site.member_id) %>
+          <% end %>
+        </td>
+        <td><%= link_to site.title, get_site_url(site), target: '_blank' %></td>
+        <td><%= get_date site.created_at %></td>
+        <td><%= payment_state(site) %></td>
+        <td><%= link_to '删除', site, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -17,11 +17,11 @@
     <% @site_payments.each do |site_payment| %>
       <tr>
         <td><%= link_to site_payment.site.title, site_path(site_payment.site) %></td>
-        <td><%= site_payment.status %></td>
+        <td><%= site_payment.state %></td>
         
         <td><%= site_payment.pay_type %></td>
         <td><%= site_payment.price %></td>
-        <td><%= site_payment.pay_at %></td>
+        <td><%= site_payment.completed_at %></td>
         <td><%= site_payment.updated_by %></td>
         <td><%= site_payment.is_processed %></td>
         <td><%= site_payment.note %></td>

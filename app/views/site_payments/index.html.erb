@@ -8,9 +8,9 @@
       <%= link_to site_payments_path, class: "list-group-item active" do %>
         查看全部 <span class="badge"><%= SitePayment.all.size %></span>
       <% end %>
-      <% ApplicationHelper::PAYMENT_STATUS.each do |status| %>
-        <%= link_to site_payments_path(status: status), class: "list-group-item" do %>
-          <%= status %> <span class="badge"><%=  SitePayment.count(status) %></span>
+      <% SitePaymentsHelper::STATE.each do |state| %>
+        <%= link_to site_payments_path(state: state), class: "list-group-item" do %>
+          <%= state %> <span class="badge"><%=  SitePayment.count(state) %></span>
         <% end %>
       <% end %>
     </div>
