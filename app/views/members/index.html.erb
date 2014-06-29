@@ -1,13 +1,13 @@
-<h1>Listing members</h1>
+<h1>会员列表</h1>
 
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Auth type</th>
-      <th>Auth</th>
-      <th>Auth token</th>
-      <th>Site Count</th>
+      <th>编号</th>
+      <th>认证类型</th>
+      <th>认证号码</th>
+      <th>验证码</th>
+      <th>网站数量</th>
       <th>Token created at</th>
       <th>Token confirmed</th>
       <th>Current sign in at</th>
@@ -25,14 +25,14 @@
         <td><%= member.auth_type %></td>
         <td><%= member.auth_id %></td>
         <td><%= member.auth_token %></td>
-        <td><%= member.sites.size %></td>
+        <td><%= link_to member.sites.count, member %></td>
         <td><%= member.token_created_at %></td>
         <td><%= member.token_confirmed %></td>
         <td><%= member.current_sign_in_at %></td>
         <td><%= member.last_sign_in_at %></td>
-        <td><%= link_to 'Show', member %></td>
-        <td><%= link_to 'Edit', edit_member_path(member) %></td>
-        <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '详细', member %></td>
+        <td><%= link_to '修改', edit_member_path(member) %></td>
+        <td><%= link_to '删除', member, method: :delete, data: { confirm: '确定要删除?' } %></td>
       </tr>
     <% end %>
   </tbody>
