@@ -51,7 +51,7 @@ class SitesController < ApplicationController
 
   # GET /sites/1/edit
   def edit
-    @template = Template::Template.find(@site.template_id)
+    @template = Templates::Template.find(@site.template_id)
   end
 
   # POST /sites
@@ -85,7 +85,7 @@ class SitesController < ApplicationController
   def update
     respond_to do |format|
       if @site.update(site_params)
-        format.html { redirect_to edit_site_page_url(@site.site_pages.first), notice: 'Site was successfully updated.' }
+        format.html { redirect_to sites_path, notice: 'Site was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -115,6 +115,6 @@ class SitesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def site_params
-      params.require(:site).permit(:user_id, :template_id, :short_title, :title, :description, :domain, :is_published)
+      params.require(:site).permit(:user_id, :template_id, :short_title, :title, :description, :domain, :status, :is_published)
     end
 end

@@ -2,11 +2,13 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :template_id, as: :hidden, input_html: {value: params[:temp_id]} %>
     <%= f.input :title %>
     <%= f.input :description %>
-    <%#= f.input :domain %>
-    <%#= f.input :is_published %>
+    <%= f.input :domain %>
+    <%= f.input :status %>
+    <%= f.input :is_published %>
+    <%= f.input :note %>
+    
   </div>
 
   <div class="form-actions">

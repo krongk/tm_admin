@@ -16,9 +16,14 @@
   <tbody>
     <% @site_payments.each do |site_payment| %>
       <tr>
-        <td><%= link_to site_payment.site.title, site_path(site_payment.site) %></td>
+        <td>
+          <% if site_payment.site %>
+            <%= link_to site_payment.site.title, site_path(site_payment.site) %>
+          <% else %>
+            网站已经被移除
+          <% end %>
+        </td>
         <td><%= site_payment.state %></td>
-        
         <td><%= site_payment.pay_type %></td>
         <td><%= site_payment.price %></td>
         <td><%= site_payment.completed_at %></td>
