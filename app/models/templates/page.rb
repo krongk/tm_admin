@@ -51,7 +51,13 @@ class Templates::Page < ActiveRecord::Base
     arr << %{ control-label">}
     arr << %{<abbr title="必填项">*</abbr>} if opt[:required] == true
     arr << %{<%= CommonKey.get('#{name}').try(:title) %>}
-    arr << %{<a data-target="#myModal" data-toggle="modal" href="#{opt[:url]}">(选择<%= CommonKey.get('#{name}').try(:title) %>)</a>} if opt[:typo].downcase == 'dialog'
+    if opt[:typo].downcase == 'dialog' && name == 'music'
+      arr << %{<a data-target="#musicModal" data-toggle="modal" href="#{opt[:url]}">(选择<%= CommonKey.get('#{name}').try(:title) %>)</a>}
+    end
+    if opt[:typo].downcase == 'dialog' && name == 'banner'
+      arr << %{<a data-target="#bannerModal" data-toggle="modal" href="#{opt[:url]}">(选择<%= CommonKey.get('#{name}').try(:title) %>)</a>}
+    end
+
     arr << %{</label>}
     arr << %{\n    <div class="controls">\n        }
     case opt[:typo].downcase
