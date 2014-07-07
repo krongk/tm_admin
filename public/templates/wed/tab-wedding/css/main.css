@@ -48,7 +48,7 @@ div.container {
     color: #FFFFFF;
 }
 .nav ul li a, .page .footer p.back, a.map:after {
-    background-color: #cc0000;
+  background-color: #cc0000;
 	background-image:url(../img/dark-red.jpg)
 }
 div.imgcontent img { /* 插图 */
@@ -189,7 +189,7 @@ a.map img {
  }
 
 .gallery table td{padding-top:5px; padding-bottom:3px;}
-    .gallery{padding:5px;}
+    .gallery{padding: 0px;}
     .jiuba{width:90%;}
     .redinput{width:20px; height:20px; border:0px;}
 
@@ -308,11 +308,6 @@ div.gallery ul.collections li a {
     border-right-style: solid;
     border-right-width: 1px;
 }
-
-
-
- 
-
 
 div.gallery ul.collections li:nth-child(3n+3) a {
 	border-right: none;
@@ -500,15 +495,49 @@ a,div,img,li,ul {
 	}
 	
 	.nav.menus ul li a {
-		width: 33.15%;
+		width: 33.125%;
 	}
 	div.gallery ul.collections li a {
-		width: 33.15%;
+		width: 33.125%;
 	}
 	
 	
 	/*留言图片*/
 	
+.lego-image {
+	position: relative;
+	overflow: hidden;
+}
+.lego-vertical {
+	cursor: pointer;
+}
+.lego-sole {
+	height: 300px;
+	overflow: hidden;
+	position: relative;
+}
+.lego-image img {
+	border: 0;
+	max-width: 100%;
+}
+.lego-sole img {
+	position: absolute;
+	top: -1000em;
+	bottom: -1000em;
+	left: 0;
+	margin: auto;
+}
+.lego-phone {
+	background-color: #cc0000;
+	background-image:url(../img/dark-red.jpg);
+	padding: 5px;
+	font-size: 110%;
+	text-align: center;
+}
+.lego-phone a{
+	color: #fff;
+	text-decoration: none;
+}
 .collections2 img{ width:50px; height:120px;}
 
 div.gallery ul.collections2 {
