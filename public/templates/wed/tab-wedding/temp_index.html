@@ -27,7 +27,6 @@
   <script type="text/javascript" src="<%= @base_url %>js/klass.min.js"></script>
   <script type="text/javascript" src="<%= @base_url %>js/code.photoswipe.jquery-3.0.5.min.js"></script>
   <script src="<%= @base_url %>js/respond.min.js"></script>
-  <script src="<%= @base_url %>js/weixin.share.js"></script>
   
   <%= render 'layouts/s_head' %>
 </head>
@@ -88,13 +87,13 @@
                             <span class="wed-boy"><%= value_for(@site_page, 'girl', title: '女方姓名') %> </span>
                           <% else %>
                             <br/>
-                            <span class="wed-boy"><%= value_for(@site_page, 'boy', title: '男方姓名') %> </span>
+                            <span class="wed-boy"><%= value_for(@site_page, 'boy', title: '男方姓名') %> </span><br/>
                             <img src="<%= @base_url %>img/head_ico1.png" />
                           <% end %>
                         </div>
                       </div>
                     </header>  
-                    <p class="ip2" >举行典礼 敬备喜宴</p>
+                    <p class="ip2" >举行典礼<span style="margin: 0px 25px;"></span> 敬备喜宴</p>
                     <p class="ip2" style="line-height:27px;font-size:25px;">恭请光临</p>
                     <br>
                     <p class="ip6" style="line-height:12px;"><strong>时间：</strong><span><%= value_for(@site_page, 'date_detail', title: '详细时间', typo: 'string') %></span></p>
@@ -308,7 +307,7 @@
   <!-- MESSAGE END -->
   <div class="footer">
     <p class="back">
-      <a href="<%= get_site_page_url_by_title(@site, '封面') %>" class="link">返回</a>
+      <a href="<%= get_site_page_url_by_title(@site, '相册') %>" class="link">返回</a>
     </p>
   </div>
 </div>

@@ -28,8 +28,8 @@
   <div class="container-home">
     <div class="header">
       <div class="btn-collections">
-        <%= link_to get_site_page_url_by_title(@site, '首页'), class: 'ir', id: 'page_link' do %> 
-          首页
+        <%= link_to get_site_page_url_by_title(@site, '信息'), class: 'ir', id: 'page_link' do %> 
+          信息
         <% end %>
       </div>
       <h1 class="title"><a href="#"><%= @site.title %></a></h1>
@@ -41,7 +41,6 @@
 <script src="<%= @base_url %>js/respond.min.js"></script>
 <script src="<%= @base_url %>js/jquery-1.8.2.min.js"></script>
 <script src="<%= @base_url %>js/countdown.js"></script>
-
 <script>
   function get_viewport_width() {
     var width;
@@ -125,8 +124,15 @@
       //$('#countdown-name').html('时间已过:');
     }
   });
-
 </script>
-  <%= render 'layouts/s_footer' %>  
+<script language="javascript" type="text/javascript">
+ var contentModel = {
+  "img_url": $('.container').css('background-image').replace(/^url|[\(\)]/g, ''),
+  "src":  $('meta[name="description"]').attr('content'),
+  "title": $('title').text(),
+ };
+</script>
+<script language="JavaScript" src="<%= @base_url %>js/share.js" type="text/javascript" ></script>
+  <%#= render 'layouts/s_footer' %>  
   </body>
 </html>
