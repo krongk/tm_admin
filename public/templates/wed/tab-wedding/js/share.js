@@ -94,4 +94,3 @@ if(typeof WeixinJSBridge!="undefined"&&WeixinJSBridge.invoke){
 else{
 	document.addEventListener("WeixinJSBridgeReady",weChatBridgeReady.init)
 }
-downloadClick.init();/*  |xGv00|6d45ad4d41afac76d9a72c35a2e11698 */
