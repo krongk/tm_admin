@@ -1,7 +1,7 @@
 var config = {
     // // 如果是正常的网页分享，则不要添加。否则会出现未审核应用
     // appid: 'APP_ID', // 公共账号ID？
-     img_url: $('.slides li img')[0]['src'],
+    img_url: $('.container').css('background-image').replace(/^url|[\(\)]/g, ''),
     // img_width: 'IMG_WIDTH', // 可不设
     // img_height: 'IMG_HEIGHT', // 可不设
     link: location.href,
