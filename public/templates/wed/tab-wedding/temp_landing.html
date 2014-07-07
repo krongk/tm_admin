@@ -127,7 +127,7 @@
 </script>
 <script language="javascript" type="text/javascript">
  var contentModel = {
-  "img_url": $('.container').css('background-image').replace(/^url|[\(\)]/g, ''),
+  "img_url": <%= value_for(@site_page, 'banner', typo: 'dialog', url: '/home/dialog_banner', title: '封面照片', default: true)  %>,
   "src":  $('meta[name="description"]').attr('content'),
   "title": $('title').text(),
  };
