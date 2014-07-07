@@ -22,10 +22,10 @@ var openAppController=function(h){
 			openAppController.reCheck()
 		}
 		,reCheck:function(){
-			setTimeout(function(){
-				openAppController.showDownload()
-			}
-			,6000)
+			// setTimeout(function(){
+			// 	openAppController.showDownload()
+			// }
+			// ,6000)
 		}
 
 	}
