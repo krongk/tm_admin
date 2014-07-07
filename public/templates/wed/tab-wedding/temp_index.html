@@ -87,6 +87,7 @@
                           <% else %>
                             <br/>
                             <span class="wed-boy"><%= value_for(@site_page, 'boy', title: '男方姓名') %> </span>
+                            <img src="<%= @base_url %>img/head_ico1.png" />
                           <% end %>
                         </div>
                       </div>
@@ -100,7 +101,6 @@
                     <p class="ip4" style="font-size:17px; line-height:24px; margin-top:20px;">
                       <%= value_for(@site_page, 'welcome', title: '简短邀请词', typo: 'text', default: true) %>
                     </p>
-                    <p><a href="tel:<%= value_for(@site_page, 'boy_phone') %>" class="btn btn-primary"><i class="fa fa-phone"> </i>  <%= value_for(@site_page, 'boy_phone') %> </a></p>
                   </div>
                 </div>
                 <footer>
@@ -147,7 +147,7 @@
                     var uri = 'http://api.map.baidu.com/marker?location='+ location.lat +','+location.lng +'&title=婚礼位置&content='+address+'&output=html';
                     var staticimageUrl = "http://api.map.baidu.com/staticimage?center=" +location.lng+','+location.lat + "&markers=" + location.lng+','+location.lat;
 
-                    html += '<p style="text-align:center"><a href="' + uri + '"><img class="mapimg" src="' + staticimageUrl + 'width=600&height=330&zoom=14"/></a></p><p style="text-align:center; line-heigt:30px;"><%= raw value_for(@site_page, "address") %><a href="' + uri + '"><img src=""http://www.wedxt.cn/templates/wed/tab-wedding/img/daohang.png"/></a></p>' ;
+                    html += '<p style="text-align:center"><a href="' + uri + '"><img class="mapimg" src="' + staticimageUrl + 'width=600&height=330&zoom=14"/></a></p><p style="text-align:center; line-heigt:30px;"><%= raw value_for(@site_page, "address") %><a href="' + uri + '"><img src=http://www.wedxt.cn/templates/wed/tab-wedding/img/daohang.png/></a></p>' ;
                     document.getElementById('optionsNarrative').innerHTML = html;
                     return;
 
@@ -216,15 +216,6 @@
         <a href="tel:<%= value_for(@site_page, 'girl_phone', title: '女方联系电话', typo: 'string') %>">
           <i class="fa fa-phone-square"> </i> <%= value_for(@site_page, 'girl_phone', title: '女方联系电话', typo: 'string') %></a>
       </div>
-    </div>
-    <div class="imgcontent">
-      <table width="100%" border="0" cellspacing="0" cellpadding="0" style="overvlow: hidden;">
-        <tr bgcolor="#FF3300" style="color:#FFF">
-          <td width="100%" align="center">
-            <%= value_for(@site_page, 'boy_phone', title: '男方联系电话', typo: 'string') %> &nbsp;&nbsp;&nbsp; <%= value_for(@site_page, 'girl_phone', title: '女方联系电话', typo: 'string') %>
-          </td>
-        </tr>
-      </table>
     </div>
     <div class="gallery">
       <form action="/site_comments" name="contact-form2" id="contact-form2" method="post" enctype="multipart/form-data" onSubmit="return false;">
