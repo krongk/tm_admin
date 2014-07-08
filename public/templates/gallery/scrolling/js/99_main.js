@@ -98,7 +98,7 @@ var Msize = $(".m-page").size(), 	//页面的数目
 				lazy_change(node);
 			}else continue;
 		}
-	},200)
+	},2000)
 	
 	// 加载当前后面第三个
 	function lazy_bigP(){

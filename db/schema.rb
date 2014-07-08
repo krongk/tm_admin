@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140615073859) do
+ActiveRecord::Schema.define(version: 20140708130407) do
 
   create_table "admin_channels", force: true do |t|
     t.integer  "user_id"
@@ -146,6 +146,20 @@ ActiveRecord::Schema.define(version: 20140615073859) do
 
   add_index "payment_tokens", ["user_id"], name: "index_payment_tokens_on_user_id_id", using: :btree
 
+  create_table "resouce_musics", force: true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "resource_musics", force: true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "roles", force: true do |t|
     t.string   "name"
     t.integer  "resource_id"
@@ -222,19 +236,25 @@ ActiveRecord::Schema.define(version: 20140615073859) do
   add_index "site_pages", ["template_page_id"], name: "index_site_pages_on_template_page_id", using: :btree
 
   create_table "site_payments", force: true do |t|
-    t.integer  "site_id"
-    t.string   "status"
+    t.string   "trade_no",     limit: 50
+    t.integer  "site_id",                                                       null: false
+    t.decimal  "price",                   precision: 8, scale: 2,               null: false
     t.string   "pay_type"
-    t.decimal  "price",        precision: 8, scale: 2
-    t.datetime "pay_at"
+    t.string   "state",        limit: 32
+    t.datetime "pending_at"
+    t.datetime "completed_at"
+    t.datetime "canceled_at"
+    t.datetime "paid_at"
+    t.datetime "start_at"
     t.integer  "updated_by"
     t.string   "note"
-    t.string   "is_processed",                         default: "n"
+    t.string   "is_processed",                                    default: "n"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "site_payments", ["site_id"], name: "index_site_payments_on_site_id", using: :btree
+  add_index "site_payments", ["is_processed"], name: "idx__processed", using: :btree
+  add_index "site_payments", ["site_id"], name: "unq__site_id", unique: true, using: :btree
 
   create_table "sites", force: true do |t|
     t.integer  "user_id"
@@ -246,8 +266,10 @@ ActiveRecord::Schema.define(version: 20140615073859) do
     t.string   "description"
     t.string   "domain"
     t.string   "status"
-    t.boolean  "is_published",    default: true
-    t.boolean  "is_comment_show", default: true
+    t.boolean  "is_published",               default: true
+    t.boolean  "is_comment_show",            default: true
+    t.string   "plan",            limit: 50
+    t.datetime "plan_expired_at"
     t.integer  "updated_by"
     t.text     "note"
     t.datetime "created_at"

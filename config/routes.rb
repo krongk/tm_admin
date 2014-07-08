@@ -1,5 +1,9 @@
 RainCms::Application.routes.draw do
 
+  namespace :resource do
+    resources :musics
+  end
+
   resources :site_payments
 
   namespace :payment do

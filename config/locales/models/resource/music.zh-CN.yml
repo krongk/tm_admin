@@ -1,0 +1,13 @@
+---
+zh-CN:
+  activerecord:
+    models:
+      resource/music: 音乐外链
+    attributes:
+      resource/music:
+          name: 名称
+          url: 链接
+    errors:
+      music: 
+  helpers:
+    music: 

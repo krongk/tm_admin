@@ -1,0 +1,29 @@
+<h1>音乐外链</h1>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>链接</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @resource_musics.each do |resource_music| %>
+      <tr>
+        <td><%= resource_music.name %></td>
+        <td><%= resource_music.url %></td>
+        <td><%= link_to '试听', resource_music.url, target: '_blank' %></td>
+        <td><%= link_to '修改', edit_resource_music_path(resource_music) %></td>
+        <td><%= link_to '删除', resource_music, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @resource_musics %>
+<br>
+
+<%= link_to '添加', new_resource_music_path, class: 'btn btn-primary btn-lg' %>
