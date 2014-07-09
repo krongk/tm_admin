@@ -65,30 +65,6 @@
 			<img data-share-logo src="<%= get_first_site_image_url(@site) %>"  style="display:none;">
 		</section>
 		<!--index 相册的封面 end-->
-		
-		<% if value_for(@site_page, 'address', title: '地址', typo: 'string') %>
-			<section data-page="6" class="m-page m-page6 show" data-id="2929369" data-type="multi_contact">
-				<div class="m-map">
-					<div id="ylMap" class="ylMap"></div>
-					<div class="mapVal ">
-						<input class="address" type="hidden" value="{'sign_name':'', 'contact_tel':'<%= value_for(@site_page, "mobile_phone", title: "联系电话", typo: "string") %>', 'address':'<%= value_for(@site_page, "address", title: "地址", typo: "string") %>'}">
-						<input class="longitude" type="hidden" value="<%= value_for(@site_page, 'longitude', title: '经度', typo: 'string') %>">
-						<input class="latitude" type="hidden" value="<%= value_for(@site_page, 'latitude', title: '纬度', typo: 'string') %>">
-					</div>
-					<div id="transit_result"></div>
-					<div class="tit">
-						<p><a href="#"><span class="css_sprite01"></span><%= value_for(@site_page, 'address', title: '地址', typo: 'string') %></a></p>
-						<a class="close_map css_sprite01" href="javascript:void(0)"></a>
-					</div>
-				</div>
-				<div class="m-intro">
-					<h3><%= @site.title %></h3>
-					<div class="m-content">
-						<%= raw value_for(@site_page, 'content2', title: '邀请辞', typo: 'text') %>
-					</div>
-				</div>
-			</section>
-		<% end %>
 
 		<% @site_page.site_images.each_with_index do |site_image, index| %>
       <% next if index == 0 %>
@@ -129,6 +105,28 @@
 		</section>
 		<!--sub05 介绍 end-->	
 
+		<!--sub05 address-->
+		<% if value_for(@site_page, 'address', title: '地址', typo: 'string') %>
+			<section data-page="6" class="m-page m-page6 show" data-id="2929369" data-type="multi_contact">
+				<div class="m-map">
+					<div id="ylMap" class="ylMap"></div>
+					<div class="mapVal ">
+						<input class="address" type="hidden" value="{'sign_name':'', 'contact_tel':'<%= value_for(@site_page, "mobile_phone", title: "联系电话", typo: "string") %>', 'address':'<%= value_for(@site_page, "address", title: "地址", typo: "string") %>'}">
+						<input class="longitude" type="hidden" value="<%= value_for(@site_page, 'longitude', title: '经度', typo: 'string') %>">
+						<input class="latitude" type="hidden" value="<%= value_for(@site_page, 'latitude', title: '纬度', typo: 'string') %>">
+					</div>
+					<div id="transit_result"></div>
+					<div class="tit">
+						<p><a href="#"><span class="css_sprite01"></span><%= value_for(@site_page, 'address', title: '地址', typo: 'string') %></a></p>
+						<a class="close_map css_sprite01" href="javascript:void(0)"></a>
+					</div>
+				</div>
+				<div class="m-img m-img01 lazy-bk" data-bk= '<%= get_last_site_image_url(@site) %>' 
+					style="background:url(<%= get_last_site_image_url(@site) %>) center no-repeat; background-size:cover;">
+				</div>
+			</section>
+		<% end %>
+		<!--sub05 address end-->
 
 		<!--pageLoading-->
 		<section class="pageLoading">
