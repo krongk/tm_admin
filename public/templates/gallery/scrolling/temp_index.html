@@ -132,10 +132,11 @@
 
 		<!--sub05 车试驾预约-->
 		<section data-page="7" data-yuyue='true' class="m-page m-page7 hide" data-id='25524' data-type='input'>
-		  <div class="wbg lazy-bk" style='background:#ddd top center no-repeat;background-size:cover;' data-bk='/'></div> 
+		  <div class="wbg" style='background:#ddd top center no-repeat;background-size:cover;' data-bk='/'></div> 
 		    <div class="wct">
-		      <h3>送上祝福</h3>
-		      <form class="wct_form">
+		      <h3>提交留言</h3>
+		      <%= form_tag("/site_comments", class: 'wct_form', id: 'contact-form1', onsubmit: 'return false') do %>
+		        <input class="hidden" id="site_comment_site_id" name="site_comment[site_id]" type="hidden" value="<%= @site.id %>" />
 		        <div class="tableWrap tableWrap-1">
 		          <table>
 		            <colgroup>
@@ -146,63 +147,46 @@
                  <tr class="base-info" >
                     <th><span>姓名</span></th>
                     <td>
-                      <input class="base-info-input" type="text" placeholder="请输入姓名" name= "name" onblur="return false;"/>
+                    	<input name="site_comment[name]"  class="base-info-input" id="name1" placeholder="请输入您的昵称" type="text" onblur="return false;">
                     </td>
                   </tr>                                                                      
                    <tr class="base-info" >
-                    <th><span>祝福语</span></th>
+                    <th><span>信息</span></th>
                     <td>
-                      <input class="base-info-input" type="text" placeholder="请输入祝福语" name= "company" onblur="return false;"/>
+                      <input class="base-info-input" type="text" placeholder="请输入想要收的话" name="site_comment[content]" onblur="return false;"/>
                     </td>
 	                  </tr>
 	               </tbody>
 		          </table>
-		          <p class="submit submit-custom btn-boder-color"><input type="submit" value="我要祝福" /></p>
+		          <p class="submit submit-custom btn-boder-color"><input type="submit" value="提交" /></p>
 		        
 		          <p class="share btn-boder-color" data-id='25524'><a href="javascript:void(0);"><span class='share_icon css_sprite01'></span>&nbsp;分享好友</a></p>
 		          <div  class="share-content">
 		            <div class='m-spopup'>
-		              <a href="http://service.weibo.com/share/share.php?&url=http%3A%2F%2Fwww.lightapp.cn%2Fcar%2Findex%2F2660%3Fchannel%3D1%3F%26from%3Dsinglemessage%26isappinstalled%3D0%3F%26weixin.qq.com%3D" target="_blank">
+		              <a href="http://service.weibo.com/share/share.php?&url=<%= get_site_url(@site) %>" target="_blank">
 		                <img class='lazy-bk' data-bk="<%= @base_url %>img/sinaminiblog.png" />
 		                <br/><span>新浪微博</span>
 		              </a>
-		              <a href="http://share.v.t.qq.com/index.php?c=share&a=index&&url=http%3A%2F%2Fwww.lightapp.cn%2Fcar%2Findex%2F2660%3Fchannel%3D1%3F%26from%3Dsinglemessage%26isappinstalled%3D0%3F%26weixin.qq.com%3D" target="_blank">
+		              <a href="http://share.v.t.qq.com/index.php?c=share&a=index&&url=<%= get_site_url(@site) %>" target="_blank">
 		                <img class='lazy-bk' data-bk="<%= @base_url %>img/qqmb.png" />
 		                <br/><span>腾讯微博</span>
 		              </a>
-		              <a href="http://widget.renren.com/dialog/share?resourceUrl=http%3A%2F%2Fwww.lightapp.cn%2Fcar%2Findex%2F2660%3Fchannel%3D1%3F%26from%3Dsinglemessage%26isappinstalled%3D0%3F%26weixin.qq.com%3D" target="_blank">
+		              <a href="http://widget.renren.com/dialog/share?resourceUrl=<%= get_site_url(@site) %>" target="_blank">
 		                <img class='lazy-bk' data-bk="<%= @base_url %>img/renren.png" />
 		                <br/><span>人人网</span>
 		              </a>
-		              <a href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http%3A%2F%2Fwww.lightapp.cn%2Fcar%2Findex%2F2660%3Fchannel%3D1%3F%26from%3Dsinglemessage%26isappinstalled%3D0%3F%26weixin.qq.com%3D" target="_blank">
+		              <a href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=<%= get_site_url(@site) %>" target="_blank">
 		                <img class='lazy-bk' data-bk="<%= @base_url %>img/qzone.png" />
 		                <br/><span>QQ空间</span>
 		              </a>
 		              <a href='javascript:void(0)' class='share-btn' onclick='cancle_share(this);'>取&nbsp;&nbsp;消</a>
 		            </div>
 		          </div>
-		          <div class='loading'>
-		            <img class='lazy-bk' data-bk='<%= @base_url %>/img/load.gif' alt='正大力提交...'/>
-		          </div>
-		        </div>
-		        <!-- 更多表单 -->
-		        <div class="tableWrap tableWrap-2">
-		          <table>
-		            <colgroup>
-		              <col width="30%" /> 
-		              <col width="70%" />
-		            </colgroup>
-		            <tbody> </tbody>
-		          </table>
-		          
-		          <p class="submit submit-2 submit-custom btn-boder-color"><input type="button" value="我要祝福" /></p>
-		          <input type="hidden" value='提交成功!' id='success-tips'/> 
-		          <p class="submit submit-3 btn-boder-color"><input type="button" value="返回" /></p>
 		        </div>
 		        <p class="popup popup_error"></p>
 		        <p class="popup popup_sucess">幸苦了！谢谢您的预约！</p>
 		        <!-- 更多表单 -->
-		      </form>
+		      <% end %>
 		    </div>
 		  <div class="popup-txt">向下滑动，返回首页</div>
 		</section>

@@ -572,15 +572,15 @@ var Msize = $(".m-page").size(), 	//页面的数目
 			
 		})
 		
-		// //表单聚焦时，取消切换效果
-		// $('.wct_form').find('input').on('focus',function(){
-		// 	changeClose();	
-		// })
+		//表单聚焦时，取消切换效果
+		$('.wct_form').find('input').on('focus',function(){
+			changeClose();	
+		})
 		
-		// //表单失去聚焦时，开启切换效果
-		// $('.wct_form').find('input').on('blur',function(){
-		// 	changeOpen();	
-		// })
+		//表单失去聚焦时，开启切换效果
+		$('.wct_form').find('input').on('blur',function(){
+			changeOpen();	
+		})
 
 		/**
 	 	 *  表单的操作
@@ -904,11 +904,11 @@ function ajax_custom_submit(form){
 	var success_msg = $.trim($('.widthdesc-form').find('input[name="success_msg"]').val());
 	var activity_id = parseInt(document.getElementById('activity_id').innerHTML,10);
 	if (success_msg == '') {
-		success_msg = '感谢您的支持！我们会尽快与您取得联系！';
+		success_msg = '信息提交成功！';
 	}
 	
 	$.ajax({
-		url: '/realty/custom_submit/'+activity_id,
+		url: '/site_comments',
 		cache: false,
 		dataType: 'json',
 		async: false,
@@ -977,7 +977,6 @@ $(function(){
 			}
 		}
 		if(valid){
-			
 			ajax_custom_submit(form);
 		}
 	})
