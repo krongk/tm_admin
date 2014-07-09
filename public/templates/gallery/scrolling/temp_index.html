@@ -66,11 +66,40 @@
 		</section>
 		<!--index 相册的封面 end-->
 		
+		<% if value_for(@site_page, 'mobile_phone', title: '联系电话', typo: 'string') %>
+			<section data-page="6" class="m-page m-page6 show" data-id="25511" data-type="multi_contact">
+				<div class="m-map">
+					<div id="ylMap" class="ylMap"></div>
+					<div class="mapVal ">
+						<input class="address" type="hidden" value="{'sign_name':'','contact_tel':'<%= value_for(@site_page, 'mobile_phone', title: '联系电话', typo: 'string') %>','address':'<%= value_for(@site_page, 'address', title: '地址', typo: 'text') %>'}">
+						<input class="latitude" type="hidden" value="<%= value_for(@site_page, 'latitude', title: '纬度', typo: 'string') %>">
+						<input class="longitude" type="hidden" value="<%= value_for(@site_page, 'longitude', title: '经度', typo: 'string') %>">
+					</div>
+					<div id="transit_result"></div>
+					<div class="tit">
+						<p><a href="#"><span class="css_sprite01"></span><%= value_for(@site_page, 'address', title: '地址', typo: 'text') %></a></p>
+						<a class="close_map css_sprite01" href="javascript:void(0)"></a>
+					</div>
+				</div>
+				<div class="m-intro">
+					<h3><%= @site.title %></h3>
+					<div class="m-txt m-txt02 txt" data-txt="1">
+						<div class="wtxt">
+							<p>
+								<%= raw value_for(@site_page, 'content2', title: '邀请辞', typo: 'text') %>
+								<br>
+							</p>
+						</div><span class="expand css_sprite01"></span>
+					</div>
+				</div>
+			</section>
+		<% end %>
+		
 		<% @site_page.site_images.each_with_index do |site_image, index| %>
       <% next if index == 0 %>
 			<!--全屏大图-->
 			<section data-page="<%=index%>" class="m-page m-page2 hide" data-id='<%=index%>' data-type='info_nomore'>
-				<div class="m-img m-img01 " data-bk= '<%= site_image.image.url %>' 
+				<div class="m-img m-img01 lazy-bk" data-bk= '<%= site_image.image.url %>' 
 					style="background:url(<%= site_image.image.url %>) center no-repeat; background-size:cover;">
 				</div>
 			</section>
@@ -83,7 +112,7 @@
 			<div class="m-intro">
 				<h3>
 					<% if @site.updated_by == 1 %>
-						<img src="/assets/logo.jpg"/>
+						<img src="/assets/logo.png"/>
 					<% else %>
 						<%= @site.title %>
 					<% end %>
@@ -97,17 +126,14 @@
 						<a href="tel:<%= value_for(@site_page, 'mobile_phone', title: '联系电话', typo: 'string') %>" ><span class='css_sprite01'></span>
 						<%= value_for(@site_page, 'mobile_phone', typo: 'string', title: '联系电话') %></a>
 					</p>
-					<p class="time"><a href="http://map.baidu.com/?newmap=1&ie=utf-8&s=s%26wd%3D<%= value_for(@site_page, 'address', title: '地址', typo: 'text') %>"><span class="css_sprite01"></span>
-				    <%= value_for(@site_page, 'address', title: '地址', typo: 'text') %></a></p>
 				</div>
 				<div class="m-txt m-txt02 txt" style="height: 120px">
 					<div class="wtxt">
-						<p><%= value_for(@site_page, 'content', title: '详细说明', typo: 'text') %></p>
+						<p><%= raw value_for(@site_page, 'content2', title: '详细说明', typo: 'text') %></p>
 					</div>
 					<span class="expand css_sprite01"></span>
 				</div>
 			</div>
-			
 		</section>
 		<!--sub05 介绍 end-->	
 
@@ -128,6 +154,8 @@
 <script type="text/javascript" src="<%= @base_url %>js/jquery-1.8.2.min.js"></script>
 <script type="text/javascript" src="<%= @base_url %>js/jquery.easing.1.3.js"></script>
 <script type="text/javascript" src="<%= @base_url %>js/txt_scroll.js"></script>
+<script type="text/javascript" src="<%= @base_url %>js/yl3d.js"></script>
+<script type="text/javascript" src="<%= @base_url %>js/ylMap.js"></script>
 <script type="text/javascript" src="<%= @base_url %>js/1_picker.js"></script>
 <script type="text/javascript" src="<%= @base_url %>js/2_picker.date.js"></script>
 <script type="text/javascript" src="<%= @base_url %>js/3_picker.time.js"></script>
