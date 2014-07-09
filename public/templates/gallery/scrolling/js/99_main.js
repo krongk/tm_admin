@@ -626,8 +626,8 @@ var Msize = $(".m-page").size(), 	//页面的数目
 
 /*******************************************************************************************************************************************************/
 //数据统计
-setTimeout(ajax_analysite,100);			//发送站点统计请求
-setInterval(ajax_analyseplugin,15000);	//发送页面请求
+// setTimeout(ajax_analysite,100);			//发送站点统计请求
+// setInterval(ajax_analyseplugin,15000);	//发送页面请求
 
 /**
  * 存储页面统计的数据
@@ -1007,7 +1007,7 @@ var if_ajax_custom_submit = false;  //是否提交过表单
 function ajax_custom_submit(form){
 	var activeId = $('#activeId').val();
 	
-	var successTips = '您已报名成功，我们会尽快与您取得联系！';
+	var successTips = '信息提交成功！';
 	if($('#success-tips').length>0){
 		successTips = $('#success-tips').val();
 	}
@@ -1023,7 +1023,7 @@ function ajax_custom_submit(form){
 	loading('loading');
 	if_ajax_custom_submit = true;
 	$.ajax({
-		url: '/car/custom_submit/'+activeId,
+		url: '/site_comments',
 		cache: false,
 		dataType: 'json',
 		async: false,
@@ -1042,10 +1042,9 @@ function ajax_custom_submit(form){
 					$('.wct_form').removeClass('change');
 				}
 				var url = window.location.href;
-				var site_id = url.substring(url.indexOf('car/index')+10,url.indexOf('?'));
-				if(site_id == '768'){
+				if(true){
 					setTimeout(function(){
-						window.location.href='http://www.jaguar.com.cn';
+						window.location.href= url;
 					},500);
 				}
 			}else{
@@ -1070,6 +1069,7 @@ function check_input (form, type){
 	} else {
 		var inputs = form.find(':input');
 	}
+
 	inputs.each(function(i, e){
 		if(this.name != '' && this.name != 'undefined'){		
 			var empty_tip = '';
@@ -1078,26 +1078,25 @@ function check_input (form, type){
 			var max = null;
 			var mim = null;
 			switch (this.name) {
-				case 'name':
+				case 'site_comment[name]':
 					reg = /^[\u4e00-\u9fa5|a-z|A-Z|\s]{1,20}$/;
 					empty_tip = '不能落下姓名哦！';
 					reg_tip = '这名字太怪了！';
 					break;
-				case 'mobile':
+				case 'site_comment[mobile_phone]':
 					reg = /^1[0-9][0-9]\d{8}$/;
 					empty_tip = '有个联系方式，就更好了！';
 					reg_tip = '这号码,可打不通... ';
 					break;
-				case 'sex':
+				case 'site_comment[gender]':
 					empty_tip = '想想，该怎么称呼您呢？';
 					break;
-				case 'email':
+				case 'site_comment[email]':
 					reg = /(^[a-z\d]+(\.[a-z\d]+)*@([\da-z](-[\da-z])?)+(\.{1,2}[a-z]+)+$)/i;
 					reg_tip = '邮箱格式有问题哦！';
 					break;
-				case 'company':
-					reg = /^[\u4e00-\u9fa5|a-z|A-Z|\s]{1,20}$/;
-					reg_tip = '这个公司太奇怪了！';
+				case 'site_comment[content]':
+					empty_tip = '还是写点内容吧';
 					break;
 				case 'position':
 					reg = /^[\u4e00-\u9fa5|a-z|A-Z|\s]{1,20}$/;
