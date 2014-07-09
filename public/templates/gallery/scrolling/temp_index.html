@@ -88,7 +88,12 @@
 						<%= @site.title %>
 					<% end %>
 				</h3>
-				
+				<div class="m-txt m-txt02 txt">
+					<div class="wtxt">
+						<%= raw value_for(@site_page, 'content', title: '详细说明', typo: 'text') %>
+					</div>
+					<span class="expand css_sprite01"></span>
+				</div>
 				<div class="btn">
 				  <% if @site.updated_by == 1 %>
 					  <p class="time"><a href="/"><span class='css_sprite01'></span>点击这里在线制作</a></p>
@@ -97,9 +102,6 @@
 						<a href="tel:<%= value_for(@site_page, 'mobile_phone', title: '联系电话', typo: 'string') %>" ><span class='css_sprite01'></span>
 						<%= value_for(@site_page, 'mobile_phone', typo: 'string', title: '联系电话') %></a>
 					</p>
-				</div>
-				<div class="m-content">
-					<%= raw value_for(@site_page, 'content', title: '详细说明', typo: 'text') %>
 				</div>
 			</div>
 		</section>
@@ -127,6 +129,84 @@
 			</section>
 		<% end %>
 		<!--sub05 address end-->
+
+		<!--sub05 车试驾预约-->
+		<section data-page="7" data-yuyue='true' class="m-page m-page7 hide" data-id='25524' data-type='input'>
+		  <div class="wbg lazy-bk" style='background:#ddd top center no-repeat;background-size:cover;' data-bk='/'></div> 
+		    <div class="wct">
+		      <h3>送上祝福</h3>
+		      <form class="wct_form">
+		        <div class="tableWrap tableWrap-1">
+		          <table>
+		            <colgroup>
+		              <col width="30%" /> 
+		              <col width="70%" />
+		            </colgroup>
+		            <tbody>
+                 <tr class="base-info" >
+                    <th><span>姓名</span></th>
+                    <td>
+                      <input class="base-info-input" type="text" placeholder="请输入姓名" name= "name" onblur="return false;"/>
+                    </td>
+                  </tr>                                                                      
+                   <tr class="base-info" >
+                    <th><span>祝福语</span></th>
+                    <td>
+                      <input class="base-info-input" type="text" placeholder="请输入祝福语" name= "company" onblur="return false;"/>
+                    </td>
+	                  </tr>
+	               </tbody>
+		          </table>
+		          <p class="submit submit-custom btn-boder-color"><input type="submit" value="我要祝福" /></p>
+		        
+		          <p class="share btn-boder-color" data-id='25524'><a href="javascript:void(0);"><span class='share_icon css_sprite01'></span>&nbsp;分享好友</a></p>
+		          <div  class="share-content">
+		            <div class='m-spopup'>
+		              <a href="http://service.weibo.com/share/share.php?&url=http%3A%2F%2Fwww.lightapp.cn%2Fcar%2Findex%2F2660%3Fchannel%3D1%3F%26from%3Dsinglemessage%26isappinstalled%3D0%3F%26weixin.qq.com%3D" target="_blank">
+		                <img class='lazy-bk' data-bk="<%= @base_url %>img/sinaminiblog.png" />
+		                <br/><span>新浪微博</span>
+		              </a>
+		              <a href="http://share.v.t.qq.com/index.php?c=share&a=index&&url=http%3A%2F%2Fwww.lightapp.cn%2Fcar%2Findex%2F2660%3Fchannel%3D1%3F%26from%3Dsinglemessage%26isappinstalled%3D0%3F%26weixin.qq.com%3D" target="_blank">
+		                <img class='lazy-bk' data-bk="<%= @base_url %>img/qqmb.png" />
+		                <br/><span>腾讯微博</span>
+		              </a>
+		              <a href="http://widget.renren.com/dialog/share?resourceUrl=http%3A%2F%2Fwww.lightapp.cn%2Fcar%2Findex%2F2660%3Fchannel%3D1%3F%26from%3Dsinglemessage%26isappinstalled%3D0%3F%26weixin.qq.com%3D" target="_blank">
+		                <img class='lazy-bk' data-bk="<%= @base_url %>img/renren.png" />
+		                <br/><span>人人网</span>
+		              </a>
+		              <a href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http%3A%2F%2Fwww.lightapp.cn%2Fcar%2Findex%2F2660%3Fchannel%3D1%3F%26from%3Dsinglemessage%26isappinstalled%3D0%3F%26weixin.qq.com%3D" target="_blank">
+		                <img class='lazy-bk' data-bk="<%= @base_url %>img/qzone.png" />
+		                <br/><span>QQ空间</span>
+		              </a>
+		              <a href='javascript:void(0)' class='share-btn' onclick='cancle_share(this);'>取&nbsp;&nbsp;消</a>
+		            </div>
+		          </div>
+		          <div class='loading'>
+		            <img class='lazy-bk' data-bk='<%= @base_url %>/img/load.gif' alt='正大力提交...'/>
+		          </div>
+		        </div>
+		        <!-- 更多表单 -->
+		        <div class="tableWrap tableWrap-2">
+		          <table>
+		            <colgroup>
+		              <col width="30%" /> 
+		              <col width="70%" />
+		            </colgroup>
+		            <tbody> </tbody>
+		          </table>
+		          
+		          <p class="submit submit-2 submit-custom btn-boder-color"><input type="button" value="我要祝福" /></p>
+		          <input type="hidden" value='提交成功!' id='success-tips'/> 
+		          <p class="submit submit-3 btn-boder-color"><input type="button" value="返回" /></p>
+		        </div>
+		        <p class="popup popup_error"></p>
+		        <p class="popup popup_sucess">幸苦了！谢谢您的预约！</p>
+		        <!-- 更多表单 -->
+		      </form>
+		    </div>
+		  <div class="popup-txt">向下滑动，返回首页</div>
+		</section>
+		<!--sub05 车试驾预约 end-->
 
 		<!--pageLoading-->
 		<section class="pageLoading">
