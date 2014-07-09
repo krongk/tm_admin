@@ -8,7 +8,7 @@
 		var that = this;
 		that.obj =  typeof(id)=='object'?id:window.document.getElementById(id);
 		that.options = {
-			maxHeight:      '200',								  //文案最大高度
+			maxHeight:      '300',								  //文案最大高度
 			maxWidth:       '300',								  //文案最大宽度
 			node:			'',									  //用于算高度的孩子节点
 			

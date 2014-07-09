@@ -66,35 +66,34 @@
 		</section>
 		<!--index 相册的封面 end-->
 		
-		<% if value_for(@site_page, 'mobile_phone', title: '联系电话', typo: 'string') %>
-			<section data-page="6" class="m-page m-page6 show" data-id="25511" data-type="multi_contact">
+		<% if value_for(@site_page, 'address', title: '地址', typo: 'string') %>
+			<section data-page="6" class="m-page m-page6 show" data-id="2929369" data-type="multi_contact">
 				<div class="m-map">
 					<div id="ylMap" class="ylMap"></div>
 					<div class="mapVal ">
-						<input class="address" type="hidden" value="{'sign_name':'','contact_tel':'<%= value_for(@site_page, 'mobile_phone', title: '联系电话', typo: 'string') %>','address':'<%= value_for(@site_page, 'address', title: '地址', typo: 'text') %>'}">
-						<input class="latitude" type="hidden" value="<%= value_for(@site_page, 'latitude', title: '纬度', typo: 'string') %>">
+						<input class="address" type="hidden" value="{'sign_name':'', 'contact_tel':'<%= value_for(@site_page, "mobile_phone", title: "联系电话", typo: "string") %>', 'address':'<%= value_for(@site_page, "address", title: "地址", typo: "string") %>'}">
 						<input class="longitude" type="hidden" value="<%= value_for(@site_page, 'longitude', title: '经度', typo: 'string') %>">
+						<input class="latitude" type="hidden" value="<%= value_for(@site_page, 'latitude', title: '纬度', typo: 'string') %>">
 					</div>
 					<div id="transit_result"></div>
 					<div class="tit">
-						<p><a href="#"><span class="css_sprite01"></span><%= value_for(@site_page, 'address', title: '地址', typo: 'text') %></a></p>
+						<p><a href="#"><span class="css_sprite01"></span><%= value_for(@site_page, 'address', title: '地址', typo: 'string') %></a></p>
 						<a class="close_map css_sprite01" href="javascript:void(0)"></a>
 					</div>
 				</div>
 				<div class="m-intro">
 					<h3><%= @site.title %></h3>
-					<div class="m-txt m-txt02 txt" data-txt="1">
+					<div class="m-txt m-txt02 txt" data-txt="1" style="height: 220px">
 						<div class="wtxt">
-							<p>
+							
 								<%= raw value_for(@site_page, 'content2', title: '邀请辞', typo: 'text') %>
-								<br>
-							</p>
+							
 						</div><span class="expand css_sprite01"></span>
 					</div>
 				</div>
 			</section>
 		<% end %>
-		
+
 		<% @site_page.site_images.each_with_index do |site_image, index| %>
       <% next if index == 0 %>
 			<!--全屏大图-->
@@ -127,9 +126,9 @@
 						<%= value_for(@site_page, 'mobile_phone', typo: 'string', title: '联系电话') %></a>
 					</p>
 				</div>
-				<div class="m-txt m-txt02 txt" style="height: 120px">
+				<div class="m-txt m-txt02 txt" data-txt="2" style="height: 220px">
 					<div class="wtxt">
-						<p><%= raw value_for(@site_page, 'content2', title: '详细说明', typo: 'text') %></p>
+						<%= raw value_for(@site_page, 'content', title: '详细说明', typo: 'text') %>
 					</div>
 					<span class="expand css_sprite01"></span>
 				</div>
