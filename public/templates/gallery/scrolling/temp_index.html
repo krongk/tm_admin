@@ -83,12 +83,8 @@
 				</div>
 				<div class="m-intro">
 					<h3><%= @site.title %></h3>
-					<div class="m-txt m-txt02 txt" data-txt="1" style="height: 220px">
-						<div class="wtxt">
-							
-								<%= raw value_for(@site_page, 'content2', title: '邀请辞', typo: 'text') %>
-							
-						</div><span class="expand css_sprite01"></span>
+					<div class="m-content">
+						<%= raw value_for(@site_page, 'content2', title: '邀请辞', typo: 'text') %>
 					</div>
 				</div>
 			</section>
@@ -126,11 +122,8 @@
 						<%= value_for(@site_page, 'mobile_phone', typo: 'string', title: '联系电话') %></a>
 					</p>
 				</div>
-				<div class="m-txt m-txt02 txt" data-txt="2" style="height: 220px">
-					<div class="wtxt">
-						<%= raw value_for(@site_page, 'content', title: '详细说明', typo: 'text') %>
-					</div>
-					<span class="expand css_sprite01"></span>
+				<div class="m-content">
+					<%= raw value_for(@site_page, 'content', title: '详细说明', typo: 'text') %>
 				</div>
 			</div>
 		</section>
