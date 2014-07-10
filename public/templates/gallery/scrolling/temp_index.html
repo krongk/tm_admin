@@ -90,7 +90,7 @@
 				</h3>
 				<div class="m-txt m-txt02 txt">
 					<div class="wtxt">
-						<%= raw value_for(@site_page, 'content', title: '详细说明', typo: 'text') %>
+						<p><%= raw value_for(@site_page, 'content', title: '详细说明', typo: 'text') %></p>
 					</div>
 					<span class="expand css_sprite01"></span>
 				</div>
@@ -130,7 +130,7 @@
 		<% end %>
 		<!--sub05 address end-->
 
-		<!--sub05 车试驾预约-->
+		<!--sub05 表单-->
 		<section data-page="7" data-yuyue='true' class="m-page m-page7 hide" data-id='25524' data-type='input'>
 		  <div class="wbg" style='background:#ddd top center no-repeat;background-size:cover;' data-bk='/'></div> 
 		    <div class="wct">
@@ -151,9 +151,9 @@
                     </td>
                   </tr>                                                                      
                    <tr class="base-info" >
-                    <th><span>信息</span></th>
+                    <th><span>留言</span></th>
                     <td>
-                      <input class="base-info-input" type="text" placeholder="请输入想要收的话" name="site_comment[content]" onblur="return false;"/>
+                      <input class="base-info-input" type="text" placeholder="请输入留言内容" name="site_comment[content]" onblur="return false;"/>
                     </td>
 	                  </tr>
 	               </tbody>
@@ -190,7 +190,7 @@
 		    </div>
 		  <div class="popup-txt">向下滑动，返回首页</div>
 		</section>
-		<!--sub05 车试驾预约 end-->
+		<!--sub05 表单 end-->
 
 		<!--pageLoading-->
 		<section class="pageLoading">
