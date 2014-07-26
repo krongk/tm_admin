@@ -22,6 +22,57 @@
       <% end %>
 
       <div class="swiper-slide blue-slide">
+        <!-- music control start #######################################-->
+        <style type="text/css">
+          /***********music**************/
+          .link span{display:block; margin-top:-32px; margin-left:15px}
+          header{margin-top:-10px;}
+            #musicControl{
+            position: fixed;
+            right: 10px;
+            top: 80%;
+            display: inline-block;
+            z-index: 99999999;
+            }
+            #musicControl a {
+            display: inline-block;
+            width: 52px;
+            height: 52px;
+            overflow: hidden;
+            background: url('<%= @base_url %>assets/music.png') no-repeat;
+            }
+            #musicControl a.stop {
+            background-position: left bottom;
+            }
+          /***********music end**************/
+        </style>
+        <span id="musicControl">
+          <a id="mc_play" class="on" onclick="play_music();">
+            <audio autoplay="autoplay" id="audio_play" loop>
+              <source src="<%= value_for(@site_page, 'music', typo: 'dialog', url: '/home/dialog_music', title: '背景音乐', default: true)  %>" type="audio/mpeg">
+            </audio>
+          </a>
+        </span>
+        <script type="text/javascript">
+          $(document).ready(function(){    
+            $(document).one('touchstart', function (e) {
+            var music = document.getElementById("audio_play");
+            if (music.paused) { 
+              music.play(); 
+            } 
+            });
+          });
+          function play_music(){
+            if ($('#mc_play').hasClass('on')){
+              $('#mc_play audio').get(0).pause();
+              $('#mc_play').attr('class','stop');
+            }else{
+              $('#mc_play audio').get(0).play();
+              $('#mc_play').attr('class','on');
+            }
+          }
+        </script>
+        <!-- music control end #######################################-->
         <div class="title">Slide 2</div>
         <div class="playbox">
           <audio src="<%= value_for(@site_page, 'music', typo: 'dialog', url: '/home/dialog_music', title: '背景音乐', default: true)  %>" preload="auto"></audio>
@@ -96,5 +147,7 @@
         }, false)
     })
   </script>
+
+  
 </body>
 </html>
