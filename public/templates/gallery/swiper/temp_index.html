@@ -1,8 +1,11 @@
-<!doctype html>
+<!doctype html><!--爱刷刷微相册-->
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
+  <!--禁止缩放 -->
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+  <meta content="telephone=no" name="format-detection" />
   <title><%= @site.title %></title>
   <meta name="description" content="<%= @site.description %>" />
   <meta name="keywords" content="<%= @site.title %>|维斗喜帖，漂亮的电子请柬，微信喜帖" />
@@ -18,13 +21,16 @@
     <div class="swiper-wrapper">
       <% colors = ['red', 'blue', 'orange', 'green', 'pink'] %>
       <% @site_page.site_images.each_with_index do |site_image, index| %>
-        <% next if index == 0 %>
+        <% next if index == @site_page.site_images.size %>
         <div class="swiper-slide <%= colors[rand(5)]%>-slide">
+          <% if index == 0%>
+            <span id="hand"><img src="<%= @base_url %>assets/hand.png" /></span>
+          <% end %>
           <img src="<%= site_image.image.url %>" style="width: 100%; height: 100%;"/>
         </div>
       <% end %>
 
-      <div class="swiper-slide blue-slide">
+      <div class="swiper-slide blue-slide" style="background:url(<%= @site_page.site_images.last.image.url %>); background-repeat:no-repeat;background-size:cover;">
         <!-- music control start #######################################-->
         <section class="fn-audio" >
           <div class="btn">
@@ -35,10 +41,9 @@
           </div>
         </section>
         <!-- music control end #######################################-->
-        <div class="title"><%= value_for(@site_page, 'title', title: '标题', typo: 'string') %></div>
         <dl class="pictxt">
-          <dt></dt>
           <dd>
+            <h2><%= value_for(@site_page, 'title', title: '标题', typo: 'string') %></h2>
             <div class="showtxt">
                 <div class="masktxt">
                     <%= simple_format value_for(@site_page, 'content', title: '详细说明', typo: 'text') %>
