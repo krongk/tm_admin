@@ -1,44 +1,607 @@
-<!DOCTYPE html><!--左右滑动微相册-->
-<!--[if IEMobile 7 ]>    <html class="no-js iem7"> <![endif]-->
-<!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js"> <!--<![endif]-->
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
-    <!--禁止缩放 -->
-    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-    <meta content="telephone=no" name="format-detection" />
-    <title><%= @site.title %></title>
-    <meta name="description" content="<%= @site.description %>" />
-    <meta name="keywords" content="<%= @site.title %>|维斗喜帖，漂亮的电子请柬，微信喜帖" />
-    <meta name="author" content="维斗喜帖" />
 
-    <script src="<%= @base_url %>assets/audio.min.js"></script>
-    <script src="<%= @base_url %>assets/jquery-1.9.1.min.js"></script>
-    <script src="<%= @base_url %>assets/index.js"></script>
-    <link rel="stylesheet" href="<%= @base_url %>assets/index.css" media="screen">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
+<!--禁止缩放 -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta content="telephone=no" name="format-detection" />
+<title>绝版男神，你终于回来了</title>
+</head>
+<style>
+.addWrap{  margin:auto;position:relative;}
+.addWrap .swipe{ overflow: hidden;visibility: hidden;position:relative;}
+.addWrap .swipe-wrap{overflow:hidden;position:relative;}
+.addWrap .swipe-wrap > div {float: left;width: 100%;position:relative;}
+.addWrap .swipe-wrap img{width:100%;}
+#position{padding:0;text-align:center;}
+#position li{width:10px;height:10px;margin:0 3px;display:inline-block;-webkit-border-radius:5px;border-radius:5px;background-color:#AFAFAF;}
+#position li.cur{background-color:#FF0000;}
+</style>
+<script>
+/*
+ * Swipe 2.0
+ *
+ * Brad Birdsall
+ * Copyright 2013, MIT License
+ *
+*/
+
+function Swipe(container, options) {
+
+  "use strict";
+
+  // utilities
+  var noop = function() {}; // 简单的无操作功能
+  var offloadFn = function(fn) { setTimeout(fn || noop, 0) }; // 卸载功能的执行
+  
+  // 检查浏览器的功能
+  var browser = {
+    addEventListener: !!window.addEventListener,
+    touch: ('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch,
+    transitions: (function(temp) {
+      var props = ['transformProperty', 'WebkitTransform', 'MozTransform', 'OTransform', 'msTransform'];
+      for ( var i in props ) if (temp.style[ props[i] ] !== undefined) return true;
+      return false;
+    })(document.createElement('swipe'))
+  };
+
+  // 如果没有根元素退出
+  if (!container) return;
+  var element = container.children[0];
+  var slides, slidePos, width;
+  options = options || {};
+  var index = parseInt(options.startSlide, 10) || 0;
+  var speed = options.speed || 300;
+  options.continuous = options.continuous ? options.continuous : true;
+
+  function setup() {
+
+    // 缓存的幻灯片
+    slides = element.children;
+
+    //创建一个数组来存储每个幻灯片的当前位置
+    slidePos = new Array(slides.length);
+
+    // 确定每个幻灯片的宽度
+    width = container.getBoundingClientRect().width || container.offsetWidth;
+
+    element.style.width = (slides.length * width) + 'px';
+
+    // 栈元素
+    var pos = slides.length;
+    while(pos--) {
+
+      var slide = slides[pos];
+
+      slide.style.width = width + 'px';
+      slide.setAttribute('data-index', pos);
+
+      if (browser.transitions) {
+        slide.style.left = (pos * -width) + 'px';
+        move(pos, index > pos ? -width : (index < pos ? width : 0), 0);
+      }
+
+    }
+
+    if (!browser.transitions) element.style.left = (index * -width) + 'px';
+
+    container.style.visibility = 'visible';
+
+  }
+
+  function prev() {
+
+    if (index) slide(index-1);
+    else if (options.continuous) slide(slides.length-1);
+
+  }
+
+  function next() {
+
+    if (index < slides.length - 1) slide(index+1);
+    else if (options.continuous) slide(0);
+
+  }
+
+  function slide(to, slideSpeed) {
+
+    // 如果已经滑不要求
+    if (index == to) return;
+    
+    if (browser.transitions) {
+
+      var diff = Math.abs(index-to) - 1;
+      var direction = Math.abs(index-to) / (index-to); // 1:right -1:left
+
+      while (diff--) move((to > index ? to : index) - diff - 1, width * direction, 0);
+
+      move(index, width * direction, slideSpeed || speed);
+      move(to, 0, slideSpeed || speed);
+
+    } else {
+
+      animate(index * -width, to * -width, slideSpeed || speed);
+
+    }
+
+    index = to;
+
+    offloadFn(options.callback && options.callback(index, slides[index]));
+
+  }
+
+  function move(index, dist, speed) {
+
+    translate(index, dist, speed);
+    slidePos[index] = dist;
+
+  }
+
+  function translate(index, dist, speed) {
+
+    var slide = slides[index];
+    var style = slide && slide.style;
+
+    if (!style) return;
+
+    style.webkitTransitionDuration = 
+    style.MozTransitionDuration = 
+    style.msTransitionDuration = 
+    style.OTransitionDuration = 
+    style.transitionDuration = speed + 'ms';
+
+    style.webkitTransform = 'translate(' + dist + 'px,0)' + 'translateZ(0)';
+    style.msTransform = 
+    style.MozTransform = 
+    style.OTransform = 'translateX(' + dist + 'px)';
+
+  }
+
+  function animate(from, to, speed) {
+
+    // 如果不是动画，只是重新定位
+    if (!speed) {
+      
+      element.style.left = to + 'px';
+      return;
+
+    }
+    
+    var start = +new Date;
+    
+    var timer = setInterval(function() {
+
+      var timeElap = +new Date - start;
+      
+      if (timeElap > speed) {
+
+        element.style.left = to + 'px';
+
+        if (delay) begin();
+
+        options.transitionEnd && options.transitionEnd.call(event, index, slides[index]);
+
+        clearInterval(timer);
+        return;
+
+      }
+
+      element.style.left = (( (to - from) * (Math.floor((timeElap / speed) * 100) / 100) ) + from) + 'px';
+
+    }, 4);
+
+  }
+
+  // 安装程序自动幻灯片
+  var delay = options.auto || 0;
+  var interval;
+
+  function begin() {
+
+    interval = setTimeout(next, delay);
+
+  }
+
+  function stop() {
+
+    delay = 0;
+    clearTimeout(interval);
+
+  }
+
+
+  // 设置初始变量
+  var start = {};
+  var delta = {};
+  var isScrolling;      
+
+  // 设置事件捕获
+  var events = {
+
+    handleEvent: function(event) {
+
+      switch (event.type) {
+        case 'touchstart': this.start(event); break;
+        case 'touchmove': this.move(event); break;
+        case 'touchend': offloadFn(this.end(event)); break;
+        case 'webkitTransitionEnd':
+        case 'msTransitionEnd':
+        case 'oTransitionEnd':
+        case 'otransitionend':
+        case 'transitionend': offloadFn(this.transitionEnd(event)); break;
+        case 'resize': offloadFn(setup.call()); break;
+      }
+
+      if (options.stopPropagation) event.stopPropagation();
+
+    },
+    start: function(event) {
+
+      var touches = event.touches[0];
+
+      // 测量的起始值
+      start = {
+
+        // 得到初始的触摸坐标
+        x: touches.pageX,
+        y: touches.pageY,
+
+        // 存储时间确定接触时间
+        time: +new Date
+
+      };
+      
+      // 用于测试的第一移动事件
+      isScrolling = undefined;
+
+      // 复位三角洲和最后计算值
+      delta = {};
+
+      // 设置touchmove和touchend监听
+      element.addEventListener('touchmove', this, false);
+      element.addEventListener('touchend', this, false);
+
+    },
+    move: function(event) {
+
+      // 确保一个触摸不捏刷
+      if ( event.touches.length > 1 || event.scale && event.scale !== 1) return
+
+      if (options.disableScroll) event.preventDefault();
+
+      var touches = event.touches[0];
+
+      // 计算改变后的 x 和 y
+      delta = {
+        x: touches.pageX - start.x,
+        y: touches.pageY - start.y
+      }
+
+      // 确定测试运行——一个滚动时间测试
+      if ( typeof isScrolling == 'undefined') {
+        isScrolling = !!( isScrolling || Math.abs(delta.x) < Math.abs(delta.y) );
+      }
+
+      // 如果用户没有试图垂直滚动
+      if (!isScrolling) {
+
+        // 防止本机滚动
+        event.preventDefault();
+
+        // 停止幻灯片显示 
+        stop();
+
+        // 如果第一个或最后一个滑动阻力增加
+        delta.x = 
+          delta.x / 
+            ( (!index && delta.x > 0               // if first slide and sliding left
+              || index == slides.length - 1        // or if last slide and sliding right
+              && delta.x < 0                       // and if sliding at all
+            ) ?                      
+            ( Math.abs(delta.x) / width + 1 )      // determine resistance level
+            : 1 );                                 // no resistance if false
+        
+        // 转化 1:1
+        translate(index-1, delta.x + slidePos[index-1], 0);
+        translate(index, delta.x + slidePos[index], 0);
+        translate(index+1, delta.x + slidePos[index+1], 0);
+
+      }
+
+    },
+    end: function(event) {
+
+      // 计算持续时间
+      var duration = +new Date - start.time;
+
+      // 确定滑动尝试触发下一个/上一页滑动
+      var isValidSlide = 
+            Number(duration) < 250               // if slide duration is less than 250ms
+            && Math.abs(delta.x) > 20            // and if slide amt is greater than 20px
+            || Math.abs(delta.x) > width/2;      // or if slide amt is greater than half the width
+
+      // 如果尝试确定滑过去的开始和结束
+      var isPastBounds = 
+            !index && delta.x > 0                            // 如果第一个幻灯片和幻灯片AMT大于0
+            || index == slides.length - 1 && delta.x < 0;    // 或者如果最后一张幻灯片,幻灯片amt小于0
+      
+      // 确定滑动方向(true:right, false:left)
+      var direction = delta.x < 0;
+
+      // 如果不垂直滚动
+      if (!isScrolling) {
+
+        if (isValidSlide && !isPastBounds) {
+
+          if (direction) {
+
+            move(index-1, -width, 0);
+            move(index, slidePos[index]-width, speed);
+            move(index+1, slidePos[index+1]-width, speed);
+            index += 1;
+
+          } else {
+
+            move(index+1, width, 0);
+            move(index, slidePos[index]+width, speed);
+            move(index-1, slidePos[index-1]+width, speed);
+            index += -1;
+
+          }
+
+          options.callback && options.callback(index, slides[index]);
+
+        } else {
+
+          move(index-1, -width, speed);
+          move(index, 0, speed);
+          move(index+1, width, speed);
+
+        }
+
+      }
+
+      // 取消touchmove和touchend事件监听器,直到touchstart再次调用
+      element.removeEventListener('touchmove', events, false)
+      element.removeEventListener('touchend', events, false)
+
+    },
+    transitionEnd: function(event) {
+
+      if (parseInt(event.target.getAttribute('data-index'), 10) == index) {
+        
+        if (delay) begin();
+
+        options.transitionEnd && options.transitionEnd.call(event, index, slides[index]);
+
+      }
+
+    }
+
+  }
+
+  // 触发设置 
+  setup();
+
+  // 如果适用则开始自动幻灯片
+  if (delay) begin();
+
+
+  // 添加事件监听器
+  if (browser.addEventListener) {
+    
+    // 设置touchstart事件元素    
+    if (browser.touch) element.addEventListener('touchstart', events, false);
+
+    if (browser.transitions) {
+      element.addEventListener('webkitTransitionEnd', events, false);
+      element.addEventListener('msTransitionEnd', events, false);
+      element.addEventListener('oTransitionEnd', events, false);
+      element.addEventListener('otransitionend', events, false);
+      element.addEventListener('transitionend', events, false);
+    }
+
+    //设置在窗口调整大小事件
+    window.addEventListener('resize', events, false);
+
+  } else {
+
+    window.onresize = function () { setup() }; // to play nice with old IE
+
+  }
+
+  // 公开Swipe API
+  return {
+    setup: function() {
+
+      setup();
+
+    },
+    slide: function(to, speed) {
+
+      slide(to, speed);
+
+    },
+    prev: function() {
+
+      // cancel slideshow
+      stop();
+
+      prev();
+
+    },
+    next: function() {
+
+      stop();
+
+      next();
+
+    },
+    getPos: function() {
+
+      // return current index position
+      return index;
+
+    },
+    kill: function() {
+
+      // 取消幻灯片
+      stop();
+
+      // reset element
+      element.style.width = 'auto';
+      element.style.left = 0;
+
+      // reset slides
+      var pos = slides.length;
+      while(pos--) {
+
+        var slide = slides[pos];
+        slide.style.width = '100%';
+        slide.style.left = 0;
+
+        if (browser.transitions) translate(pos, 0, 0);
+
+      }
+
+      // 删除事件侦听器
+      if (browser.addEventListener) {
+
+        // remove current event listeners
+        element.removeEventListener('touchstart', events, false);
+        element.removeEventListener('webkitTransitionEnd', events, false);
+        element.removeEventListener('msTransitionEnd', events, false);
+        element.removeEventListener('oTransitionEnd', events, false);
+        element.removeEventListener('otransitionend', events, false);
+        element.removeEventListener('transitionend', events, false);
+        window.removeEventListener('resize', events, false);
+
+      }
+      else {
+
+        window.onresize = null;
+
+      }
+
+    }
+  }
+
+}
+
+
+if ( window.jQuery || window.Zepto ) {
+  (function($) {
+    $.fn.Swipe = function(params) {
+      return this.each(function() {
+        $(this).data('Swipe', new Swipe($(this)[0], params));
+      });
+    }
+  })( window.jQuery || window.Zepto )
+}
+
+</script>
+
+<body>
+<div class="addWrap"> 
+    <script src="http://ent.qq.com/js/audio.min.js"></script>
+    <link rel="stylesheet" href="http://ent.qq.com/ps/includes/index.css" media="screen">
     <script>
       audiojs.events.ready(function() {
         audiojs.createAll();
       });
     </script>
-    <%= render 'layouts/s_head' %>
-  </head>
+<script src="http://mat1.gtimg.com/www/js/jquery/jquery-1.9.1.min.js"></script>
+  <script>
+    $(function(){
+        _h = $(window).height();
+        $('.swipehe').height(_h);
+        $('.pictxt').height(_h);
+        $('.pictxt > dt').height(_h/3)
+        $('.masktxt').height(_h/2-30);
+            // 分享到朋友圈
+            var wxTitle = document.title;
+            var wxDesc = '<%= @site.description %>';
+            var wxImg = '<%= get_first_site_image_url(@site) %>';
+            //var shareLink = 'http://ent.qq.com/music/ps.htm';
+            document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+                // 发送给好友
+                WeixinJSBridge.on('menu:share:appmessage', function (argv) {
+                    WeixinJSBridge.invoke('sendAppMessage', {
+                        "img_url": wxImg,
+                        "link": shareLink,
+                        "desc":  wxDesc,
+                        "title": "<%= @site.title %>"
+                    }, function (res) {
+                        _report('send_msg', res.err_msg);
+                    })
+                });
 
-  <body>
-  <div class="addWrap"> 
+                // 分享到朋友圈
+                WeixinJSBridge.on('menu:share:timeline', function (argv) {
+                    WeixinJSBridge.invoke('shareTimeline', {
+                        "img_url": wxImg,
+                        "link": shareLink,
+                        "desc":  wxDesc,
+                        "title": "<%= @site.title %>"
+                    }, function (res) {
+                        _report('timeline', res.err_msg);
+                    });
+                });
+            }, false)
+        })
+  </script>
+  <style>
+    .audiojs {height:66px;width:66px;text-align:right; position:relative; overflow:hidden; background:none;-webkit-box-shadow:none;margin:0;box-shadow:none;}
+.audiojs .play-pause{border-right: 0;}
+    .loaded,.scrubber, .time {display:none;}
+    .audiojs .play-pause{width:auto;height:auto;padding:0; overflow:auto;float:right; position:absolute;right:0;  } 
+    .pictxt{color:#fff;width:100%;}
+    .pictxt h2,.pictxt h3{font-weight:normal;font-size:14px;line-height:1.4;margin:0;padding:0 0 0 20px;}
+    .pictxt h2{}
+    .pictxt h3{}
+    dl,dt,dd{margin:0;padding:0;}
+    .showtxt{ position:relative;padding-left:20px;}
+    .showtxt .masktxt{height:40%;overflow:auto;padding:20px 0 0;}
+    .showtxt .masktxt p{font-size:12px;line-height:1.0;}
+    .showtxt .mask{ position:absolute;left:-20%;top:0px;}
+     .ok{ overflow:hidden;}
+     .playbox{position:fixed; z-index:1; bottom:60px;right:20px; cursor:pointer;width:66px;}
+     .audiojs .play-pause{ }
+     .audiojs .play{ width:66px;height:66px; background:url(<%= @base_url %>assets/play.png) no-repeat 0 0!important;background-size:cover!important; }
+     .audiojs .pause{width:66px;height:66px; background:url(<%= @base_url %>assets/playstop.png) no-repeat 0 0!important;background-size:cover!important; }
+    @media (min-width: 480px) {
+    .audiojs {height:117px;width:117px;text-align:right; position:relative; overflow:hidden; background:none;-webkit-box-shadow:none;margin:0;box-shadow:none;}
+    .pictxt h2,.pictxt h3{font-size:20px;}
+    .showtxt .masktxt p{font-size:18px;line-height:1.0;}    
+    .audiojs .play{width:117px;height:117px } 
+    .audiojs .pause{width:117px;height:117px;   }
+    .playbox{width:117px;}
+    }
+    @media (min-width: 640px) {
+    .audiojs {height:135px;width:135px;text-align:right; position:relative; overflow:hidden; background:none;-webkit-box-shadow:none;margin:0;box-shadow:none;}
+    .pictxt h2,.pictxt h3{font-size:30px;}  
+    .showtxt .masktxt p{font-size:24px;line-height:1.0;}    
+    .audiojs .play-pause{ }
+    .audiojs .play{width:135px;height:135px; } 
+    .audiojs .pause{width:135px;height:135px; }
+    .playbox{width:135px;}
+    }
+    .swipehe{ overflow:hidden;}
+ </style>
     <div class="swipe" id="mySwipe">
         <div class="swipe-wrap">
-            <% @site_page.site_images.each_with_index do |site_image, index| %>
-                <% next if index == 0 %>
-                <div class="swipehe" style="background:url(<%= site_image.image.url %>); background-repeat:no-repeat; background-size:cover;">
-                    <a href="javascript:;">
-                        <img src="<%= @base_url %>assets/1.png"  width="100%" height="100%" />
-                    </a>
-                </div>
-            <% end %>
-
-
-            <div class="swipehe" style="background:url(<%= get_first_site_image_url(@site) %>); background-repeat:no-repeat;background-size:cover;">
+          <% @site_page.site_images.each_with_index do |site_image, index| %>
+            <% next if index == 0 %>
+            <div class="swipehe" style="background:url(<%= site_image.image.url %>); background-repeat:no-repeat; background-size:cover;">
+                <a href="javascript:;">
+                    <img src="<%= @base_url %>assets/1.png"  width="100%" height="100%" />
+                </a>
+            </div>
+          <% end %>      
+            
+          <div class="swipehe" style="background:url(<%= get_first_site_image_url(@site) %>); background-repeat:no-repeat;background-size:cover;">
                 <div class="playbox">
                     <audio src="<%= value_for(@site_page, 'music', typo: 'dialog', url: '/home/dialog_music', title: '背景音乐', default: true)  %>" preload="auto"></audio>
                 </div>
@@ -56,7 +619,7 @@
                         </div>
                     </dd>
                </dl>
-            </div>        
+          </div>          
         </div>
     </div>
     <ul id="position" style="display:none;">
@@ -66,62 +629,22 @@
             <li class=""></li>
         <% end %>
     </ul>
-  </div>
-
-  <script type="text/javascript">
-    var bullets = document.getElementById('position').getElementsByTagName('li');
-    var banner = Swipe(document.getElementById('mySwipe'), {
-      //auto: 4440,
-      continuous: true,
-      disableScroll:false,
-      callback: function(pos) {
+</div>
+<script type="text/javascript">
+  var bullets = document.getElementById('position').getElementsByTagName('li');
+  var banner = Swipe(document.getElementById('mySwipe'), {
+    //auto: 4440,
+    continuous: true,
+    disableScroll:false,
+    callback: function(pos) {
         var i = bullets.length;
         while (i--) {
           bullets[i].className = ' ';
         }
         bullets[pos].className = 'cur';
-      }
-    });
-  </script>
-  <script type="text/javascript">
-    $(function(){
-        _h = $(window).height();
-        $('.swipehe').height(_h);
-        $('.pictxt').height(_h);
-        $('.pictxt > dt').height(_h/3)
-        $('.masktxt').height(_h/2-30);
-        // 分享到朋友圈
-        var wxTitle = document.title;
-        var wxDesc = '<%= @site.description %>';
-        var wxImg = '<%= get_first_site_image_url(@site) %>';
-        //var shareLink = 'http://ent.qq.com/music/ps.htm';
-        document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
-            // 发送给好友
-            WeixinJSBridge.on('menu:share:appmessage', function (argv) {
-                WeixinJSBridge.invoke('sendAppMessage', {
-                    "img_url": wxImg,
-                    "link": shareLink,
-                    "desc":  wxDesc,
-                    "title": "<%= @site.title %>"
-                }, function (res) {
-                    _report('send_msg', res.err_msg);
-                })
-            });
-
-            // 分享到朋友圈
-            WeixinJSBridge.on('menu:share:timeline', function (argv) {
-                WeixinJSBridge.invoke('shareTimeline', {
-                    "img_url": wxImg,
-                    "link": shareLink,
-                    "desc":  wxDesc,
-                    "title": "<%= @site.title %>"
-                }, function (res) {
-                    _report('timeline', res.err_msg);
-                });
-            });
-        }, false)
-    })
-  </script>
-  <%= render 'layouts/s_footer' %>
-  </body>
+    }
+  });
+</script>
+</body>
 </html>
+<!--[if !IE]>|xGv00|beb553e8dceb4a298b851b5203cbf4bd<![endif]-->

@@ -16,7 +16,8 @@
       <% colors = ['red', 'blue', 'orange', 'green', 'pink'] %>
       <% @site_page.site_images.each_with_index do |site_image, index| %>
         <% next if index == 0 %>
-        <div class="swiper-slide <%= colors[rand(5)]%>-slide" style="background:url(<%= site_image.image.url %>); background-repeat:no-repeat; background-size:cover;">
+        <div class="swiper-slide <%= colors[rand(5)]%>-slide">
+          <img src="<%= site_image.image.url %>" style="width: 100%; height: 100%;"/>
         </div>
       <% end %>
 
@@ -32,7 +33,7 @@
             <h3><%= value_for(@site_page, 'sub_title', title: '副标题', typo: 'string') %></h3>
             <div class="showtxt">
                 <div class="masktxt">
-                    <%= raw value_for(@site_page, 'content', title: '详细说明', typo: 'text') %>
+                    <%= simple_format value_for(@site_page, 'content', title: '详细说明', typo: 'text') %>
                 </div>
             </div>
           </dd>
