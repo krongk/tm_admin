@@ -28,21 +28,21 @@
           .link span{display:block; margin-top:-32px; margin-left:15px}
           header{margin-top:-10px;}
             #musicControl{
-            position: fixed;
-            right: 10px;
-            top: 80%;
-            display: inline-block;
-            z-index: 99999999;
+              position: relative;
+              right: 10px;
+              top: 10%;
+              display: inline-block;
+              z-index: 99999999;
             }
             #musicControl a {
-            display: inline-block;
-            width: 52px;
-            height: 52px;
-            overflow: hidden;
-            background: url('<%= @base_url %>assets/music.png') no-repeat;
+              display: inline-block;
+              width: 52px;
+              height: 52px;
+              overflow: hidden;
+              background: url('<%= @base_url %>assets/music.png') no-repeat;
             }
             #musicControl a.stop {
-            background-position: left bottom;
+              background-position: left bottom;
             }
           /***********music end**************/
         </style>
@@ -56,10 +56,10 @@
         <script type="text/javascript">
           $(document).ready(function(){    
             $(document).one('touchstart', function (e) {
-            var music = document.getElementById("audio_play");
-            if (music.paused) { 
-              music.play(); 
-            } 
+              var music = document.getElementById("audio_play");
+              if (music.paused) { 
+                music.play(); 
+              } 
             });
           });
           function play_music(){
