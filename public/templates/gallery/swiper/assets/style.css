@@ -45,7 +45,6 @@ h2 { font-family: 'bpreplay', sans-serif; font-weight: normal; font-size: 24px; 
 }
 
 .swiper-slide .title {
-    font-style: italic;
     font-size: 42px;
     margin-top: 80px;
     margin-bottom: 0;
@@ -79,7 +78,7 @@ h2 { font-family: 'bpreplay', sans-serif; font-weight: normal; font-size: 24px; 
     background: #fff;
 }
 /* audio css  */
-.fn-audio audio{width: 44px;}
+.fn-audio audio{width: 44px; margin-top: 10px;}
 
 /* css and txt */
 .loaded, .scrubber, .time {display:none;}
