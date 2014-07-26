@@ -94,9 +94,9 @@ dl,dt,dd{margin:0;padding:0;}
 .ok{ overflow:hidden;}
 @media (min-width: 480px) {
   .pictxt h2,.pictxt h3{font-size:20px;}
-  .showtxt .masktxt p{font-size:18px;line-height:1.0;}  
+  .showtxt .masktxt p{font-size:18px; line-height:1.5;}  
 }
 @media (min-width: 640px) {
   .pictxt h2,.pictxt h3{font-size:30px;}  
-  .showtxt .masktxt p{font-size:24px; line-height:1.0;}  
+  .showtxt .masktxt p{font-size:24px; line-height:1.5;}  
 }
