@@ -11,6 +11,10 @@ body {
     height: 100%;
 }
 
+h1 { display: inline; position: relative; margin: 0ex 0ex 1ex 1.2ex; font-family: '微软雅黑', sans-serif; font-weight: normal; font-size: 42px; letter-spacing: 1px; }
+h1:before { content: '♬ '; position: absolute; top: 16px; left: -3.1ex; color: #da1c5c; font-size: 0.4em; }
+h2 { font-family: 'bpreplay', sans-serif; font-weight: normal; font-size: 24px; margin-bottom: 10px; line-height: 1.6; }
+
 .swiper-container {
     width: 100%;
     height: 100%;
@@ -76,7 +80,8 @@ body {
 }
 
 /* audio css and txt */
-.audiojs {height:66px;width:66px;text-align:right; position:relative; overflow:hidden; background:none;-webkit-box-shadow:none;margin:0;box-shadow:none;}
+.audiojs { margin: 15px 0px 20px; background-color: #000; }
+.audiojs { height:66px; width:66px; text-align:right; position:relative; overflow:hidden; background:none;-webkit-box-shadow:none;margin:0;box-shadow:none;}
 .audiojs .play-pause{border-right: 0;}
 .loaded,.scrubber, .time {display:none;}
 .audiojs .play-pause{width:auto;height:auto;padding:0; overflow:auto;float:right; position:absolute;right:0;  } 
