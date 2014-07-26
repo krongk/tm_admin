@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= @site.title %></title>
+  <meta name="description" content="<%= @site.description %>" />
+  <meta name="keywords" content="<%= @site.title %>|维斗喜帖，漂亮的电子请柬，微信喜帖" />
+  <meta name="author" content="维斗喜帖" />
+  <link rel="stylesheet" href="<%= @base_url %>assets/idangerous.swiper.css">
+  <link rel="stylesheet" href="<%= @base_url %>assets/style.css">
+  <%= render 'layouts/s_head' %>
+</head>
+<body>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <% colors = ['red', 'blue', 'orange', 'green', 'pink'] %>
+      <% @site_page.site_images.each_with_index do |site_image, index| %>
+        <% next if index == 0 %>
+        <div class="swiper-slide <%= colors[rand(5)]%>-slide" style="background:url(<%= site_image.image.url %>); background-repeat:no-repeat; background-size:cover;">
+        </div>
+      <% end %>
+
+      <div class="swiper-slide blue-slide">
+        <div class="title">Slide 2</div>
+        <div class="playbox">
+          <audio src="<%= value_for(@site_page, 'music', typo: 'dialog', url: '/home/dialog_music', title: '背景音乐', default: true)  %>" preload="auto"></audio>
+        </div>
+        <dl class="pictxt">
+          <dt></dt>
+          <dd>
+            <h2><%= value_for(@site_page, 'title', title: '标题', typo: 'string') %></h2>
+            <h3><%= value_for(@site_page, 'sub_title', title: '副标题', typo: 'string') %></h3>
+            <div class="showtxt">
+                <div class="masktxt">
+                    <%= raw value_for(@site_page, 'content', title: '详细说明', typo: 'text') %>
+                </div>
+            </div>
+          </dd>
+        </dl>
+      </div>
+    </div>
+    <div class="pagination"></div>
+  </div>
+  <script src="<%= @base_url %>assets/jquery-1.10.1.min.js"></script>
+  <script src="<%= @base_url %>assets/idangerous.swiper.js"></script>
+  <script src="<%= @base_url %>assets/audio.min.js"></script>
+  <script>
+    //init swiper
+    var mySwiper = new Swiper('.swiper-container',{
+    })
+  </script>
+  <script>
+    //init audio.js
+    audiojs.events.ready(function() {
+      audiojs.createAll();
+    });
+  </script>
+  <script type="text/javascript">
+    //init weixin
+    $(function(){
+        _h = $(window).height();
+        $('.swipehe').height(_h);
+        $('.pictxt').height(_h);
+        $('.pictxt > dt').height(_h/3)
+        $('.masktxt').height(_h/2-30);
+        // 分享到朋友圈
+        var wxTitle = document.title;
+        var wxDesc = '<%= @site.description %>';
+        var wxImg = '<%= get_first_site_image_url(@site) %>';
+        //var shareLink = 'http://ent.qq.com/music/ps.htm';
+        document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+            // 发送给好友
+            WeixinJSBridge.on('menu:share:appmessage', function (argv) {
+                WeixinJSBridge.invoke('sendAppMessage', {
+                    "img_url": wxImg,
+                    "link": shareLink,
+                    "desc":  wxDesc,
+                    "title": "<%= @site.title %>"
+                }, function (res) {
+                    _report('send_msg', res.err_msg);
+                })
+            });
+
+            // 分享到朋友圈
+            WeixinJSBridge.on('menu:share:timeline', function (argv) {
+                WeixinJSBridge.invoke('shareTimeline', {
+                    "img_url": wxImg,
+                    "link": shareLink,
+                    "desc":  wxDesc,
+                    "title": "<%= @site.title %>"
+                }, function (res) {
+                    _report('timeline', res.err_msg);
+                });
+            });
+        }, false)
+    })
+  </script>
+</body>
+</html>
