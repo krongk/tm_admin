@@ -1,4 +1,5 @@
 <!doctype html><!--爱刷刷微相册-->
+<!-- template copy from : http://www.idangero.us/sliders/swiper/demos/main-demos/17-responsive.html -->
 <html lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -18,47 +19,92 @@
 </head>
 <body>
   <div class="swiper-container">
-    <div class="swiper-wrapper">
-      <% colors = ['red', 'blue', 'orange', 'green', 'pink'] %>
-      <% @site_page.site_images.each_with_index do |site_image, index| %>
-        <% next if index == @site_page.site_images.size %>
-        <div class="swiper-slide <%= colors[rand(5)]%>-slide">
-          <% if index == 0%>
-            <span id="hand"><img src="<%= @base_url %>assets/hand.png" /></span>
-          <% end %>
-          <img src="<%= site_image.image.url %>" style="width: 100%; height: 100%;"/>
-        </div>
-      <% end %>
-
-      <div class="swiper-slide blue-slide" style="background:url(<%= @site_page.site_images.last.image.url %>); background-repeat:no-repeat;background-size:cover;">
-        <!-- music control start #######################################-->
-        <section class="fn-audio" >
-          <div class="btn">
-            <audio id="car_audio" controls preload="preload" autoplay="autoplay">
-              <source src="<%= value_for(@site_page, 'music', typo: 'dialog', url: '/home/dialog_music', title: '背景音乐', default: true)  %>" type="audio/mpeg">
-              您的浏览器不支持HTML5音频格式
-            </audio>
+    <% colors = ['red', 'blue', 'orange', 'green', 'pink'] %>
+    <% if @site_page.site_images.size > 2 %>
+      <div class="swiper-wrapper">
+        <% @site_page.site_images.each_with_index do |site_image, index| %>
+          <% next if index >= @site_page.site_images.size - 2 %>
+          <div class="swiper-slide <%= colors[rand(5)]%>-slide">
+            <img src="<%= site_image.image.url %>" style="width: 100%; height: 100%;"/>
           </div>
-        </section>
-        <!-- music control end #######################################-->
-        <dl class="pictxt">
-          <dd>
-            <h2><%= value_for(@site_page, 'title', title: '标题', typo: 'string') %></h2>
-            <div class="showtxt">
-                <div class="masktxt">
-                    <%= simple_format value_for(@site_page, 'content', title: '详细说明', typo: 'text') %>
-                </div>
-            </div>
-          </dd>
-        </dl>
+        <% end %>
+
+        <!-- content swipe start -->
+        <div class="swiper-slide blue-slide" style="background:url(<%= @site_page.site_images[-2].image.url %>); background-repeat:no-repeat;background-size:cover;">
+          <!-- music control -->
+          <dl class="pictxt">
+            <dd>
+              <h2><%= value_for(@site_page, 'title', title: '标题', typo: 'string') %></h2>
+              <div class="showtxt">
+                  <div class="masktxt">
+                      <%= simple_format value_for(@site_page, 'content', title: '详细说明', typo: 'text') %>
+                  </div>
+              </div>
+            </dd>
+          </dl>
+        </div><!-- content swipe end -->
+
+        <div class="swiper-slide <%= colors[rand(5)]%>-slide">
+          <img src="<%= @site_page.site_images.last.image.url %>" style="width: 100%; height: 100%;" />
+        </div>
       </div>
-    </div>
-    <div class="pagination"></div>
+    <% else %>
+      <div class="swiper-wrapper">
+        <div class="swiper-slide <%= colors[rand(5)]%>-slide">
+          <div class="title">请上传3张以上图片</div>
+        </div>
+        <div class="swiper-slide <%= colors[rand(5)]%>-slide">
+          <div class="title">精彩永不停歇</div>
+        </div>
+        <div class="swiper-slide <%= colors[rand(5)]%>-slide">
+          <div class="title">维斗喜帖</div>
+          <div class="title"><a href="http://www.wedxt.com"><img src="http://www.wedxt.com/assets/logo.png"></a></div>
+        </div>
+      </div>
+    <% end %>
   </div>
+  <!-- had show -->
+  <div id="hand"><img src="<%= @base_url %>assets/hand.png" /></div>
+  <!-- music control start #######################################-->
+  <div class="audio-btn">
+    <audio id="audio_play" controls preload="preload" autoplay="autoplay">
+      <source src="<%= value_for(@site_page, 'music', typo: 'dialog', url: '/home/dialog_music', title: '背景音乐', default: true)  %>" type="audio/mpeg">
+      您的浏览器不支持HTML5音频格式
+    </audio>
+  </div>
+  <!-- music control end #######################################-->
+
   <script>
     //init swiper
     var mySwiper = new Swiper('.swiper-container',{
+      loop: true,
+      onSlideChangeStart: function() {
+        //$('#hand').hide('slow'); 
+      }
     })
+  </script>
+  <script type="text/javascript">
+    // show hand 
+    $(document).ready(function(){
+      var count = 0;
+      window.setInterval(function(){ 
+        if(count < 2){
+          count += 1; 
+          animatelength();
+        }else{
+          clearInterval();
+          $("#hand").hide('slow');
+        };
+      }, 3000);
+    });
+
+    function animatelength(){
+      $("#hand")
+        .animate({left:'-=200'}, 2000)
+        .hide('slow')
+        .animate({left:'+=200'}, 2000)
+        .show();
+    }
   </script>
   <script type="text/javascript">
     //init weixin
@@ -72,7 +118,7 @@
         var wxTitle = document.title;
         var wxDesc = '<%= @site.description %>';
         var wxImg = '<%= get_first_site_image_url(@site) %>';
-        //var shareLink = 'http://ent.qq.com/music/ps.htm';
+        var shareLink = '<%= get_site_url(@site) %>';
         document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
             // 发送给好友
             WeixinJSBridge.on('menu:share:appmessage', function (argv) {
@@ -100,7 +146,6 @@
         }, false)
     })
   </script>
-
-  
+  <%= render 'layouts/s_footer' %>
 </body>
 </html>

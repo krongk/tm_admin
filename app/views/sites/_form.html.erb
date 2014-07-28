@@ -5,7 +5,7 @@
     <%= f.input :title %>
     <%= f.input :description %>
     <%= f.input :domain %>
-    <%= f.input :status %>
+    <%= f.input :status, collection: Site::STATUS %>
     <%= f.input :is_published %>
     <%= f.input :note %>
     

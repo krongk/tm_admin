@@ -5,4 +5,6 @@ class Site < ActiveRecord::Base
   has_many :site_pages, :dependent => :destroy
   has_many :site_comments, :dependent => :destroy
   has_one :site_payment, :dependent => :destroy
+
+  STATUS = %w(vip thief)
 end
