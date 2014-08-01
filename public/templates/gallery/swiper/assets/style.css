@@ -96,21 +96,79 @@ h2 { font-family: 'bpreplay', sans-serif; font-weight: normal; font-size: 24px; 
 }
 
 /* css and txt */
-.loaded, .scrubber, .time {display:none;}
-.pictxt{color:#fff;width:100%; margin-top: 180px;}
-.pictxt h2{}
-.pictxt h3{}
-dl,dt,dd{margin:0;padding:0;}
-.showtxt{ position:relative;padding-left:20px;}
-.showtxt .masktxt{height:60%;overflow:auto;padding:20px 0 0;}
-.showtxt .masktxt p{font-size:14px;line-height:1.6;}
-.showtxt .mask{ position:absolute;left:-20%;top:0px;}
-.ok{ overflow:hidden;}
-@media (min-width: 480px) {
-  .pictxt h2,.pictxt h3{font-size:32px;}
-  .showtxt .masktxt p{font-size:18px; line-height:1.5;}  
+.loaded, .scrubber, .time {
+    display: none;
 }
+
+.pictxt {
+    color: #fff;
+    width: 100%;
+    margin-top: 380px;
+}
+
+.pictxt h2 {
+    background: #fff;
+    opacity: 0.7;
+}
+
+.pictxt 
+dl,dt,dd {
+    margin: 0;
+    padding: 0;
+}
+
+.showtxt {
+    position: relative;
+    padding-left: 20px;
+}
+
+.showtxt .masktxt {
+    text-align: left;
+    height: 60%;
+    overflow: auto;
+    padding: 20px 0 0;
+}
+
+.showtxt .masktxt p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.showtxt .mask {
+    position: absolute;
+    left: -20%;
+    top: 0px;
+}
+
+.ok {
+    overflow: hidden;
+}
+
+@media (min-width: 480px) {
+    .pictxt {
+        margin-top: 220px;
+    }
+    .pictxt h2,.pictxt h3 {
+        font-size: 32px;
+    }
+
+    .showtxt .masktxt p {
+        font-size: 18px;
+        line-height: 1.5;
+    }
+}
+
 @media (min-width: 640px) {
-  .pictxt h2,.pictxt h3{font-size:30px;}  
-  .showtxt .masktxt p{font-size:24px; line-height:1.5;}  
+    .pictxt {
+        margin-top: 250px;
+    }
+
+    .pictxt h2,.pictxt h3 {
+        font-size: 30px;
+    }
+
+    .showtxt .masktxt p {
+        font-size: 24px;
+        line-height: 1.5;
+    }
 }
