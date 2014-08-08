@@ -56,7 +56,7 @@ class SitePaymentsController < ApplicationController
   def update
     respond_to do |format|
       if @site_payment.update(site_payment_params)
-        format.html { redirect_to @site_payment, notice: 'Site payment was successfully updated.' }
+        format.html { redirect_to site_payments_path, notice: 'Site payment was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
