@@ -6,5 +6,8 @@ class Site < ActiveRecord::Base
   has_many :site_comments, :dependent => :destroy
   has_one :site_payment, :dependent => :destroy
 
-  STATUS = %w(vip thief)
+  #thief: bad user, bad site -> not allow showing in case and template
+  #recommend: good site -> show in template 
+  #vip: payed site -> not show in case (if user ask for)
+  STATUS = %w(vip recommend thief)
 end
