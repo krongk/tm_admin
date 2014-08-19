@@ -11,10 +11,10 @@ body {
     height: 100%;
 }
 
-/*h1 { display: inline; position: relative; margin: 0ex 0ex 1ex 1.2ex; font-family: '微软雅黑', sans-serif; font-weight: normal; font-size: 42px; letter-spacing: 1px; }
+h1 { display: inline; position: relative; margin: 0ex 0ex 1ex 1.2ex; font-family: '微软雅黑', sans-serif; font-weight: normal; font-size: 42px; letter-spacing: 1px; }
 h1:before { content: '♬ '; position: absolute; top: 16px; left: -3.1ex; color: #da1c5c; font-size: 0.4em; }
 h2 { font-family: 'bpreplay', sans-serif; font-weight: normal; font-size: 24px; margin-bottom: 10px; line-height: 1.6; }
-*/
+
 .swiper-container {
     width: 100%;
     height: 100%;
@@ -102,85 +102,21 @@ h2 { font-family: 'bpreplay', sans-serif; font-weight: normal; font-size: 24px; 
 }
 
 /* css and txt */
-.loaded, .scrubber, .time {
-    display: none;
-}
-
-.pictxt {
-    color: #fff;
-    width: 100%;
-    margin-top: 200px;
-    height: 100%;
-}
-
-.pictxt h2 {
-    text-align: center;
-    padding: 10px;
-    width: 80%;
-    color: #000;
-    background: #fff;
-    opacity: 0.7;
-    margin: 0 auto;
-}
-
-.pictxt 
-dl,dt,dd {
-    margin: 0;
-    padding: 0;
-}
-
-.showtxt {
-    position: relative;
-    padding-left: 20px;
-}
-
-.showtxt .masktxt {
-    text-align: left;
-    height: 100%;
-    overflow: auto;
-    padding: 20px 0 0;
-}
-
-.showtxt .masktxt p {
-    font-size: 14px;
-    line-height: 1.6;
-}
-
-.showtxt .mask {
-    position: absolute;
-    left: -20%;
-    top: 0px;
-}
-
-.ok {
-    overflow: hidden;
-}
-
+.loaded, .scrubber, .time {display:none;}
+.pictxt{color:#fff;width:100%; margin-top: 180px;}
+.pictxt h2{}
+.pictxt h3{}
+dl,dt,dd{margin:0;padding:0;}
+.showtxt{ position:relative;padding-left:20px;}
+.showtxt .masktxt{height:60%;overflow:auto;padding:20px 0 0;}
+.showtxt .masktxt p{font-size:14px;line-height:1.6;}
+.showtxt .mask{ position:absolute;left:-20%;top:0px;}
+.ok{ overflow:hidden;}
 @media (min-width: 480px) {
-    .pictxt {
-        margin-top: 160px;
-    }
-    .pictxt h2,.pictxt h3 {
-        font-size: 32px;
-    }
-
-    .showtxt .masktxt p {
-        font-size: 18px;
-        line-height: 1.5;
-    }
+  .pictxt h2,.pictxt h3{font-size:32px;}
+  .showtxt .masktxt p{font-size:18px; line-height:1.5;}  
 }
-
 @media (min-width: 640px) {
-    .pictxt {
-        margin-top: 380px;
-    }
-
-    .pictxt h2,.pictxt h3 {
-        font-size: 30px;
-    }
-
-    .showtxt .masktxt p {
-        font-size: 24px;
-        line-height: 1.5;
-    }
+  .pictxt h2,.pictxt h3{font-size:30px;}  
+  .showtxt .masktxt p{font-size:24px; line-height:1.5;}  
 }
