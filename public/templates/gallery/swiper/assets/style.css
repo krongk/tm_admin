@@ -11,15 +11,17 @@ body {
     height: 100%;
 }
 
-h1 { display: inline; position: relative; margin: 0ex 0ex 1ex 1.2ex; font-family: '微软雅黑', sans-serif; font-weight: normal; font-size: 42px; letter-spacing: 1px; }
+/*h1 { display: inline; position: relative; margin: 0ex 0ex 1ex 1.2ex; font-family: '微软雅黑', sans-serif; font-weight: normal; font-size: 42px; letter-spacing: 1px; }
 h1:before { content: '♬ '; position: absolute; top: 16px; left: -3.1ex; color: #da1c5c; font-size: 0.4em; }
 h2 { font-family: 'bpreplay', sans-serif; font-weight: normal; font-size: 24px; margin-bottom: 10px; line-height: 1.6; }
-
+*/
 .swiper-container {
     width: 100%;
     height: 100%;
     color: #fff;
     text-align: center;
+    max-width: 640px;
+    max-height: 960px;
 }
 
 .red-slide {
@@ -78,17 +80,21 @@ h2 { font-family: 'bpreplay', sans-serif; font-weight: normal; font-size: 24px; 
     background: #fff;
 }
 
-#hand{
+#hand {
     position: fixed;
-    top: 50%;
-    width: 150px;
+    z-index: 1000;
+    top: 80%;
+    left: 200px;
+    width: 150;
 }
 /* audio css  */
 .audio-btn{
-    position: relative;
-    top: 3%;
-    width: 50px;
-    border: solid 0px;
+    position: fixed;
+    z-index: 1000;
+    top: 15px;
+    right: 15px;
+    width: 46px;
+    opacity: 0.8;
 }
 .audio-btn audio{
     width: 44px;
@@ -103,12 +109,18 @@ h2 { font-family: 'bpreplay', sans-serif; font-weight: normal; font-size: 24px; 
 .pictxt {
     color: #fff;
     width: 100%;
-    margin-top: 380px;
+    margin-top: 200px;
+    height: 100%;
 }
 
 .pictxt h2 {
+    text-align: center;
+    padding: 10px;
+    width: 80%;
+    color: #000;
     background: #fff;
     opacity: 0.7;
+    margin: 0 auto;
 }
 
 .pictxt 
@@ -124,7 +136,7 @@ dl,dt,dd {
 
 .showtxt .masktxt {
     text-align: left;
-    height: 60%;
+    height: 100%;
     overflow: auto;
     padding: 20px 0 0;
 }
@@ -146,7 +158,7 @@ dl,dt,dd {
 
 @media (min-width: 480px) {
     .pictxt {
-        margin-top: 220px;
+        margin-top: 160px;
     }
     .pictxt h2,.pictxt h3 {
         font-size: 32px;
@@ -160,7 +172,7 @@ dl,dt,dd {
 
 @media (min-width: 640px) {
     .pictxt {
-        margin-top: 250px;
+        margin-top: 380px;
     }
 
     .pictxt h2,.pictxt h3 {
