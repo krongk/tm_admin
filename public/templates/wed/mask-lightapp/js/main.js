@@ -1578,6 +1578,8 @@ var car2 = {
 
 	// 对象初始化
 	init : function(){
+		
+		car2.loadingPageShow();
 		// 样式，标签的渲染
 		// 对象操作事件处理
 		this.styleInit();
@@ -1616,6 +1618,8 @@ var car2 = {
 
 			// loading完成后请求
 			setTimeout(function(){
+				car2.loadingPageHide();
+				
 				// 插件加载
 				car2.plugin();
 
