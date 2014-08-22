@@ -473,7 +473,7 @@ textarea:focus,input:focus { border: 1px solid #71b643; }
 	   -moz-transition:all 0.5s;
 	        transition:all 0.5s;
 }
-.market-notice img{display:inline-block;width:640px;height:101px;}
+.market-notice img{display:inline-block;}
 .market-notice.show {
 	-webkit-transform: translateY(0);
 	   -moz-transform: translateY(0);

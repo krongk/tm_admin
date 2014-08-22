@@ -1,0 +1,109 @@
+<html><!--info宴请-->
+  <head>
+    <title><%= @site.title %></title>
+    <meta content="<%= yield(:meta_keywords) %>" name="Keywords">
+    <meta content="<%= yield(:meta_description) %>" name="Description">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <link href="/assets/font-awesome.css?body=1" media="all" rel="stylesheet" />
+    <!-- 最新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <!-- 百度地图： http://developer.baidu.com/map/jsdemo.htm#i6_1-->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=xD0rO5z4aNh1dkf0mTOb1cFV"></script>
+    
+    <style type="text/css">
+        body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;}
+        .navbar-default {
+            background-color: #F1678D;
+            border-color: #e7e7e7;
+        }
+        .navbar-default .navbar-nav>li>a{
+            color: #fff;
+        }
+        .navbar-brand {
+            color: #fff;
+            }
+        .jumbotron h1, .jumbotron .h1 {
+           color: #F1678D;
+        }
+        .jumbotron {
+            padding: 35px 10px;
+            margin-bottom: 0px;
+            background-color: #fcede4;
+        }
+    </style>
+    <%= render 'layouts/s_head' %>
+  </head>
+<body>
+    <!-- header start -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">选择菜单</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="<%= get_site_url(@site)%>">
+          &nbsp;<i class="fa fa-reply-all"></i>
+        </a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <% get_menu(@site).each do |site_page| %>
+          <li class="menu_item"><%= link_to site_page.title, get_site_page_url(site_page) %></li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+    <!-- header end -->
+    <%= render 'layouts/s_header' %>
+    <div class="jumbotron">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <h1>
+              <% if value_for(@site_page, 'girl') %>
+                <%= value_for(@site_page, 'boy', typo: 'string', title: '新郎姓名') %> 
+                 <span style="font-size: 80%;"><i class="fa fa-heart-o"> </i> </span>
+                <%= value_for(@site_page, 'girl', typo: 'string', title: '新娘姓名') %>
+              <% else %>
+                <%= value_for(@site_page, 'boy', typo: 'string', title: '新郎姓名') %> 
+                <br/><i class="fa fa-heart-o"> </i>
+              <% end %>
+            </h1>
+            <h2><%= value_for(@site_page, 'date', typo: 'string', title: '婚礼日期' ) %></h2>
+            <p>恭请光临！</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <p>地址：<%= value_for(@site_page, 'address', title: '宴请举办地址信息', typo: 'text') %></p>
+            <% if value_for(@site_page, 'boy_phone') %>
+              <a href="tel:<%= value_for(@site_page, 'boy_phone', typo: 'string', title: '新郎联系电话')%>" class="btn btn-success"><i class="fa fa-phone"></i> <%= value_for(@site_page, 'boy_phone') %></a>
+            <% end %>
+             <% if value_for(@site_page, 'girl_phone') %>
+              <a href="tel:<%= value_for(@site_page, 'girl_phone', typo: 'string', title: '新娘联系电话')%>" class="btn btn-success"><i class="fa fa-phone"></i> <%= value_for(@site_page, 'girl_phone') %></a>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="allmap"></div>
+    <%= render 'layouts/s_footer' %>
+</body>
+</html>
+<script type="text/javascript">
+// 百度地图API功能
+  var map = new BMap.Map("allmap");
+  map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);
+  var walking = new BMap.WalkingRoute(map, {renderOptions:{map: map, autoViewport: true}});
+  walking.search("<%= value_for(@site_page, 'address') %>", "<%= value_for(@site_page, 'address') %>");
+</script>
