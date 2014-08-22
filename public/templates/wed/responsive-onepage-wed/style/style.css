@@ -237,29 +237,28 @@ text-shadow:none !important;
 }
 
 .dropdown-menu{
-background:#406903 !important;
+  background:#406903 !important;
 }
 
 .dropdown-menu a{
-color:#fff !important;
-text-shadow:none !important;
+   color:#fff !important;
+   text-shadow:none !important;
 }
 
 .dropdown-menu a:hover{
-filter:none !important;
-background:#406903 !important;
+   filter:none !important;
+   background:#406903 !important;
 }
 
 /* Header */
 
 header{
-/*background:#557d0d url("../img/head-back.jpg") center center;*/
-height:550px;
-text-align:center;
-padding-top:70px;
-color:#fff;
-margin-bottom:20px;
-
+   /*background:#557d0d url("../img/head-back.jpg") center center;*/
+   /*height:550px;*/
+   text-align:center;
+   padding-top:70px;
+   color:#fff;
+   margin-bottom:20px;
 }
 
 header h1{
@@ -419,7 +418,10 @@ margin-right:2px;
 * 声音元件
 * -u-audio
 */
-.fn-audio audio{width: 44px;}
+.fn-audio audio{
+   width: 44px;
+   overflow: hidden;
+}
 
 /* Form */
 
