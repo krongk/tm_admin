@@ -19,7 +19,11 @@ module ApplicationHelper
   def get_site_url(site)
     return if site.nil?
     raise "请指定 WED_HOST" if ENV['WED_HOST'].nil?
-    [ENV['WED_HOST'], "s-#{site.short_title}"].join('/')
+    if site.class == Site
+      [ENV['WED_HOST'], "s-#{site.short_title}"].join('/')
+    else #site page
+      [ENV['WED_HOST'], "s-#{site.site.short_title}", "p-#{site.short_title}"].join('/')
+    end
   end
 
   def display_base_errors resource

@@ -2,7 +2,7 @@ class SitePageKeystore < ActiveRecord::Base
   belongs_to :site_page
   belongs_to :common_key
 
-  validates :site_page_id, :key_id, :value, presence: true
+  validates :site_page_id, :common_key_id, :value, presence: true
 
   def self.get(site_page_id, key_name)
     key = CommonKey.get(key_name)

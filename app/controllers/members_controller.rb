@@ -5,7 +5,11 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   def index
-    @members = Member.order("updated_at DESC").page(params[:page])
+    if params[:phone] =~ /\d{11}/i
+       @members = Member.where(["auth_id = ?", params[:phone]]).page(params[:page])
+    else
+      @members = Member.order("updated_at DESC").page(params[:page])
+    end
   end
 
   # GET /members/1

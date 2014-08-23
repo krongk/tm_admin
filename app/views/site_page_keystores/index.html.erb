@@ -1,12 +1,12 @@
-<h1>Listing site_page_keystores</h1>
+<h1>内容键值</h1>
 
-<table>
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
-      <th>Site page</th>
-      <th>Key</th>
+      <th width="100">Site</th>
+      <th width="100">Site page</th>
+      <th width="50">Key</th>
       <th>Value</th>
-      <th></th>
       <th></th>
       <th></th>
     </tr>
@@ -14,13 +14,14 @@
 
   <tbody>
     <% @site_page_keystores.each do |site_page_keystore| %>
+      <% site = site_page_keystore.site_page.site %>
       <tr>
-        <td><%= site_page_keystore.site_page %></td>
-        <td><%= site_page_keystore.key %></td>
+        <td><%= link_to site.title, get_site_url(site), target: '_blank' %></td>
+        <td><%= link_to site_page_keystore.site_page.title, get_site_url(site_page_keystore.site_page), target: '_blank' %></td>
+        <td><%= site_page_keystore.common_key.title %></td>
         <td><%= site_page_keystore.value %></td>
-        <td><%= link_to 'Show', site_page_keystore %></td>
-        <td><%= link_to 'Edit', edit_site_page_keystore_path(site_page_keystore) %></td>
-        <td><%= link_to 'Destroy', site_page_keystore, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '编辑', edit_site_page_keystore_path(site_page_keystore) %></td>
+        <td><%= link_to '删除', site_page_keystore, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +29,4 @@
 
 <br>
 
-<%= link_to 'New Site page keystore', new_site_page_keystore_path %>
+<%= will_paginate @site_page_keystores %>

@@ -5,7 +5,7 @@ class SitePageKeystoresController < ApplicationController
   # GET /site_page_keystores
   # GET /site_page_keystores.json
   def index
-    @site_page_keystores = SitePageKeystore.all
+    @site_page_keystores = SitePageKeystore.order("updated_at desc").page(params[:page])
   end
 
   # GET /site_page_keystores/1
@@ -29,7 +29,7 @@ class SitePageKeystoresController < ApplicationController
 
     respond_to do |format|
       if @site_page_keystore.save
-        format.html { redirect_to @site_page_keystore, notice: 'Site page keystore was successfully created.' }
+        format.html { redirect_to site_page_keystores_path, notice: 'Site page keystore was successfully created.' }
         format.json { render action: 'show', status: :created, location: @site_page_keystore }
       else
         format.html { render action: 'new' }
@@ -43,7 +43,7 @@ class SitePageKeystoresController < ApplicationController
   def update
     respond_to do |format|
       if @site_page_keystore.update(site_page_keystore_params)
-        format.html { redirect_to @site_page_keystore, notice: 'Site page keystore was successfully updated.' }
+        format.html { redirect_to site_page_keystores_path, notice: 'Site page keystore was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -70,6 +70,6 @@ class SitePageKeystoresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def site_page_keystore_params
-      params.require(:site_page_keystore).permit(:site_page_id, :key, :value)
+      params.require(:site_page_keystore).permit(:value)
     end
 end
