@@ -57,7 +57,7 @@ class SiteCommentsController < ApplicationController
   def destroy
     @site_comment.destroy
     respond_to do |format|
-      format.html { redirect_to site_comments_url }
+      format.html { redirect_to site_path(@site_comment.site) }
       format.json { head :no_content }
     end
   end

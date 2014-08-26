@@ -57,6 +57,9 @@ module ApplicationHelper
   def get_date(date)
     date.strftime("%Y-%m-%d")
   end
+   def get_time(date)
+    date.strftime("%Y-%m-%d %H:%M")
+  end
   def get_short_content(content, count = 120)
     sanitize(strip_tags(content).to_s.truncate(count))
   end

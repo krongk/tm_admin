@@ -34,6 +34,7 @@ RainCms::Application.routes.draw do
   resources :site_comments
 
   resources :site_pages
+  resources :site_images
 
   resources :sites
 
