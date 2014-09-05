@@ -21,8 +21,6 @@
       <th>网站数量</th>
       <th>Token created at</th>
       <th>Token confirmed</th>
-      <th>Current sign in at</th>
-      <th>Last sign in at</th>
       <th></th>
       <th></th>
       <th></th>
@@ -39,8 +37,6 @@
         <td><%= link_to member.sites.count, member %></td>
         <td><%= member.token_created_at %></td>
         <td><%= member.token_confirmed %></td>
-        <td><%= member.current_sign_in_at %></td>
-        <td><%= member.last_sign_in_at %></td>
         <td><%= link_to '详细', member %></td>
         <td><%= link_to '修改', edit_member_path(member) %></td>
         <td><%= link_to '删除', member, method: :delete, data: { confirm: '确定要删除?' } %></td>

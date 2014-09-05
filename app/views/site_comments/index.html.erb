@@ -1,54 +1,42 @@
-<h1>Listing site_comments</h1>
+<h1>留言列表</h1>
+*  应用为空的留言为系统留言，是会员发送给网站管理员的。
 
-<table>
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
-      <th>User</th>
-      <th>Site</th>
-      <th>Template page</th>
-      <th>Name</th>
-      <th>Mobile phone</th>
-      <th>Tel phone</th>
-      <th>Email</th>
-      <th>Qq</th>
-      <th>Weixin</th>
-      <th>Address</th>
-      <th>Gender</th>
-      <th>Birth</th>
-      <th>Hobby</th>
-      <th>Content</th>
-      <th>Content2</th>
-      <th>Content3</th>
-      <th>Status</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th width="180px">归属应用</th>
+      <th width="100px">姓名</th>
+      <th width="160px">联系信息</th>
+      <th>留言</th>
+      <th width="160px">留言时间</th>
+      <th colspan="2">操作</th>
     </tr>
   </thead>
 
   <tbody>
     <% @site_comments.each do |site_comment| %>
       <tr>
-        <td><%= site_comment.user %></td>
-        <td><%= site_comment.site %></td>
-        <td><%= site_comment.template_page %></td>
+        <td><%= if site_comment.site.present? then link_to "#{site_comment.site.id}. #{site_comment.site.title}", site_path(site_comment.site) end %></td>
         <td><%= site_comment.name %></td>
-        <td><%= site_comment.mobile_phone %></td>
-        <td><%= site_comment.tel_phone %></td>
-        <td><%= site_comment.email %></td>
-        <td><%= site_comment.qq %></td>
-        <td><%= site_comment.weixin %></td>
-        <td><%= site_comment.address %></td>
-        <td><%= site_comment.gender %></td>
-        <td><%= site_comment.birth %></td>
-        <td><%= site_comment.hobby %></td>
-        <td><%= site_comment.content %></td>
-        <td><%= site_comment.content2 %></td>
-        <td><%= site_comment.content3 %></td>
-        <td><%= site_comment.status %></td>
-        <td><%= link_to 'Show', site_comment %></td>
-        <td><%= link_to 'Edit', edit_site_comment_path(site_comment) %></td>
-        <td><%= link_to 'Destroy', site_comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= site_comment.mobile_phone %>
+          <%= site_comment.tel_phone %>
+          <%= site_comment.email %><br/>
+          <%= site_comment.qq %>
+          <%= site_comment.weixin %>
+          <%= site_comment.address %>
+          <%= site_comment.gender %>
+          <%= site_comment.birth %>
+          <%= site_comment.hobby %>
+        </td>
+        <td>
+          <%= site_comment.content %>
+          <%= site_comment.content2 %>
+          <%= site_comment.content3 %>
+        </td>
+        <td><%= site_comment.created_at.to_s(:db) %></td>
+        <td><%= link_to '修改', edit_site_comment_path(site_comment) %></td>
+        <td><%= link_to '删除', site_comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -56,4 +44,4 @@
 
 <br>
 
-<%= link_to 'New Site comment', new_site_comment_path %>
+<%= will_paginate @site_comments %>

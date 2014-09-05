@@ -1,7 +1,25 @@
-<h3>User</h3>
-<p>User: <%= @user.name %></p>
-<p>Email: <%= @user.email if @user.email %></p>
+<p id="notice"><%= notice %></p>
 
-<%= render partial: 'sites/list', locals: {sites: @user.sites} %>
+<table class="table table-bordered">
+  <tr>
+    <th>编号</th>
+    <th>来源</th>
+    <th>Email</th>
+    <th>昵称</th>
+    <th>登录次数</th>
+    <th>当前登录时间</th>
+    <th>最后登录时间</th>
+    <th>操作</th>
+  </tr>
+  <tr>
+    <td><%= @user.id %></td>
+    <td><%= @user.provider %></td>
+    <td><%= @user.email %></td>
+    <td><%= @user.name %></td>
+    <td><%= @user.sign_in_count %></td>
+    <td><%= @user.current_sign_in_at %></td>
+    <td><%= @user.last_sign_in_at %></td>
+  </tr>
+</table>
 
-<%= link_to '返回', "javascript: history.go(-1);" %>
+<%= render partial: 'sites/list', locals: {sites: @sites} %>

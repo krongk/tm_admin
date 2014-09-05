@@ -1,15 +1,22 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
 
+  #index and search
   def index
     authorize! :index, @user, :message => '没有管理员权限.'
-    @users = User.all
+    #@users = User.order("current_sign_in_at DESC").page(params[:page])
+    if params[:email] =~ /\w+@\w+/
+      @users = User.where(["email = ?", params[:email]]).order("current_sign_in_at DESC").page(params[:page])
+    else
+      @users = User.order("current_sign_in_at DESC").page(params[:email])
+    end
   end
 
   def show
     @user = User.find(params[:id])
+    @sites = @user.sites.joins(:site_payment).order("site_payments.state ASC").page(params[:page])
   end
-  
+
   def update
     authorize! :update, @user, :message => '没有管理员权限.'
     @user = User.find(params[:id])

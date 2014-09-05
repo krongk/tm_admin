@@ -38,6 +38,7 @@
 
         </ul>
       </li>
+      <li><%= link_to '留言管理', site_comments_path %></li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">资源管理 <b class="caret"></b></a>
         <ul class="dropdown-menu">
@@ -61,9 +62,9 @@
   <% end %>
   <ul class="nav navbar-nav navbar-right">
     <% if user_signed_in? %>
-      <li><%= link_to '会员管理', members_path %></li>
+      <li><%= link_to '手机用户', members_path %></li>
       <% if current_user.has_role? :admin %>
-        <li><%= link_to '用户管理', users_path %></li>
+        <li><%= link_to '注册用户', users_path %></li>
       <% end %>
       <li>
       <%= link_to '修改密码', edit_user_registration_path %>
