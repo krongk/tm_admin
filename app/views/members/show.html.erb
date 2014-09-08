@@ -1,41 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<%= render partial: 'sites/list', locals: {sites: @member.sites} %>
+<table class="table table-bordered">
+  <tr>
+    <th>Auth type</th>
+    <th>Auth ID</th>
+    <th>Auth token</th>
+    <th>Token created at</th>
+    <th>Token confirmed</th>
+    <th>Current sign in at</th>
+    <th>Last sign in at</th>
+    <th>操作</th>
+  </tr>
+  <tr>
+    <td><%= @member.auth_type %></td>
+    <td><%= @member.auth_id %></td>
+    <td><%= @member.auth_token %></td>
+    <td><%= @member.token_created_at %></td>
+    <td><%= @member.token_confirmed %></td>
+    <td><%= @member.current_sign_in_at %></td>
+    <td><%= @member.last_sign_in_at %></td>
+    <td><%= link_to 'Edit', edit_member_path(@member) %></td>
+  </tr>
+</table>
 
-<p>
-  <strong>Auth type:</strong>
-  <%= @member.auth_type %>
-</p>
-
-<p>
-  <strong>Auth:</strong>
-  <%= @member.auth_id %>
-</p>
-
-<p>
-  <strong>Auth token:</strong>
-  <%= @member.auth_token %>
-</p>
-
-<p>
-  <strong>Token created at:</strong>
-  <%= @member.token_created_at %>
-</p>
-
-<p>
-  <strong>Token confirmed:</strong>
-  <%= @member.token_confirmed %>
-</p>
-
-<p>
-  <strong>Current sign in at:</strong>
-  <%= @member.current_sign_in_at %>
-</p>
-
-<p>
-  <strong>Last sign in at:</strong>
-  <%= @member.last_sign_in_at %>
-</p>
-
-<%= link_to 'Edit', edit_member_path(@member) %> |
-<%= link_to 'Back', "javascript: history.go(-1);" %>
+<%= render partial: 'sites/list', locals: {sites: @sites} %>

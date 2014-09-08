@@ -5,7 +5,7 @@ class SiteCommentsController < ApplicationController
   # GET /site_comments
   # GET /site_comments.json
   def index
-    @site_comments = SiteComment.all
+    @site_comments = SiteComment.where("name <> '维斗喜帖'").order("updated_at DESC").page(params[:page] || 1)
   end
 
   # GET /site_comments/1
@@ -43,7 +43,7 @@ class SiteCommentsController < ApplicationController
   def update
     respond_to do |format|
       if @site_comment.update(site_comment_params)
-        format.html { redirect_to @site_comment, notice: 'Site comment was successfully updated.' }
+        format.html { redirect_to site_comments_path, notice: 'Site comment was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -57,7 +57,7 @@ class SiteCommentsController < ApplicationController
   def destroy
     @site_comment.destroy
     respond_to do |format|
-      format.html { redirect_to site_comments_url }
+      format.html { redirect_to site_comments_path }
       format.json { head :no_content }
     end
   end
