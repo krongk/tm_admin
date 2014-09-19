@@ -548,10 +548,8 @@ var Msize = $(".m-page").size(), 	//页面的数目
 /*
 ** 页面加载初始化
 */
-  window.location.href = 'http://www.wedxt.com';
 	var input_focus = false;
 	function initPage(){
-		window.location.href = 'http://www.wedxt.com';
 		//初始化一个页面
 		$(".m-page").addClass("hide").eq(page_n-1).addClass("show").removeClass("hide");
 		
