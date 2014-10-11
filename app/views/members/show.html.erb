@@ -7,8 +7,7 @@
     <th>Auth token</th>
     <th>Token created at</th>
     <th>Token confirmed</th>
-    <th>Current sign in at</th>
-    <th>Last sign in at</th>
+    <th>登录次数</th>
     <th>操作</th>
   </tr>
   <tr>
@@ -17,9 +16,8 @@
     <td><%= @member.auth_token %></td>
     <td><%= @member.token_created_at %></td>
     <td><%= @member.token_confirmed %></td>
-    <td><%= @member.current_sign_in_at %></td>
-    <td><%= @member.last_sign_in_at %></td>
-    <td><%= link_to 'Edit', edit_member_path(@member) %></td>
+    <td><%= @member.sign_in_count %></td>
+    <td><%= link_to '修改', edit_member_path(@member) %></td>
   </tr>
 </table>
 

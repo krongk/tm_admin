@@ -1,9 +1,6 @@
 /**
  *  canvas蒙板图片处理插件
  *  -----------------------------
- *  一张网页，要经历怎样的过程，才能抵达用户面前
- *  一个特效，要经历这样的修改，才能让用户点个赞
- *  一个产品，创意源于生活，源于内心，需要慢慢品味
  *********************************************************************************************
  *  这是别人写的东西，我只是重复利用，微调了下--努力努力 ^-^||
  *  
@@ -37,7 +34,7 @@ function Lottery(node, cover, coverType, width, height, drawPercentCallback) {
     this.lotteryType = 'image';
 
     // 蒙板图
-    this.cover = cover || "#000"; 
+    this.cover = cover || "#ffcc00"; 
     this.coverType = coverType;
     this.pixlesData = null;
 
@@ -137,7 +134,7 @@ Lottery.prototype = {
                 isMouseDown = false;
                 var per = _this.getTransparentPercent(_this.maskCtx, _this.width, _this.height);
 
-                if(per>=50){
+                if(per >= 30){
                     // 执行回调函数
                     if(typeof(_this.drawPercentCallback)=='function') _this.drawPercentCallback();
                 }
@@ -152,7 +149,7 @@ Lottery.prototype = {
             _this.conNode.addEventListener('touchend', function(e) {
                 isMouseDown = false;
                 var per = _this.getTransparentPercent(_this.maskCtx, _this.width, _this.height);
-                if(per>=50){
+                if(per>=30){
                     // 执行回调函数
                     if(typeof(_this.drawPercentCallback)=='function') _this.drawPercentCallback();
                 }

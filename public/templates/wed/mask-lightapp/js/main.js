@@ -1513,7 +1513,7 @@ var car2 = {
  		$('#j-mengban').removeClass('z-show');
  		setTimeout(function(){
  			$('#j-mengban').addClass('f-hide');
- 		},1500)
+ 		},1000)
 
  		// 开启window的滚动
  		car2._scrollStart();

@@ -81,7 +81,13 @@
       onSlideChangeStart: function() {
         //$('#hand').hide('slow'); 
       }
-    })
+    });
+
+    <% unless value_for(@site_page, 'extend_url', typo: 'string', title: '外链地址').blank? %>
+      //Create new instance of slide to after:
+      var newSlide = mySwiper.createSlide('<div class="title"><%= value_for(@site_page, 'title', title: '标题', typo: 'string') %></div><p>&nbsp;</p><p><a href="<%= value_for(@site_page, "extend_url", typo: "string", title: "外链地址") %>" class="btn btn-success"> <%= value_for(@site_page, "extend_url_title", typo: "string", title: "外链标题") %> </a></p>');
+      newSlide.append();
+    <% end %>
   </script>
   <script type="text/javascript">
     // show hand 
