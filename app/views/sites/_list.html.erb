@@ -6,8 +6,9 @@
       <th>模板</th>
       <th>标题</th>
       <th>创建时间</th>
-      <th>支付状态</th>
-      <th colspan="4">操作</th>
+      <th>价格</th>
+      <th>支付</th>
+      <th colspan="5">操作</th>
     </tr>
   </thead>
 
@@ -23,13 +24,16 @@
           <% end %>
         </td>
         <td><%= site.template.title %></td>
-        <td><%= site.title %></td>
-        <td><%= get_time site.created_at %></td>
-        <td><span class="<%= site.site_payment.state == 'completed' ? 'blue' : (site.site_payment.state == 'opening' ? '' : 'orange') %>"><%= payment_state(site) %></span></td>
-        
-        <td><%= link_to '预览', get_site_url(site), target: '_blank' %></td>
+        <td>
+          <%= link_to site.title, get_site_url(site), target: '_blank' %>
+        </td>
+        <td><%= distance_of_time_in_words_to_now(site.created_at) %>前</td>
+        <td><%= site.site_payment.price %></td>
+        <td><%= get_payment_status(site.site_payment) %></td>
         <td><%= link_to '详细', site_path(site), target: '_blank' %></td>
+        <td><%= link_to '前台修改', "http://www.wedxt.com/sites/#{site.id}/edit", target: "_blank" %></td>
         <td><%= link_to '修改', edit_site_path(site) %></td>
+        <td><%= link_to '改价', edit_site_payment_path(site.site_payment), target: '_blank' %></td>
         <td><%= link_to '删除', site, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

@@ -183,4 +183,21 @@ module ApplicationHelper
     slice_pages
   end
 
+  #get price status view
+  def get_payment_status(site_payment)
+    css_class = case site_payment.state
+    when 'completed'; 'blue'
+    when 'opening'; 'gray'
+    else 'orange'
+    end
+
+    text = case site_payment.state
+    when 'completed'; '成'
+    when 'opening'; '未'
+    else '中'
+    end
+
+    return "<span class='#{css_class}'>#{text}</span>".html_safe
+  end
+
 end
