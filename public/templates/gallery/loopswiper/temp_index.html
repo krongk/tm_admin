@@ -1,0 +1,98 @@
+<!doctype html><!--循环滚动-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <title><%= @site.title %></title>
+  <meta name="description" content="<%= @site.description %>" />
+  <link rel="stylesheet" type="text/css" href="<%= @base_url %>css/idangerous.swiper.css" />
+  <link rel="stylesheet" type="text/css" href="<%= @base_url %>css/main.css" />
+  <%= render 'layouts/s_head' %>
+</head>
+<body>
+  <%= render 'layouts/s_header' %>
+  <!--模版加载提示-->
+  <section class="u-alert">
+    <img style='display:none;'src="<%= @base_url %>img/loading_large.gif" />
+    <div class='alert-loading z-move'>
+      <div class='cycleWrap'>
+        <span class='cycle cycle-1'></span>
+        <span class='cycle cycle-2'></span>
+        <span class='cycle cycle-3'></span>
+        <span class='cycle cycle-4'></span>
+      </div>
+      <div class="lineWrap">
+        <span class='line line-1'></span>
+        <span class='line line-2'></span>
+        <span class='line line-3'></span>
+      </div>
+    </div>
+  </section>
+  <!--模版加载提示 end-->
+  
+  <!-- 声音控件 -->
+  <section class='u-audio f-hide' data-src="<%= value_for(@site_page, 'music', typo: 'dialog', url: '/home/dialog_music', title: '背景音乐', default: true)  %>">
+    <p id='coffee_flow' class="btn_audio">
+      <strong class='txt_audio z-hide'>关闭</strong>
+      <span class='css_sprite01 audio_open'></span>
+    </p>
+  </section>
+  <!-- 声音控件 end-->
+  <!-- 箭头指示引导 -->
+  <section class='u-arrow f-hide'><p class="css_sprite01"></p></section>
+  <!-- 箭头指示引导 end-->
+  
+  <section class='p-ct'>
+    <div id="j-mengban" class='translate-front' data-open="1">
+      <div class='mengban-warn'></div>
+    </div>
+    <div class='translate-back f-hide'>
+      <input id="ca-tips" type="hidden" value="" />
+      <input id="r-cover" type="hidden" value="<%= asset_path value_for(@site_page, 'banner', typo: 'dialog', url: '/home/dialog_banner', title: '封面照片', default: true)  %>" />
+      <div class='m-page m-fengye f-hide' data-page-type='info_pic3' data-statics='info_pic3'>
+        <div class="page-con lazy-img" data-src="<%= get_first_site_image_url(@site) %>"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <% @site_page.site_images.each_with_index do |site_image, index| %>
+        <% next if index == 0 %>
+        <div class="swiper-slide blue-slide">
+          <div class="img_content"><img src="<%= site_image.image.url %>" /></div>
+        </div>
+      <% end %>
+    </div>
+    <div class="pagination"></div>
+  </div>
+
+  <!--pageLoading-->
+  <section class="u-pageLoading">
+    <img src="<%= @base_url %>img/load.gif" alt="loading" />
+  </section>
+  <!--pageLoading end-->
+
+  <script src="<%= @base_url %>js/jquery-1.10.1.min.js"></script>
+  <script src="<%= @base_url %>js/idangerous.swiper-2.1.min.js"></script>
+  <script src="<%= @base_url %>js/Lottery.js"></script>
+  <script src="<%= @base_url %>js/weixin.share.js"></script>
+  <script src="<%= @base_url %>js/main.js"></script>
+  <script>
+    var mySwiper = new Swiper('.swiper-container',{
+      pagination: '.pagination',
+      paginationClickable: true,
+      mode: 'vertical',
+      loop: true,
+      speed: 600,  
+      //autoplay: 6000, 
+      updateOnImagesReady: false, //When enabled Swiper will be reinitialized after all inner images (<img> tags) are loaded
+      visibilityFullFit: true, //If enabled then "visible" slides will be only those slides that are entirely fit to the container's view. 
+    })
+  </script>
+  <%= render 'layouts/s_footer' %>
+</body>
+</html>
