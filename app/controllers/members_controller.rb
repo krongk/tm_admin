@@ -5,8 +5,8 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   def index
-    if params[:phone] =~ /\d{11}/i
-       @members = Member.where(["auth_id = ?", params[:phone]]).page(params[:page])
+    if params[:phone] =~ /\d+/i
+       @members = Member.where(["auth_id like ?", "%#{params[:phone]}%"]).page(params[:page])
     else
       @members = Member.order("updated_at DESC").page(params[:page])
     end

@@ -1,0 +1,126 @@
+
+<!doctype html><!--循环滚动-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <title>最美四川</title>
+  <meta name="description" content="上下循环翻动微杂志" />
+  <link rel="stylesheet" type="text/css" href="http://www.wedxt.cn/templates/gallery/loopswiper/css/idangerous.swiper.css" />
+  <link rel="stylesheet" type="text/css" href="http://www.wedxt.cn/templates/gallery/loopswiper/css/main.css" />
+<!--浏览器兼容HTML5标签-->
+  <!--[if lt IE 9]>
+    <script type="text/javascript" src="http://www.wedxt.cn/templates/gallery/loopswiper/js/html5.js"></script>
+  <![endif]-->
+  <!--移动端版本兼容 -->
+  <script type="text/javascript">
+    var phoneWidth =  parseInt(window.screen.width);
+    var phoneScale = phoneWidth/640;
+    var ua = navigator.userAgent;
+    if (/Android (\d+\.\d+)/.test(ua)){
+      var version = parseFloat(RegExp.$1);
+      if(version>2.3){
+        document.write('<meta name="viewport" content="width=640, minimum-scale = '+phoneScale+', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');
+      }else{
+        document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+      }
+    } else {
+      document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+    }
+  </script>
+  <!--移动端版本兼容 end -->
+  
+
+</head>
+<body>
+  
+  <!--模版加载提示-->
+  <section class="u-alert">
+    <img style='display:none;'src="http://www.wedxt.cn/templates/gallery/loopswiper/img/loading_large.gif" />
+    <div class='alert-loading z-move'>
+      <div class='cycleWrap'>
+        <span class='cycle cycle-1'></span>
+        <span class='cycle cycle-2'></span>
+        <span class='cycle cycle-3'></span>
+        <span class='cycle cycle-4'></span>
+      </div>
+      <div class="lineWrap">
+        <span class='line line-1'></span>
+        <span class='line line-2'></span>
+        <span class='line line-3'></span>
+      </div>
+    </div>
+  </section>
+  <!--模版加载提示 end-->
+  
+  <!-- 声音控件 -->
+  <section class='u-audio f-hide' data-src="http://www.wedxt.com/musics/mp3/hao jiu bu jian.mp3">
+    <p id='coffee_flow' class="btn_audio">
+      <strong class='txt_audio z-hide'>关闭</strong>
+      <span class='css_sprite01 audio_open'></span>
+    </p>
+  </section>
+  <!-- 声音控件 end-->
+  <!-- 箭头指示引导 -->
+  <section class='u-arrow f-hide'><p class="css_sprite01"></p></section>
+  <!-- 箭头指示引导 end-->
+  
+  <section class='p-ct'>
+    <div id="j-mengban" class='translate-front' data-open="1">
+      <div class='mengban-warn'></div>
+    </div>
+    <div class='translate-back f-hide'>
+      <input id="ca-tips" type="hidden" value="" />
+      <input id="r-cover" type="hidden" value="img/aa.jpg" />
+      <div class='m-page m-fengye f-hide' data-page-type='info_pic3' data-statics='info_pic3'>
+        <div class="page-con lazy-img" data-src="http://tm-card.qiniudn.com/site_images/8966/original.jpg"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="swiper-container f-hide">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide blue-slide" style="background: url(http://tm-card.qiniudn.com/site_images/8966/original.jpg) top center repeat-y;">
+        </div>
+        <div class="swiper-slide blue-slide" style="background: url(http://tm-card.qiniudn.com/site_images/8967/original.jpg) top center repeat-y;">
+        </div>
+        <div class="swiper-slide blue-slide" style="background: url(http://tm-card.qiniudn.com/site_images/8968/original.jpg) top center repeat-y;">
+        </div>
+        <div class="swiper-slide blue-slide" style="background: url(http://tm-card.qiniudn.com/site_images/8969/original.jpg) top center repeat-y;">
+        </div>
+    </div>
+    <div class="pagination"></div>
+  </div>
+
+  <!--pageLoading-->
+  <section class="u-pageLoading">
+    <img src="http://www.wedxt.cn/templates/gallery/loopswiper/img/load.gif" alt="loading" />
+  </section>
+  <!--pageLoading end-->
+  <!-- 微信分享信息 -->
+  <input id="r-wx-img" type="hidden" value="http://tm-card.qiniudn.com/site_images/8966/original.jpg" />
+
+  <script src="http://www.wedxt.cn/templates/gallery/loopswiper/js/jquery-1.10.1.min.js"></script>
+  <script src="http://www.wedxt.cn/templates/gallery/loopswiper/js/idangerous.swiper-2.1.min.js"></script>
+  <script src="http://www.wedxt.cn/templates/gallery/loopswiper/js/Lottery.js"></script>
+  <script src="http://www.wedxt.cn/templates/gallery/loopswiper/js/weixin-share.js"></script>
+  <script src="js/main1.js"></script>
+  <script>
+    var mySwiper = new Swiper('.swiper-container',{
+      pagination: '.pagination',
+      paginationClickable: true,
+      mode: 'vertical',
+      loop: true,
+      speed: 600,  
+      //autoplay: 6000, 
+      //updateOnImagesReady: false, //When enabled Swiper will be reinitialized after all inner images (<img> tags) are loaded
+      //visibilityFullFit: true, //If enabled then "visible" slides will be only those slides that are entirely fit to the container's view. 
+    })
+  </script>
+
+
+</body>
+</html>

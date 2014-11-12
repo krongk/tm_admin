@@ -13,6 +13,10 @@ class SitesController < ApplicationController
     @sites = Site.order("updated_at DESC").page( params[:page])
   end
 
+  def payed
+    @sites = Site.payed.page( params[:page])
+  end
+
   # GET /sites/1
   # GET /sites/1.json
   def show

@@ -36,7 +36,11 @@ RainCms::Application.routes.draw do
   resources :site_pages
   resources :site_images
 
-  resources :sites
+  resources :sites do
+    collection do
+      get :payed
+    end
+  end
 
   namespace :sites do
     post "temp_form_update"
