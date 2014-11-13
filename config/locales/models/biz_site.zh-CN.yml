@@ -1,0 +1,15 @@
+---
+zh-CN:
+  activerecord:
+    models:
+      biz_site: 商务案例
+    attributes:
+      biz_site:
+        title: 标题
+        thumb: 缩略图
+        url: URL
+        description: 描述
+    errors:
+      biz_site: 
+  helpers:
+    biz_site: 

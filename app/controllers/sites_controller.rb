@@ -10,11 +10,16 @@ class SitesController < ApplicationController
   # GET /sites
   # GET /sites.json
   def index
-    @sites = Site.order("updated_at DESC").page( params[:page])
+    @sites = Site.order("id DESC").page( params[:page])
   end
 
   def payed
     @sites = Site.payed.page( params[:page])
+  end
+
+  def change_cate
+    @site = Site.find(params[:id])
+    @site.toggle_cate
   end
 
   # GET /sites/1

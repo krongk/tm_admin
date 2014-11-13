@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140708130407) do
+ActiveRecord::Schema.define(version: 20141113163917) do
 
   create_table "admin_channels", force: true do |t|
     t.integer  "user_id"
@@ -81,6 +81,15 @@ ActiveRecord::Schema.define(version: 20140708130407) do
   add_index "admin_pages", ["short_title"], name: "index_admin_pages_on_short_title", using: :btree
   add_index "admin_pages", ["user_id"], name: "index_admin_pages_on_user_id", using: :btree
 
+  create_table "biz_sites", force: true do |t|
+    t.string   "title"
+    t.string   "thumb"
+    t.string   "url"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
     t.string   "data_content_type"
@@ -109,15 +118,18 @@ ActiveRecord::Schema.define(version: 20140708130407) do
   end
 
   create_table "members", force: true do |t|
-    t.string   "auth_type",          null: false
-    t.string   "auth_id",            null: false
-    t.string   "auth_token"
-    t.time     "token_created_at"
+    t.string   "auth_type",              limit: 32,             null: false
+    t.string   "auth_id",                                       null: false
+    t.string   "auth_token",             limit: 32
+    t.datetime "token_created_at"
     t.boolean  "token_confirmed"
-    t.time     "current_sign_in_at"
-    t.string   "last_sign_in_at"
+    t.integer  "sign_in_count",                     default: 1
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "payment_notify_count",              default: 0, null: false
+    t.datetime "payment_notify_send_at"
+    t.integer  "festival_notify_count",             default: 0, null: false
+    t.integer  "promote_notify_count",              default: 0, null: false
   end
 
   add_index "members", ["auth_type", "auth_id"], name: "uniq__auth_type", unique: true, using: :btree
@@ -146,18 +158,32 @@ ActiveRecord::Schema.define(version: 20140708130407) do
 
   add_index "payment_tokens", ["user_id"], name: "index_payment_tokens_on_user_id_id", using: :btree
 
-  create_table "resouce_musics", force: true do |t|
+  create_table "resource_musics", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "member_id"
     t.string   "name"
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "asset_file_name"
+    t.string   "asset_content_type"
+    t.integer  "asset_file_size"
+    t.datetime "asset_updated_at"
   end
 
-  create_table "resource_musics", force: true do |t|
+  add_index "resource_musics", ["member_id"], name: "index_resource_musics_on_member_id", using: :btree
+  add_index "resource_musics", ["user_id"], name: "index_resource_musics_on_user_id", using: :btree
+
+  create_table "resource_musics-bak", force: true do |t|
+    t.integer  "user_id"
     t.string   "name"
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "asset_file_name"
+    t.string   "asset_content_type"
+    t.integer  "asset_file_size"
+    t.datetime "asset_updated_at"
   end
 
   create_table "roles", force: true do |t|
@@ -357,12 +383,12 @@ ActiveRecord::Schema.define(version: 20140708130407) do
   add_index "templates", ["cate_id"], name: "index_templates_on_template_cate_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                             default: ""
+    t.string   "encrypted_password",                default: ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",                     default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -374,6 +400,8 @@ ActiveRecord::Schema.define(version: 20140708130407) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.string   "provider",               limit: 32
+    t.string   "uid",                    limit: 64
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

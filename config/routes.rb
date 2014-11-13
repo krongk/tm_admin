@@ -1,5 +1,7 @@
 RainCms::Application.routes.draw do
 
+  resources :biz_sites
+
   namespace :resource do
     resources :musics
   end
@@ -39,6 +41,7 @@ RainCms::Application.routes.draw do
   resources :sites do
     collection do
       get :payed
+      get :change_cate
     end
   end
 

@@ -12,4 +12,14 @@ class Site < ActiveRecord::Base
   STATUS = %w(vip-recommend vip recommend thief)
 
   scope :payed, joins(:site_payment).where("site_payments.state = 'completed' || sites.status is not null").order("created_at DESC")
+
+  def toggle_cate
+    raise 'please put ENV["PRICE_VIP"]' if ENV["PRICE_VIP"].blank?
+
+    self.cate =  self.cate == 'personal' ? 'business' : 'personal'
+    self.site_payment.price = ENV["PRICE_VIP"]
+    self.site_payment.save!
+    self.save!
+  end
+
 end
