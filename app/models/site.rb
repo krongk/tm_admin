@@ -13,10 +13,10 @@ class Site < ActiveRecord::Base
 
   scope :payed, joins(:site_payment).where("site_payments.state = 'completed' || sites.status is not null").order("created_at DESC")
 
-  def toggle_cate
+  def toggle_typo
     raise 'please put ENV["PRICE_VIP"]' if ENV["PRICE_VIP"].blank?
 
-    self.cate =  self.cate == 'personal' ? 'business' : 'personal'
+    self.typo =  self.typo == 'personal' ? 'business' : 'personal'
     self.site_payment.price = ENV["PRICE_VIP"]
     self.site_payment.save!
     self.save!

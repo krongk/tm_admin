@@ -19,7 +19,7 @@ class SitesController < ApplicationController
 
   def change_cate
     @site = Site.find(params[:id])
-    @site.toggle_cate
+    @site.toggle_typo
   end
 
   # GET /sites/1

@@ -17,7 +17,7 @@
     <% sites.each do |site| %>
       <tr>
         <td><%= site.id %></td>
-        <td><div id="<%= site.id %>"><%= link_to site.cate, change_cate_sites_path(id: site.id), remote: true, class: site.cate == 'personal' ? 'gray' : 'blue' %></div></td>
+        <td><div id="<%= site.id %>"><%= link_to site.typo, change_typo_sites_path(id: site.id), remote: true, class: site.typo == 'personal' ? 'gray' : 'blue' %></div></td>
         <td>
           <% if site.user_id.present? %>
             <%= link_to site.user.email, user_path(site.user_id) %>

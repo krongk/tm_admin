@@ -1,1 +1,0 @@
-$("#<%= @site.id %>").html('<a class="<%= @site.cate == "personal" ? "gray" : "blue" %>" data-remote="true" href="/sites/change_cate?id=<%= @site.id %>"><%= @site.cate == "personal" ? "personal" : "business" %></a>');
