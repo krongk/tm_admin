@@ -505,15 +505,6 @@ var wedxt = {
       callback = wedxt.start_callback;
 
     wedxt.cover_draw(node,url,canvas_url,type,w,h,callback);
-
-    // 微信分享
-    var option_wx = {};
-
-    if($('#r-wx-title').val()!='') option_wx.title = $('#r-wx-title').val();
-    if($('#r-wx-img').val()!='') option_wx.img = $('#r-wx-img').val();
-    if($('#r-wx-con').val()!='') option_wx.con = $('#r-wx-con').val();
-
-    if(wedxt._weixin) $(document.body).wx(option_wx);
   },
 
   // 蒙板插件初始化函数处理
@@ -526,14 +517,14 @@ var wedxt = {
 
   // 蒙板插件回调函数处理
   start_callback : function(){
-    
     // 隐藏蒙板
     $('#j-mengban').removeClass('z-show');
     setTimeout(function(){
       $('#j-mengban').addClass('f-hide');
-    },1000)
+    }, 500)
 
     //删掉封面层
+    $('.swiper-container').removeClass('f-hide');
     $('.p-ct').remove();
 
     // 开启window的滚动
@@ -569,24 +560,8 @@ var wedxt = {
     if(wedxt._Android) $(document.body).addClass('android');
     if(wedxt._iPhoen) $(document.body).addClass('iphone');
 
-    // 判断是否有3d
-    if(!wedxt._hasPerspective()){
-      wedxt._rotateNode.addClass('transformNode-2d');
-      $(document.body).addClass('no-3d');
-    }
-    else{
-      wedxt._rotateNode.addClass('transformNode-3d');
-      $(document.body).addClass('perspective');
-      $(document.body).addClass('yes-3d');
-    }
-
     // 图片延迟加载的处理
     this.lazy_img();
-
-    // 模版提示文字显示
-    setTimeout(function(){
-      $('.m-alert').find('strong').addClass('z-show');
-    },1000)
 
     $('.u-arrow').on('touchmove',function(e){e.preventDefault()})
   },
@@ -638,11 +613,6 @@ var wedxt = {
         // 插件加载
         wedxt.plugin();
 
-        // 模版提示隐藏
-        setTimeout(function(){
-          $('.m-alert').addClass('f-hide');
-        },1000)
-
         // 显示正面
         $('#j-mengban').addClass('z-show');
 
@@ -653,9 +623,9 @@ var wedxt = {
           wedxt.height_auto(wedxt._page.eq(wedxt._pageNow),'false');
         },1000)
 
-        // setTimeout(function(){
-     //              window.scrollTo(0, 1);
-     //          }, 0);
+        setTimeout(function(){
+            window.scrollTo(0, 1);
+        }, 0);
 
         // media初始化
         wedxt.media_init();
@@ -663,19 +633,6 @@ var wedxt = {
         // 延迟加载后面三个页面图片
         wedxt.lazy_start();
 
-        // 报名提交执行
-        // wedxt.signUp_submit();
-        
-        
-        // var channel_id = location.search.substr(location.search.indexOf("channel=") + 8);
-        // channel_id= channel_id.match(/^\d+/) ; 
-        // if (!channel_id || isNaN(channel_id) || channel_id<0) {
-        // channel_id = 1;
-        // }
-      //    var activity_id = $('#activity_id').val();
-      //    var url = "/auto/analyse/"+activity_id + "?channel="+channel_id;
-        //  //报名统计请求
-       //   $.get(url,{},function(){});
       },time)
     })
   }

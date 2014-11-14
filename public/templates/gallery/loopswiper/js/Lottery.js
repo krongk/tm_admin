@@ -134,7 +134,7 @@ Lottery.prototype = {
                 isMouseDown = false;
                 var per = _this.getTransparentPercent(_this.maskCtx, _this.width, _this.height);
 
-                if(per >= 30){
+                if(per >= 20){
                     // 执行回调函数
                     if(typeof(_this.drawPercentCallback)=='function') _this.drawPercentCallback();
                 }
@@ -149,7 +149,7 @@ Lottery.prototype = {
             _this.conNode.addEventListener('touchend', function(e) {
                 isMouseDown = false;
                 var per = _this.getTransparentPercent(_this.maskCtx, _this.width, _this.height);
-                if(per>=30){
+                if(per>=20){
                     // 执行回调函数
                     if(typeof(_this.drawPercentCallback)=='function') _this.drawPercentCallback();
                 }

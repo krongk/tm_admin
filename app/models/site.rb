@@ -16,8 +16,8 @@ class Site < ActiveRecord::Base
   def toggle_typo
     raise 'please put ENV["PRICE_VIP"]' if ENV["PRICE_VIP"].blank?
 
-    self.typo =  self.typo == 'personal' ? 'business' : 'personal'
-    self.site_payment.price = ENV["PRICE_VIP"]
+    self.typo = self.typo == 'personal' ? 'business' : 'personal'
+    self.site_payment.price = self.typo == 'personal' ? ENV["PRICE_PERSONAL"] : ENV["PRICE_BUSINESS"]
     self.site_payment.save!
     self.save!
   end

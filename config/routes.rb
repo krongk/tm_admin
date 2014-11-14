@@ -41,7 +41,7 @@ RainCms::Application.routes.draw do
   resources :sites do
     collection do
       get :payed
-      get :change_cate
+      get :toogle_typo
     end
   end
 

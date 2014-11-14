@@ -17,7 +17,7 @@ class SitesController < ApplicationController
     @sites = Site.payed.page( params[:page])
   end
 
-  def change_cate
+  def toogle_typo
     @site = Site.find(params[:id])
     @site.toggle_typo
   end

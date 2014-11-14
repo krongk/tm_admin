@@ -3,6 +3,7 @@
     <tr>
       <th>编号</th>
       <th>分类</th>
+      <th>状态</th>
       <th>用户</th>
       <th>模板</th>
       <th>标题</th>
@@ -17,7 +18,10 @@
     <% sites.each do |site| %>
       <tr>
         <td><%= site.id %></td>
-        <td><div id="<%= site.id %>"><%= link_to site.typo, change_typo_sites_path(id: site.id), remote: true, class: site.typo == 'personal' ? 'gray' : 'blue' %></div></td>
+        <td><div id="<%= site.id %>"><%= link_to site.typo, toogle_typo_sites_path(id: site.id), remote: true, class: site.typo == 'personal' ? 'gray' : 'blue' %></div></td>
+        <td>
+        <%= site.status %>
+        </td>
         <td>
           <% if site.user_id.present? %>
             <%= link_to site.user.email, user_path(site.user_id) %>
