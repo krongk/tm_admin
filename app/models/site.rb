@@ -17,7 +17,7 @@ class Site < ActiveRecord::Base
     raise 'please put ENV["PRICE_VIP"]' if ENV["PRICE_VIP"].blank?
 
     self.cate =  self.cate == 'personal' ? 'business' : 'personal'
-    self.site_payment.price = ENV["PRICE_VIP"]
+    self.site_payment.price = self.cate == 'personal' ? ENV["PRICE_PERSONAL"] : ENV["PRICE_BUSINESS"]
     self.site_payment.save!
     self.save!
   end

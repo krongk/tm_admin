@@ -91,8 +91,10 @@ body {
 .swiper-slide .img_content{
   margin: 0px auto;
   padding: 0px;
+}
+.swiper-slide .img_content img{
   width: 640px;
-  height: 960px;
+  min-height: 960px;
 }
 .pagination {
   position: absolute;
