@@ -22,4 +22,12 @@ class Site < ActiveRecord::Base
     self.save!
   end
 
+  def set_free
+    self.site_payment.price = 0.00
+    self.site_payment.state = 'completed'
+    self.site_payment.save!
+    self.status = 'vip-recommend'
+    self.save!
+  end
+
 end

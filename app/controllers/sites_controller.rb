@@ -22,6 +22,10 @@ class SitesController < ApplicationController
     @site.toggle_typo
   end
 
+  def set_free
+    @site = Site.find(params[:id])
+    @site.set_free
+  end
   # GET /sites/1
   # GET /sites/1.json
   def show

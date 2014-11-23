@@ -35,14 +35,14 @@
         </td>
         <td><%= distance_of_time_in_words_to_now(site.created_at) %>前</td>
         <td><%= site.site_payment.price %></td>
-        <td><%= get_payment_status(site.site_payment) %></td>
+        <td><div id="fee_<%= site.id %>"><%= get_payment_status(site.site_payment) %></div></td>
         <% if payed %>
           <td><%= site.status %></td>
         <% end %>
         <td><%= link_to '详细', site_path(site), target: '_blank' %></td>
         <td><%= link_to '前台修改', "http://www.wedxt.com/sites/#{site.id}/edit", target: "_blank" %></td>
-        <td><%= link_to '修改', edit_site_path(site) %></td>
         <td><%= link_to '改价', edit_site_payment_path(site.site_payment), target: '_blank' %></td>
+        <td><%= link_to '免费', set_free_sites_path(id: site.id), remote: true %></td>
         <td><%= link_to '删除', site, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

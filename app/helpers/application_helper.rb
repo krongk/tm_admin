@@ -190,12 +190,14 @@ module ApplicationHelper
     when 'opening'; 'gray'
     else 'orange'
     end
+    css_class = 'green' if site_payment.price == 0.00
 
     text = case site_payment.state
     when 'completed'; '成'
     when 'opening'; '未'
     else '中'
     end
+    text = '免' if site_payment.price == 0.00
 
     return "<span class='#{css_class}'>#{text}</span>".html_safe
   end

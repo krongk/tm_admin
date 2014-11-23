@@ -42,6 +42,7 @@ RainCms::Application.routes.draw do
     collection do
       get :payed
       get :toogle_typo
+      get :set_free
     end
   end
 
