@@ -10,7 +10,11 @@ class SitesController < ApplicationController
   # GET /sites
   # GET /sites.json
   def index
-    @sites = Site.order("id DESC").page( params[:page])
+    if params[:q] =~ /\d+/i
+      @sites = Site.where(["title like ?", "%#{params[:q]}%"]).page(params[:page])
+    else
+      @sites = Site.order("id DESC").page( params[:page])
+    end
   end
 
   def payed

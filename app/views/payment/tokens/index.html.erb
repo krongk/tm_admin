@@ -20,7 +20,9 @@
           <%= user.email %>
         <% end %>
       <% end %>
-
+      <% @payment_titles.each do |payment_token| %>
+        <%= link_to payment_token.title, payment_tokens_path(title: payment_token.title), class: "list-group-item" %>
+      <% end %>
     </div>
   </div>
   <div class="col-md-9">

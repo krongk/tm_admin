@@ -1,5 +1,16 @@
 <h1>应用列表</h1>
 
-<%= render partial: 'list', locals: {sites: @sites, payed: false} %>
+<div class="row">
+  <div class="col-lg-6">
+    <form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" name="q" placeholder="输入标题关键词">
+      </div>
+      <button type="submit" class="btn btn-default">查询</button>
+    </form>
+  </div><!-- /.col-lg-6 -->
+</div>
+
+<%= render partial: 'list', locals: {sites: @sites} %>
 
 <br>

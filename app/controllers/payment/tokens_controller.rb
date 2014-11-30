@@ -11,15 +11,24 @@ class Payment::TokensController < ApplicationController
       queries << "status = ?" 
       conditions << params[:status]
     end
+
     if params[:user_id]
       queries << "user_id = ?" 
       conditions << params[:user_id]
     end
+
+    if params[:title]
+      queries << "title = ?" 
+      conditions << params[:title]
+    end
+
     conditions.unshift(queries.join(' AND '))
 
-    @payment_tokens = Payment::Token.where(conditions).order("created_at DESC").page(params[:page])
+    @payment_tokens = Payment::Token.where(conditions).order("status ASC").page(params[:page])
 
     @users = User.all.select{|u| u.has_role?(ENV["ROLES"]['VIP'])}
+
+    @payment_titles = Payment::Token.group(:title)
   end
 
   # GET /payment/tokens/1
@@ -89,6 +98,6 @@ class Payment::TokensController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def payment_token_params
-      params.require(:payment_token).permit(:code, :count, :user_id, :created_by, :status, :note)
+      params.require(:payment_token).permit(:title, :code, :count, :user_id, :created_by, :status, :note)
     end
 end

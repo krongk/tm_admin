@@ -30,4 +30,8 @@ class Site < ActiveRecord::Base
     self.save!
   end
 
+  def image_count
+    SiteImage.joins(:site_page).where("site_pages.site_id = #{self.id}").count
+  end
+
 end

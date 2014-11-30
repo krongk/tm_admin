@@ -2,15 +2,13 @@
   <thead>
     <tr>
       <th>编号</th>
-      <th>分类</th>
-      <th>状态</th>
       <th>用户</th>
-      <th>模板</th>
+      <th>分类</th>
       <th>标题</th>
       <th>创建时间</th>
       <th>价格</th>
       <th>支付</th>
-      <th colspan="5">操作</th>
+      <th colspan="6">操作</th>
     </tr>
   </thead>
 
@@ -18,29 +16,28 @@
     <% sites.each do |site| %>
       <tr>
         <td><%= site.id %></td>
-        <td><div id="<%= site.id %>"><%= link_to site.typo, toogle_typo_sites_path(id: site.id), remote: true, class: site.typo == 'personal' ? 'gray' : 'blue' %></div></td>
-        <td>
-        <%= site.status %>
-        </td>
         <td>
           <% if site.user_id.present? %>
             <%= link_to site.user.email, user_path(site.user_id) %>
           <% else %>
             <%= link_to site.member.auth_id, member_path(site.member_id) %>
           <% end %>
+          <br/><small><%= site.status %></small>
         </td>
-        <td><%= site.template.title %></td>
+        <td><div id="<%= site.id %>"><%= link_to site.typo, toogle_typo_sites_path(id: site.id), remote: true, class: site.typo == 'personal' ? 'gray' : 'blue' %></div>
+        </td>
         <td>
-          <%= link_to site.title, "http://www.wedxt.com/sites/#{site.id}/preview", target: '_blank' %>
+          <%= link_to "http://www.wedxt.com/sites/#{site.id}/preview", target: '_blank' do %>
+            <span class="badge badge-info"><%= site.image_count%></span>&nbsp;<strong><%= site.title %></strong>
+          <% end %>
+          <br/><small><%= site.template.title %></small>
         </td>
         <td><%= distance_of_time_in_words_to_now(site.created_at) %>前</td>
         <td><%= site.site_payment.price %></td>
         <td><div id="fee_<%= site.id %>"><%= get_payment_status(site.site_payment) %></div></td>
-        <% if payed %>
-          <td><%= site.status %></td>
-        <% end %>
         <td><%= link_to '详细', site_path(site), target: '_blank' %></td>
-        <td><%= link_to '前台修改', "http://www.wedxt.com/sites/#{site.id}/edit", target: "_blank" %></td>
+        <td><%= link_to '修改', edit_site_path(site) %></td>
+        <td><%= link_to '前台', "http://www.wedxt.com/sites/#{site.id}/edit", target: "_blank" %></td>
         <td><%= link_to '改价', edit_site_payment_path(site.site_payment), target: '_blank' %></td>
         <td><%= link_to '免费', set_free_sites_path(id: site.id), remote: true %></td>
         <td><%= link_to '删除', site, method: :delete, data: { confirm: 'Are you sure?' } %></td>
