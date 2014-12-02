@@ -102,7 +102,13 @@
       autoplay: 6000, 
       updateOnImagesReady: false, //When enabled Swiper will be reinitialized after all inner images (<img> tags) are loaded
       visibilityFullFit: true, //If enabled then "visible" slides will be only those slides that are entirely fit to the container's view. 
-    })
+      onSlideChangeStart: function(swiper){
+        $('.swiper-slide-active').each(function(i,ele){
+          $(this).attr('style', $(this).attr('style') + ';background-position: 50% 50%;')
+        })
+      }
+    });
+    mySwiper.setWrapperTranslate(x,y,z);
   </script>
 </body>
 </html>
