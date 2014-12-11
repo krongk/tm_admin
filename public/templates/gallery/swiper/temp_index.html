@@ -24,8 +24,7 @@
       <div class="swiper-wrapper">
         <% @site_page.site_images.each_with_index do |site_image, index| %>
           <% next if index >= @site_page.site_images.size - 2 %>
-          <div class="swiper-slide <%= colors[rand(5)]%>-slide">
-            <img src="<%= site_image.image.url %>" style="width: 100%; height: 100%;"/>
+          <div class="swiper-slide <%= colors[rand(5)]%>-slide" style="background-image: url(<%= qiniu_image_path(site_image.image.url,  thumbnail: 'x960', crop: '!640x-0a0', quality: 100) %>); background-size: cover; background-position: 50% 50%;">
           </div>
         <% end %>
 

@@ -72,6 +72,6 @@ class Templates::TemplatesController < Templates::ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def templates_template_params
-      params.require(:templates_template).permit(:cate_id, :property, :base_url, :title, :keywords, :summary, :description, :demo_img, :demo_url)
+      params.require(:templates_template).permit(:is_published, :cate_id, :property, :base_url, :title, :keywords, :summary, :description, :demo_img, :demo_url)
     end
 end
