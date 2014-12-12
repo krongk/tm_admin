@@ -5,7 +5,7 @@ class Resource::MusicsController < ApplicationController
   # GET /resource/musics
   # GET /resource/musics.json
   def index
-    @resource_musics = Resource::Music.order("updated_at").page(params[:page])
+    @resource_musics = Resource::Music.order("updated_at DESC").page(params[:page])
   end
 
   # GET /resource/musics/1

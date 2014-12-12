@@ -22,7 +22,6 @@
         <td><%= template.base_url %></td>
         <td><%= template.title %></td>
         <td><%= template.is_published %></td>
-        <td><%= link_to '购买', new_site_path(temp_id: template.id),  data: {confirm: '确定要使用该模板？'} %></td>
         <td><%= link_to '查看', template %></td>
         <td><%= link_to '编辑', edit_templates_template_path(template) %></td>
         <td><%= link_to '删除', template, method: :delete, data: { confirm: '删除模板将删除与此相关的主题和模板页面，确定要删除?' } %></td>
