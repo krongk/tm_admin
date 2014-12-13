@@ -31,6 +31,7 @@
   <!-- baidu map 1 start -->
   <script type="text/javascript" src="http://api.map.baidu.com/api?type=quick&ak=xD0rO5z4aNh1dkf0mTOb1cFV&v=1.0"></script>  
   <!-- baidu map 1 end -->
+
 </head>
 
 <body>
@@ -55,7 +56,7 @@
           <li><a href="#about" class="anchorLink">邀请函</a></li>
           <li><a href="#photos" class="anchorLink">电子相册</a></li>
           <li><a href="#wedding" class="anchorLink">宴席安排</a></li>
-          <li><a href="<%= get_site_page_url_by_title(@site, '留言祝福') %>">留言祝福</a></li>
+          <li><a href="<%= get_site_page_url_by_title(@site, '留言祝福') %>">留言回执</a></li>
         </ul>
       </nav>
     </div>
@@ -81,23 +82,24 @@
                         <%= value_for(@site_page, 'girl', title: '女方姓名') %></h2>
                      <div class="bor"></div>
                      <!-- Small para -->
-                     <p><%= value_for(@site_page, 'welcome', title: '简短邀请词', typo: 'text', default: true) %> </p>
-                     <!--fn-声音显示 -->
-                     <section class="fn-audio" >
-                        <div class="btn">
-                          <p class="btn_audio"><span class='css_sprite01 audio_open'></span><span class='css_sprite01 audio_close'></span></p>
-                          <audio id="car_audio"  controls preload="preload" autoplay="autoplay">
-                            <source src="<%= value_for(@site_page, 'music', typo: 'dialog', url: '/home/dialog_music', title: '背景音乐', default: true)  %>" type="audio/mpeg">
-                            您的浏览器不支持HTML5音频格式
-                          </audio>
-                        </div>
-                     </section>
-                     <!--fn-声音显示 end-->
+                     <p><%= value_for(@site_page, 'welcome', title: '婚礼邀请词', typo: 'text', default: true) %> </p>
+                     
                   </div>
                   <!-- Button. Note down the class "button" -->
                   <div class="button">
-                    <a href="#wedding" class="anchorLink">宴席安排</a> &nbsp; <a href="<%= get_site_page_url_by_title(@site, '留言祝福') %>">留言祝福</a>
+                    <a href="#wedding" class="anchorLink">宴席安排</a> &nbsp; <a href="<%= get_site_page_url_by_title(@site, '留言祝福') %>">留言回执</a>
                   </div>
+<!--fn-声音显示 -->
+ <section class="fn-audio" >
+    <div class="btn">
+      <p class="btn_audio"><span class='css_sprite01 audio_open'></span><span class='css_sprite01 audio_close'></span></p>
+      <audio id="car_audio"  controls preload="preload" autoplay="autoplay">
+        <source src="<%= value_for(@site_page, 'music', typo: 'dialog', url: '/home/dialog_music', title: '背景音乐', default: true)  %>" type="audio/mpeg">
+        您的浏览器不支持HTML5音频格式
+      </audio>
+    </div>
+ </section>
+ <!--fn-声音显示 end-->
                </div>
             </div>
          </div>
@@ -105,27 +107,27 @@
   </header>
    
   <!-- 爱情故事 开始-->
-  <% unless value_for(@site_page, 'story', title: '邀请函', typo: 'text', default: true).blank? %> 
-  <a name="about" id="about"></a>
-  <div class="border"></div>
-   
-   <div class="aboutus">
-      <div class="container">
-         <div class="row">
-            <div class="col-md-12">
-               <div class="well center">
-                  <div class="head">
-                  <!-- Our love story -->
-                     <h3>邀请函</h3>
-                     <div class="bor"></div>
-                     <p><%= value_for(@site_page, 'story', title: '邀请函', typo: 'text', default: true) %></p>
-                  </div>
-               </div>
-            </div>
-           <!-- 新郎新娘贺词-->
-         </div> 
-      </div>      
-   </div>
+  <% unless value_for(@site_page, 'story', title: '爱情故事', typo: 'text', default: true).blank? %> 
+    <a name="about" id="about"></a>
+    <div class="border"></div>
+     
+     <div class="aboutus">
+        <div class="container">
+           <div class="row">
+              <div class="col-md-12">
+                 <div class="well center">
+                    <div class="head">
+                    <!-- Our love story -->
+                       <h3>爱的宣言</h3>
+                       <div class="bor"></div>
+                       <div><%= simple_format value_for(@site_page, 'story', title: '爱情故事', typo: 'text', default: true) %></div>
+                    </div>
+                 </div>
+              </div>
+             <!-- 新郎新娘贺词-->
+           </div> 
+        </div>      
+     </div>
    <% end %>
    <!-- 爱情故事 结束-->
 
@@ -255,7 +257,7 @@
                       var uri = 'http://api.map.baidu.com/marker?location='+ location.lat +','+location.lng +'&title=宴席位置&content='+address+'&output=html';
                       var staticimageUrl = "http://api.map.baidu.com/staticimage?center=" +location.lng+','+location.lat + "&markers=" + location.lng+','+location.lat;
 
-                      html += '<p style="text-align:center"><a href="' + uri + '"><img class="img-responsive" src="' + staticimageUrl + 'width=100%&height=200&zoom=14"/></a></p><p style="text-align:center; line-heigt:30px;"><%= raw value_for(@site_page, "address") %><a href="' + uri + '" class="btn btn-large btn-danger">在线导航</a></p>' ;
+                      html += '<p style="text-align:center"><a target="_blank" href="' + uri + '"><img class="img-responsive" src="' + staticimageUrl + 'width=100%&height=200&zoom=14"/></a></p><p style="text-align:center; line-heigt:30px;"><%= raw value_for(@site_page, "address") %></p><div class="text-center"><a target="_blank" href="' + uri + '" class="btn btn-lg btn-danger"> 打开电子地图 </a></div>' ;
                       document.getElementById('optionsNarrative').innerHTML = html;
                       return;
                       //document.getElementById('optionsNarrative').innerHTML = html;
@@ -307,14 +309,14 @@
     </div>
   </footer>   
   <!-- [[footer end]] --> 
-  
+
   <!-- [[foot start]] --> 
     <!-- JS -->
     <script src="<%= @base_url %>js/jquery.js"></script>
     <script src="<%= @base_url %>js/bootstrap.min.js"></script>
     <script src="<%= @base_url %>js/jquery.flexslider-min.js"></script>
     <script src="<%= @base_url %>js/jquery.anchor.js"></script>
-    <script src="<%= @base_url %>js/custom.js"></script>
+    <script src="<%= @base_url %>js/custom_wed.js"></script>
     <script src="<%= @base_url %>js/weixin.share.js"></script>
   <!-- [[foot end]] --> 
   <%= render 'layouts/s_footer' %>
