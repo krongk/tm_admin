@@ -1,0 +1,91 @@
+@media only screen and (min-width: 768px) and (max-width: 789px) {.con_style,.gallery_area{width:748px!important;}.gallery_item img{width:219px!important;}.gallery_item a .overly{height:215px!important;width:219px!important;}.gallery_item a .overly .clear{height:100px!important;}}@media only screen and (max-width: 767px) {.container .col_0.col{width:97.88765%;}.container .col_1.col{width:97.88765%;}.container .col_2.col{width:97.88765%;}.container .col_3.col{width:97.88765%;}.container .col_4.col{width:97.88765%;}.container .col_5.col{width:97.88765%;}.container .col_6.col{width:97.88765%;}.container .col_7.col{width:97.88765%;}.container .col_8.col{width:97.88765%;}.container .col_9.col{width:97.88765%;}.container .col_10.col{width:97.88765%;}.container .col_11.col{width:97.88765%;}.container .col_12.col{width:97.88765%;}.container .col_13.col{width:97.88765%;}.container .col_14.col{width:97.88765%;}.container .col_15.col{width:97.88765%;}.container .col_16.col{width:97.88765%;}.container .col_1_3{width:97.88765%;}.container .col_2_3{width:97.88765%;}.col_container .col_1{width:97%;}.col_container .col_2{width:97%;}.col_container .col_3{width:97%;}.col_container .col_4{width:97%;}.col_container .col_5{width:97%;}.col_container .col_6{width:97%;}#left_sidebar{width:97.88765%;margin-right:0;}#right_sidebar{width:97.88765%;margin-left:0;}#article{width:97.88765%;float:left;}.con_style,.gallery_area{width:300px!important;}.logo_area{width:300px!important;}.selectnav{display:inline-block;float:none;width:300px!important;margin:0 auto!important;}#nav{display:none!important;}.copyright,.footer-menu,#footer_nav{float:none;text-align:center;}.gallery_item img{width:283px!important;}.gallery_item a .overly{height:278px!important;width:283px!important;}.gallery_item a .overly .clear{height:120px!important;}#nextslide,#prevslide,.social_bar{display:none!important;}.logo-warper{margin-top:50px!important;}.page-template-template-home-php .copyright{position:relative;right:inherit;}.home_circle{width:300px;height:300px;position:relative;top:inherit;left:inherit;margin-top:60px;margin-left:auto;margin-right:auto;-webkit-border-radius:230px;-moz-border-radius:230px;border-radius:230px;}.home_circle .gap{height:85px!important;}.home_square{width:300px;height:280px;position:relative;top:inherit;left:inherit;margin-top:60px;margin-left:auto;margin-right:auto;}.home_square .gap{height:60px!important;}.home_rounded{width:300px;height:280px;position:relative;top:inherit;left:inherit;margin-top:60px;margin-left:auto;margin-right:auto;-webkit-border-radius:30px;-moz-border-radius:30px;border-radius:30px;}.home_rounded .gap{height:70px!important;}.home_hexagon{width:300px;height:280px;position:relative;top:inherit;left:inherit;margin-top:60px;margin-left:auto;margin-right:auto;-webkit-border-radius:30px;-moz-border-radius:30px;border-radius:30px;}.home_hexagon:before{display:none;}.home_hexagon:after{display:none;;}.home_hexagon .gap{height:50px!important;}.home_egg{position:relative;top:inherit;left:inherit;margin-top:60px;margin-bottom:20px;margin-left:auto;margin-right:auto;display:block;width:300px;height:400px;background-color:#FFF;-webkit-border-radius:63px 63px 63px 63px/ 108px 108px 72px 72px;
+		    border-radius:         50%  50%  50%  50%  / 60%   60%   40%  40%;
+		}
+		.home_egg .home-box-inner{ width:80%; margin:0 auto; }
+		.home_egg .gap{ height:130px !important; }
+		
+		
+		
+		/*--image-only--*/
+		.home_image-only {
+			width:300px;
+			position:relative;
+			top:inherit;
+			left:inherit;
+			margin-top: 60px;
+			margin-left:auto;
+			margin-right:auto;
+		}
+		.home_image-only .gap{ height:0 !important; }
+		
+		.people_itam .people_image { width: 219px !important; margin-bottom: -60px; }
+		.people_itam .people_info { width: 219px; height: 219px; position: relative; clear: both; }
+		.people_itam .people_info h1 { font-size: 18px; margin-top: 0px; padding-top: 50px; }
+	}
+	
+	
+	
+	
+	/* #Mobile (Landscape)
+	================================================== */
+
+    /* Note: Design for a width of 480px */
+
+    @media only screen and (min-width: 480px) and (max-width: 767px) {
+		/* Base Grid */
+		.container .col_0.col	{ width: 97.88765%;  }
+		.container .col_1.col	{ width: 97.88765%;  }
+		.container .col_2.col	{ width: 97.88765%; }
+		.container .col_3.col	{ width: 97.88765%; }
+		.container .col_4.col	{ width: 97.88765%; }
+		.container .col_5.col	{ width: 97.88765%; }
+		.container .col_6.col	{ width: 97.88765%; }
+		.container .col_7.col	{ width: 97.88765%; }
+		.container .col_8.col	{ width: 97.88765%; }
+		.container .col_9.col	{ width: 97.88765%; }
+		.container .col_10.col	{ width: 97.88765%; }
+		.container .col_11.col	{ width: 97.88765%; }
+		.container .col_12.col	{ width: 97.88765%; }
+		.container .col_13.col	{ width: 97.88765%; }
+		.container .col_14.col	{ width: 97.88765%; }
+		.container .col_15.col	{ width: 97.88765%; }
+		.container .col_16.col	{ width: 97.88765%; }
+		.container .col_1_3       { width: 97.88765%; }
+		.container .col_2_3       { width: 97.88765%; }
+		
+		.col_container .col_1 { width:97%; }
+		.col_container .col_2 { width:97%; }
+		.col_container .col_3 { width:97%; }
+		.col_container .col_4 { width:97%; }
+		.col_container .col_5 { width:97%; }
+		.col_container .col_6 { width:97%; }
+		
+		#left_sidebar{ width: 97.88765%; margin-right:0;}
+		#right_sidebar{ width: 97.88765%; margin-left:0;}
+		#article{ width: 97.88765%; }
+		
+		
+		.con_style, .gallery_area{ width: 460px !important; }
+		
+		.gallery_item img{ width: 202px !important; }
+		.gallery_item a .overly{ height:199px !important; width:202px !important;}
+	    .gallery_item a .overly .clear{ height:90px !important; }
+
+		.selectnav{ display:inline-block; float:none; width:300px !important; margin:0 auto !important;}
+		#nav{ display:none !important; }
+		
+		.copyright, .footer-menu, #footer_nav{ float:none !important; text-align:center !important; padding: 5px 0; }
+		
+		#nextslide, #prevslide, .social_bar{ display:none !important; }
+		
+		.logo_area{ width: 360px !important; }
+		
+
+		.logo-warper { margin-top:50px !important; }
+		
+		.copyright.front_page{ position:relative !important;  }
+		
+		.people_itam .people_image { width: 330px !important; margin-bottom: -60px; }
+		.people_itam .people_info { width: 330px; height: 330px; position: relative; clear: both; }
+		.people_itam .people_info h1 { margin-top: 0px; padding-top: 90px; }
+	}

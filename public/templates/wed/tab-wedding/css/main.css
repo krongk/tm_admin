@@ -111,7 +111,10 @@ a.map img {
 	height: 100%;
 	position: relative;
 }
+/* 去掉红标
 .container-home{ background-image:url(../img/bottom.png); background-position:0 100%; background-repeat:no-repeat; background-size:100%; background-size:cover}
+*/
+
 .home .header {
     position: relative;
 	margin: 0 auto;
