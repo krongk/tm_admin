@@ -52,10 +52,10 @@ class Templates::Page < ActiveRecord::Base
     arr << %{<abbr title="必填项">*</abbr>} if opt[:required] == true
     arr << %{<%= CommonKey.get('#{name}').try(:title) %>}
     if opt[:typo].downcase == 'dialog' && name == 'music'
-      arr << %{<a data-target="#musicModal" data-toggle="modal" href="#{opt[:url]}"} + '?site_page_id=<%=site_page_id%>' + %{>(选择<%= CommonKey.get('#{name}').try(:title) %>)</a>}
+      arr << %{<a data-target="#musicModal" data-toggle="modal" href="#{opt[:url]}} + '?site_page_id=<%=site_page_id%>"' + %{>(选择<%= CommonKey.get('#{name}').try(:title) %>)</a>}
     end
     if opt[:typo].downcase == 'dialog' && name == 'banner'
-      arr << %{<a data-target="#bannerModal" data-toggle="modal" href="#{opt[:url]}"} + '?site_page_id=<%=@site_page.id%>' + %{>(选择<%= CommonKey.get('#{name}').try(:title) %>)</a>}
+      arr << %{<a data-target="#bannerModal" data-toggle="modal" href="#{opt[:url]}} + '?site_page_id=<%=@site_page.id%>"' + %{>(选择<%= CommonKey.get('#{name}').try(:title) %>)</a>}
     end
 
     arr << %{</label>}
