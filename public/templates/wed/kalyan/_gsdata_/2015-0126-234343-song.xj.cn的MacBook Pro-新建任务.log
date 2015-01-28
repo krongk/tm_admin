@@ -1,0 +1,12 @@
+2015-01-26 23:43:43: Proxy error, try direct connection: Connect to Proxy: socket closed while receiving HTTP header; SibHttpSendReceive: Too many attempts
+2015-01-26 23:43:45: -- Analysis Started by User
+2015-01-26 23:43:45: Left to Right: Copy File: 3 
+2015-01-26 23:43:45: ----- ：分析已结束。 历时 00:00:02， 速度： 20 个文件/秒 -----
+2015-01-26 23:43:45: 
+2015-01-26 23:43:57: Proxy error, try direct connection: Connect to Proxy: socket closed while receiving HTTP header; SibHttpSendReceive: Too many attempts
+2015-01-26 23:43:58: == Sync Started by User
+2015-01-26 23:43:59: 覆盖复制 '/Users/song/sites/tm_admin/public/templates/wed/kalyan/css/weddingf9e3.css' -> 'sftp://211.149.200.158:22000/alidata/www/tm_admin/public/templates/wed/kalyan/css/weddingf9e3.css'
+2015-01-26 23:43:59: 覆盖复制 '/Users/song/sites/tm_admin/public/templates/wed/kalyan/images/logo_bg.png' -> 'sftp://211.149.200.158:22000/alidata/www/tm_admin/public/templates/wed/kalyan/images/logo_bg.png'
+2015-01-26 23:43:59: 覆盖复制 '/Users/song/sites/tm_admin/public/templates/wed/kalyan/temp_index.html' -> 'sftp://211.149.200.158:22000/alidata/www/tm_admin/public/templates/wed/kalyan/temp_index.html'
+2015-01-26 23:44:00: ===== ：同步完毕。时间：00:00:03，速度： 12.7 KB/s =====, 项目同步未必： 3，错误： 0
+2015-01-26 23:44:00: 

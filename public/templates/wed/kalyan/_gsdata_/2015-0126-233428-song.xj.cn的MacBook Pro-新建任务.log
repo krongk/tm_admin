@@ -1,0 +1,11 @@
+2015-01-26 23:34:28: Proxy error, try direct connection: Connect to Proxy: socket closed while receiving HTTP header; SibHttpSendReceive: Too many attempts
+2015-01-26 23:34:29: -- Analysis Started by User
+2015-01-26 23:34:30: /temp_index.html: 冲突：文件两侧都进行了改动
+2015-01-26 23:34:30: 分析完毕并发现冲突情况。如需解决冲突请选择正常的同步方向。
+2015-01-26 23:34:30: ----- ：分析已结束。 历时 00:00:02， 速度： 20 个文件/秒 -----
+2015-01-26 23:34:30: 
+2015-01-26 23:34:44: Proxy error, try direct connection: Connect to Proxy: socket closed while receiving HTTP header; SibHttpSendReceive: Too many attempts
+2015-01-26 23:34:45: == Sync Started by User
+2015-01-26 23:34:45: 新建复制 '/Users/song/sites/tm_admin/public/templates/wed/kalyan/temp_index.html' -> 'sftp://211.149.200.158:22000/alidata/www/tm_admin/public/templates/wed/kalyan/temp_index.html' (User Action)
+2015-01-26 23:34:45: ===== ：同步完毕。时间：00:00:01，速度： 14.1 KB/s =====, 项目同步未必： 1，错误： 0
+2015-01-26 23:34:45: 

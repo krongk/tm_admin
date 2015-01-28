@@ -1,0 +1,351 @@
+<!-- kalyan -->
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>
+      <%= @site.title %>
+    </title>
+    <meta name="description" content="<%= @site.description %>" />
+    <meta name="keywords" content="<%= @site.title %>|维斗喜帖，漂亮的电子请柬，微信喜帖，微网站，微杂志">
+    <meta name="author" content="维斗喜帖">
+
+    <link rel="stylesheet" href="<%= @base_url%>css/reset.css" />
+    <!--[if lt IE 9]>
+      <script src="/assets/javascripts/html5.js">
+      </script>
+    <![endif]-->
+    <!--[if (gt IE 8) | (IEMobile)]>
+      <!-->
+      <link rel="stylesheet" href="<%= @base_url%>css/grid.css" />
+    <!--<![endif]-->
+    <!--[if (lt IE 9) & (!IEMobile)]>
+    <link rel="stylesheet" href="<%= @base_url%>./assets/stylesheets/ie.css" />
+    <![endif]-->
+      <link rel="stylesheet" href="<%= @base_url%>css/weddingf9e3.css?v=1.1" />
+      <script src="<%= @base_url%>js/modernizr.js">
+      </script>
+      <link rel="stylesheet" href="<%= @base_url%>css/flexslider.css" />
+      <script src="<%= @base_url%>js/jquery.min.js">
+      </script>
+      <script src="<%= @base_url%>js/jquery.flexslider.js">
+      </script>
+      <script type="text/javascript">
+        $(window).load(function() {
+          $('.flexslider').flexslider({
+            animation: "slide"
+          });
+        });
+      </script>
+      <script type="text/javascript" src="<%= @base_url%>js/jquery.mousewheel-3.0.6.pack.js">
+      </script>
+      <script type="text/javascript" src="<%= @base_url%>js/jquery.fancybox63b9.js?v=2.1.4">
+      </script>
+      <link rel="stylesheet" type="text/css" href="<%= @base_url%>css/jquery.fancybox63b9.css?v=2.1.4"
+      media="screen" />
+      <script type="text/javascript">
+        $(document).ready(function() {
+          $('.fancybox').fancybox({
+            helpers: {
+              overlay: {
+                locked: false
+              }
+            }
+          });
+        
+          $("#submit").click(function () { 
+            var btn = $(this);
+            var wxname = $("#name").val();
+            if (wxname  == '') {
+              alert("请输入昵称");
+              return;
+            }
+            var info = $("#content").val();
+            if (info == '') {
+              alert("请输入内容");
+              return;
+            }
+            $.post('/site_comments', $("#contactForm").serialize(),
+              function( data ) {
+                alert( "留言成功" + data);
+                setTimeout('window.location.href=location.href',1000);
+                return;
+              }
+            )
+          });
+        }); 
+      </script>
+    
+      <script type="text/javascript">
+        var phoneWidth =  parseInt(window.screen.width);
+        var phoneScale = phoneWidth/640;
+        var ua = navigator.userAgent;
+        if (/Android (\d+\.\d+)/.test(ua)){
+          var version = parseFloat(RegExp.$1);
+          // andriod 2.3
+          if(version>2.3){
+            document.write('<meta name="viewport" content="width=640, minimum-scale = '+phoneScale+', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');
+          // andriod 2.3以上
+          }else{
+            document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+          }
+          // 其他系统
+        } else {
+          document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+        }
+      </script>
+      <!--移动端版本兼容 end -->
+      <%= render 'layouts/s_head' %>
+  </head>
+  
+  <body>
+    <%= render 'layouts/s_header' %>
+    
+    <nav class="FixedNav">
+      <div class="grid-container">
+        <div class="LeftNav visible-desktop">
+          <a href="#home" class="active">
+            首页
+          </a>
+          <a href="#story">
+            邀请函
+          </a>
+          <a href="#wedding">
+            电子相册
+          </a>
+        </div>
+        <div class="Logo">
+          <div class="text-center" style="color: #eee;">
+            <h2 style="color: #fff; font-size: 30px;"><%= value_for(@site_page, 'title', title: '标题', default: 'Zhao & Song') %></h2>
+            <p><%= value_for(@site_page, 'date', title: '宴请日期', typo: 'string', required: true) %></p>
+          </div>
+        </div>
+        <div class="RightNav visible-desktop">
+          <a href="#rsvp">
+            宴席安排
+          </a>
+          <a href="#wishes">
+            留言祝福
+          </a>
+          <a href="#contact">
+            联系我们
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="grid-container wrapper">
+      <section class="slider" id="home">
+        <div class="flexslider">
+          <ul class="slides">
+            <% @site_page.site_images.each_with_index do |site_image, index| %>
+              <% break if index > 2 %>
+              <li>
+                <img src="<%= site_image.image.url %>" alt="维斗喜帖" />
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </section>
+      <section id="story">
+        <div class="grid-100 mobile-grid-100 SectionHead">
+          <h1>
+            <span>
+            </span>
+            邀请函
+            <span>
+            </span>
+          </h1>
+        </div>
+        <div class="grid-100 mobile-grid-100" style="text-align: center;">
+          <%= simple_format value_for(@site_page, 'story', title: '邀请函', typo: 'text', default: true) %>
+        </div>
+      </section>
+
+      <% if value_for(@site_page, 'date', title: '宴请日期', typo: 'string', required: true) %>
+        <section id="wedding">
+          <div class="grid-100 mobile-grid-100 SectionHead">
+            <h1>
+              <span>
+              </span>
+               宴席安排
+              <span>
+              </span>
+            </h1>
+          </div>
+          <div class="grid-60 mobile-grid-100 prefix-20 suffix-20">
+            <span class="cnt">
+              <img src="<%= @base_url%>images/save-date.png" alt="save the date" />
+            </span>
+            <h3>
+              <%= value_for(@site_page, 'date', title: '宴请日期', typo: 'string', required: true) %>
+            </h3>
+            <span class="at cnt">
+              <img src="<%= @base_url%>images/at.png" alt="at" />
+            </span>
+            <h2>
+              <%= value_for(@site_page, 'address', title: '宴席举办地址', hint: '请输入详细的省市区街道和酒店地址', required: true) %>
+            </h2>
+            <p>
+              <%= simple_format value_for(@site_page, 'address_description', title: '宴席举办地交通说明', typo: 'text', default: '公交地铁、驾车路线、酒店联系电话等') %>
+            </p>
+            <span class="cnt">
+              <a href="http://api.map.baidu.com/marker?title=宴席位置&content=<%= value_for(@site_page, 'address') %>&output=html" class="Button" target="_blank">
+                在线导航
+              </a>
+            </span>
+          </div>
+        </section>
+      <% end %>
+      
+      <% if @site_page.site_images.size > 3 %>
+        <section id="gallery">
+          <div class="grid-100 mobile-grid-100 SectionHead">
+            <h1>
+              <span>
+              </span>
+              电子相册
+              <span>
+              </span>
+            </h1>
+          </div>
+          <div class="grid-100 mobile-grid-100">
+            <ul>
+              <% @site_page.site_images.each_with_index do |site_image, index| %>
+                <% next if index < 3 %>
+                <li class="grid-33 mobile-grid-50">
+                  <a class="fancybox" href="<%= site_image.image.url %>" data-fancybox-group="gallery"
+                  title="Wedding photos">
+                    <img src="<%= site_image.image.url %>" alt="维斗喜帖" />
+                  </a>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </section>
+      <% end %>
+
+      <section id="rsvp">
+        <div class="grid-100 mobile-grid-100 SectionHead">
+          <h1>
+            <span>
+            </span>
+            留言祝福
+            <span>
+            </span>
+          </h1>
+        </div>
+
+        <%= form_tag("/site_comments", name: 'contactForm', class: 'form-inline', id: 'contactForm', onsubmit: 'return false;', style: "margin:0; padding:0 ") do %>
+          <input class="hidden" id="site_comment_site_id" name="site_comment[site_id]" type="hidden" value="<%= @site.id %>" />
+          <div class="grid-50 mobile-grid-100 prefix-25 suffix-25">
+            <div class="grid-50 mobile-grid-100">
+              <label for="name">
+                姓名
+              </label>
+              <input name="site_comment[name]"  required="required" id="name" placeholder="请输入您的昵称" type="text">
+            </div>
+            <div class="grid-50 mobile-grid-100">
+              <label for="email">
+                联系电话
+              </label>
+              <input name="site_comment[mobile_phone]"  required="required" id="mobile_phone" placeholder="请输入您的联系方式" type="text">
+            </div>
+            <div class="grid-100 mobile-grid-100 RsvpFull">
+              <label for="yesno">祝福内容</label>
+              <textarea name="site_comment[content]" class="pxtextarea" style="width: 98%; height:60px;" id="content" placeholder=""></textarea>
+            </div>
+            <div class="grid-100 mobile-grid-100 no-margin text-center">
+              <span class="cnt">
+                <input type="submit" name="submit" value="提 交 祝 福" id="submit" class="Button" />
+              </span>
+            </div>
+          </div>
+        <% end %>
+      </section>
+
+      <% if @site.site_comments.any? %>
+        <section id="wishes">
+          <div class="grid-100 mobile-grid-100 SectionHead">
+            <h1>
+              <span>
+              </span>
+              留言墙
+              <span>
+              </span>
+            </h1>
+          </div>
+          <div class="grid-60 prefix-20 suffix-20">
+            <% @site.site_comments.each_with_index do |site_comment, index| %>
+              <blockquote class="<%= index.odd? ? 'blockleft' : 'blockRight' %>">
+                <p>
+                  <%= site_comment.content %>
+                </p>
+                <span>
+                  - <%= site_comment.name %>
+                </span>
+              </blockquote>
+            <% end %>
+          </div>
+        </section>
+      <% end %>
+
+      <section id="contact">
+        <div class="grid-100 mobile-grid-100 SectionHead">
+          <h1>
+            <span>
+            </span>
+            联系我们
+            <span>
+            </span>
+          </h1>
+        </div>
+        <div class="grid-50 mobile-grid-100 prefix-25 suffix-25">
+          <span class="kit">
+            <img src="<%= @base_url%>images/keep-touch.png" width="120" height="27" alt="">
+          </span>
+          <p>
+            <% if value_for(@site_page, 'boy_phone') %>
+              <a class="Button" href="tel:<%= value_for(@site_page, 'boy_phone')%>"><i class="fa fa-phone"></i> <%=value_for(@site_page, 'boy_phone')%></a> &nbsp;
+            <% end %>
+            <% if value_for(@site_page, 'girl_phone') %>
+              <a class="Button" href="tel:<%=value_for(@site_page, 'girl_phone')%>"><i class="fa fa-phone"></i> <%=value_for(@site_page, 'girl_phone')%></a>
+            <% end %>
+          </p>
+          <p class="social" style="font-family: 行楷,行楷-简,姚体,行书;">
+            <embed src='<%= value_for(@site_page, 'music', typo: 'dialog', url: '/home/dialog_music', title: '背景音乐', default: true)  %>' width='180' height='90' loop='true' autostart='true' hidden='true' />
+          </p>
+          <footer>
+            <%= render 'layouts/s_footer' %>
+          </footer>
+        </div>
+      </section>
+    </div>
+
+    <script type="text/javascript" src="<%= @base_url%>js/jquery.easing.1.2.js">
+    </script>
+    <script type="text/javascript">
+      $(function() {
+        $('.FixedNav a').bind('click',
+        function(event) {
+          var $anchor = $(this);
+          $('.FixedNav a').removeClass('active');
+          $anchor.addClass('active');
+
+          $('html, body').stop().animate({
+            scrollTop: $($anchor.attr('href')).offset().top - 50
+          },
+          1500, 'easeInOutExpo');
+          /*
+                    if you don't want to use the easing effects:
+                    $('html, body').stop().animate({
+                        scrollTop: $($anchor.attr('href')).offset().top
+                    }, 1000);
+                    */
+          event.preventDefault();
+        });
+      });
+    </script>
+    
+  </body>
+</html>

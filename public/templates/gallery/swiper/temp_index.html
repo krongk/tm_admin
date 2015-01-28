@@ -113,41 +113,11 @@
   <script type="text/javascript">
     //init weixin
     $(function(){
-        _h = $(window).height();
-        $('.swipehe').height(_h);
-        $('.pictxt').height(_h);
-        $('.pictxt > dt').height(_h/3)
-        $('.masktxt').height(_h/2-30);
-        // 分享到朋友圈
-        var wxTitle = document.title;
-        var wxDesc = '<%= @site.description %>';
-        var wxImg = '<%= get_first_site_image_url(@site) %>';
-        var shareLink = '<%= get_site_url(@site) %>';
-        document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
-            // 发送给好友
-            WeixinJSBridge.on('menu:share:appmessage', function (argv) {
-                WeixinJSBridge.invoke('sendAppMessage', {
-                    "img_url": wxImg,
-                    "link": shareLink,
-                    "desc":  wxDesc,
-                    "title": "<%= @site.title %>"
-                }, function (res) {
-                    _report('send_msg', res.err_msg);
-                })
-            });
-
-            // 分享到朋友圈
-            WeixinJSBridge.on('menu:share:timeline', function (argv) {
-                WeixinJSBridge.invoke('shareTimeline', {
-                    "img_url": wxImg,
-                    "link": shareLink,
-                    "desc":  wxDesc,
-                    "title": "<%= @site.title %>"
-                }, function (res) {
-                    _report('timeline', res.err_msg);
-                });
-            });
-        }, false)
+      _h = $(window).height();
+      $('.swipehe').height(_h);
+      $('.pictxt').height(_h);
+      $('.pictxt > dt').height(_h/3)
+      $('.masktxt').height(_h/2-30);
     })
   </script>
   <%= render 'layouts/s_footer' %>

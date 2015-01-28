@@ -1,0 +1,325 @@
+<!DOCTYPE HTML>
+<html>
+
+<!-- Mirrored from demo.web3canvas.com/themeforest/kalyan/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Dec 2014 10:49:42 GMT -->
+<head>
+<meta charset="utf-8"/>
+<title>Kalyan HTML5 Wedding Template</title>
+ 
+<link rel="stylesheet" href="css/reset.css"/>
+<!--[if lt IE 9]>
+  <script src="./assets/javascripts/html5.js"></script>
+<![endif]-->
+ 
+<!--[if (gt IE 8) | (IEMobile)]><!-->
+<link rel="stylesheet" href="css/grid.css"/>
+<!--<![endif]-->
+<!--[if (lt IE 9) & (!IEMobile)]>
+  <link rel="stylesheet" href="./assets/stylesheets/ie.css" />
+<![endif]-->
+ 
+<link rel="stylesheet" href="css/weddingf9e3.css?v=1.1"/>
+ 
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,700">
+ 
+<script src="js/modernizr.js"></script>
+ 
+<link rel="stylesheet" href="css/flexslider.css"/>
+ 
+ 
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.flexslider.js"></script>
+<script type="text/javascript">
+  $(window).load(function() {
+     $('.flexslider').flexslider({
+        animation: "slide"
+      });
+  });
+</script>
+ 
+ 
+ 
+<script type="text/javascript" src="js/jquery.mousewheel-3.0.6.pack.js"></script>
+ 
+<script type="text/javascript" src="js/jquery.fancybox63b9.js?v=2.1.4"></script>
+<link rel="stylesheet" type="text/css" href="css/jquery.fancybox63b9.css?v=2.1.4" media="screen"/>
+<script type="text/javascript">
+		$(document).ready(function() {
+
+			$('.fancybox').fancybox({
+    helpers : {
+        overlay : {
+            locked : false
+        }
+    }
+});
+			
+			});
+</script>
+ 
+ 
+ 
+<script type="text/javascript" language="javascript">
+
+		function FormValidate()
+	{
+		if (trim(window.document.contactForm.name.value) == "") 
+		{
+			alert ("Please Enter Name");
+			window.document.contactForm.name.focus();
+			return false;
+		}
+		if (trim(window.document.contactForm.email.value) == "") 
+		{
+			alert ("Please Enter Email");
+			window.document.contactForm.email.focus();
+			return false;
+		}
+		else
+		{
+				var curEmail = document.getElementById("email").value;
+				curEmail 	 = trim(curEmail);
+							
+				if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(curEmail))
+				{
+					alert("Invalid Email");
+					document.getElementById("email").focus();
+					return false;
+				}
+		}
+		if (trim(window.document.contactForm.yesno.value) == "") 
+		{
+			alert ("Are you attending?");
+			window.document.contactForm.yesno.focus();
+			return false;
+		}
+		
+		
+	}
+	
+	function trim(str, chars) 
+		{
+			return ltrim(rtrim(str, chars), chars);
+		}
+		
+		function ltrim(str, chars)
+		{
+			chars = chars || "\\s";
+			return str.replace(new RegExp("^[" + chars + "]+", "g"), "");
+		}
+		function rtrim(str, chars)
+		{
+			chars = chars || "\\s";
+			return str.replace(new RegExp("[" + chars + "]+$", "g"), "");
+		}	
+		
+		
+		
+	function gup( name ) {
+    name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+    var regexS = "[\\?&]"+name+"=([^&#]*)";
+    var regex = new RegExp( regexS );
+    var results = regex.exec( window.location.href );
+    if( results == null )
+        return "";
+    else
+        return results[1];
+}
+var rsvp = gup("rsvp"); 
+		
+		if (rsvp != '') {
+		alert ("RSVP Form Submitted");
+		window.location = 'index-2.html';
+		 }
+	
+	
+</script>
+ 
+</head>
+<body>
+ 
+<nav class="FixedNav">
+<div class="grid-container">
+<div class="LeftNav visible-desktop"> <a href="#home" class="active">Home</a> <a href="#story">OUR STORY</a> <a href="#wedding">WEDDING</a> <a href="#gallery">PHOTOS</a> </div>
+<div class="Logo"><a href="#home"><img src="images/Logo.png" alt="logo"/></a></div>
+<div class="RightNav visible-desktop"> <a href="#rsvp">RSVP</a> <a href="#wishes">WISHES</a> <a href="#registry">REGISTRY</a> <a href="#contact">CONTACT US</a> </div>
+</div>
+</nav>
+ 
+ 
+<div class="grid-container wrapper">
+ 
+<section class="slider" id="home">
+<div class="flexslider">
+<ul class="slides">
+<li> <img src="images/gallery/img1.jpg" alt=""/> </li>
+<li> <img src="images/gallery/img2.jpg" alt=""/> </li>
+<li> <img src="images/gallery/img3.jpg" alt=""/> </li>
+</ul>
+</div>
+</section>
+ 
+ 
+<section id="story">
+<div class="grid-100 mobile-grid-100 SectionHead">
+<h1><span></span>Our Story<span></span></h1>
+</div>
+<div class="grid-50 mobile-grid-100 storyLeft"> <img src="images/groom.jpg" alt="groom" class="mobile-grid-40"/>
+<h2 class="mobile-grid-100">Michael</h2>
+<p class="mobile-grid-100"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean convallis risus et libero lacinia pulvinar. Nullam pellentesque hendrerit eros, nec mattis nulla tincidunt nec. Pellentesque eget neque<br>
+<a href="#">Twitter</a> | <a href="#">Facebook</a> </p>
+</div>
+<div class="grid-50 mobile-grid-100 storyRight"> <img src="images/bride.jpg" alt="groom" class="mobile-grid-40"/>
+<h2 class="mobile-grid-100">Sarah</h2>
+<p class="mobile-grid-100"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean convallis risus et libero lacinia pulvinar. Nullam pellentesque hendrerit eros, nec mattis nulla tincidunt nec. Pellentesque eget neque <br>
+<a href="#">Twitter</a> | <a href="#">Facebook</a> </p>
+</div>
+</section>
+ 
+ 
+<section id="wedding">
+<div class="grid-100 mobile-grid-100 SectionHead">
+<h1><span></span>The Wedding<span></span></h1>
+</div>
+<div class="grid-60 mobile-grid-100 prefix-20 suffix-20"> <span class="cnt"><img src="images/save-date.png" alt="save the date"/></span>
+<h3>31 March 2013</h3>
+<span class="at cnt"><img src="images/at.png" alt="at"/></span>
+<h2>ST. PETERS CATHOLIC CHURCH</h2>
+<p>204 Robert LEE Road, 4th Avenue, Oregoen, United States, 10001</p>
+<span class="cnt"> <a href="#" class="Button"> Get Directions </a></span> </div>
+</section>
+ 
+ 
+<section id="gallery">
+<div class="grid-100 mobile-grid-100 SectionHead">
+<h1><span></span>Photo Gallery<span></span></h1>
+</div>
+<div class="grid-100 mobile-grid-100">
+<ul>
+<li class="grid-33 mobile-grid-50"><a class="fancybox" href="images/gallery/photos/big1.jpg" data-fancybox-group="gallery" title="Wedding photos"><img src="images/gallery/thumb/thumb1.jpg" alt=""/></a></li>
+<li class="grid-33 mobile-grid-50"><a class="fancybox" href="images/gallery/photos/big2.jpg" data-fancybox-group="gallery" title="Wedding photos"><img src="images/gallery/thumb/thumb2.jpg" alt=""/></a></li>
+<li class="grid-33 mobile-grid-50"><a class="fancybox" href="images/gallery/photos/big3.jpg" data-fancybox-group="gallery" title="Wedding photos"><img src="images/gallery/thumb/thumb3.jpg" alt=""/></a></li>
+<li class="grid-33 mobile-grid-50"><a class="fancybox" href="images/gallery/photos/big4.jpg" data-fancybox-group="gallery" title="Wedding photos"><img src="images/gallery/thumb/thumb4.jpg" alt=""/></a></li>
+<li class="grid-33 mobile-grid-50"><a class="fancybox" href="images/gallery/photos/big5.jpg" data-fancybox-group="gallery" title="Wedding photos"><img src="images/gallery/thumb/thumb5.jpg" alt=""/></a></li>
+<li class="grid-33 mobile-grid-50"><a class="fancybox" href="images/gallery/photos/big6.jpg" data-fancybox-group="gallery" title="Wedding photos"><img src="images/gallery/thumb/thumb6.jpg" alt=""/></a></li>
+<li class="grid-33 mobile-grid-50"><a class="fancybox" href="images/gallery/photos/big7.jpg" data-fancybox-group="gallery" title="Wedding photos"><img src="images/gallery/thumb/thumb7.jpg" alt=""/></a></li>
+<li class="grid-33 mobile-grid-50"><a class="fancybox" href="images/gallery/photos/big8.jpg" data-fancybox-group="gallery" title="Wedding photos"><img src="images/gallery/thumb/thumb8.jpg" alt=""/></a></li>
+<li class="grid-33 mobile-grid-50"><a class="fancybox" href="images/gallery/photos/big9.jpg" data-fancybox-group="gallery" title="Wedding photos"><img src="images/gallery/thumb/thumb9.jpg" alt=""/></a></li>
+</ul>
+</div>
+</section>
+ 
+ 
+<section id="rsvp">
+<div class="grid-100 mobile-grid-100 SectionHead">
+<h1><span></span>RSVP<span></span></h1>
+</div>
+<form action="http://demo.web3canvas.com/themeforest/kalyan/send_rsvp.php" id="contactForm" name="contactForm" style="margin:0; padding:0 " method="post" onSubmit="return FormValidate();">
+<div class="grid-50 mobile-grid-100 prefix-25 suffix-25">
+<div class="grid-50 mobile-grid-100">
+<label for="name">Your name</label>
+<input type="text" name="name" id="name" required="required">
+</div>
+<div class="grid-50 mobile-grid-100">
+<label for="email">Email id</label>
+<input type="email" name="email" id="email" required="required">
+</div>
+<div class="grid-100 mobile-grid-100 RsvpFull">
+<label for="yesno">Will you be joining us?</label>
+<select name="yesno" id="yesno" required="required">
+<option value="">Choose an option</option>
+<option value="Yes, Absolutely">Yes, Absolutely</option>
+<option value="May be, Not Sure">May be, Not Sure</option>
+<option value="Sorry, I cannot come">Sorry, I cannot come</option>
+</select>
+</div>
+<div class="grid-100 mobile-grid-100 no-margin text-center">
+<span class="cnt">
+<input type="submit" name="submit" value="Submit RSVP" id="submit" class="Button"/>
+</span>
+</div>
+</div>
+</form>
+</section>
+ 
+ 
+<section id="wishes">
+<div class="grid-100 mobile-grid-100 SectionHead">
+<h1><span></span>WISHES<span></span></h1>
+</div>
+<div class="grid-60 prefix-20 suffix-20">
+<blockquote class="blockleft">
+<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean convallis risus et libero lacinia pulvinar. Nullam pellentesque hendrerit eros </p>
+<span>- Johnathan Doe</span> </blockquote>
+<blockquote class="blockRight">
+<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean convallis risus et libero lacinia pulvinar. Nullam pellentesque hendrerit eros </p>
+<span>- Johnathan Doe</span> </blockquote>
+<blockquote class="blockleft">
+<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean convallis risus et libero lacinia pulvinar. Nullam pellentesque hendrerit eros </p>
+<span>- Johnathan Doe</span> </blockquote>
+<blockquote class="blockRight">
+<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean convallis risus et libero lacinia pulvinar. Nullam pellentesque hendrerit eros </p>
+<span>- Johnathan Doe</span> </blockquote>
+</div>
+</section>
+ 
+ 
+<section id="registry">
+<div class="grid-100 mobile-grid-100 SectionHead">
+<h1><span></span>REGISTRY<span></span></h1>
+</div>
+<div class="grid-80 mobile-grid-100 prefix-10 suffix-10">
+<h4>Gifts & Cash Cards are appreciated to help us start our lives together</h4>
+<p> <a href="#"><img src="images/registry1.png" width="236" height="82" alt=""></a> <a href="#"><img src="images/registry2.png" width="236" height="82" alt=""></a> </p>
+<p> <a href="#"><img src="images/registry3.png" width="236" height="82" alt=""></a> <a href="#"><img src="images/registry4.png" width="236" height="82" alt=""></a> <a href="#"><img src="images/registry5.png" width="236" height="82" alt=""></a> </p>
+</div>
+</section>
+ 
+ 
+<section id="contact">
+<div class="grid-100 mobile-grid-100 SectionHead">
+<h1><span></span>CONTACT US<span></span></h1>
+</div>
+<div class="grid-50 mobile-grid-100 prefix-25 suffix-25"> <span class="kit"><img src="images/keep-touch.png" width="120" height="27" alt=""></span>
+<p>204 Robert LEE Road, 4th Avenue<br>
+Oregoen, United States, 10001<br>
+<br>
+<em> <a class="__cf_email__" href="http://demo.web3canvas.com/cdn-cgi/l/email-protection" data-cfemail="6e03070d060f0b02030f07022e09030f0702400d0103">[email&nbsp;protected]</a><script cf-hash='f9e31' type="text/javascript">
+/* <![CDATA[ */!function(){try{var t="currentScript"in document?document.currentScript:function(){for(var t=document.getElementsByTagName("script"),e=t.length;e--;)if(t[e].getAttribute("cf-hash"))return t[e]}();if(t&&t.previousSibling){var e,r,n,i,c=t.previousSibling,a=c.getAttribute("data-cfemail");if(a){for(e="",r=parseInt(a.substr(0,2),16),n=2;a.length-n;n+=2)i=parseInt(a.substr(n,2),16)^r,e+=String.fromCharCode(i);e=document.createTextNode(e),c.parentNode.replaceChild(e,c)}}}catch(u){}}();/* ]]> */</script><br>
++1 458 2538 2587</em> </p>
+<p class="social"> <a href="#"><img src="images/fb_icon.png" width="31" height="31" alt=""></a> <a href="#"><img src="images/tw_icon.png" width="31" height="31" alt=""></a> <a href="#"><img src="images/rss_icon.png" width="31" height="31" alt=""></a> <a href="#"><img src="images/mail_icon.png" width="31" height="31" alt=""></a> </p>
+<footer>
+<p> Copyright © 2013 <a href="#">Michael & Sarah</a> | Images by <a href="http://www.antondemin.ru/" target="_blank">antondemin.ru</a></p>
+</footer>
+</div>
+</section>
+ 
+</div>
+ 
+ 
+<script type="text/javascript" src="js/jquery.easing.1.2.js"></script>
+<script type="text/javascript">
+            $(function() {
+                $('.FixedNav a').bind('click',function(event){
+                    var $anchor = $(this);
+					$('.FixedNav a').removeClass('active');
+                    $anchor.addClass('active');
+					
+                    $('html, body').stop().animate({
+                        scrollTop: $($anchor.attr('href')).offset().top - 50
+                    }, 1500,'easeInOutExpo');
+                    /*
+                    if you don't want to use the easing effects:
+                    $('html, body').stop().animate({
+                        scrollTop: $($anchor.attr('href')).offset().top
+                    }, 1000);
+                    */
+                    event.preventDefault();
+                });
+            });
+        </script>
+ 
+</body>
+
+<!-- Mirrored from demo.web3canvas.com/themeforest/kalyan/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Dec 2014 10:50:42 GMT -->
+</html>
