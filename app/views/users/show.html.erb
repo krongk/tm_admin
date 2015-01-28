@@ -9,7 +9,6 @@
     <th>登录次数</th>
     <th>当前登录时间</th>
     <th>最后登录时间</th>
-    <th>登录次数</th>
     <th>操作</th>
   </tr>
   <tr>
@@ -20,7 +19,13 @@
     <td><%= @user.sign_in_count %></td>
     <td><%= @user.current_sign_in_at %></td>
     <td><%= @user.last_sign_in_at %></td>
-    <td><%= @user.sign_in_count %></td>
+    <td>
+        <% if @user.email =~ /^(\d+)\@qq.com$/i %>
+         <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=<%= $1 %>&site=qq&menu=yes">
+            <img border="0" src="http://wpa.qq.com/pa?p=2:<%= $1 %>:41" />
+         </a>
+        <% end %>&nbsp;
+    </td>
   </tr>
 </table>
 

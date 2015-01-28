@@ -25,13 +25,31 @@ class Site < ActiveRecord::Base
   def set_free
     self.site_payment.price = 0.00
     self.site_payment.state = 'completed'
+    self.site_payment.completed_at = Time.now
     self.site_payment.save!
     self.status = 'vip-recommend'
     self.save!
+    expire_cache
   end
 
   def image_count
     SiteImage.joins(:site_page).where("site_pages.site_id = #{self.id}").count
   end
+
+  private
+    #cache tm_wed
+    # tm_admin, tm_wed must all in /alidata/www/ folder
+    def expire_cache
+      cache_paths = []
+      cache_paths << File.join('..', 'tm_wed', 'public', 'page_cache', 's-' + self.short_title + '.html')
+      self.site_pages.each do |site_page|
+        cache_paths << File.join('..', 'tm_wed', 'public', 'page_cache', "s-#{self.short_title}", "p-#{site_page.short_title}.html")
+      end
+      cache_paths.each do |path|
+        if File.exist?(path)
+          FileUtils.rm_rf path
+        end
+      end
+    end
 
 end
