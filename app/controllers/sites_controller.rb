@@ -11,15 +11,14 @@ class SitesController < ApplicationController
   # GET /sites.json
   def index
     @sites = Site.order("id DESC").page( params[:page])
-    # if params[:q]
-    #   @sites = @sites.where(["title like ?", "%#{params[:q]}%"])
-    # end
-    # if params[:template_id]
-    #   @sites = @sites.where(template_id: params[:template_id])
-    # end
+    if params[:q]
+      @sites = @sites.where(["title like ?", "%#{params[:q]}%"])
+    end
+    if params[:template_id]
+      @sites = @sites.where(template_id: params[:template_id])
+    end
 
     @templates = Templates::Template.all
-    binding.pry
   end
 
   def payed
