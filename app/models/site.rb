@@ -11,7 +11,7 @@ class Site < ActiveRecord::Base
   #vip: payed site -> not show in case (if user ask for)
   STATUS = %w(vip-recommend vip recommend thief)
 
-  scope :payed, joins(:site_payment).where("site_payments.state = 'completed' || sites.status is not null").order("created_at DESC")
+  scope :payed, joins(:site_payment).where("site_payments.price <> 0.00").where("site_payments.state = 'completed' || sites.status is not null").order("created_at DESC")
 
   def toggle_typo
     raise 'please put ENV["PRICE_VIP"]' if ENV["PRICE_VIP"].blank?

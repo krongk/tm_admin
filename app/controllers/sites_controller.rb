@@ -10,15 +10,28 @@ class SitesController < ApplicationController
   # GET /sites
   # GET /sites.json
   def index
-    if params[:q]
-      @sites = Site.where(["title like ?", "%#{params[:q]}%"]).page(params[:page])
-    else
-      @sites = Site.order("id DESC").page( params[:page])
-    end
+    @sites = Site.order("id DESC").page( params[:page])
+    # if params[:q]
+    #   @sites = @sites.where(["title like ?", "%#{params[:q]}%"])
+    # end
+    # if params[:template_id]
+    #   @sites = @sites.where(template_id: params[:template_id])
+    # end
+
+    @templates = Templates::Template.all
+    binding.pry
   end
 
   def payed
     @sites = Site.payed.page( params[:page])
+    if params[:q]
+      @sites = @sites.where(["title like ?", "%#{params[:q]}%"])
+    end
+    if params[:template_id]
+      @sites = @sites.where(template_id: params[:template_id])
+    end
+
+    @templates = Templates::Template.all
   end
 
   def toogle_typo

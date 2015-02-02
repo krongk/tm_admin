@@ -29,6 +29,9 @@ class Payment::TokensController < ApplicationController
     @users = User.all.select{|u| u.has_role?(ENV["ROLES"]['VIP'])}
 
     @payment_titles = Payment::Token.group(:title)
+
+    #get first one
+    @first_one = Payment::Token.where(user_id: 5, status: 'active').limit(1).first
   end
 
   # GET /payment/tokens/1

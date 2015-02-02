@@ -38,6 +38,7 @@
 <body class='s-bg-ddd'>
   <%= render 'layouts/s_header' %>
   <!--模版加载提示-->
+ <!--模版加载提示-->
   <section class="u-alert">
     <img style='display:none;'src="<%= @base_url %>img/loading_large.gif" />
     <div class='alert-loading z-move'>
@@ -91,7 +92,7 @@
         <% next if index == 0 %>
         <!-- 大图文 3-->
         <div class='m-page m-bigTxt f-hide' data-page-type='bigTxt' data-statics='info_list'>
-          <div class="page-con j-txtWrap lazy-img" data-src='<%= site_image.image.url %>'>
+          <div class="page-con j-txtWrap lazy-img" data-src='<%= qiniu_image_path(site_image.image.url)%>'>
                     </div>
                 </div>
         <!-- 大图文 end-->
@@ -120,10 +121,10 @@
         <% end %>
       <% else %>
         <!-- 请帖 -->
-        <%= link_to get_site_page_url_by_title(@site, '宴请信息') do %> 
-          宴请信息
+        <%= link_to get_site_page_url_by_title(@site, '宴请信息'), style: 'font-size: 18px;' do %> 
+          邀请函
         <% end %>
-        <%= link_to get_site_page_url_by_title(@site, '留言祝福') do %> 
+        <%= link_to get_site_page_url_by_title(@site, '留言祝福'), style: 'font-size: 18px;' do %> 
           留言回执
         <% end %>
       <% end %>
@@ -132,9 +133,11 @@
   <!-- lightapp入口 end-->
   
   <!--pageLoading-->
+ <!--pageLoading-->
   <section class="u-pageLoading">
     <img src="<%= @base_url %>img/load.gif" alt="加载中..." />
   </section>
+  <!--pageLoading end-->
   <!--pageLoading end-->
   
   <!-- 资源传递 -->
@@ -148,7 +151,6 @@
 
   <!--脚本加载-->
   <script src="<%= @base_url %>js/init.mix.js" type="text/javascript" charset="utf-8"></script>
-  <script src="<%= @base_url %>js/weixin.js" type="text/javascript" charset="utf-8"></script>
   <script src="<%= @base_url %>js/coffee.js" type="text/javascript" charset="utf-8"></script>
   <script src="<%= @base_url %>js/map.js" type="text/javascript" charset="utf-8"></script>
   <script src="<%= @base_url %>js/Lottery.js" type="text/javascript" charset="utf-8"></script>

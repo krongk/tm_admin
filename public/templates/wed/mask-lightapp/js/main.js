@@ -1469,7 +1469,7 @@ var car2 = {
 	//插件启动函数
  	plugin : function(){
 		// 地图
-		car2.mapCreate();
+		//car2.mapCreate();
 
 		// 音符飘逸
 		$('#coffee_flow').coffee({
@@ -1479,15 +1479,15 @@ var car2 = {
 		});
 
 		// 蒙板插件
-		var node = $('#j-mengban')[0],
-			url = host_base_url + '/img/page_01_bg@2x.jpg',
-			canvas_url = $('#r-cover').val(),
-			type = 'image',
-			w = 640,
-			h = car2._windowHeight,
-			callback = car2.start_callback;
+		// var node = $('#j-mengban')[0],
+		// 	url = host_base_url + '/img/page_01_bg@2x.jpg',
+		// 	canvas_url = $('#r-cover').val(),
+		// 	type = 'image',
+		// 	w = 640,
+		// 	h = car2._windowHeight,
+		//callback = car2.start_callback;
 
-		car2.cover_draw(node,url,canvas_url,type,w,h,callback);
+		// car2.cover_draw(node,url,canvas_url,type,w,h,callback);
 
 		// 微信分享
 		var option_wx = {};
@@ -1500,40 +1500,29 @@ var car2 = {
  	},
 
  	// 蒙板插件初始化函数处理
- 	cover_draw : function(node,url,canvas_url,type,w,h,callback){
-		if(node.style.display.indexOf('none')>-1) return;
+ // 	cover_draw : function(node,url,canvas_url,type,w,h,callback){
+	// 	if(node.style.display.indexOf('none')>-1) return;
 		
-		var lottery = new Lottery(node, canvas_url, type, w, h, callback);
-		lottery.init();
-	},
+	// 	var lottery = new Lottery(node, canvas_url, type, w, h, callback);
+	// 	lottery.init();
+	// },
 
 	// 蒙板插件回调函数处理
- 	start_callback : function(){
+ 	//start_callback : function(){
  		// 隐藏蒙板
- 		$('#j-mengban').removeClass('z-show');
- 		setTimeout(function(){
- 			$('#j-mengban').addClass('f-hide');
- 		},1000)
+ 		// $('#j-mengban').removeClass('z-show');
+ 		// setTimeout(function(){
+ 		// 	$('#j-mengban').addClass('f-hide');
+ 		// },1000)
 
  		// 开启window的滚动
- 		car2._scrollStart();
+ 		//car2._scrollStart();
 
  		// 开启页面切换
-		car2.page_start();
+		//car2.page_start();
 
-		// 箭头显示
-		$('.u-arrow').removeClass('f-hide');
-
-		// 播放声音
-		if(!car2._audio) return;
-		car2._audioNode.removeClass('f-hide');
-		car2._audio.play();
-
-		// 声音启动
-		$(document).one("touchstart", function(){
-            car2._audio.play();
-        });
- 	},
+		
+ 	//},
 
 /**
  * app初始化
@@ -1552,21 +1541,21 @@ var car2 = {
 		if(car2._iPhoen) $(document.body).addClass('iphone');
 
 		// 判断是否有3d
-		if(!car2._hasPerspective()){
-			car2._rotateNode.addClass('transformNode-2d');
-			$(document.body).addClass('no-3d');
-		}
-		else{
-			car2._rotateNode.addClass('transformNode-3d');
-			$(document.body).addClass('perspective');
-			$(document.body).addClass('yes-3d');
-		}
+		// if(!car2._hasPerspective()){
+		// 	car2._rotateNode.addClass('transformNode-2d');
+		// 	$(document.body).addClass('no-3d');
+		// }
+		// else{
+		// 	car2._rotateNode.addClass('transformNode-3d');
+		// 	$(document.body).addClass('perspective');
+		// 	$(document.body).addClass('yes-3d');
+		// }
 
 		// 图片延迟加载的处理
 		this.lazy_img();
 
 		// 设置富文本的高度
-		car2.Txt_init(car2._page.eq(car2._pageNow));
+		// car2.Txt_init(car2._page.eq(car2._pageNow));
 		
 		// 模版提示文字显示
 		setTimeout(function(){
@@ -1629,7 +1618,19 @@ var car2 = {
 				},1000)
 
 				// 显示正面
-				$('#j-mengban').addClass('z-show');
+				//$('#j-mengban').addClass('z-show');
+				// 箭头显示
+				$('.u-arrow').removeClass('f-hide');
+
+				// 播放声音
+				if(!car2._audio) return;
+				car2._audioNode.removeClass('f-hide');
+				car2._audio.play();
+
+				// 声音启动
+				$(document).one("touchstart", function(){
+		            car2._audio.play();
+		        });
 
 				// 显示封面内容
 				setTimeout(function(){

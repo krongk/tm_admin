@@ -21,7 +21,7 @@ gem 'acts-as-taggable-on'
 gem 'newrelic_rpm'
 
 # For linux
-gem 'therubyracer', :platform=>:ruby
+#gem 'therubyracer', :platform=>:ruby
 
 #page caching
 # http://www.rubytutorial.io/page-caching-with-rails-4
@@ -64,6 +64,8 @@ gem "htmlentities"
 gem 'chinese_pinyin'
 
 group :development do
+  gem 'pry'
+  gem 'pry-debugger'
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
   gem 'hub', :require=>nil

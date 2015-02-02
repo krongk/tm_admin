@@ -28,14 +28,7 @@
   <div class="col-md-9">
     <ol class="breadcrumb">
       <li>
-        <%= link_to payment_tokens_path(user_id: params[:user_id], status: 'active'), class: "list-group-item" do %>
-          未激活 <span class="badge"><%=  Payment::Token.user_count(params[:user_id], 'active') %></span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to payment_tokens_path(user_id: params[:user_id], status: 'inactive'), class: "list-group-item" do %>
-          已激活 <span class="badge"><%=  Payment::Token.user_count(params[:user_id], 'inactive') %></span>
-        <% end %>
+        <%= @first_one.code %>
       </li>
     </ol>
     <%= render 'list'%>
