@@ -1,0 +1,18 @@
+/*
+    Theme Name: Bloggler
+    Description: Bloggler Bootstrap Theme
+    Version: 1.0
+    Author: Themeforces
+    Author URI: http://themeforces.com
+    License: GNU General Public License version 3.0
+    License URI: http://www.gnu.org/licenses/gpl-3.0.html
+*/
+
+ul.sub-menu li{
+display: none;
+background: transparent;
+}
+
+li.menu-item:hover>ul.sub-menu li{
+display: block;
+}

@@ -1,0 +1,220 @@
+@media (min-width: 1200px) { 
+    #home.container { width: 1140px }
+    .carousel-inner>.item { height: 200px }
+    .carousel-caption {
+        right: 2%;
+        left: 2%;
+        padding-bottom: 30px;
+    }
+    body{ overflow:  auto;}
+}
+@media (max-width: 882px) { 
+    .carousel-inner>.item { height: 200px }
+}
+@media (max-width: 768px) { 
+    .viewer {
+        text-align: center;
+        padding-top: 22%;
+    }
+}
+@media (max-width: 762px) { 
+    #sidebar.blog,
+    #sidebar.contact { width: 100% }
+    #fullscreen { overflow-y: auto }
+    #fullscreen.home {overflow-y: auto }
+    #sidebar .featured-img img,
+    #sidebar #map-canvas.map { opacity: 0.1 }
+    /*.navbar-fixed-bottom {
+        position: absolute;
+        right: 0;
+        left: 0;
+        z-index: 1030;
+    }*/
+    #fullscreen.home h1 {
+        font-size: 26px;
+        letter-spacing: 1px;
+    }
+    #fullscreen.home .navbar-fixed-bottom {
+        position: fixed;
+        right: 0;
+        left: 0;
+        z-index: 1030;
+    }
+  #fullscreen > .container, #fullscreen > .container > .row, #right {
+	height:auto;
+}
+    .viewer {
+        text-align: center;
+        padding-top: 10%;
+    }
+    .viewer .img-slider {
+        height: 400px;
+        overflow: hidden;
+        margin-top: -10px;
+        position: relative;
+        -moz-box-shadow: 7px 7px 0px -2px #dadada;
+        -webkit-box-shadow: 7px 7px 0px -2px #dadada;
+        box-shadow: 7px 7px 0px -2px #dadada;
+    }
+    .viewer a{
+        color: #3f4446 !important;
+    }
+    a,
+    #content .text,
+    #footer-nav .pull-right.text-right,
+    span.contact-link { color: #e8e8e8 }
+    span.contact-link:hover {
+        text-decoration: underline;
+        color: #e8e8e8;
+    }
+    #blog #content h4 {
+        font-weight: 700;
+        color: #3f4446 !important;
+    }
+    #blog span.meta-date, #blog span.meta-author, #fullscreen.blog span.commenter-name,
+    #blog span.meta-date a, #blog span.meta-author a, #fullscreen.blog span.commenter-name a{
+        color: #3f4446;
+    }
+    #fullscreen.blog span.logo,
+    #fullscreen.blog .copyright{
+        color: #3f4446;
+    }
+    .navbar-fixed-bottom i.fa {
+        visibility: visible;
+        position: absolute;
+        font-size: 30px;
+        color: #e8e8e8 !important;
+        position: relative;
+        transition: all .2s ease-in-out;
+    }
+    .navbar-fixed-bottom i.fa:hover { transform: scale(1.5) }
+    a span.prev-link,
+    a span.next-link {
+        visibility: hidden;
+        position: absolute;
+    }
+    #content .text {
+        padding: 0;
+        color: #e8e8e8 !important;
+    }
+    a.btn:hover { color: #333333 !important }
+    .mCS-inset-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+    .mCS-inset-2-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+    .mCS-inset-3-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+        background-color: #FFF !important;
+        background-color: rgba(255, 255, 255, 0.75) !important;
+    }
+    .mCS-inset-2-dark.mCSB_scrollTools .mCSB_draggerRail {
+        border-color: #FFF !important;
+        border-color: rgba(255, 255, 255, 0.2) !important;
+    }
+    #blog .mCS-inset-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+    .mCS-inset-2-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+    .mCS-inset-3-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+        background-color: #000000 !important;
+        background-color: rgba(0, 0, 0, 0.75) !important;
+    }
+    #blog .mCS-inset-2-dark.mCSB_scrollTools .mCSB_draggerRail {
+        border-color: #000000 !important;
+        border-color: rgba(0, 0, 0, 0.75) !important;
+    }
+    .progress { background-color: rgba(255, 255, 255, 0.2) !important }
+    .progress-bar { background-color: #e8e8e8 !important }
+}
+@media screen and (min-width: 768px) { 
+    .carousel-caption {
+        right: 5%;
+        left: 5%;
+        padding-bottom: 30px;
+    }
+}
+@media (max-width: 610px) { 
+    .viewer {
+        text-align: center;
+        padding-top: 30%;
+    }
+}
+@media (max-width: 460px) { 
+    .viewer {
+        text-align: center;
+        padding-top: 30%;
+    }
+    .viewer .img-slider,
+    .vslider .carousel-inner>.item {
+        height: 300px;
+    }
+}
+@media (max-width: 420px) { 
+    h1 {
+        letter-spacing: 3px;
+        font-size: 30px;
+    }
+    .carousel-inner>.item { height: 200px }
+    .carousel-caption {
+        right: 2%;
+        left: 2%;
+        padding-bottom: 30px;
+    }
+    #fullscreen.home h1 { font-size: 24px }
+    /*#blog .img-responsive {
+        width: auto;
+        min-width: 40%;
+        min-height: 280px;
+        max-width: 180%;
+    }
+    #blog #works .col-lg-12.col-md-12, 
+    #blog #works .col-lg-9.col-md-9, 
+    #blog #works .col-lg-8.col-md-8, 
+    #blog #works .col-lg-7.col-md-7, 
+    #blog #works .col-lg-6.col-md-6, 
+    #blog #works .col-lg-5.col-md-5, 
+    #blog #works .col-lg-4.col-md-4, 
+    #blog #works .col-lg-3.col-md-3 {
+        overflow: hidden;
+        height: 280px;
+    }
+    #works .img-responsive {
+        width: auto;
+        min-width: 90%;
+        min-height: 300px;
+        max-width: 100%; 
+    }*/
+    .viewer {
+        text-align: center;
+        padding-top: 40%;
+    }
+    .viewer .img-slider,
+    .vslider .carousel-inner>.item {
+        height: 230px;
+    }
+}
+
+@media (max-width: 340px) { 
+    h1 {
+        letter-spacing: 3px;
+        font-size: 25px;
+    }
+    .carousel-inner>.item { height: 200px }
+    .carousel-caption {
+        right: 4%;
+        left: 4%;
+        padding-bottom: 30px;
+    }
+    #fullscreen.home h1 { font-size: 24px }
+    .space {padding: 5px}
+    ul.social-media {margin-top: 20px}
+    /*#works .img-responsive {
+        width: auto;
+        min-width: 90%;
+        min-height: 220px;
+        max-width: 100%; 
+    }*/
+    .viewer {
+        text-align: center;
+        padding-top: 25%;
+    }
+    .viewer .img-slider,
+    .vslider .carousel-inner>.item {
+        height: 220px;
+    }
+}

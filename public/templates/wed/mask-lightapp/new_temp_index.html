@@ -1,0 +1,133 @@
+<!doctype html><!--mask new-->
+<html lang="zh-CN">
+<head>
+    <title><%= @title %></title>
+    <meta name="description" content="<%= @site.description %>" />
+    <meta charset="utf-8" />
+    <meta name="apple-touch-fullscreen" content="YES" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <link rel="stylesheet" type="text/css" href="<%= @base_url %>assets/css/main.css" />
+    <!--移动端版本兼容 -->
+    <script type="text/javascript">
+        var mengvalue = 0;
+        //if(mengvalue<0){mengvalue=0;}
+        var phoneWidth = parseInt(window.screen.width);
+        var phoneScale = phoneWidth / 640;
+        var ua = navigator.userAgent;
+        if (/Android (\d+\.\d+)/.test(ua)) {
+            var version = parseFloat(RegExp.$1);
+            // andriod 2.3
+            if (version > 2.3) {
+                document.write('<meta name="viewport" content="width=640, minimum-scale = ' + phoneScale + ', maximum-scale = ' + phoneScale + ', target-densitydpi=device-dpi">');
+                // andriod 2.3以上
+            } else {
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+            }
+            // 其他系统
+        } else {
+            document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+        }
+    </script>
+    <!--移动端版本兼容 end -->
+</head>
+
+<body class='s-bg-ddd'>
+    <!--模版加载提示-->
+    <section class="u-alert"><img alt="tes" style='display:none;' src="<%= @base_url %>assets/images/loading_large.gif" />
+        <div class='alert-loading z-move'>
+            <div class='cycleWrap'><span class='cycle cycle-1'></span><span class='cycle cycle-2'></span><span class='cycle cycle-3'></span><span class='cycle cycle-4'></span>
+            </div>
+            <div class="lineWrap"><span class='line line-1'></span><span class='line line-2'></span><span class='line line-3'></span>
+            </div>
+        </div>
+    </section>
+    <!--模版加载提示 end-->
+    <!-- 声音控件 -->
+    <section class='u-audio f-hide' data-src='<%= value_for(@site_page, 'music', typo: 'dialog', url: '/home/dialog_music', title: '背景音乐', default: true)  %>'>
+        <p id='coffee_flow' class="btn_audio"><strong class='txt_audio z-hide'>关闭</strong><span class='css_sprite01 audio_open'></span>
+        </p>
+    </section>
+    <!-- 声音控件 end-->
+    <section class='u-arrow f-hide'>
+        <p class="css_sprite01"></p>
+    </section>
+    <!-- 箭头指示引导 end-->
+    <!-- page页面内容 -->
+    <section class='p-ct'>
+        <!-- 旋转反面 -->
+        <div class='translate-back f-hide'>
+            <!-- 擦一擦-->
+            <input id="ca-tips" type="hidden" value="" />
+            <!-- 蒙板背景图-->
+            <input id="r-cover" type="hidden" value="<%= asset_path value_for(@site_page, 'banner', typo: 'dialog', url: '/home/dialog_banner', title: '封面照片', default: true)  %>" />
+            <!-- 大图文 3-->
+            <!-- 封页 1-->
+            <div class='m-page m-fengye f-hide' data-page-type='info_pic3' data-statics='info_pic3'>
+                <div class="page-con lazy-img" data-src='<%= get_first_site_image_url(@site) %>'></div>
+            </div>
+            <!-- 封页 end-->
+            <% @site_page.site_images.each_with_index do |site_image, index| %>
+              <% next if index == 0 %>
+                <div class='m-page m-bigTxt f-hide' data-page-type='bigTxt' data-statics='info_list'>
+                    <div class="page-con j-txtWrap lazy-img" data-src="<%= qiniu_image_path(site_image.image.url)%>"></div>
+                </div>
+            <% end %>
+            
+            <!-- 大图文 end-->
+            <!-- 大图文 end-->
+        </div>
+        <!-- 旋转反面 end-->
+    </section>
+    <!-- 正文介绍 end-->
+    <!-- Linkage入口 -->
+    <div class='market-notice f-hide' data-action='Action://Linkage_open'>
+       <img src='<%= @base_url %>assets/images/notice.png'/>
+    </div>
+    <div class='market-page f-hide' data-action='Action://Linkage_close'>
+        <div class='market-img'>
+          <% unless value_for(@site_page, 'extend_url', typo: 'string', title: '外链地址').blank? %>
+            <!-- 商务 -->
+            <a href="<%= value_for(@site_page, 'extend_url', typo: 'string', title: '外链地址') %>" target="_blank">
+              <%= value_for(@site_page, 'extend_url_title', typo: 'string', title: '外链标题') %>
+            </a>
+            <%= link_to get_site_page_url_by_title(@site, '留言祝福') do %> 
+              在线留言
+            <% end %>
+          <% else %>
+            <!-- 请帖 -->
+            <%= link_to get_site_page_url_by_title(@site, '宴请信息'), style: 'font-size: 18px;' do %> 
+              邀请函
+            <% end %>
+            <%= link_to get_site_page_url_by_title(@site, '留言祝福'), style: 'font-size: 18px;' do %> 
+              留言回执
+            <% end %>
+          <% end %>
+        </div>
+    </div>
+    <!-- Linkage入口 end-->
+    <!--pageLoading-->
+    <section class="u-pageLoading"><img src="<%= @base_url %>assets/images/load.gif" alt="loading" />
+    </section>
+    <!--pageLoading end-->
+    <!-- 资源传递 -->
+    <!-- 模版ID -->
+    <input id="activity_id" type="hidden" value='<%= @site.id %>' />
+    <!-- 微信分享信息 -->
+    <input id="r-wx-title" type="hidden" value="<%= @site.title %>" />
+    <!-- 微信分享信息 -->
+    <input id="r-wx-img" type="hidden" value="<%= get_first_site_image_url(@site) %>" />
+    <!-- 微信分享信息 -->
+    <input id="r-wx-con" type="hidden" value="<%= @site.description %>" />
+    <!-- 资源传递 end-->
+    <!--脚本加载-->
+    <script src="<%= @base_url %>assets/js/init.mix.js" type="text/javascript" charset="utf-8"></script>
+    <!-- <script src="<%= @base_url %>assets/js/weixin.js" type="text/javascript" charset="utf-8"></script> -->
+    <script src="<%= @base_url %>assets/js/coffee.js" type="text/javascript" charset="utf-8"></script>
+    <script src="<%= @base_url %>assets/js/Lottery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="<%= @base_url %>assets/js/main.js?v=1230" type="text/javascript" charset="utf-8" defer='defer'></script>
+    <!--脚本加载 end-->
+</body>
+</html>

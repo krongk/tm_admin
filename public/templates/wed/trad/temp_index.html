@@ -1,0 +1,826 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.2//EN" "http://www.openmobilealliance.org/tech/DTD/xhtml-mobile12.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="HandheldFriendly" content="true">
+    <meta name="MobileOptimized" content="width">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+    <title>
+      <%= @site.title %>
+    </title>
+    <meta name="description" content="<%= @site.description %>" />
+    <meta name="keywords" content="<%= @site.title %>|维斗喜帖，漂亮的电子请柬，微信喜帖" />
+    <meta name="author" content="维斗喜帖" />
+    <script src="http://api.map.baidu.com/api?v=1.4" type="text/javascript">
+    </script>
+    <script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.7.2/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="http://card.ynzhby.com/xitie/lib/accordion/chili-1.7.pack.js">
+    </script>
+    <script type="text/javascript" src="http://card.ynzhby.com/xitie/lib/accordion/jquery.easing.js">
+    </script>
+    <script type="text/javascript" src="http://card.ynzhby.com/xitie/lib/accordion/jquery.dimensions.js">
+    </script>
+    <script type="text/javascript" src="http://card.ynzhby.com/xitie/lib/accordion/jquery.accordion.js">
+    </script>
+    <script type="text/javascript" src="http://card.ynzhby.com/xitie/static/WeixinApi.js">
+    </script>
+    <script type="text/javascript">
+      //手风琴菜单
+      jQuery().ready(function() {
+        jQuery('#accordion').accordion({
+          header: 'h3',
+          active: false,
+          alwaysOpen: false,
+          autoheight: false
+        }).bind("change.ui-accordion",
+        function(event, ui) {
+          $('html,body').animate({
+            scrollTop: $(ui.newHeader).offset().top
+          });
+        });
+      });
+
+      //音乐控制
+      $(document).ready(function() {
+        $(document).one('touchstart',
+        function(e) {
+          var music = document.getElementById("audio_play");
+          if (music.paused) {
+            music.play();
+          }
+        });
+      });
+      function play_music() {
+        if ($('#mc_play').hasClass('on')) {
+          $('#mc_play audio').get(0).pause();
+          $('#mc_play').attr('class', 'stop');
+        } else {
+          $('#mc_play audio').get(0).play();
+          $('#mc_play').attr('class', 'on');
+        }
+      }
+    </script>
+    <link href="http://card.ynzhby.com/xitie/images/style.css" rel="stylesheet" type="text/css"
+    />
+    <link href="http://card.ynzhby.com/xitie/images/gold/style.css" rel="stylesheet" type="text/css"
+    />
+    <%= render 'layouts/s_head' %>
+  </head>
+  
+  <body>
+    <%= render 'layouts/s_header' %>
+    <div id="sharemcover" onClick="document.getElementById('sharemcover').style.display='';" style="display:none">
+      <img src="http://card.ynzhby.com/xitie/images/MgnnofmleM.png">
+    </div>
+    <span id="musicControl">
+      <a id="mc_play" class="on" onclick="play_music();">
+        <audio autoplay="autoplay" id="audio_play" loop>
+          <source src="<%= value_for(@site_page, 'music', typo: 'dialog', url: '/home/dialog_music', title: '背景音乐', default: true)  %>" type="audio/mpeg">
+        </audio>
+      </a>
+    </span>
+    <div id="MainContent">
+      <div id="outter">
+        <div class="outter-main-tr">
+          <div class="outter-main-tl">
+            <div class="outter-main-tm">
+            </div>
+          </div>
+        </div>
+        <div class="outter-main-mr">
+          <div class="outter-main-ml">
+            <div class="ui-widget-header ui-corner-all">
+              <div id="inner">
+                <div class="inner-main-tr">
+                  <div class="inner-main-tl">
+                    <div class="inner-main-tm">
+                      <div id="main-title">
+                        <div class="main-title-tr">
+                          <div class="main-title-tl">
+                            <div class="main-title-tm">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="main-title-mr">
+                          <div class="main-title-ml">
+                            <div class="main-title-mm">
+                              <div id="maintitlehtml">
+                                <span style='text-decoration:none;font-style:normal;font-size:20px;font-weight:normal;'>
+                                  来自<%= value_for(@site_page, 'boy', title: '男方姓名') %> & 
+                                  <%= value_for(@site_page, 'girl', title: '女方姓名') %>
+                                  的邀约
+                                </span>
+                              </div>
+                              <div id="maintitle_decoration1">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="main-title-br">
+                          <div class="main-title-bl">
+                            <div class="main-title-bm">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="inner-main-mr">
+                  <div id="img_decoration1">
+                  </div>
+                  <div id="img_decoration2">
+                  </div>
+                  <div id="img_decoration4">
+                  </div>
+                  <div class="inner-main-ml">
+                    <div class="inner-main-mm">
+                      <img id="invite_webimg" src="<%= asset_path value_for(@site_page, 'banner', typo: 'dialog', url: '/home/dialog_banner', title: '封面照片', default: true)  %>"
+                      width="100%">
+                    </div>
+                  </div>
+                </div>
+                <div class="inner-main-br">
+                  <div id="img_decoration3">
+                  </div>
+                  <div class="inner-main-bl">
+                    <div class="inner-main-bm">
+                      <div id="sub-title">
+                        <div class="sub-title-tr">
+                          <div class="sub-title-tl">
+                            <div class="sub-title-tm">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="sub-title-mr">
+                          <div class="sub-title-ml">
+                            <div class="sub-title-mm">
+                              <div id="subtitlehtml">
+                                <span style='font-weight:normal;font-size:18px;'>
+                                  <%= value_for(@site_page, 'date', title: '宴请日期', typo: 'string', required: true) %>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="sub-title-br">
+                          <div class="sub-title-bl">
+                            <div class="sub-title-bm">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="outter-main-br">
+          <div class="outter-main-bl">
+            <div class="outter-main-bm">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="accordion">
+        <h3 id="invite_detail_title">
+          <div name="button1" id="button1" class="button">
+            <div class="button-tr">
+              <div class="button-tl">
+                <div class="button-tm">
+                </div>
+              </div>
+            </div>
+            <div class="button-mr">
+              <div class="button-ml">
+                <div class="button-mm">
+                  <a href="#">
+                    <img class="iconimage" src="http://card.ynzhby.com/xitie/images/gold/1.png" border="0" align="absmiddle">
+                    &nbsp;
+                    <span class="button-title">
+                      邀请函
+                    </span>
+                    &nbsp;
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="button-br">
+              <div class="button-bl">
+                <div class="button-bm">
+                </div>
+              </div>
+            </div>
+          </div>
+        </h3>
+        <div class="accordion">
+          <div id="detail51730" class="detail">
+            <div class="detail-tr">
+              <div class="detail-tl">
+                <div class="detail-tm">
+                </div>
+              </div>
+            </div>
+            <div class="detail-mr">
+              <div class="detail-ml">
+                <div class="detail-mm">
+                  <%= value_for(@site_page, 'story', title: '邀请函', typo: 'text', default: true) %>
+                  <div style="color:#721d14;font-size: 16px">
+                    <p>
+                      日期：<%= value_for(@site_page, 'date', title: '宴请日期', typo: 'string', required: true) %>
+                    </p>
+                    <p>
+                      时间：<%= value_for(@site_page, 'date_detail', title: '详细时间', typo: 'string') %>
+                    </p>
+                    <p>
+                      地点：<%= raw value_for(@site_page, 'address') %>
+                    </p>
+                    <p>
+                      地址：<%= raw value_for(@site_page, 'address_description', title: '宴席举办地交通说明', typo: 'text', default: '公交地铁、驾车路线、酒店联系电话等') %>
+                    </p>
+                    <p>
+                      男方电话：<%= value_for(@site_page, 'boy_phone') %><br/>
+                      女方电话：<%= value_for(@site_page, 'girl_phone') %>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="detail-br">
+            <div class="detail-bl">
+              <div class="detail-bm">
+              </div>
+            </div>
+          </div>
+        </div>
+        <h3 id="invite_detail_title">
+          <div name="button2" id="button2" class="button">
+            <div class="button-tr">
+              <div class="button-tl">
+                <div class="button-tm">
+                </div>
+              </div>
+            </div>
+            <div class="button-mr">
+              <div class="button-ml">
+                <div class="button-mm">
+                  <a href="#">
+                    <img class="iconimage" src="http://card.ynzhby.com/xitie/images/gold/7.png" border="0" align="absmiddle">
+                    &nbsp;
+                    <span class="button-title">
+                      电子相册
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="button-br">
+              <div class="button-bl">
+                <div class="button-bm">
+                </div>
+              </div>
+            </div>
+          </div>
+        </h3>
+        <div class="accordion">
+          <div id="detail" class="detail">
+            <div class="detail-tr">
+              <div class="detail-tl">
+                <div class="detail-tm">
+                </div>
+              </div>
+            </div>
+            <div class="detail-mr">
+              <div class="detail-ml">
+                <div class="detail-mm">
+                  <link href="http://card.ynzhby.com/xitie/lib/photoswipe.css" type="text/css" rel="stylesheet"
+                  />
+                  <script src="http://card.ynzhby.com/xitie/lib/klass.min.js" type="text/javascript">
+                  </script>
+                  <script src="http://card.ynzhby.com/xitie/lib/code.photoswipe-3.0.5.min.js" type="text/javascript">
+                  </script>
+                  <script type="text/javascript">
+                    (function(window, PhotoSwipe) {
+                      document.addEventListener('DOMContentLoaded',
+                      function() {
+                        var options = {},
+                        instance = PhotoSwipe.attach(window.document.querySelectorAll('#Gallery a'), options);
+                      },
+                      false);
+                    } (window, window.Code.PhotoSwipe));
+                  </script>
+                  <style>
+                    .gallery { list-style: none; padding: 0; margin: 0; } .gallery:after {
+                    clear: both; content: "."; display: block; height: 0; visibility: hidden;
+                    } .gallery li { float: left; width:33.333333%; overflow:hidden} .gallery
+                    li a {display: block; margin: 3px 3px 3px 3px; background-color: #ffffff;
+                    border: 1px solid #fff;cursor: pointer; -moz-border-radius: 2px; -webkit-border-radius:
+                    2px; border-radius: 2px; box-shadow:0 0 2px 0 rgba(0, 0, 0, 0.1); -moz-box-shadow:0
+                    0 2px 0 rgba(0, 0, 0, 0.1); -webkit-box-shadow:0 0 2px 0 rgba(0, 0, 0,
+                    0.1); } .gallery li img.thumb { width:100%; height:80px; background-size:cover;
+                    background-position:center center; }
+                  </style>
+                  <ul id="Gallery" class="gallery">
+                    <% @site_page.site_images.each do |site_image| %> 
+                      <li>
+                        <a href="<%= site_image.image.url %>" rel="external">
+                          <img class="thumb" src="<%= site_image.image.url %>"
+                          width="100%" alt="1" border="0" />
+                        </a>
+                      </li>
+                    <% end %>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="detail-br">
+            <div class="detail-bl">
+              <div class="detail-bm">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3 id="invite_detail_title">
+          <div name="button4" id="button4" class="button">
+            <div class="button-tr">
+              <div class="button-tl">
+                <div class="button-tm">
+                </div>
+              </div>
+            </div>
+            <div class="button-mr">
+              <div class="button-ml">
+                <div class="button-mm">
+                  <a href="#">
+                    <img class="iconimage" src="http://card.ynzhby.com/xitie/images/gold/4.png" border="0" align="absmiddle">
+                    &nbsp;
+                    <span class="button-title">
+                      婚宴地图
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="button-br">
+              <div class="button-bl">
+                <div class="button-bm">
+                </div>
+              </div>
+            </div>
+          </div>
+        </h3>
+        <div class="accordion" id="invite_detail_content">
+          <div id="detail" class="detail">
+            <div class="detail-tr">
+              <div class="detail-tl">
+                <div class="detail-tm">
+                </div>
+              </div>
+            </div>
+            <div class="detail-mr">
+              <div class="detail-ml">
+                <div class="detail-mm">
+                  <div id="map_canvas" style="position:relative;width:100%;height:260px;">
+                    加载中...
+                  </div>
+                  <br />
+                  <div>
+                    <%= raw value_for(@site_page, 'address') %>
+                    <br>
+                    地址：<%= raw value_for(@site_page, 'address_description', title: '宴席举办地交通说明', typo: 'text', default: '公交地铁、驾车路线、酒店联系电话等') %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="detail-br">
+            <div class="detail-bl">
+              <div class="detail-bm">
+              </div>
+            </div>
+          </div>
+        </div>
+        <h3 id="invite_detail_title">
+          <div name="button5" id="button5" class="button">
+            <div class="button-tr">
+              <div class="button-tl">
+                <div class="button-tm">
+                </div>
+              </div>
+            </div>
+            <div class="button-mr">
+              <div class="button-ml">
+                <div class="button-mm">
+                  <a href="#">
+                    <img class="iconimage" src="http://card.ynzhby.com/xitie/images/gold/3.png" border="0" align="absmiddle">
+                    &nbsp;
+                    <span class="button-title">
+                      留言祝福
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="button-br">
+              <div class="button-bl">
+                <div class="button-bm">
+                </div>
+              </div>
+            </div>
+          </div>
+        </h3>
+        <div class="accordion" id="invite_detail_content">
+          <div class="detail-mm">
+            <link href="http://card.ynzhby.com/xitie/images/message.css" rel="stylesheet" type="text/css"
+            />
+            <script type="text/javascript">
+              //wxname="";
+              $(document).ready(function() {
+
+                $("#showcard").click(function() {
+                  var btn = $(this);
+                  wxname = $("#wxname").val();
+                  if (wxname == '') {
+                    alert("请输入昵称");
+                    return;
+                  }
+                  $("#wxname").val(wxname);
+                  var info = $("#info").val();
+                  if (info == '') {
+                    alert("请输入内容");
+                    return;
+                  }
+                  var num = $("#num").val();
+                  var submitData = {
+                    name: wxname,
+                    msg: info,
+                    num: num,
+                  };
+                  $.post('/site_comments', submitData,
+                  function(data) {
+                    if (data == "1") {
+                      alert('祝福已提交');
+                      setTimeout('window.location.href=location.href', 1000);
+                      return;
+                    } else {
+                      alert('祝福失败！');
+                      return;
+                    }
+                  });
+                });
+
+                //提示关闭
+                $("#alertclose").click(function() {
+                  $("#windowcenter").slideUp(500);
+                });
+              });
+
+              //操作提示
+              function alert(title) {
+                window.scrollTo(0, -1);
+                $("#windowcenter").slideToggle("slow");
+                $("#txt").html(title);
+                setTimeout(function() {
+                  $("#windowcenter").slideUp(500);
+                },
+                4000);
+              }
+
+              //留言框
+              $(document).ready(function() {
+                $(".first").click(function() {
+                  $(".ly").slideToggle();
+                });
+              });
+              function onwordselect(obj) {
+                info = document.getElementById("info") if (obj.value == "点这里选择祝福语") {
+                  info.value = ""
+                } else {
+                  info.value = obj.value
+                }
+              }
+            </script>
+            <div class="cardexplain">
+              <!--操作提示-->
+              <div class="window" id="windowcenter">
+                <div id="title" class="wtitle">
+                  操作提示
+                  <span class="close" id="alertclose">
+                    X
+                  </span>
+                </div>
+                <div class="content">
+                  <div id="txt">
+                  </div>
+                </div>
+              </div>
+              <!--Start-->
+              <div class="message">
+                <div class="message-date">
+                  <ul>
+                    <a>
+                      <h2 class="first" style="position: relative;">
+                        请点这里送祝福
+                      </h2>
+                    </a>
+                    <li class="green ly" style="display:none">
+                      <%= form_tag("/site_comments", class: 'form-inline', id: 'contact-form1', onsubmit: 'return false') do %>
+                      <input class="hidden" id="site_comment_site_id" name="site_comment[site_id]" type="hidden" value="<%= @site.id %>" />
+                      <dl>
+                        <dt>
+                          <input name="site_comment[name]" type="text" class="px1" id="wxname" value="" placeholder="请输入您的姓名">
+                          <!--/dt>
+                          <dt-->
+                          <select name="site_comment[content2]" id="num" class="px2">
+                            <option value="100">
+                              无法出席
+                            </option>
+                            <option value="0">
+                              待定
+                            </option>
+                            <option selected value="1">
+                              1人出席
+                            </option>
+                            <option value="2">
+                              2人出席
+                            </option>
+                            <option value="3">
+                              3人出席
+                            </option>
+                            <option value="4">
+                              4人出席
+                            </option>
+                            <option value="5">
+                              5人出席
+                            </option>
+                            <option value="6">
+                              6人出席
+                            </option>
+                            <option value="7">
+                              7人出席
+                            </option>
+                            <option value="8">
+                              8人出席
+                            </option>
+                            <option value="9">
+                              9人出席
+                            </option>
+                            <option value="10">
+                              10人出席
+                            </option>
+                            <option value="11">
+                              10人以上
+                            </option>
+                          </select>
+                        </dt>
+                        <dt>
+                          <select name="subject" id="select" class="px" onchange="onwordselect(this)">
+                            <option selected="">
+                              点这里选择祝福语
+                            </option>
+                            <option>
+                              让钟声敲响，我绐你们的祝福；让戒指套牢，天赐给你们的幸运；祝愿所有的快乐美好，陪伴你们一生白头偕老，祝新婚快乐。
+                            </option>
+                            <option>
+                              偶乐的匆匆相遇，让你们有了爱情。苦苦的相依相恋，让你们有了婚姻，今天的结婚相约，让你们有了家庭。朋友，祝愿你们小夫妻携手共创美好生活！
+                            </option>
+                            <option>
+                              女+子=好，愿你们在以后的风雨路途中，好好的恩爱，好好的相携，好好地体谅，好好的相待，好好地宽容，好好的情深四海！恭祝新婚快乐！
+                            </option>
+                            <option>
+                              牛郎织女鹊桥会，董永七仙成双对，红莲花开并蒂穗，桑榆枝结连理缀，今日良辰今宵醉，来年今日添子贵，相敬如宾案齐眉，夫妻恩爱永相随。新婚快乐！
+                            </option>
+                            <option>
+                              神仙眷侣人人羡，今日神仙到人间。新婚大喜亲朋至，欢歌笑语满家园。郎情妾意含羞笑，举案齐眉情绵绵。祝愿新婚快乐，爱情之花常开！
+                            </option>
+                            <option>
+                              你们是一对相亲相爱的比翼鸟，在岁月的天空中飞翔了五十载。让我们把喜庆的红蜡点燃，把飘香的美酒斟满，举杯同贺：金婚大喜，幸福快乐！
+                            </option>
+                            <option>
+                              你们相遇于生活，相知于网络。众里寻他千百度，那人博客在雅虎。腾讯两只小企鹅，新浪读书你和我。阿里巴巴送红包，开心锣鼓奏谷歌。祝：百年好合！
+                            </option>
+                            <option>
+                              你在她眼里最帅，她在你眼里最美，情人眼里爱相随，一生一世成双对。在天神仙倾羡你，在地连理嫉妒你。众人当面恭喜你，我的短信祝福你：新婚快乐！
+                            </option>
+                            <option>
+                              噼噼啪啪迎花轿，红红火火接新娘。热热闹闹宴佳客，欢欢喜喜闹洞房。真心真意表祝愿：一生一世爱不完。和和美美家业旺，甜甜蜜蜜到天荒。
+                            </option>
+                            <option>
+                              朋友结婚是喜事，尔等只能在边看，你我相逢指客网，结下一段指客情，但是相逢未相识，可是情却比金坚，今把祝福来送上，和和美美永相爱！
+                            </option>
+                            <option>
+                              朋友，当你新婚来临之际，祝你一拜天地，从此受尽老婆气；二拜高堂，从此为了老婆忙；夫妻对拜，从此勒紧裤腰带；送入洞房，想生宝宝你俩快点忙。
+                            </option>
+                            <option>
+                              平生祝福无数，今朝重点表露。牵手伴侣踏上新的人生路，从此风雨无阻彼此照顾。愿你和你的另一半白头偕老幸福永驻，平安美满比翼共度。新婚快乐！
+                            </option>
+                            <option>
+                              牵手国庆佳期，喜结金玉良缘，幸福普天同庆，恩爱山川共证。有情人珠联璧合，好夫妻佳偶天成，真心恭祝国庆快乐，比翼齐飞，新婚大喜！
+                            </option>
+                            <option>
+                              牵手一世情，结成两口子。三拜四叩首，变为一家子。五湖朋友来，同庆好日子。祝你恩恩爱，早生胖孩子。生活甜蜜蜜，幸福一辈子。
+                            </option>
+                            <option>
+                              前朝彩凤双飞翼，今朝共偕连理枝，天长地久意相通，海角天涯情相依，鸾凤合鸣到永久，衷心祝愿你们新婚大喜，永结同心，一生幸福美满！
+                            </option>
+                            <option>
+                              前世，相约，相约千里来相会。今生，相爱，相爱爱情真甜蜜。祝福，美好，美好愿景送给你。幸福，家庭，家庭和睦好夫妻。
+                            </option>
+                            <option>
+                              清水盈盈芙蓉碧，愿如水中莲并蒂。白云悠悠几万里，愿如天上鸟比翼。春光满院芬芳季，愿如花间蝶双起。最是百年好合意，愿如水中鸳鸯戏。
+                            </option>
+                            <option>
+                              祝福到，烟花亮出幸福图，锣鼓敲响吉祥曲。祝你们，百年好合白头到老！永结同心不离不弃！新婚愉快甜甜蜜蜜！
+                            </option>
+                            <option>
+                              手牵手，走进婚姻的殿堂，走向美好的生活；肩并肩，为了未来共同奋斗，日子越过越红火；祝福结婚的新人，生活美满，事业有成。
+                            </option>
+                          </select>
+                        </dt>
+                        <dt>
+                          <textarea name="site_comment[content]" id="info" class="pxtextarea" style="height:auto!important;min-height:80px!important;">
+                          </textarea>
+                        </dt>
+                        <dt>
+                          <a id="showcard" class="submit" href="javascript:void(0)">
+                            提交祝福
+                          </a>
+                        </dt>
+                      </dl>
+                    </li>
+                    <li class="green">
+                      <h5>
+                        <em>
+                          <span>
+                            2014-12-11 22:06:30
+                          </span>
+                        </em>
+                        尊皇铂雅婚礼
+                        <div class="clr">
+                        </div>
+                      </h5>
+                      <dl>
+                        <dt class="hfinfo">
+                          以爱情的名义祝福你们，新婚愉快，幸福美满，激情永在，白头偕老！
+                        </dt>
+                      </dl>
+                    </li>
+                    <a>
+                      <h2 class="first" style="position: relative;">
+                        感谢您们的祝福，谢谢！
+                      </h2>
+                    </a>
+                  </ul>
+                </div>
+              </div>
+              <!--END-->
+            </div>
+          </div>
+        </div>
+        <h3 id="invite_detail_title">
+          <div name="button7" id="button7" class="button">
+            <div class="button-tr">
+              <div class="button-tl">
+                <div class="button-tm">
+                </div>
+              </div>
+            </div>
+            <div class="button-mr">
+              <div class="button-ml">
+                <div class="button-mm">
+                  <a href="#">
+                    <img class="iconimage" src="http://card.ynzhby.com/xitie/images/gold/5.png" border="0" align="absmiddle">
+                    &nbsp;
+                    <span class="button-title">
+                      喜讯分享
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="button-br">
+              <div class="button-bl">
+                <div class="button-bm">
+                </div>
+              </div>
+            </div>
+          </div>
+        </h3>
+        <div class="accordion" id="invite_detail_content">
+          <div id="detail" class="detail">
+            <div class="detail-tr">
+              <div class="detail-tl">
+                <div class="detail-tm">
+                </div>
+              </div>
+            </div>
+            <div class="detail-mr">
+              <div class="detail-ml">
+                <div class="detail-mm">
+                  <div class="btn-like">
+                    <a class="btnBlue" onClick="document.getElementById('sharemcover').style.display='block';">
+                      <span>
+                        转发
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="detail-br">
+            <div class="detail-bl">
+              <div class="detail-bm">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="footer">
+        <div id="copyright">
+          <div id="copyright-text">
+            <div id="copyright-text-content">
+              <%= render 'layouts/s_footer' %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script type="text/javascript">
+        //地图载入
+        var map = new BMap.Map("map_canvas");
+        map.addControl(new BMap.NavigationControl());
+        // 创建地址解析器实例
+        var myGeo = new BMap.Geocoder();
+        // 将地址解析结果显示在地图上,并调整地图视野
+        myGeo.getPoint("<%= raw value_for(@site_page, 'address') %>",
+        function(point) {
+          if (point) {
+            map.centerAndZoom(point, 18);
+            //if(navigator.userAgent.indexOf("MSIE")>0){ 
+            map.panBy(140, 135);
+            //}
+            map.addOverlay(new BMap.Marker(point));
+            //marker1.setAnimation(BMAP_ANIMATION_BOUNCE);
+          } else {
+            map.centerAndZoom("", 15);
+          }
+        },
+        "中国");
+
+        // 微信分享的数据
+        WeixinApi.ready(function(Api) {
+          var wxData = {
+            "appId": "",
+            // 服务号可以填写appId
+            "imgUrl": '<%= get_first_site_image_url(@site) %>',
+            "desc": '<%= @site.description %>',
+            "title": "<%= @site.title %>"
+          };
+
+          // 分享的回调
+          var wxCallbacks = {
+            // 分享操作开始之前
+            ready: function() {
+              // 你可以在这里对分享的数据进行重组
+              //alert("准备分享");
+            },
+            // 分享被用户自动取消
+            cancel: function(resp) {
+              //alert("分享被取消");  // 你可以在你的页面上给用户一个小Tip，为什么要取消呢？
+            },
+            // 分享失败了
+            fail: function(resp) {
+              //alert("分享失败");    // 分享失败了，是不是可以告诉用户：不要紧，可能是网络问题，一会儿再试试？
+            },
+            // 分享成功
+            confirm: function(resp) {
+              // 分享成功了，我们是不是可以做一些分享统计呢？
+              //window.location.href='http://192.168.1.128:8080/wwyj/test.html';
+              //alert("分享成功");
+            },
+            // 整个分享过程结束
+            all: function(resp) {
+              //alert("分享结束");// 如果你做的是一个鼓励用户进行分享的产品，在这里是不是可以给用户一些反馈了？
+            }
+          };
+
+          // 用户点开右上角popup菜单后，点击分享给好友，会执行下面这个代码
+          Api.shareToFriend(wxData, wxCallbacks);
+
+          // 点击分享到朋友圈，会执行下面这个代码
+          Api.shareToTimeline(wxData, wxCallbacks);
+
+          // 点击分享到腾讯微博，会执行下面这个代码
+          Api.shareToWeibo(wxData, wxCallbacks);
+        });
+      </script>
+  </body>
+
+</html>

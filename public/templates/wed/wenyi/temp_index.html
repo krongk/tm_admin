@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <!-- Mirrored from themeforces.com/demo/wordpress/Bloggler/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 Jan 2015 07:43:12 GMT -->
+  <head>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
+    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <script type="text/javascript" id="rs-js-common">
+    rs = {"wordpress":{"version":"4.1","home_url":"http:\/\/themeforces.com\/demo\/wordpress\/Bloggler\/","admin_url":"http:\/\/themeforces.com\/demo\/wordpress\/Bloggler\/wp-admin\/","admin_ajax_url":"http:\/\/themeforces.com\/demo\/wordpress\/Bloggler\/wp-admin\/admin-ajax.php","template_url":"http:\/\/themeforces.com\/demo\/wordpress\/Bloggler\/wp-content\/themes\/bloggler","is_admin":false,"is_home":false},"php":{"version":"5.4.36","session_id":"d6bc475baa467fd2141b3fc7f6dfe94d"},"controls":{"meta_prefix":"rs-"},"lib":{"url":"http:\/\/themeforces.com\/demo\/wordpress\/Bloggler\/wp-content\/themes\/bloggler\/rslib","path":"\/home\/jltmedia\/public_html\/demo\/wordpress\/Bloggler\/wp-content\/themes\/bloggler\/rslib"}}
+    </script>
+    
+    <link rel='stylesheet' id='rs-common-css'  href='<%= @base_url %>assets/rslib/styles/rs.common2f54.css?ver=4.1' type='text/css' media='all' />
+    <link rel='stylesheet' id='rs-page-style-css'  href='<%= @base_url %>assets/rslib/minify/load0c33.css?l=styles&amp;k=67010f4ae4b562c0a5447473dd68291b&amp;ver=4.1' type='text/css' media='all' />
+    <script type='text/javascript' src='<%= @base_url %>assets/rslib/scripts/modernizr2f54.js?ver=4.1'></script>
+    <script type='text/javascript' src='<%= @base_url %>assets/js/jquery/jquery90f9.js?ver=1.11.1'></script>
+    <script type='text/javascript' src='<%= @base_url %>assets/js/jquery/jquery-migrate.min1576.js?ver=1.2.1'></script>
+    <script type='text/javascript' src='<%= @base_url %>assets/rslib/scripts/rs.common2f54.js?ver=4.1'></script>
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="xmlrpc0db0.php?rsd" />
+    <meta name="generator" content="WordPress 4.1" />
+    <link rel='canonical' href='index.html' />
+    <link rel='shortlink' href='index.html' />
+    <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      <%= @site.title %>
+    </title>
+    <meta name="description" content="<%= @site.description %>" />
+    <meta name="icon" content="<%= get_first_site_image_url(@site) || 'http://www.wedxt.com/apple-touch-icon-114x114.png' %>" />
+    <meta name="keywords" content="<%= @site.title %>，维斗喜帖网出品，漂亮的电子请柬，结婚请柬，微喜帖">
+    <meta name="author" content="维斗喜帖">
+
+    <!-- Mobile Specific Metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="<%= @base_url %>assets/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="<%= @base_url %>assets/img/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="<%= @base_url %>assets/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="<%= @base_url %>assets/img/apple-touch-icon-114x114.png">
+    <!-- Bootstrap
+    ================================================== -->
+    <link rel="stylesheet" type="text/css" href="<%= @base_url %>assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="<%= @base_url %>assets/css/jasny-bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<%= @base_url %>assets/css/jquery.mCustomScrollbar.css" />
+    <link rel="stylesheet" type="text/css" href="<%= @base_url %>assets/font-awesome-4.2.0/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="<%= @base_url %>assets/css/animate.css" />
+    <!-- Custom Css
+    ================================================== -->
+    <link rel="stylesheet" type="text/css" href="<%= @base_url %>assets/style.css"/>
+    <link rel="stylesheet" type="text/css" href="<%= @base_url %>assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="<%= @base_url %>assets/css/responsive.css">
+    <!-- Google Fonts
+    ================================================== -->
+    <script type="text/javascript" src="<%= @base_url %>assets/js/modernizr.custom.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="http://themeforces.com/demo/wordpress/Bloggler/<%= @base_url %>assets/js/html5shiv.min.js"></script>
+    <script src="http://themeforces.com/demo/wordpress/Bloggler/<%= @base_url %>assets/js/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+    
+    </style>
+    <%= render 'layouts/s_head' %>
+  </head>
+  <body class="home page page-id-280 page-template page-template-template-home page-template-template-home-php">
+    <%= render 'layouts/s_header' %>
+    <!-- Preloader
+    ================================================== -->
+    <div id="preloader">
+      <div id="status">&nbsp;</div>
+    </div>
+    
+    <!-- Fullscreen Page
+    ================================================== -->
+    <div id="fullscreen" class="home"> <!-- Full Screen Home Page -->
+    <div id="overlay" class="bg"></div> <!-- Color Overlay -->
+    
+    <div id="home" class="container"> <!-- Start Container -->
+    <div class="row"> <!-- Start Row -->
+    <div id="left" class="col-sm-12 col-md-12"> <!--- Left Content -->
+    
+    <div id="menu" class="fa fa-bars fa-2x" data-toggle="offcanvas" data-target=".navmenu" data-canvas="body"></div>
+    <div id="page-detail" class="text-center">
+      <div id="homeslider" class="carousel slide" data-ride="carousel">
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+
+<% content_one = value_for(@site_page, 'content_one', title: '文章', typo: 'text') 
+  content_arr = get_paragraph(content_one)
+  def get_paragraph(content)
+    tmp_arr = []
+    content.split(/(=|＝)+\n/).each do |graph|
+      next if ['=', '＝'].include? graph
+      tmp_arr << get_title_description(graph)
+    end
+    tmp_arr
+  end
+
+  def get_title_description(paragraph)
+    arr = []
+    tmp = paragraph.split(/\s*\n\s*/).reject!(&:blank?) 
+    arr << "<h4>#{tmp.shift}</h4>"
+    arr << "<hr>"
+    arr << "<h2>#{tmp.join(". ")}</h2>"
+    arr.join
+  end
+%>       
+          <% content_arr.each_with_index do |content, index| %>
+            <div class="item <%= 'active' if index == 0%>">
+              <div class="carousel-caption">
+                <%= raw content %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      
+    </div>
+    </div> <!--- End Left Content -->
+    
+    </div> <!-- End Row -->
+    </div> <!-- End Container -->
+    <!-- Navigation Bar -->
+    <nav id="footer-nav" class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+      <div class="container">
+        <div class="pull-left text-left">
+          
+          <span class="logo">维斗喜帖</span>
+          <p class="copyright"><a href="http://www.wedxt.com" target="_blank">www.wedxt.com</a></p>
+        </div>
+        <div class="pull-right text-right controls">
+          <a href="#homeslider" role="button" data-slide="prev"><span class="fa fa-arrow-left"></span></a>
+          <a href="#homeslider" role="button" data-slide="next"><span class="fa fa-arrow-right"></span></a>
+        </div>
+      </div>
+    </nav>
+    </div> <!--- End Fullscreen Page -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script type="text/javascript" src="<%= @base_url %>assets/js/jquery.1.11.1.js"></script>
+    
+    <!-- Bootstrap Js Compiled Plugins -->
+    <script type="text/javascript" src="<%= @base_url %>assets/js/bootstrap.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script type="text/javascript" src="<%= @base_url %>assets/js/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="<%= @base_url %>assets/js/jquery.mCustomScrollbar.js"></script>
+    <script type="text/javascript" src="<%= @base_url %>assets/js/backstretch.js"></script>
+    <script type="text/javascript">
+    //Home Page BG Slideshow
+    //-----------------------------------
+    $.backstretch([
+      <% @site_page.site_images.map{|s| s.image.url}.join(',') %>
+     ], {duration: 3000, fade: 750});
+    </script>
+    
+    <script type="text/javascript" src="<%= @base_url %>assets/js/jasny-bootstrap.min.js"></script>
+    <script type="text/javascript" src="<%= @base_url %>assets/js/main.js"></script>
+    <script type="text/javascript" id="rs-page-scripts" src="<%= @base_url %>assets/rslib/minify/load7cd2.php?l=scripts&amp;k=67010f4ae4b562c0a5447473dd68291b"></script>
+    <script type='text/javascript' src='<%= @base_url %>assets/js/comment-reply.min2f54.js?ver=4.1'></script>
+  </body>
+  
+  <!-- Mirrored from themeforces.com/demo/wordpress/Bloggler/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 Jan 2015 07:44:52 GMT -->
+</html>

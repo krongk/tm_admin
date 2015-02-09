@@ -1,0 +1,687 @@
+/*leo move arrow icon from left to right side 把箭頭移到右側*/
+.ui-accordion-icons .ui-accordion-header a { padding-left: 0.3em; } 
+.ui-accordion .ui-accordion-header .ui-icon { position: absolute; left: 100%; margin-left: -30px; top: 50%; margin-top: -8px; }
+
+/*Leo add 子項目內容背景圖設定*/
+
+
+/* reset */
+body, div, ul, li, h1, h2, h3, h4, h5, h6, pre, form, input, textarea, p, th, td {
+	margin:0;
+	padding:0;
+	
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+}
+img {
+	border:0;
+}
+ul {
+	list-style:none;
+}
+a, a:hover, a:active, a:focus{
+	text-decoration:none;
+	border:none;
+	outline:none;
+	/*color:#ffd4e6;*/
+	color:#fff5fd;
+	}
+:focus {
+    outline: 0;
+}
+/* reset */
+
+html { 
+overflow-x: hidden; overflow-y: auto; 
+}
+
+
+/*Leo add 背景顏色*/
+body {
+	/*font-family:Georgia, "Times New Roman", Times, serif;*/
+	 background:url(green_bg.png) repeat;
+}	
+
+h3.invite_detail_title{
+	margin: 0 0 5px 0;
+	border: 1px solid #ffcc00;
+	background-color: #fffcd3;
+	opacity: 0.7;
+}
+/*
+.ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {style: clear }
+*/
+
+
+
+/*預載圖片*/
+/*
+#preload-01 { background: url(bg_tl.gif) no-repeat -9999px -9999px; }
+#preload-02 { background: url(bg_tm.gif) no-repeat -9999px -9999px; }
+#preload-03 { background: url(bg_tr.gif) no-repeat -9999px -9999px; }
+*/
+
+/*====主頁外框 Start====*/
+/*框內的高度及寬度都會變化*/
+
+#outter{
+/*外框*/
+	
+}
+
+.outter-main-tl{
+/*左上框*/
+	font-size:15%; /*fix IE6*/
+}
+.outter-main-tm{
+/*上框*/
+	font-size:15%; /*fix IE6*/
+}
+.outter-main-tr{
+/*右上框*/
+	font-size:15%; /*fix IE6*/
+}
+.outter-main-bl{
+/*左下框*/
+	font-size:15%; /*fix IE6*/
+}
+.outter-main-bm{
+/*下框*/
+	font-size:15%; /*fix IE6*/
+	
+}
+.outter-main-br{
+/*右下框*/
+	font-size:15%; /*fix IE6*/
+}
+.outter-main-ml{
+/*左框*/
+	width:auto;
+}
+.outter-main-mr{
+/*右框 内容*/
+	width:auto;
+}
+
+.outter-main-mm{
+/*中框*/
+}
+
+/*====主頁外框 End====*/
+
+
+/*====主頁內框 Start====*/
+/*
+注意主頁內框的上框及下框要留足夠的高度給上標及下標題文字顯示
+height:40px 以上比較保險;
+
+*/
+#inner{
+	
+}
+
+.inner-main-tl{
+/*左上框*/
+}
+.inner-main-tm{
+/*上框*/
+
+}
+.inner-main-tr{
+/*右上框*/
+}
+.inner-main-bl{
+/*左下框*/
+}
+.inner-main-bm{
+/*下框*/
+}
+.inner-main-br{
+/*右下框*/
+}
+.inner-main-ml{
+/*左框*/
+}
+.inner-main-mr{
+/*右框 内容*/
+}
+.inner-main-mm{
+/*中框*/
+/*
+padding:10px 16px 6px 16px;
+*/
+}
+
+/*====主頁內框 End====*/
+.inner-main-mm img{
+	
+	display:block;
+/*	width:100%;
+	height:100%; */
+	margin:0 auto;
+	
+}
+
+#img_videobutton{
+	width: 50px;
+	height: 50px;
+	position:absolute;
+	background:url(video.png) center center no-repeat;
+	background-size:contain;
+	z-index: 999;
+	top: -50px;
+	cursor:pointer;
+}
+
+
+/*====主頁內框 End====*/
+
+
+
+/*====Main-title Start====*/
+/*框內的高度及寬度都會變化*/
+
+#main-title{
+/*外框*/
+	 background:url(bg_maintext.png);
+	background-size: 100% 100%;
+	/*-webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;*/
+	
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='bg_maintext.png',sizingMethod='scale');
+
+	-ms-filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='bg_maintext.png',sizingMethod='scale');
+	
+ }
+
+
+#maintitlehtml span{ 
+
+}
+
+.main-title-tl{
+/*左上框*/
+	
+	font-size:15%; /*fix IE6*/
+}
+.main-title-tm{
+/*上框*/
+	font-size:15%; /*fix IE6*/
+}
+.main-title-tr{
+/*右上框*/
+	font-size:15%; /*fix IE6*/
+}
+.main-title-bl{
+/*左下框*/
+	font-size:15%; /*fix IE6*/
+}
+.main-title-bm{
+/*下框*/
+	height:20px;
+}
+.main-title-br{
+/*右下框*/
+}
+.main-title-ml{
+/*左框*/
+/*	height:80px; */
+}
+.main-title-mr{
+/*右框 内容*/
+/*	height:80px; */
+}
+
+.main-title-mm{
+/*中框*/
+	width:auto;
+	line-height:1.2;
+	text-align:center;
+	padding:20px 0px 0px 0;
+ 
+  /* WebKit (Safari/Chrome) Only */
+ /* -webkit-text-stroke: 1px #fc5e83; */
+  
+  /* If we weren't using text-shadow, we'd set a fallback color
+     and use this to set color instead
+    -webkit-text-fill-color: white; */
+  
+  color: #fef0c6;
+  
+}
+
+/*====main-title End====*/
+
+
+/*====Sub-title Start====*/
+/*框內的高度及寬度都會變化*/
+
+#sub-title{ 
+/*外框*/
+	 
+	 background:url(bg_subtext.png);
+	background-size: 100% 100%;
+	/*-webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;*/
+	
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='bg_subtext.png',sizingMethod='scale');
+
+	-ms-filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='bg_subtext.png',sizingMethod='scale');
+/*
+	background:url(date_background.png) left bottom repeat-x;
+	padding:0 0 0px 0;
+*/	
+}
+
+.sub-title-tl{
+/*左上框*/
+	font-size:15%; /*fix IE6*/
+}
+.sub-title-tm{
+/*上框*/
+	font-size:15%; /*fix IE6*/
+}
+.sub-title-tr{
+/*右上框*/
+	font-size:15%; /*fix IE6*/
+}
+.sub-title-bl{
+/*左下框*/
+	font-size:15%; /*fix IE6*/
+}
+.sub-title-bm{
+/*下框*/
+	font-size:15%; /*fix IE6*/
+}
+.sub-title-br{
+/*右下框*/
+	font-size:15%; /*fix IE6*/
+}
+.sub-title-ml{
+/*左框*/
+	width:auto;
+}
+.sub-title-mr{
+/*右框 内容*/
+	width:auto;
+}
+
+.sub-title-mm{
+/*中框*/
+	display:block;
+	text-align:right;
+/*	line-height:1; */
+	padding:8px 8px 8px 8px; 
+
+ /* WebKit (Safari/Chrome) Only */
+ /* -webkit-text-stroke: 1px #474747; */
+  
+  /* If we weren't using text-shadow, we'd set a fallback color
+     and use this to set color instead
+    -webkit-text-fill-color: white; */
+  
+  color: #ffffff;
+  
+
+}
+
+
+/*====sub-title End====*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*====按鈕外框 Start====*/
+
+.button{
+	margin-top:0px;
+	padding-bottom:0px;
+	padding-left:0px;
+	padding-right:0px;
+/*最外框*/
+
+	
+}
+
+
+
+
+
+
+/*框內的高度及寬度都會變化*/
+.button-tl{
+/*左上框*/
+}
+.button-tm{
+/*上框*/
+}
+.button-tr{
+/*右上框*/
+}
+.button-bl{
+/*左下框*/
+}
+.button-bm{
+/*下框*/
+}
+.button-br{
+/*右下框*/
+}
+.button-ml{
+/*左框*/
+/*
+	display:block;
+	height:50px;
+	font-size:20px;
+	font-weight: normal;
+	line-height:50px;
+*/	
+}
+
+
+#button1 .button-ml{
+/*右框 内容*/
+	width:auto;
+}
+#button2 .button-ml{
+/*右框 内容*/
+	width:auto;
+}
+#button3 .button-ml{
+/*右框 内容*/
+	width:auto;
+}
+#button4 .button-ml{
+/*右框 内容*/
+	width:auto;
+}
+#button5 .button-ml{
+/*右框 内容*/
+	width:auto;
+}
+#button6 .button-ml{
+/*右框 内容*/
+	width:auto;
+}
+#button7 .button-ml{
+/*右框 内容*/
+	width:auto;
+}
+
+.ui-state-hover #button1 .button-ml,.ui-state-hover #button2 .button-ml,.ui-state-hover #button3 .button-ml,.ui-state-hover #button4 .button-ml,.ui-state-hover #button5 .button-ml,.ui-state-hover #button6 .button-ml,.ui-state-hover #button7 .button-ml{ }
+
+.ui-state-active #button1 .button-ml,.ui-state-active #button2 .button-ml,.ui-state-active #button3 .button-ml,.ui-state-active #button4 .button-ml,.ui-state-active #button5 .button-ml,.ui-state-active #button6 .button-ml,.ui-state-active #button7 .button-ml{ }
+
+
+.button-mr{
+/*右框 内容*/
+	display:block;
+	height:56px;
+	font-size:20px;
+	font-weight: normal;
+	line-height:56px;
+}
+
+
+#button1 .button-mr{
+/*右框 内容*/
+	width:auto;
+	background-image:url(bg_buttons.png); background-position:right 0px; background-repeat: no-repeat; 	
+	background-size: 100% 559px;
+}
+#button2 .button-mr{
+/*右框 内容*/
+	width:auto;
+	background-image:url(bg_buttons.png); background-position:right -56px; background-repeat: no-repeat; 	
+	background-size: 100% 559px;
+}
+#button3 .button-mr{
+/*右框 内容*/
+	width:auto;
+	background-image:url(bg_buttons.png); background-position:right -112px; background-repeat: no-repeat; 	
+	background-size: 100% 559px;
+}
+#button4 .button-mr{
+/*右框 内容*/
+	width:auto;
+	background-image:url(bg_buttons.png); background-position:right -168px; background-repeat: no-repeat; 	
+	background-size: 100% 559px;
+}
+#button5 .button-mr{
+/*右框 内容*/
+	width:auto;
+	background-image:url(bg_buttons.png); background-position:right -224px; background-repeat: no-repeat; 	
+	background-size: 100% 559px;
+}
+#button6 .button-mr{
+/*右框 内容*/
+	width:auto;
+	background-image:url(bg_buttons.png); background-position:right -280px; background-repeat: no-repeat; 	
+	background-size: 100% 559px;
+}
+#button7 .button-mr{
+/*右框 内容*/
+	width:auto;
+	background-image:url(bg_buttons.png); background-position:right -336px; background-repeat: no-repeat; 	
+	background-size: 100% 559px;
+}
+#button8 .button-mr{
+/*右框 内容*/
+	width:auto;
+	background-image:url(bg_buttons.png); background-position:right -392px; background-repeat: no-repeat; 	
+	background-size: 100% 559px;
+}
+#button9 .button-mr{
+/*右框 内容*/
+	width:auto;
+	background-image:url(bg_buttons.png); background-position:right -448px; background-repeat: no-repeat; 	
+	background-size: 100% 559px;
+}
+#button10 .button-mr{
+/*右框 内容*/
+	width:auto;
+	background-image:url(bg_buttons.png); background-position:right -504px; background-repeat: no-repeat; 	
+	background-size: 100% 559px;
+}
+
+.ui-state-hover #button1 .button-mr,.ui-state-hover #button2 .button-mr,.ui-state-hover #button3 .button-mr,.ui-state-hover #button4 .button-mr,.ui-state-hover #button5 .button-mr,.ui-state-hover #button6 .button-mr,.ui-state-hover #button7 .button-mr,.ui-state-hover #button8 .button-mr,.ui-state-hover #button9 .button-mr,.ui-state-hover #button10 .button-mr{ background-image:url(bg_buttons_on.png); }
+
+.ui-state-active #button1 .button-mr,.ui-state-active #button2 .button-mr,.ui-state-active #button3 .button-mr,.ui-state-active #button4 .button-mr,.ui-state-active #button5 .button-mr,.ui-state-active #button6 .button-mr,.ui-state-active #button7 .button-mr{  }
+
+
+.button-mm{
+/*中框 */
+	position:relative;
+	display:block;
+	color:  #100F04;
+/*	height:50px; */
+}
+
+
+.ui-state-hover #button1 .button-mm,.ui-state-hover #button2 .button-mm,.ui-state-hover #button3 .button-mm,.ui-state-hover #button4 .button-mm,.ui-state-hover #button5 .button-mm,.ui-state-hover #button6 .button-mm,.ui-state-hover #button7 .button-mm{  }
+
+.ui-state-active #button1 .button-mm,.ui-state-active #button2 .button-mm,.ui-state-active #button3 .button-mm,.ui-state-active #button4 .button-mm,.ui-state-active #button5 .button-mm,.ui-state-active #button6 .button-mm,.ui-state-active #button7 .button-mm{  }
+
+
+
+
+.button-mm a{
+	position:relative;
+	display:block;
+	height:56px;
+/*	background:url(btn_bg1.png) 0px 0px repeat-x; */
+	margin-left: 20px; 
+	font-size:20px;
+	/***font-weight:bold;***/
+	font-weight: normal;
+	line-height:56px;
+	color:#fffcd3;
+	
+	}
+
+#button1 .button-mm a {
+}
+
+#button2 .button-mm a {
+}
+
+#button3 .button-mm a {
+}
+
+#button4 .button-mm a {
+}
+
+#button5 .button-mm a {
+}
+
+#button6 .button-mm a {
+}
+
+#button7 .button-mm a {
+}
+
+#button8 .button-mm a {
+}
+
+#button9 .button-mm a {
+}
+
+
+/*	
+div > h3:nth-of-type(even) a {
+	color:#FFF;
+}	
+
+
+div > h3:nth-of-type(odd) a {
+	color:#000;
+}	
+*/
+	
+.ui-state-hover .button-mm a{  color:#FFF; }
+.ui-state-active .button-mm a{  color:#FFF;}
+
+
+
+.button-mm a img{
+	/*height:33px;*/
+	position:absolute;
+	top: 50%;
+	margin-top: -13px; /* Negative half of height. */
+
+	/*float:left;*/ 
+	/*margin-top:-10px;*/
+}
+
+.button-mm a span{
+	padding-left:35px;
+}
+
+
+
+
+/*====按鈕外框 End====*/
+
+
+
+/*====內容外框 Start====*/
+
+.detail {
+/*最外框*/
+
+
+}
+
+
+/*框內的高度及寬度都會變化*/
+.detail-tl{
+/*左上框*/
+	font-size:15%; /*fix IE6*/
+}
+.detail-tm{
+/*上框*/
+	font-size:15%; /*fix IE6*/
+}
+.detail-tr{
+/*右上框*/
+	font-size:15%; /*fix IE6*/
+}
+.detail-bl{
+/*左下框*/
+	font-size:15%; /*fix IE6*/
+}
+.detail-bm{
+/*下框*/
+	font-size:15%; /*fix IE6*/
+}
+.detail-br{
+/*右下框*/
+	font-size:15%; /*fix IE6*/
+}
+.detail-ml{
+/*左框*/
+	width:auto;
+}
+.detail-mr{
+/*右框 内容*/
+	width:auto;
+}
+
+.detail-mm p{
+/*中框 */
+}
+
+.detail-mm {
+/*中框 */
+	/*color:#ffd4e6;*/
+	color:#4e2a06;
+
+	background-image:url(bg_content.png);  	
+	background-size: 100% 100%;
+	/*-webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;*/
+	
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='bg_content.png',sizingMethod='scale');
+
+	-ms-filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='bg_content.png',sizingMethod='scale');
+	
+	padding:20px 10px;
+/*
+	-moz-box-shadow:0px 0px 5px 3px rgba(30%,30%,30%,0.5) inset;
+	-webkit-box-shadow:0px 0px 5px 3px rgba(30%,30%,30%,0.5) inset;
+	box-shadow:0px 0px 5px 3px rgba(30%,30%,30%,0.5) inset;
+*/
+}
+
+#footer{
+	background:url(bg_bottom.png); /* 加上背景 */
+	}
+#footer #copyright{
+	}
+#footer #copyright #copyright-text{
+	font-size:12px;
+	color:#ffde78;
+	text-align:center;
+	padding-top: 9px;
+	height: 20px;
+}
+
+/*====內容外框 End====*/
+
