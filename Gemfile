@@ -18,7 +18,7 @@ gem 'rolify'
 gem 'simple_form'
 gem 'acts-as-taggable-on'
 
-gem 'newrelic_rpm'
+#gem 'newrelic_rpm'
 
 # For linux
 #gem 'therubyracer', :platform=>:ruby

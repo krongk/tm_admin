@@ -4,7 +4,15 @@
 <hr/>
 
 <div class="row">
-  <div class="col-md-3" data-spy="affix" data-offset-top="200">
+  <div class="col-md-9">
+    <ol class="breadcrumb">
+      <li>
+        <span class="label label-info">您的激活码是：<%= @first_one.try(:code) %>， 请再次登录维斗喜帖后台支付页面，通过激活码支付确认。</span>
+      </li>
+    </ol>
+    <%= render 'list'%>
+  </div>
+  <div class="col-md-3">
     <div class="list-group">
       <%= link_to payment_tokens_path, class: "list-group-item active" do %>
         查看全部 <span class="badge"><%=  Payment::Token.all.size %></span>
@@ -25,12 +33,5 @@
       <% end %>
     </div>
   </div>
-  <div class="col-md-9">
-    <ol class="breadcrumb">
-      <li>
-        <%= @first_one.code %>
-      </li>
-    </ol>
-    <%= render 'list'%>
-  </div>
+  
 </div>

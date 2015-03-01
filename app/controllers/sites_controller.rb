@@ -12,7 +12,13 @@ class SitesController < ApplicationController
   def index
     @sites = Site.order("id DESC").page( params[:page])
     if params[:q]
-      @sites = @sites.where(["title like ?", "%#{params[:q]}%"])
+      if params[:q] =~ /^\w{4}$/
+        @sites = @sites.where(["short_title = ?", params[:q]])
+      elsif params[:q] =~ /^\d+$/
+        @sites = @sites.where(["id = ?", params[:q]])
+      else
+        @sites = @sites.where(["title like ?", "%#{params[:q]}%"])
+      end
     end
     if params[:template_id]
       @sites = @sites.where(template_id: params[:template_id])

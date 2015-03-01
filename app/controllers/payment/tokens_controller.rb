@@ -31,7 +31,7 @@ class Payment::TokensController < ApplicationController
     @payment_titles = Payment::Token.group(:title)
 
     #get first one
-    @first_one = Payment::Token.where(user_id: 5, status: 'active').limit(1).first
+    @first_one = Payment::Token.create!(user_id: 1, title: 'alipay mobile', status: 'active')
   end
 
   # GET /payment/tokens/1
