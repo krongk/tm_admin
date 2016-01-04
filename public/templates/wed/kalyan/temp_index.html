@@ -312,9 +312,17 @@
               <a class="Button" href="tel:<%=value_for(@site_page, 'girl_phone')%>"><i class="fa fa-phone"></i> <%=value_for(@site_page, 'girl_phone')%></a>
             <% end %>
           </p>
-          <p class="social" style="font-family: 行楷,行楷-简,姚体,行书;">
-            <embed src='<%= value_for(@site_page, 'music', typo: 'dialog', url: '/home/dialog_music', title: '背景音乐', default: true)  %>' width='180' height='90' loop='true' autostart='true' hidden='true' />
-          </p>
+       <!--fn-声音显示 -->
+ <section class="fn-audio" >
+    <div class="btn">
+      <p class="btn_audio"><span class='css_sprite01 audio_open'></span><span class='css_sprite01 audio_close'></span></p>
+      <audio id="car_audio"  controls preload="preload" autoplay="autoplay">
+        <source src="<%= value_for(@site_page, 'music', typo: 'dialog', url: '/home/dialog_music', title: '背景音乐', default: true)  %>" type="audio/mpeg">
+        您的浏览器不支持HTML5音频格式
+      </audio>
+    </div>
+ </section>
+ <!--fn-声音显示 end-->
           <footer>
             <%= render 'layouts/s_footer' %>
           </footer>

@@ -33,7 +33,7 @@ class Templates::Page < ActiveRecord::Base
 
   #<%= value_for(@site_page, 'title', typo: 'string', default: true, required: true) %>
   #<%= value_for(@site_page, 'weding_date', typo: 'date', title: '婚礼日期', required: true)  %>
-  #value_for(@site_page, 'content', type: 'select', options: ['a', 'b', 'c'], title: 'title', default: true) 
+  #value_for(@site_page, 'content', typo: 'select', options: ['a', 'b', 'c'], title: 'title', default: true) 
   def get_input(name, opt)
     opt[:typo] = opt[:type] if opt[:typo].blank? #alias
     opt[:typo] = 'string' if opt[:typo].blank? #default 
@@ -41,6 +41,8 @@ class Templates::Page < ActiveRecord::Base
     key = CommonKey.find_or_create_by(name: name)
     key.typo = opt[:typo] if key.typo.blank?
     key.title = opt[:title] if key.title.blank?
+    key.placeholder = opt[:placeholder] if key.placeholder.blank?
+    key.hint = opt[:hint] if key.hint.blank?
     key.save
 
     arr = [%{<!-- #{name}-->}]
@@ -73,7 +75,7 @@ class Templates::Page < ActiveRecord::Base
       arr << %{<%= value_for(@site_page, '#{name}') || CommonKey.get(:#{name}).try(:default_value) %>}
       arr << %{</textarea>}
     when 'select', 'radio'
-      arr << %{<select id="site_page_#{name}" name="site_pag_#{name}" class="input-xlarge">}
+      arr << %{<select id="site_page_#{name}" name="site_page[#{name}]" class="input-xlarge">}
       opt[:options].each do |option|
         arr << %{<option value="#{option}">#{option}</option>}
       end

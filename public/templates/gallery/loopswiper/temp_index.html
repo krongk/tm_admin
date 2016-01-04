@@ -1,5 +1,5 @@
 <!doctype html><!--循环滚动-->
-<html lang="en">
+<html lang="en" manifest="<%= @base_url %>/assets.appcache">
 <head>
   <meta charset="utf-8">
   <meta name="format-detection" content="telephone=no" />
@@ -72,7 +72,7 @@
     </div>
     <div class='translate-back f-hide'>
       <input id="ca-tips" type="hidden" value="" />
-      <input id="r-cover" type="hidden" value="<%= asset_path value_for(@site_page, 'banner', typo: 'dialog', url: '/home/dialog_banner', title: '封面照片', default: true)  %>" />
+      <input id="r-cover" type="hidden" value="<%= asset_path value_for(@site_page, 'banner', typo: 'dialog', url: '/home/dialog_banner?site_page_id=' + @site_page.id.to_s, title: '封面照片', default: true)  %>" />
       <div class='m-page m-fengye f-hide' data-page-type='info_pic3' data-statics='info_pic3'>
         <div class="page-con lazy-img" data-src="<%= get_first_site_image_url(@site) %>"></div>
       </div>
@@ -82,7 +82,9 @@
   <div class="swiper-container f-hide">
     <div class="swiper-wrapper">
       <% @site_page.site_images.each_with_index do |site_image, index| %>
-        <div class="swiper-slide blue-slide" style="background: url(<%= site_image.image.url%>) top center repeat-y;">
+        <% next if site_image.image.url == value_for(@site_page, 'banner', typo: 'dialog', url: '/home/dialog_banner?site_page_id=' + @site_page.id.to_s, title: '封面照片', default: true) %>
+        <div class="swiper-slide blue-slider">
+      <div class="img_content"><img src="<%= site_image.image.url %>" width="100%" height="100%"/></div>
         </div>
       <% end %>
     </div>
@@ -100,7 +102,6 @@
   <script src="<%= @base_url %>js/jquery-1.10.1.min.js"></script>
   <script src="<%= @base_url %>js/idangerous.swiper-2.1.min.js"></script>
   <script src="<%= @base_url %>js/Lottery.js"></script>
-  <script src="<%= @base_url %>js/weixin-share.js"></script>
   <script src="<%= @base_url %>js/main.js"></script>
   <script>
     var mySwiper = new Swiper('.swiper-container',{
@@ -108,10 +109,20 @@
       paginationClickable: true,
       mode: 'vertical',
       loop: true,
-      speed: 600,  
-      //autoplay: 6000, 
+      speed: 600,
+      centeredSlides: true,
+      slidesPerView: 1,
+      watchActiveIndex: true,
+      <% if value_for(@site_page, 'autoplay', type: 'radio', options: ['自动播放', '手动播放'], title: '播放形式', default: true)  %>
+        autoplay: 5000, 
+      <% end %>
       //updateOnImagesReady: false, //When enabled Swiper will be reinitialized after all inner images (<img> tags) are loaded
       //visibilityFullFit: true, //If enabled then "visible" slides will be only those slides that are entirely fit to the container's view. 
+      onSlideChangeStart: function(){
+        $('.swiper-slide-active').each(function(i,ele){
+          $(this).attr('style', $(this).attr('style') + ';background-position: 50% 50%;')
+        })
+      }
     })
   </script>
   <%= render 'layouts/s_footer' %>

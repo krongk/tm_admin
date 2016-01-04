@@ -44,6 +44,11 @@ class SitesController < ApplicationController
     @site.toggle_typo
   end
 
+  def pay
+    @site = Site.find(params[:id])
+    @site.pay
+  end
+
   def set_free
     @site = Site.find(params[:id])
     @site.set_free

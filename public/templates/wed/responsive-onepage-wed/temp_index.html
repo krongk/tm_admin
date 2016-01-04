@@ -14,6 +14,7 @@
   <!-- Stylesheets -->
   <link href="<%= @base_url %>style/bootstrap.min.css" rel="stylesheet">
   <link href="<%= @base_url %>style/flexslider.css" rel="stylesheet">
+  <link href="<%= @base_url %>style/idangerous.swiper.css" rel="stylesheet">
   <link href="//libs.baidu.com/fontawesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
   <link href="<%= @base_url %>style/style.css" rel="stylesheet">
   <link id="theme" rel="stylesheet" href="<%= @base_url %>style/thume-red.css">
@@ -89,17 +90,17 @@
                   <div class="button">
                     <a href="#wedding" class="anchorLink">宴席安排</a> &nbsp; <a href="<%= get_site_page_url_by_title(@site, '留言祝福') %>">留言回执</a>
                   </div>
-<!--fn-声音显示 -->
- <section class="fn-audio" >
-    <div class="btn">
-      <p class="btn_audio"><span class='css_sprite01 audio_open'></span><span class='css_sprite01 audio_close'></span></p>
-      <audio id="car_audio"  controls preload="preload" autoplay="autoplay">
-        <source src="<%= value_for(@site_page, 'music', typo: 'dialog', url: '/home/dialog_music', title: '背景音乐', default: true)  %>" type="audio/mpeg">
-        您的浏览器不支持HTML5音频格式
-      </audio>
-    </div>
- </section>
- <!--fn-声音显示 end-->
+                  <!--fn-声音显示 -->
+                   <section class="fn-audio" >
+                      <div class="btn">
+                        <p class="btn_audio"><span class='css_sprite01 audio_open'></span><span class='css_sprite01 audio_close'></span></p>
+                        <audio id="car_audio"  controls preload="preload" autoplay="autoplay">
+                          <source src="<%= value_for(@site_page, 'music', typo: 'dialog', url: '/home/dialog_music', title: '背景音乐', default: true)  %>" type="audio/mpeg">
+                          您的浏览器不支持HTML5音频格式
+                        </audio>
+                      </div>
+                   </section>
+                   <!--fn-声音显示 end-->
                </div>
             </div>
          </div>
@@ -149,25 +150,19 @@
          </div>
          <div class="col-md-12">
          
-            <!-- Slider (Flex Slider -->
-            <!-- Flex slider -->
-            <div class="flexslider">
-              <ul class="slides">
-                <!-- Each slide should be enclosed inside li tag. -->
-                <% @site_page.site_images.each do |site_image| %> 
-                <!-- Slide #1 -->
-                <li>
-                  <!-- Image -->
-                  <%= qiniu_image_tag site_image.image.url, :quality => 100, class: 'img-responsive' %> 
-                 <!--  <div class="flex-caption">
-                     <h3>红红火火</h3>
-                     <p>见证爱情. </p>
-                  </div> -->
-                </li>
-                <% end %>
 
-              </ul>
+          <!-- Swiper -->
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              <% @site_page.site_images.each do |site_image| %> 
+                <div class="swiper-slide img-responsive"><%= qiniu_image_tag site_image.image.url, :quality => 100, class: 'img-responsive' %> </div>
+              <% end %>
             </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+          </div>
+
+            
             <!-- Slider ends -->
          </div>
       </div>
@@ -316,8 +311,13 @@
     <script src="<%= @base_url %>js/bootstrap.min.js"></script>
     <script src="<%= @base_url %>js/jquery.flexslider-min.js"></script>
     <script src="<%= @base_url %>js/jquery.anchor.js"></script>
+    <script src="<%= @base_url %>js/idangerous.swiper.js"></script>
     <script src="<%= @base_url %>js/custom_wed.js"></script>
     <script src="<%= @base_url %>js/weixin.share.js"></script>
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper('.swiper-container');
+    </script>
   <!-- [[foot end]] --> 
   <%= render 'layouts/s_footer' %>
 </body>

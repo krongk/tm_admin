@@ -580,24 +580,10 @@ var car2 = {
 				car2.Txt_init(car2._page.eq(car2._pageNow));
 
 				// 判断是否滑动最后一页，并让杂志介绍关联页面贤淑
-                /*
-	 			if(car2._page.eq(car2._pageNow).next().next('.m-page').length == 0){
+        if(car2._pageNow + 1 == car2._pageNum){
 	 				car2.Linkage_intro_show();
 	 				car2.Linkage_intro();
 					$(".market-notice").show();
-	 			}
-                */
-                if(car2._pageNow == car2._pageNum-3){
-                     car2.Linkage_intro_show();
-                     car2.Linkage_intro();
-                    $(".market-notice").show();
-                 }else{
-                    car2.Linkage_intro_hide(false);
-                    $(".market-notice").hide();
-                 }
-				if(car2._page.eq(car2._pageNow).next('.m-page').length == 0){
-	 				car2.Linkage_intro_hide(false);
-	 				$(".market-notice").hide();
 	 			}
 	 		},300)
 

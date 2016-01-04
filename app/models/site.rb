@@ -32,6 +32,15 @@ class Site < ActiveRecord::Base
     expire_cache
   end
 
+  def pay
+    self.site_payment.state = 'completed'
+    self.site_payment.completed_at = Time.now
+    self.site_payment.save!
+    self.status = 'vip'
+    self.save!
+    expire_cache
+  end
+
   def image_count
     SiteImage.joins(:site_page).where("site_pages.site_id = #{self.id}").count
   end

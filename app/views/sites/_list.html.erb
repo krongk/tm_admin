@@ -41,7 +41,7 @@
         <td><%= link_to '详细', site_path(site), target: '_blank' %></td>
         <td><%= link_to '修改', edit_site_path(site) %></td>
         <td><%= link_to '前台', "http://www.wedxt.com/sites/#{site.id}/edit", target: "_blank" %></td>
-        <td><%= link_to '改价', edit_site_payment_path(site.site_payment), target: '_blank' %></td>
+        <td><%= link_to '支付', pay_sites_path(id: site.id), remote: true  %></td>
         <td><%= link_to '免费', set_free_sites_path(id: site.id), remote: true %></td>
         <td><%= link_to '删除', site, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
