@@ -25,6 +25,8 @@ class SitesController < ApplicationController
     end
 
     @templates = Templates::Template.all
+    #get a valide token
+    @first_one = Payment::Token.find_or_create_by(user_id: 1, title: 'alipay mobile', status: 'active')
   end
 
   def payed

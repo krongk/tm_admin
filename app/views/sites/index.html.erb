@@ -1,6 +1,13 @@
 <h1>应用列表</h1>
 
 <div class="row">
+  <div class="col-md-12">
+    <blockquote>
+    <span class="label label-info">您的激活码是：<%= @first_one.try(:code) %>， 请再次登录维斗喜帖后台支付页面，通过激活码支付确认。</span></blockquote>
+  </div>
+</div>
+
+<div class="row">
   <div class="col-lg-4">
     <form class="navbar-form navbar-left" role="search">
       <div class="form-group">
